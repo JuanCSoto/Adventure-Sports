@@ -1,0 +1,43 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');  
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@ViewBag.TXTTEXNEW</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.SINGULAR <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="15" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.ARTICLES_SINGULAR)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.ARTICLES_SINGULAR)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.PLURAL <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="15" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.ARTICLES_PLURAL)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.ARTICLES_PLURAL)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <div class="centrado">
+    <div class="alerta-aceptar">
+      <a>
+        <h3>@ViewBag.SAVE</h3>
+        <span></span>
+      </a>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

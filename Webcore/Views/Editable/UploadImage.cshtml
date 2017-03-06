@@ -1,0 +1,24 @@
+﻿@model string
+@{    
+  Layout = "~/Views/Layouts/_ImageFrame.cshtml";
+}
+@if (Model != null)
+{
+<script>    
+  parent.iFrameImageLoaded = true;
+  parent.showEditableImage('@Model', '@ViewBag.EditableID');
+</script>
+}
+else
+{
+<script>
+  parent.iFrameImageLoaded = true;
+</script>
+}
+<div id="user-file-wraper">
+@using (Html.BeginForm("uploadimage", "editable", FormMethod.Post, new { id = "editable-form-file", enctype = "multipart/form-data" }))
+{    
+    <input id="editableFile" name="editableFile" class="user-file" type="file" />
+    <input name="id" type="hidden" value="@ViewBag.EditableID" />    
+}
+</div>

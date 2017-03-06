@@ -1,0 +1,149 @@
+﻿@model Webcore.Areas.Admin.Models.IContent
+@{
+  string content = Url.Content("~/").TrimEnd('/');
+  string video = string.Empty;
+  int videoId = 0;
+  if (Model.ListFiles != null)
+  {
+    foreach (Domain.Entities.Fileattach item in Model.ListFiles)
+    {
+      if (item.Type == Domain.Entities.Fileattach.TypeFile.Video)
+      {
+        video = item.Name + item.Filename;
+        videoId = item.FileattachId.Value;
+        break;
+      }
+    }
+  }  
+}
+
+<script type="text/javascript">
+  var path = '@Url.Content("~/").TrimEnd('/')';
+
+  function showBlogImage(image) {
+    $('#image-preview-container').show();
+    $('#contentImage').val(image);
+    var src = path + '/resources/temporal/blog/' + image;
+    var $image = $('<img class="full-image" />');
+    $image.attr('src', src);
+    $('.box-preview-image').html($image);    
+    $('#frame-file').attr('src', $('#frame-file').attr('src'));
+    removeVideo();
+  }
+
+  function showVideo() {
+    $('#video-container').show();
+    $('#image-preview-container').hide();
+    $('#contentImage').val('');
+    $('.box-preview-image').empty();
+    $('#error-file').hide();
+  }
+
+  function removeVideo() {
+    deletefile(@videoId, null);
+    $('#video-container').hide();
+  }
+
+  $(document).ready(function () {
+    $("#accordion").accordion();
+
+    $("#Tags").fcbkcomplete({
+      json_url: "@Url.Action("GetTags", "Tag")",
+      json_cache: false,
+      addontab: true,
+      maxitems: 20,
+      height: 5,
+      cache: true,
+      newel: true,
+      complete_text: '@Resources.Extend.Messages.START_TYPING'
+    });
+
+    $("#filespos").sortable({
+      opacity: 0.7,
+      axis: 'y',
+      handle: '.handle',
+      stop: function (event, ui) {
+        $('#loading').show();
+        var source = ui.item.children('.handle');
+        var id = source.attr('id');
+        var newid = $('#li' + id).prev().children('.handle').attr('id');
+        var limit = false;
+
+        if (newid == undefined) {
+          newid = $('#li' + id).next().children('.handle').attr('id');
+          limit = true;
+        }
+
+        if (newid != undefined) {
+          $.post('@Url.Action("ChangeOrderFile", "Content")', { fileattachId: id, prevId: newid, limit: limit }, function (data) {
+            if (data != null && data.result)
+              $('#loading').hide();
+          });
+        }
+      }
+    });
+  });
+    </script>
+
+@Html.HiddenFor(t => t.IContent.ContentId)
+    @Html.Hidden("IContent.SectionId", (Model.IContent != null && Model.IContent.SectionId != null) ? Model.IContent.SectionId.ToString() : null)
+    @Html.Hidden("IContent.ModulId", (Model.IContent != null && Model.IContent.ModulId != null) ? Model.IContent.ModulId.ToString() : null)
+<label class="text-label-create">@Resources.Extend.Messages.WRITETITLE</label>
+<br>
+@Html.TextBoxFor(t => t.IContent.Name, new { @class = "input-form-create", maxlength = "200" })
+<br>
+<div class="alert-create">@Html.ValidationMessageFor(v => v.IContent.Name)</div>
+<br>
+<label class="text-label-create">@Resources.Extend.Messages.WRITEINTRO</label>
+<br>
+@Html.TextBoxFor(t => t.IContent.Shortdescription, new { @class = "input-form-create", maxlength = "250" })
+<span class="spenum" id="spdes" style="float: left;font-size:11px;">@Resources.Extend.Messages.ALONECAN</span>
+<div class="alert-create">@Html.ValidationMessageFor(v => v.IContent.Shortdescription)</div>
+<script type="text/javascript">
+  $('#IContent_Shortdescription').keyup(function () {
+    valid_long(this, 250, $('#spdes'));
+  });
+</script>
+<div class="clear"></div>
+<br>
+<label class="text-label-create">@Resources.Extend.Messages.YOUCANGO</label>
+<div class="upload-but-form margin-but">
+ <div class="txt-botnew">@Resources.Extend.Messages.ITGOESIMA</div>
+    <div class="camera-new"></div>
+  <iframe id="frame-file" src="@(content)/blogentry/uploadblogimage" scrolling="no" onload="checkIframeImageLoaded('frame-file');"></iframe>
+  <input id="contentImage" name="contentImage" type="hidden" value="@Model.IContent.Image" />
+</div>
+<div class="upload-but-form" onclick="showVideo();">
+    <div class="txt-botnew">@Resources.Extend.Messages.ITGOES</div>
+    <div class="play-new"></div>
+
+
+</div>
+
+<br>
+<div id="video-container" style="display:@(string.IsNullOrEmpty(video) ? "none" : string.Empty);">  
+  <label class="text-label-create">@Resources.Extend.Messages.VIYOU</label>
+  <br>
+  <div id="list_files">
+    <input type="text" id="VID0" name="videoyoutube" class="input-form-create" value="@video" maxlength="150">    
+  </div>
+  <br>
+</div>
+<div class="alert-create"></div>
+<br>
+<div id="error-file" style="display:none">
+  <label class="text-label-create">@Resources.Extend.Messages.IMAGEMX</label>
+</div>
+<div id="image-preview-container" style="display:@(string.IsNullOrEmpty(Model.IContent.Image) ? "none" : string.Empty);">
+  <label class="text-label-create">@Resources.Extend.Messages.MAINIMAGE</label>
+  <div class="clear"></div>
+  <div class="box-preview-image">
+    
+      @if (!string.IsNullOrEmpty(Model.IContent.Image))
+      {
+        <img class="full-image" src="@content/files/@Model.IContent.ContentId/@Model.IContent.Image" alt="@Model.IContent.Name" />
+      }
+    
+  </div>
+</div>
+<div class="clear"></div>

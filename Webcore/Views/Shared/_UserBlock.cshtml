@@ -1,0 +1,60 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+}
+@if (User.Identity.IsAuthenticated)
+{
+  <div class="mm2-user-loginok">
+    <div class="mm2-container-username">
+          <div class="mm2-name-userok"><a href="@(content)/perfil/Index/@ViewBag.UserId" >@User.Identity.Name</a></div>
+      <div class="mm2-notification-container">
+        @if(ViewBag.Notifications > 0)
+        {
+        <div class="show-notifications mm2-number-notification">@(ViewBag.Notifications)</div>
+        }
+        <div class="show-notifications mm2-icon-notification">
+          <div class="clear"></div>
+          <div class="notifications-container mm2-container-notification-float" style="display:none;">
+            <div class="notification-list"></div>
+            <div class="mm2-notification-float-item">
+              <a href="@content/notificaciones"><div class="mm2-timer-notificationfloat">@ViewBag.TXTVERMAS</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mm2-img-userlogin">
+      <div class="mm2-img-userclose">
+        <div class="img-vertical-middle-overflow">
+          <img class="min-35" src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+        </div>
+      </div>
+    </div>
+    <div class="show-menu-user-block mm2-arrow-userlogin"></div>
+
+    <div class="clear"></div>
+  </div>
+  <div class="menu-user-block mm2-menu-slideopen" style="display:none;">
+    <div class="mm2-item-menuslide">
+      @Resources.Global.Messages.SCORE                  
+      <div class="content-tooltip">
+        <h2>@ViewBag.Medallos.ToString("##,##0")</h2>
+        <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -23px; margin-top: 14px;">
+          <div class="tooltip">@ViewBag.TXTEARNPOIN</div>
+        </div>
+      </div>
+    </div>
+    <div class="mm2-item-menuslide"><a href="@(content)/notificaciones">@ViewBag.NOTIFICATIONS</a></div>
+    <div class="mm2-item-menuslide"><a href="@(content)/perfil/Index/@ViewBag.UserId">@ViewBag.VIEWPROFILE</a></div>
+    <a  href="@(content)/registro/cerrarsesion">
+      <div class="mm2-item-menuslide">@ViewBag.CLOSESSION</div>
+    </a>
+  </div>
+}
+else
+{
+  <a class="menu-ingresar">@ViewBag.SIGNIN</a> 
+  <div class="botoningresa">
+    <img src="~/resources/images/current/ingresa-s.png" border="0" alt="icon" />
+  </div>   
+}

@@ -1,0 +1,1297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="APPLY_FILTERS" xml:space="preserve">
+    <value>Select the filters you want to apply</value>
+  </data>
+  <data name="BLOCK_IDEA" xml:space="preserve">
+    <value>Block Idea</value>
+  </data>
+  <data name="BLOCK_USER" xml:space="preserve">
+    <value>Block User</value>
+  </data>
+  <data name="CLEAN_AUDIT" xml:space="preserve">
+    <value>Are you sure you want to delete the audit logs?</value>
+  </data>
+  <data name="CLEAN_AUDIT_MESSAGE" xml:space="preserve">
+    <value>Removes all audit information from the application.</value>
+  </data>
+  <data name="CLEAN_LOG" xml:space="preserve">
+    <value>Are you sure you want to delete records from the application log?</value>
+  </data>
+  <data name="CLEAN_LOG_MESSAGES" xml:space="preserve">
+    <value>Removes all information from the error log</value>
+  </data>
+  <data name="CONFIRM_PASSWORD" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="CURRENT_ROLE" xml:space="preserve">
+    <value>Current profiles</value>
+  </data>
+  <data name="DELETE_ITEM" xml:space="preserve">
+    <value>Are you sure you want to delete the record?</value>
+  </data>
+  <data name="EXPORT_AUDIT" xml:space="preserve">
+    <value>Exports the audit information to Excel application.</value>
+  </data>
+  <data name="EXPORT_LOG" xml:space="preserve">
+    <value>Exports the error log information to Excel.</value>
+  </data>
+  <data name="FAILED_INFORMATION" xml:space="preserve">
+    <value>Failed to verify the information</value>
+  </data>
+  <data name="FIND_BY_NAME" xml:space="preserve">
+    <value>Search by name</value>
+  </data>
+  <data name="FIND_BY_TEXT" xml:space="preserve">
+    <value>Find by word or phrase</value>
+  </data>
+  <data name="GENERAL_SEARCH" xml:space="preserve">
+    <value>General search</value>
+  </data>
+  <data name="INFORMATION_AUDIT" xml:space="preserve">
+    <value>Keeping information audit application.</value>
+  </data>
+  <data name="INFORMATION_LOG" xml:space="preserve">
+    <value>Maintenance log application errors.</value>
+  </data>
+  <data name="INFORMATION_SECTION" xml:space="preserve">
+    <value>Select sections to change the information.</value>
+  </data>
+  <data name="LAST_ACTIVITY" xml:space="preserve">
+    <value>Last activity</value>
+  </data>
+  <data name="LOAD_FILES" xml:space="preserve">
+    <value>Load files</value>
+  </data>
+  <data name="MANUAL_ORDER" xml:space="preserve">
+    <value>Manual order</value>
+  </data>
+  <data name="NORESULTPARAMETRO" xml:space="preserve">
+    <value>No se encontraron resultados para el parámetro de búsqueda</value>
+  </data>
+  <data name="NO_RECORDS_FOUND" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+  <data name="RESOURCE_NOT_FOUND" xml:space="preserve">
+    <value>SORRY. The resource you are looking for is no longer available</value>
+  </data>
+  <data name="SEARCH_RESULT" xml:space="preserve">
+    <value>Your search for</value>
+  </data>
+  <data name="START_TYPING" xml:space="preserve">
+    <value>Start typing</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>&lt;p&gt;</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>&lt;strong&gt;TÉRMINOS DE USO PLATAFORMA CITIES FOR LIFE&lt;/strong&gt;</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>Plataforma donde los ciudadanos y los representantes de ciudades del mundo pueden participar aportando ideas en los retos y preguntas planteados en la plataforma por medio de texto, imágenes y videos no musicalizados.</value>
+  </data>
+  <data name="String11" xml:space="preserve">
+    <value>&lt;/p&gt;</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>&lt;/p&gt;</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>&lt;p&gt;</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>Lea atentamente los siguientes términos de uso (las “condiciones de uso” o “acuerdo”) antes de empezar a usar los servicios ofrecidos en “la plataforma de cocreación CITIES FOR LIFE”.</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>&lt;/p&gt;</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>&lt;p&gt;</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>&lt;strong&gt;Resumen de la plataforma de cocreación CITIES FOR LIFE&lt;/strong&gt;</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>&lt;/p&gt;</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>&lt;p&gt;</value>
+  </data>
+  <data name="SYSTEM_ERROR" xml:space="preserve">
+    <value>The system is busy. Try Again</value>
+  </data>
+  <data name="TERMINS1" xml:space="preserve">
+    <value>&lt;P&gt;
+                            &lt;Strong&gt; 1. Terms of the agreement &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            The terms of the agreement governing the relationship between &lt;strong&gt; user &lt;/ strong&gt; and &lt;strong&gt; Route &lt;/ strong&gt;, (hereinafter "the administrator" regarding the use of the platform and related services (the " Service ").
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is a Colombian company. &lt;Strong&gt; user &lt;/ strong&gt; you can contact us via e-mail &lt;a href="mailto:info@citiesfor.life"&gt; &lt;/a&gt; info@citiesfor.life.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            By creating an account or accessing or using the Service, you accept and be bound by these Terms of Service and expressly consent to the collection, use and storage of your information as described in the Privacy Policy in this document.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is the exclusive owner of the intellectual property rights relating to the design of the website and the information contained therein, including the appearance of color combinations, button shapes, other graphical elements website and the feeling they convey. This intellectual property is protected by copyright laws, trademarks, patents and trade secrets and other intellectual property rights.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; 2. Access the service &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            all natural persons over 18 may participate.
+
+&lt;/ P&gt;
+                        &lt;P&gt;
+                            The user must provide all equipment and software necessary to connect to the Service, including but not limited to, a mobile device, in cases where the service offers a mobile component. The user is responsible for any charges, including the Internet or mobile fees that you incur when accessing the service.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; 3. Using the service &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            To participate in the platform &lt;strong&gt; CITIES FOR LIFE &lt;/ strong&gt; you can enter with your Facebook, Twitter, Google + and LinkedIn. If you do not have any of these social networks you can register in the form of the platform entering the following information: full name, phone or cell phone, email, city profile photo (optional) and accept the terms and conditions and policy Platform privacy.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; Once registered you can participate in the following manner: &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; a. Publish challenges. &lt;/ Strong&gt; challenges will be published regularly on the platform where users must publish ideas and proposals that respond to the challenge posed. A challenge is a question that is published on the platform and aims to find innovative and feasible proposals to develop in cities by area of impact defined solution.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; How to win a City Challenge? &lt;/ Strong&gt; &lt;br /&gt;
+
+
+
+Associated budget City Challenge will be used to carry out the idea later. For the election of the idea that possibly will take place the following will be considered:
+                        &lt;/ P&gt;
+                        &lt;Ul&gt;
+                            &lt;Li&gt; The user must be part of the Top 10. &lt;/ Li&gt;
+                            &lt;Li&gt; Then &lt;strong&gt; Route &lt;/ strong&gt; choose the best idea of the Top 10 according to a committee [JJ2] to discuss the idea and its viability (The committee will consider whether you can carry out the winning idea) . &lt;/ li&gt;
+                            &lt;Li&gt; The City Challenge winner was subsequently published in the blog of the challenge. &lt;/ Li&gt;
+                            &lt;Li&gt; In the absence of a winner, be informed of the reason why there was no winner. &lt;/ Li&gt;
+                        &lt;/ Ul&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; b. Answer questions &lt;/ strong&gt; &lt;br /&gt;
+                            &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; will ask citizens for their ideas can contribute to building a better city. Open, multiple-choice questions to select points location on a map of Medellin: three (3) types of questions will be asked.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; c. Other actions within the platform &lt;/ strong&gt; &lt;br /&gt;
+                            You may also:
+                        &lt;/ P&gt;
+                        &lt;Ul&gt;
+                            &lt;Li&gt; Discuss ideas or answers to other users. &lt;/ Li&gt;
+                            &lt;Li&gt; Give "Like" (little hand up) to the ideas and comments of other users. &lt;/ Li&gt;
+                            &lt;Li&gt; Give "I hate" (little hand below) to the ideas and comments of other users. &lt;/ Li&gt;
+
+&lt;Li&gt; Share the contents of the platform in social networks (Facebook, Twitter, Google + and LinkedIn) and email. &lt;/ Li&gt;
+                            &lt;Li&gt; Edit profile where you can edit or add the following information:
+                                &lt;Ul&gt;
+                                    &lt;Li&gt; Biography - Tell us about yourself (visible to other users) &lt;/ li&gt;.
+                                    &lt;Li&gt; document type and document number (will not be visible to other users). &lt;/ Li&gt;
+                                    &lt;Li&gt; or cell phone. (It will not be visible to other users). &lt;/ Li&gt;
+                                    &lt;Li&gt; E-mail. (It will not be visible to other users). &lt;/ Li&gt;
+                                    &lt;Li&gt; Location. (It will not be visible to other users). &lt;/ Li&gt;
+                                    &lt;Li&gt; New password. &lt;/ Li&gt;
+                                    &lt;Li&gt; Stock profile (optional). &lt;/ Li&gt;
+                                    &lt;Li&gt; Interests. &lt;/ Li&gt;
+                                    &lt;Li&gt; Link to your social networks (Facebook, Twitter, Google + and LinkedIn). &lt;/ Li&gt;
+                                &lt;/ Ul&gt;
+                            &lt;/ Li&gt;
+                        &lt;/ Ul&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; d. Versus section &lt;/ strong&gt; &lt;br /&gt;
+                            This section will test two (2) ideas and answers posted by users randomly so that others vote for the ones they like.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+
+
+
+
+
+
+
+
+&lt;Strong&gt; e. Earn points &lt;/ strong&gt; &lt;br /&gt;
+                            Some actions within the platform virtual points will be awarded to the user in order to stand out in the "Citizens are participating" section.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; f. Enter the TOP 10 and section the best of the best &lt;/ strong&gt; &lt;br /&gt;
+                            To enter the Top 10 user defined formula, thus:
+                        &lt;/ P&gt;
+                        &lt;Ul&gt;
+                            &lt;Li&gt; ideas or questions with the most views, most "Like" minus the amount of "I hate" plus the number of comments. The total of this formula defines users who enter this section. &lt;/ Li&gt;
+                            &lt;Li&gt; To enter the most innovative "Best of the Best" platform, will be taken into account those users with the most points on an idea. &lt;/ Li&gt;
+                            &lt;Li&gt; To enter the most popular ideas in "The Best of the Best" platform the amount of "Like" minus the amount of "I hate" will add a user. &lt;/ Li&gt;
+                            &lt;Li&gt; To enter the most voted ideas in "The best of the best" amount of "Like" on an idea will be added. &lt;/ Li&gt;
+                        &lt;/ Ul&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; g. Report a content &lt;/ strong&gt; &lt;br /&gt;
+                            On every idea or answer another user platform may report it to the administrator if it deems inappropriate. To do this you must enter the report button on the idea or question and write the reason considers inappropriate content. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; determine what to do with the content.
+                        &lt;/ P&gt;
+&lt;P&gt;
+                            &lt;Strong&gt; 4. License to use the service &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            The user can only use the service and content provided by this website for non-commercial purposes while respecting the opinions of others and these conditions of use. Therefore, the user agrees to not use the Service for any other purpose.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            You not use data collection tools (data mining), robots or similar tools to gather and extract data content, frame any part of the website or its contents, as well as reproduce, reprint, copy, store, publicly display, issue , transmit, modify, translate, reschedule, publish, sublicense, assign, transfer, sell, loan or otherwise distribute the content without prior written consent of &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt;. It is forbidden to circumvent the mechanisms included in the content to prevent unauthorized distribution or reproduction of content.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; may require upgrades of the service. You acknowledge and agree that &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; can update the Service with or without notice. You acknowledge and agree that you may need to update third-party software from time to time in order to receive service.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; 5. Restrictions &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            The following restrictions apply to the use of the Service:
+                        &lt;/ P&gt;
+                        &lt;Ul&gt;
+&lt;Li&gt; Facebook, Twitter, Google + and LinkedIn does not sponsor, endorse, or managed in any way this platform, or are associated with it. &lt;/ Li&gt;
+                            &lt;Li&gt; According to the regulation of Facebook, Twitter, Google + and LinkedIn a person can only have one profile, so users can not participate with more than one Facebook profile within the platform. &lt;/ Li&gt;
+                            &lt;Li&gt; To access the service, the user must be 13 years. &lt;/ Li&gt;
+                            &lt;Li&gt; You should monitor your account to restrict use by minors, and denied access to children under 13 years. The user accepts full responsibility for any unauthorized use of the service by minors in relation to your account. &lt;/ Li&gt;
+                            &lt;Li&gt; The user is responsible for his opinions, as such, is committed to respect the opinions of others. The views of users do not represent the feelings of &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt;. &lt;/ Li&gt;
+                            &lt;Li&gt; The user will use the platform exclusively for non-commercial purposes, avoiding political or other proselytizing. &lt;/ Li&gt;
+                            &lt;Li&gt; You may not use the Service to engage in any illegal conduct. &lt;/ Li&gt;
+                            &lt;Li&gt; If the user accesses the service must comply with these Terms of Service. &lt;/ Li&gt;
+                            &lt;Li&gt; The user is responsible for the images or content shared through the platform, for that reason holds harmless &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; for any claims relating to copyright and intellectual property. &lt;/ Li&gt;
+                            &lt;Li&gt; The user will not share any video you put music on the platform. &lt;/ Li&gt;
+                        &lt;/ Ul&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; 6. License limitations &lt;/ strong&gt;
+                        &lt;/ P&gt;</value>
+  </data>
+  <data name="TXTTERMCOND" xml:space="preserve">
+    <value>Terms and Conditions</value>
+  </data>
+  <data name="TYPE_OF_BANNER" xml:space="preserve">
+    <value>Type of banner</value>
+  </data>
+  <data name="UNBLOCK_IDEA" xml:space="preserve">
+    <value>Unblock Idea</value>
+  </data>
+  <data name="UNBLOCK_USER" xml:space="preserve">
+    <value>Unclock User</value>
+  </data>
+  <data name="UPLOADED_FILES" xml:space="preserve">
+    <value>Uploaded files</value>
+  </data>
+  <data name="USER_BAD_PASSWORD" xml:space="preserve">
+    <value>The password is incorrect, please check again.</value>
+  </data>
+  <data name="USER_NOT_FOUND" xml:space="preserve">
+    <value>The user is not in the system</value>
+  </data>
+  <data name="VALID_SECTION_CONTENT" xml:space="preserve">
+    <value>You must select a section to create the content.</value>
+  </data>
+  <data name="YOU_ARE_IN" xml:space="preserve">
+    <value>You are in</value>
+  </data>
+  <data name="TERMINS2" xml:space="preserve">
+    <value>&lt;P&gt;
+                            &lt;Strong&gt; 1. Terms of the agreement &lt;/ strong&gt;
+                        &lt;/ P&gt;</value>
+  </data>
+  <data name="ALONECAN" xml:space="preserve">
+    <value>Alone you can write 250 characters</value>
+  </data>
+  <data name="CANALSO" xml:space="preserve">
+    <value>You can also write us at </value>
+  </data>
+  <data name="CITIZENSCO" xml:space="preserve">
+    <value>citizens are co-creating in CITIES FOR LIFE</value>
+  </data>
+  <data name="IMAGEMX" xml:space="preserve">
+    <value>Image Maximum 5MB</value>
+  </data>
+  <data name="ITGOES" xml:space="preserve">
+    <value>It goes up a video</value>
+  </data>
+  <data name="MAINIMAGE" xml:space="preserve">
+    <value>The main image for your news</value>
+  </data>
+  <data name="MOREOF" xml:space="preserve">
+    <value>More than</value>
+  </data>
+  <data name="NAMEANDLAST" xml:space="preserve">
+    <value>Name and Last name:</value>
+  </data>
+  <data name="PLEASEIT" xml:space="preserve">
+    <value>Please it enters the characters that you see in the image:</value>
+  </data>
+  <data name="SEEMORE" xml:space="preserve">
+    <value>see more</value>
+  </data>
+  <data name="SOCIAL" xml:space="preserve">
+    <value>or through our social networks: Facebook, Twitter, LinkedIn or Instagram</value>
+  </data>
+  <data name="VIYOU" xml:space="preserve">
+    <value>Video youtube</value>
+  </data>
+  <data name="WRITEINTRO" xml:space="preserve">
+    <value>Writes an introduction</value>
+  </data>
+  <data name="WRITETITLE" xml:space="preserve">
+    <value>Writes the title here</value>
+  </data>
+  <data name="YOUCANGO" xml:space="preserve">
+    <value>You can go up an image or a video of Youtube</value>
+  </data>
+  <data name="BANNERNO" xml:space="preserve">
+    <value>Banner unavailable</value>
+  </data>
+  <data name="CREATENEWS" xml:space="preserve">
+    <value>Create News</value>
+  </data>
+  <data name="DATAPROTECTION" xml:space="preserve">
+    <value>Data protection policy</value>
+  </data>
+  <data name="EDITIDEA" xml:space="preserve">
+    <value>Edit your idea</value>
+  </data>
+  <data name="ESATHAT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IKNOW" xml:space="preserve">
+    <value>I know</value>
+  </data>
+  <data name="INSPIRED" xml:space="preserve">
+    <value>Understand the challenge, get inspired and co-create urban solutions!</value>
+  </data>
+  <data name="ITGOESIMA" xml:space="preserve">
+    <value>It goes up an image</value>
+  </data>
+  <data name="JOININITIATIVE" xml:space="preserve">
+    <value>Join this citizens' initiative</value>
+  </data>
+  <data name="LONGTEXT" xml:space="preserve">
+    <value>&lt;P&gt;
+                            &lt;Strong&gt; PRIVACY AND PERSONAL DATA PRIVACY POLICY &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            For participation in the platform, &lt;strong&gt; Route &lt;/ strong&gt;, acting as a data controller collects personal information such as: name, last name, email, username and password.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; Route &lt;/ strong&gt; collects and uses personal information for self-service management of the page to provide users with information services and promotion. Similarly, &lt;strong&gt; Route &lt;/ strong&gt; makes use of personal data to inform the user about available content. &lt;Strong&gt; Route &lt;/ strong&gt; not put up for sale, rent or lease to others registered their lists on their pages. However, you may occasionally contact you on behalf of certain external partners and / or to inform you about a particular offering that may be of interest, always related to the subject of this page. In these cases, the user's personal information (name, phone, email, city, profile picture, biography, document type, document number, interest, or other private information) is not transferred to third parties.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; Route &lt;/ strong&gt; can be collected in the database for use within the platform and promotional activities, sensitive data (those that affect the privacy of the owner or whose misuse can lead to discrimination), such as data biometric. In this case &lt;strong&gt; Route &lt;/ strong&gt; provides for use in accordance with constitutional principles in Colombia and respect for fundamental rights.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            Additionally, &lt;strong&gt; Route &lt;/ strong&gt; informs the user as owner of the data enjoys the rights provided in the Constitution of Colombia and the law, especially the right to know, update, rectify and delete your personal information; and the right to revoke consent to the processing of personal data and all rights established by Law 1581 (Law on Protection of Personal Data) 2012 and Decree 1377 of 2013.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; Route &lt;/ strong&gt; is committed to protecting the security of personal information by using technologies and security procedures that guarantee the protection of information from unauthorized access, disclosure, and unauthorized use, likewise, will use the data , particularly those of minors, in accordance with constitutional principles, respect for fundamental rights and interests of minors, if you have any concerns about this, you can send an email to: info@citiesfor.life
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            Based on the above, as a participant user or parent or guardian of the minor participant:
+                        &lt;/ P&gt;
+                        &lt;Ul&gt;
+                            &lt;Li&gt; I agree expressly voluntary, prior, explicit, informed and unequivocal the collection, storage and use of personal data, as well as minor I represent. &lt;/ Li&gt;
+                            &lt;Li&gt; I agree to receive promotional information by registered mail. &lt;/ Li&gt;
+                            &lt;Li&gt; I declare that the information provided is true, accurate and current. &lt;/ Li&gt;
+                            &lt;Li&gt; I understand and agree that the personal data and other information provided by the participant will be automatically processed and incorporated into the database managed by the corporation &lt;strong&gt; Route &lt;/ strong&gt;. &lt;/ Li&gt;
+                            &lt;Li&gt; give my free, express and informed that the personal information that has been entered is stored, collected or used by &lt;strong&gt; Route &lt;/ strong&gt; directly or through third parties, for communication, sending information and / or marketing. &lt;/ li&gt;
+                        &lt;/ Ul&gt;
+                        &lt;P&gt;
+                            If the user wants to unsubscribe from this platform, to ask for any modification, correction or deletion of all data you have given us, to stop receiving commercial information and contact us for any other reason, you can send an email to info @ citiesfor.life
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            I acknowledge that I have read and understand the above terms of use and agree that my use of the platform is a recognition of my ACCEPTANCE OF THE TERMS AND CONDITIONS OF THIS TERMS OF USE AGREEMENT.
+                        &lt;/ P&gt;
+                        &lt;P&gt; &lt;strong&gt; Privacy &lt;/ strong&gt; &lt;/ p&gt;
+                        &lt;P&gt;
+                            Your privacy is important to us. By accepting this Privacy Policy you agree that your information is accessed and used for your account (Facebook, Twitter, Google + and LinkedIn), the data to be used as follows:
+                        &lt;/ P&gt;
+                        &lt;Ul&gt;
+                            &lt;Li&gt; Full name, which will be shown to other users &lt;/ li&gt;
+                            &lt;Li&gt; Your age, which will be consulted to verify the age of the user &lt;/ li&gt;
+                            &lt;Li&gt; The account ID (Facebook, Twitter, Google + and LinkedIn), which will be stored to save the user's progress in the application. &lt;/ Li&gt;
+                        &lt;/ Ul&gt;
+                        &lt;P&gt;
+                            You agree to provide accurate and complete information, and it will update the information as soon as possible after changes. You understand that your user ID, full name, biography, links to social networks and profile photo will be available to the public and that the search engines can index your name and profile photo.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            No information will be distributed to third parties and the only information that will be stored until the user communicates through a message that you want your account to be removed, will be the id of the account (Facebook, Twitter, Google + and LinkedIn).
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            The user is solely responsible for maintaining the confidentiality of information access, and be responsible for all uses of your login information.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; Changes to the terms of service and privacy policy &lt;/ strong&gt;
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            &lt;Strong&gt; Route &lt;/ strong&gt; reserves the right, at its discretion, to change, modify, add or remove portions of these terms of service at any time by posting the amended terms on or within the service. You can also give notice of any change to an email or messaging within the service. It is deemed to have accepted these changes if you continue to use the service. Unless otherwise stated, all amended terms shall automatically be effective after its initial publication.
+                        &lt;/ P&gt;
+                        &lt;P&gt;
+                            The co-creation platform &lt;strong&gt; CITIES FOR LIFE &lt;/ strong&gt; always have a link with the latest version of the terms and conditions, you are responsible to check the terms and conditions periodically for changes that could affect had. Continued use of the website following the amendment of the terms and conditions of use, you accept implicitly.
+                        &lt;/ P&gt;</value>
+  </data>
+  <data name="PARTICIPATING" xml:space="preserve">
+    <value>Citizens participating</value>
+  </data>
+  <data name="PLACEMAP" xml:space="preserve">
+    <value>Place your answer on the map</value>
+  </data>
+  <data name="POSTULATES" xml:space="preserve">
+    <value>Nominate Urban Challenges</value>
+  </data>
+  <data name="POSTULATESTUDY" xml:space="preserve">
+    <value>&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Share Success   &amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;br&gt;Stories</value>
+  </data>
+  <data name="PRIVACYPO" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="SELECTREASON" xml:space="preserve">
+    <value>Select a reason</value>
+  </data>
+  <data name="SUPPORT" xml:space="preserve">
+    <value>Support your idea Submit a Video</value>
+  </data>
+  <data name="SUPPORTPHOTO" xml:space="preserve">
+    <value>Supports your idea, upload a photo</value>
+  </data>
+  <data name="TELLCITY" xml:space="preserve">
+    <value>Hand in challenges and success stories</value>
+  </data>
+  <data name="TELLOPINION" xml:space="preserve">
+    <value>Tell us your opinion</value>
+  </data>
+  <data name="WHYCONTENT" xml:space="preserve">
+    <value>Why are you reporting this content?</value>
+  </data>
+  <data name="WRITECOMMENT" xml:space="preserve">
+    <value>Write your comment here</value>
+  </data>
+  <data name="COMPROMCITIZENS" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DOYOUKNOW" xml:space="preserve">
+    <value>GET INSPIRED BY OTHER CITIES, SHARE EXPERIENCES AND LEARN HOW URBAN TERRITORIES ARE BEING TRANSFORMED INTO CITIES FOR LIFE!</value>
+  </data>
+  <data name="ECOCITIESFORLIFE" xml:space="preserve">
+    <value>WE BELIEVE TOGETHER WE CAN TRANSFORM OUR URBAN TERRITORIES INTO CITIES FOR LIFE</value>
+  </data>
+  <data name="FINDOUT" xml:space="preserve">
+    <value>GET FIT</value>
+  </data>
+  <data name="GETTOKNOW" xml:space="preserve">
+    <value>BE ONE OF US!</value>
+  </data>
+  <data name="HOMESECTIONS7" xml:space="preserve">
+    <value>&lt;span&gt; LET'S EXCHANGE KNOWLEDGE AND STORIES ABOUT URBAN SOLUTIONS WE KNOW AND DREAM &lt;/span&gt;&lt;br&gt; URBAN INNOVATION, NEW CITIZEN PARTICIPATION, COLLABORATIVE CITIES AND OPEN GOVERNMENTS</value>
+  </data>
+  <data name="HOME_SECCION4" xml:space="preserve">
+    <value>DO YOU HAVE A PROPOSAL THAT CAN TRANSFORM OUR CITIES INTO CITIES FOR LIFE?</value>
+  </data>
+  <data name="PROPOSEDSOLUTION" xml:space="preserve">
+    <value>URBAN CHALLENGES</value>
+  </data>
+  <data name="SHAREITHERE" xml:space="preserve">
+    <value>LET'S CO-CREATE!</value>
+  </data>
+  <data name="String12" xml:space="preserve">
+    <value>Data protection policy</value>
+  </data>
+  <data name="TRANSCITY" xml:space="preserve">
+    <value>&lt;span&gt; MINDS CO-CREATING ALTERNATIVE &lt;/span&gt;&lt;br&gt; SOLUTIONS FOR URBAN CHALLENGES.</value>
+  </data>
+  <data name="WEALREADY" xml:space="preserve">
+    <value>WE ARE MORE THAN</value>
+  </data>
+  <data name="WRITEITHERE" xml:space="preserve">
+    <value>Write it here</value>
+  </data>
+  <data name="CHOOSEANSWER" xml:space="preserve">
+    <value>Choose your answer</value>
+  </data>
+  <data name="CITYCHA" xml:space="preserve">
+    <value>city challenge</value>
+  </data>
+  <data name="YOURCOULD" xml:space="preserve">
+    <value>Your idea could be carried out</value>
+  </data>
+  <data name="PROFILEPI" xml:space="preserve">
+    <value>Profile picture:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Success Stories</value>
+  </data>
+  <data name="TRANSFOR" xml:space="preserve">
+    <value>Join the transformation of our city</value>
+  </data>
+  <data name="BYJOINN" xml:space="preserve">
+    <value>By joining forces we can build the city we all dream.</value>
+  </data>
+  <data name="CHOOSECITY" xml:space="preserve">
+    <value>Choose the idea you like best for our city.</value>
+  </data>
+  <data name="CITIZENPARTI" xml:space="preserve">
+    <value>Citizen participation</value>
+  </data>
+  <data name="CITYHEARD" xml:space="preserve">
+    <value>When you speak, the city heard.</value>
+  </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>Close session</value>
+  </data>
+  <data name="DAYS" xml:space="preserve">
+    <value>day (s) of finished</value>
+  </data>
+  <data name="DAYSREMA" xml:space="preserve">
+    <value>Days Remaining</value>
+  </data>
+  <data name="DISABLEMAIL" xml:space="preserve">
+    <value>If you do not wish to receive these emails, write to info@citiesfor.life with the word "disable mail"</value>
+  </data>
+  <data name="DISCOVERHOW" xml:space="preserve">
+    <value>Discover how many likes and comments generated your participation.</value>
+  </data>
+  <data name="EMAILME" xml:space="preserve">
+    <value>Email me when one of my idea to be blocked</value>
+  </data>
+  <data name="ENTERMESS" xml:space="preserve">
+    <value>Enter a message</value>
+  </data>
+  <data name="FINDBEST" xml:space="preserve">
+    <value>Find the best ideas of the question that you're browsing</value>
+  </data>
+  <data name="FUTURE" xml:space="preserve">
+    <value>Good ideas lead us to the future where we want to be.</value>
+  </data>
+  <data name="INNOVATION" xml:space="preserve">
+    <value>Your registration is complete blast and have earned 23 Points for Innovation!.   From this moment, you have the power to transform your city</value>
+  </data>
+  <data name="MAILTO" xml:space="preserve">
+    <value>Mail is sent to</value>
+  </data>
+  <data name="MOSTCOMM" xml:space="preserve">
+    <value>Most Comments</value>
+  </data>
+  <data name="MYACTIVITY" xml:space="preserve">
+    <value>My Activity</value>
+  </data>
+  <data name="NEAREST" xml:space="preserve">
+    <value>The nearest citizens</value>
+  </data>
+  <data name="PRIVACYALL" xml:space="preserve">
+    <value>&lt;P&gt;
+                        &lt;Strong&gt; PRIVACY AND PERSONAL DATA PRIVACY POLICY &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        For participation in the platform, &lt;strong&gt; Route &lt;/ strong&gt;, acting as a data controller collects personal information such as: name, last name, email, username and password.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; collects and uses personal information for self-service management of the page to provide users with information services and promotion. Similarly, &lt;strong&gt; Route &lt;/ strong&gt; makes use of personal data to inform the user about available content. &lt;Strong&gt; Route &lt;/ strong&gt; not put up for sale, rent or lease to others registered their lists on their pages. However, you may occasionally contact you on behalf of certain external partners and / or to inform you about a particular offering that may be of interest, always related to the subject of this page. In these cases, the user's personal information (name, phone, email, city, profile picture, biography, document type, document number, interest, or other private information) is not transferred to third parties.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; can be collected in the database for use within the platform and promotional activities, sensitive data (those that affect the privacy of the owner or whose misuse can lead to discrimination), such as data biometric. In this case &lt;strong&gt; Route &lt;/ strong&gt; provides for use in accordance with constitutional principles in Colombia and respect for fundamental rights.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Additionally, &lt;strong&gt; Route &lt;/ strong&gt; informs the user as owner of the data enjoys the rights provided in the Constitution of Colombia and the law, especially the right to know, update, rectify and delete your personal information; and the right to revoke consent to the processing of personal data and all rights established by Law 1581 (Law on Protection of Personal Data) 2012 and Decree 1377 of 2013.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; is committed to protecting the security of personal information by using technologies and security procedures that guarantee the protection of information from unauthorized access, disclosure, and unauthorized use, likewise, will use the data , particularly those of minors, in accordance with constitutional principles, respect for fundamental rights and interests of minors, if you have any concerns about this, you can send an email to: info@citiesfor.life
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Based on the above, as a participant user or parent or guardian of the minor participant:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; I agree expressly voluntary, prior, explicit, informed and unequivocal the collection, storage and use of personal data, as well as minor I represent. &lt;/ Li&gt;
+                        &lt;Li&gt; I agree to receive promotional information by registered mail. &lt;/ Li&gt;
+                        &lt;Li&gt; I declare that the information provided is true, accurate and current. &lt;/ Li&gt;
+                        &lt;Li&gt; I understand and agree that the personal data and other information provided by the participant will be automatically processed and incorporated into the database managed by the corporation &lt;strong&gt; Route &lt;/ strong&gt;. &lt;/ Li&gt;
+                        &lt;Li&gt; give my free, express and informed that the personal information that has been entered is stored, collected or used by &lt;strong&gt; Route &lt;/ strong&gt; directly or through third parties, for communication, sending information and / or marketing. &lt;/ li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        If the user wants to unsubscribe from this platform, to ask for any modification, correction or deletion of all data you have given us, to stop receiving commercial information and contact us for any other reason, you can send an email to info @ citiesfor.life
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        I acknowledge that I have read and understand the above terms of use and agree that my use of the platform is a recognition of my ACCEPTANCE OF THE TERMS AND CONDITIONS OF THIS TERMS OF USE AGREEMENT.
+                    &lt;/ P&gt;
+                    &lt;P&gt; &lt;strong&gt; Privacy &lt;/ strong&gt; &lt;/ p&gt;
+                    &lt;P&gt;
+                        Your privacy is important to us. By accepting this Privacy Policy you agree that your information is accessed and used for your account (Facebook, Twitter, Google + and LinkedIn), the data to be used as follows:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; Full name, which will be shown to other users &lt;/ li&gt;
+                        &lt;Li&gt; Your age, which will be consulted to verify the age of the user &lt;/ li&gt;
+                        &lt;Li&gt; The account ID (Facebook, Twitter, Google + and LinkedIn), which will be stored to save the user's progress in the application. &lt;/ Li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        You agree to provide accurate and complete information, and it will update the information as soon as possible after changes. You understand that your user ID, full name, biography, links to social networks and profile photo will be available to the public and that the search engines can index your name and profile photo.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        No information will be distributed to third parties and the only information that will be stored until the user communicates through a message that you want your account to be removed, will be the id of the account (Facebook, Twitter, Google + and LinkedIn).
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The user is solely responsible for maintaining the confidentiality of information access, and be responsible for all uses of your login information.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Changes to the terms of service and privacy policy &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; reserves the right, at its discretion, to change, modify, add or remove portions of these terms of service at any time by posting the amended terms on or within the service. You can also give notice of any change to an email or messaging within the service. It is deemed to have accepted these changes if you continue to use the service. Unless otherwise stated, all amended terms shall automatically be effective after its initial publication.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The co-creation platform &lt;strong&gt; CITIES FOR LIFE &lt;/ strong&gt; always have a link with the latest version of the terms and conditions, you are responsible to check the terms and conditions periodically for changes that could affect had. Continued use of the website following the amendment of the terms and conditions of use, you accept implicitly.
+                    &lt;/ P&gt;</value>
+  </data>
+  <data name="REMOVEPIC" xml:space="preserve">
+    <value>Remove picture</value>
+  </data>
+  <data name="SAVESETTINGS" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="SENDAN" xml:space="preserve">
+    <value>Send me an email when a pulse is</value>
+  </data>
+  <data name="SENDINGMAIL" xml:space="preserve">
+    <value>Sending mail</value>
+  </data>
+  <data name="SENDME" xml:space="preserve">
+    <value>Send me an email when a pulse end</value>
+  </data>
+  <data name="SENDNEW" xml:space="preserve">
+    <value>Send me an email when a new pulse is released</value>
+  </data>
+  <data name="SHAREVOTE" xml:space="preserve">
+    <value>Share your ideas, vote for the others and &lt;br /&gt; become a leading citizen co-creation!</value>
+  </data>
+  <data name="SOCIALMEDIA" xml:space="preserve">
+    <value>Social media</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>Actions speak louder than dreams.</value>
+  </data>
+  <data name="SUBJECT" xml:space="preserve">
+    <value>Enter a subject</value>
+  </data>
+  <data name="TERANDCON" xml:space="preserve">
+    <value>&lt;P&gt;
+                        &lt;Strong&gt; TERMS OF USE CITIES PLATFORM FOR LIFE &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Please read the following terms of use (the "Terms of Use" or "Agreement") before you start using the services offered on "co-creation platform CITIES FOR LIFE".
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Summary of the co-creation platform CITIES FOR LIFE &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Platform where representatives of cities and the world can participate by contributing ideas on the challenges and questions raised in the platform through text, images and videos to music no.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 1. Terms of the agreement &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The terms of the agreement governing the relationship between &lt;strong&gt; user &lt;/ strong&gt; and &lt;strong&gt; Route &lt;/ strong&gt;, (hereinafter "the administrator" regarding the use of the platform and related services (the " Service ").
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is a Colombian company. &lt;Strong&gt; user &lt;/ strong&gt; you can contact us via e-mail &lt;a href="mailto:info@citiesfor.life"&gt; &lt;/a&gt; info@citiesfor.life.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        By creating an account or accessing or using the Service, you accept and be bound by these Terms of Service and expressly consent to the collection, use and storage of your information as described in the Privacy Policy in this document.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is the exclusive owner of the intellectual property rights relating to the design of the website and the information contained therein, including the appearance of color combinations, button shapes, other graphical elements website and the feeling they convey. This intellectual property is protected by copyright laws, trademarks, patents and trade secrets and other intellectual property rights.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 2. Access the service &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        all individuals older than 18 years can participate.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The user must provide all equipment and software necessary to connect to the Service, including but not limited to, a mobile device, in cases where the service offers a mobile component. The user is responsible for any charges, including the Internet or mobile tariffs incurred to access the service.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 3. Using the service &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        To participate in the platform &lt;strong&gt; CITIES FOR LIFE &lt;/ strong&gt; you can enter with your Facebook, Twitter, Google + and LinkedIn. If you do not have any of these social networks you can register in the form of platform by entering the following information: full name, phone or cell phone, email, city profile photo (optional) and accept the terms and conditions and policy Privacy of the platform.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Once registered you can participate in the following manner: &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; a. Publish challenges. &lt;/ Strong&gt; challenges will be published regularly on the platform where users must publish ideas and proposals that respond to the challenge posed. A challenge is a question that is published on the platform and aims to find innovative and viable proposals to develop in cities by area of ​​impact defined solution.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; How to win a City Challenge? &lt;/ Strong&gt; &lt;br /&gt;
+                        Associated budget City Challenge will be used to carry out the idea later. For the election of the idea that possibly will take place the following will be considered:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; The user must be part of the Top 10. &lt;/ Li&gt;
+                        &lt;Li&gt; Then &lt;strong&gt; Route &lt;/ strong&gt; choose the best idea of ​​the Top 10 according to a committee [JJ2] to discuss the idea and its viability (The committee will consider whether you can carry out the winning idea) . &lt;/ li&gt;
+                        &lt;Li&gt; The City Challenge winner was subsequently published in the blog of the challenge. &lt;/ Li&gt;
+                        &lt;Li&gt; In the absence of a winner, be informed of the reason why there was no winner. &lt;/ Li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; b. Answer questions &lt;/ strong&gt; &lt;br /&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; will ask to for their ideas can contribute to building a better city. Open, multiple-choice questions to select points location on a map of Medellin: three (3) types of questions will be asked.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; c. Other actions within the platform &lt;/ strong&gt; &lt;br /&gt;
+                        You may also:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; Discuss ideas or answers to other users. &lt;/ Li&gt;
+                        &lt;Li&gt; Give "Like" (Manito above) to the ideas and comments of other users. &lt;/ Li&gt;
+                        &lt;Li&gt; Give "I hate" (little hand below) to the ideas and comments of other users. &lt;/ Li&gt;
+                        &lt;Li&gt; Share the contents of the platform in social networks (Facebook, Twitter, Google + and LinkedIn) and email. &lt;/ Li&gt;
+                        &lt;Li&gt; Edit profile where you can edit or add the following information:
+                            &lt;Ul&gt;
+                                &lt;Li&gt; Biography - Tell us about yourself (visible to other users) &lt;/ li&gt;.
+                                &lt;Li&gt; document type and document number (will not be visible to other users). &lt;/ Li&gt;
+                                &lt;Li&gt; or cell phone. (It will not be visible to other users). &lt;/ Li&gt;
+                                &lt;Li&gt; E-mail. (It will not be visible to other users). &lt;/ Li&gt;
+                                &lt;Li&gt; Location. (It will not be visible to other users). &lt;/ Li&gt;
+                                &lt;Li&gt; New password. &lt;/ Li&gt;
+                                &lt;Li&gt; Stock profile (optional). &lt;/ Li&gt;
+                                &lt;Li&gt; Interests. &lt;/ Li&gt;
+                                &lt;Li&gt; Link to your social networks (Facebook, Twitter, Google + and LinkedIn). &lt;/ Li&gt;
+                            &lt;/ Ul&gt;
+                        &lt;/ Li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; d. Versus section &lt;/ strong&gt; &lt;br /&gt;
+                        This section will test two (2) ideas and answers posted by users randomly so that others vote for the ones they like.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; e. Earn points &lt;/ strong&gt; &lt;br /&gt;
+                        Some actions within the platform virtual points will be awarded to the user in order to stand out in the "Citizens are participating" section.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; f. Enter the TOP 10 and section the best of the best &lt;/ strong&gt; &lt;br /&gt;
+                        To enter the Top 10 user defined formula, thus:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; ideas or questions with the most views, most "Like" minus the amount of "I hate" plus the number of comments. The total of this formula defines users who enter this section. &lt;/ Li&gt;
+                        &lt;Li&gt; To enter the most innovative "Best of the Best" platform, will be taken into account those users with the most points on an idea. &lt;/ Li&gt;
+                        &lt;Li&gt; To enter the most popular ideas in "The Best of the Best" platform the amount of "Like" minus the amount of "I hate" will add a user. &lt;/ Li&gt;
+                        &lt;Li&gt; To enter the most voted ideas in "The best of the best" amount of "Like" on an idea will be added. &lt;/ Li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; g. Report content &lt;/ strong&gt; &lt;br /&gt;
+                        On every idea or answer another user platform may report it to the administrator if it deems inappropriate. To do this you must enter the report button on the idea or question and write the reason considers inappropriate content. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; determine what to do with the content.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 4. License to use the service &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The user can only use the service and content provided by this website for non-commercial purposes while respecting the opinions of others and these conditions of use. Therefore, the user agrees to not use the Service for any other purpose.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        You not use data collection tools (data mining), robots or similar tools to gather and extract data content, frame any part of the website or its contents, as well as reproduce, reprint, copy, store, publicly display, issue , transmit, modify, translate, reschedule, publish, sublicense, assign, transfer, sell, loan or otherwise distribute the content without prior written consent of &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt;. It is forbidden to circumvent the mechanisms included in the content to prevent unauthorized distribution or reproduction of content.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; may require upgrades of the service. You acknowledge and agree that &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; can update the Service with or without notice. You acknowledge and agree that you may need to update third-party software from time to time in order to receive service.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 5. Restrictions &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The following restrictions apply to the use of the Service:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; Facebook, Twitter, Google + and LinkedIn does not sponsor, endorse, or managed in any way this platform, or are associated with it. &lt;/ Li&gt;
+                        &lt;Li&gt; According to the regulation of Facebook, Twitter, Google + and LinkedIn a person can only have one profile, so users can not participate with more than one Facebook profile within the platform. &lt;/ Li&gt;
+                        &lt;Li&gt; To access the service, the user must be 13 years. &lt;/ Li&gt;
+                        &lt;Li&gt; You should monitor your account to restrict use by minors, and denied access to children under 13 years. The user accepts full responsibility for any unauthorized use of the service by minors in relation to your account. &lt;/ Li&gt;
+                        &lt;Li&gt; The user is responsible for his opinions, as such, is committed to respect the opinions of others. The views of users do not represent the feelings of &lt;strong&gt; THE ADMINISTRATOR &lt;/ strong&gt;. &lt;/ Li&gt;
+                        &lt;Li&gt; The user will use the platform exclusively for non-commercial purposes, avoiding political or other proselytizing. &lt;/ Li&gt;
+                        &lt;Li&gt; You may not use the Service to engage in any illegal conduct. &lt;/ Li&gt;
+                        &lt;Li&gt; If the user accesses the service must comply with these Terms of Service. &lt;/ Li&gt;
+                        &lt;Li&gt; The user is responsible for the content or sharing images via the platform, for that reason holds harmless &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; for any claims relating to copyright and intellectual property. &lt;/ Li&gt;
+                        &lt;Li&gt; The user will not share any video you put music on the platform. &lt;/ Li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 6. License limitations &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Any attempt to disrupt or interfere with the service, is a violation of these terms of use and may be a violation of criminal and civil norms. By accepting these terms of use, you agree that under no circumstances:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; use the service to promote the violation of any applicable law or regulation. &lt;/ Li&gt;
+                        &lt;Li&gt; will use cheats, exploits, automation software, bots, hacks mods or any other unauthorized third-party software designed to modify or interfere with the Service or modify the files that are part of the service. &lt;/ Li&gt;
+                        &lt;Li&gt; modify the files that are part of the service.
+                        &lt;Li&gt; Perform actions to disrupt, overburden, aid or assist in the interruption or overload any computer or server used to offer or support the Service. &lt;/ Li&gt;
+                        &lt;Li&gt; Help or participate in any type of attack, including without limitation distributing a virus, denial of service attacks on the Service, or other attempts to disrupt service or use of any other person or enjoyment of the service. &lt;/ li&gt;
+                        &lt;Li&gt; Attempt to obtain unauthorized access to the Service, recorded for other accounts or computers, servers, or networks connected to the Service by any means of the user interface networks, including but not limiting, access circumvent or modify, in an attempt to prevent or modify, or encouraging or assisting any other person to circumvent or modify any security technology, device or software that is part of the Service. &lt;/ li&gt;
+                        &lt;Li&gt; Publish threatening, obscene, defamatory, libelous, or racial, sexual, religious or otherwise objectionable or offensive information. &lt;/ Li&gt;
+                        &lt;Li&gt; Publish any information that contains nudity, excessive violence, or offensive subject matter or contains a link to the content. &lt;/ Li&gt;
+                        &lt;Li&gt; Do not attempt to harass, abuse, or harm another person. &lt;/ Li&gt;
+                        &lt;Li&gt; Make available through the Service any material or information that infringes any copyright, trademark, patent, trade secret, right of privacy, right of publicity, or other rights of any person or entity. &lt;/ Li&gt;
+                        &lt;Li&gt; Transmit unauthorized communications through the Service, including junk mail, chain letters, junk mail and materials that promote the elements of malware, spyware and downloadable. &lt;/ Li&gt;
+                        &lt;Li&gt; use any unauthorized third-party software that accesses, intercepts, or otherwise collects information from or through the service or who are in transit to or from the Service, including without limitation any software that reads areas RAM or streams of network traffic. &lt;/ li&gt;
+                        &lt;Li&gt; void all robot exclusion headers or other measures we use to restrict access to the service or use any software, technology or device to send content or messages, scrape, spider, or crawl the Service, or harvest or manipulate data. &lt;/ li&gt;
+                        &lt;Li&gt; will use, facilitate, create or maintain any unauthorized access to the Service, including without limitation (1) any connection to any unauthorized server that emulates, or attempts to emulate any part of the Service, or (2) any connection to the connection programs, tools or unauthorized software. &lt;/ li&gt;
+                        &lt;Li&gt; reverse engineer, decompile, disassemble, decrypt or attempt to derive the source code of any underlying software or other intellectual property used to provide the service. &lt;/ Li&gt;
+                        &lt;Li&gt; copy, modify or distribute rights or content of the platform, or copyrights or trademarks of &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; or use any method to copy or distribute the content of the service marks, except as specifically permitted in these Terms of Service. &lt;/ li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; may limit, suspend, terminate, modify or delete accounts or access to services or parts of it if you have breached any of the terms of service, with or without notice, without implying Under no circumstances, compensation or payment. You can terminate any account registered in your name at any time, remove any comment at any time.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 7. Disclaimers &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is not responsible for any errors or omissions that may exist in the content of this site. In turn, these contents can be modified, developed or updated without prior notice, the user submitting the modifications made under these conditions.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is not responsible for the actions that the user can get to perform when exposed to site content.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        You acknowledge and agree that, to the fullest extent permitted by applicable law, the disclaimers contained herein apply to any damage of any kind caused by or related to the use or inability to use the service for any any cause of action, and &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; is not liable for indirect, incidental, special, exemplary or consequential damages, including lost profits, goodwill or data, in any way resulting from the use of, or inability to use the service.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        You agree to indemnify, save and hold &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;, contractors, employees, agents and its third party suppliers, licensors, and partners from all claims, losses, damages, liabilities, including legal fees and expenses, arising from your use or misuse of the Service, or any violation by you of these Terms of Service.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; does not guarantee that the ideas of users are carried out, but if it happens, you agree not receive remuneration, compensation, fees or any economic value for realization of their ideas .
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 8. Disclaimers &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; offers the website in its current state, with all the defects it may have, subject to availability. No express warranties offered on it. Similarly, there is no obligation on the part of &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; to provide any support at all. Any implied warranty that guarantees that the site and all software, content and services distributed through the Website are salable, satisfactory, accurate, timely or suitable qualities for a particular purpose or need, or is assumed they do not violate any law.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        You agree that use of the service is at your own risk and is provided "as is" without warranty of any kind, express or implied, including without limitation, warranties of title or implied warranties of non-infringement, merchantability or fitness for a particular purpose. Notwithstanding the foregoing, either &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; ensures that the service is provided without interruption or error.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is not liable for any delay or failure causes beyond the reasonable control of &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;, including, but not limited to force majeure and unforeseeable circumstances.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 9. System comments &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The comment system is provided by the platform, you agree to use this medium on its own responsibility, recognizing the terms and conditions, links or opinions presented in this medium are not part of &lt;strong&gt; Route &lt;/ strong&gt; and belong directly to the user who made the comment, any damage they may cause are not the responsibility of &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The user is solely responsible for the User Content you post or transmit through the feedback system. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; assumes no responsibility for the conduct of any user submitting any User Content, and assumes no responsibility for monitoring the service improper or illegal content or conduct.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; can not guarantee that other members will not use the ideas and information that you share in the feedback system. Therefore, if you have an idea or want to keep information confidential and / or do not want others to use, do not post it on the platform. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; will have no responsibility to evaluate the use or compensate for any ideas or information you may choose to submit.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        If you have suggestions, proposals, comments or other materials in the feedback system, you understand and agree that &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; (1) shall have no obligation to keep your submissions confidential, (2) have no obligation to return your Submissions or respond in some way, and (3) may use their suggestions without notice or compensation to you.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Users are solely responsible for your interactions with other users of the service and any other entity with which it interacts through the feedback service. If you have a dispute with one or more users, frees us from claims, demands and (actual and consequential) damages of any kind and nature, known and unknown, arising out of or in any way connected with such disputes.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 10. Intellectual property &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The Service (including, but not limited to titles, computer code, themes, objects, stories, dialog, catch phrases, concepts, artwork, animations, sounds, musical compositions, audio-visual effects, methods of operation, moral rights, documentation, etc. .) are works owned by &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; reserves all rights, including but not limited to all copyright or other proprietary rights, in connection with the Service.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        You agree and acknowledge that you will not have ownership or similar rights on the &lt;strong&gt; CITIES FOR LIFE &lt;/ strong&gt; platform and its contents and further acknowledge and agree that all rights are and will always be owned by &lt;strong&gt; ADMINISTRATOR &lt; / strong&gt;.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        USER expressly accepts that its participation in the platform in no case may ignore copyright, intellectual property or other rights of third parties. The participant must own the material to be used in the platform, ie, pictures and drawings (without this statement is exhaustive), or if not the owner, is liable to be a holder of the material and first obtain all necessary rights to use.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The participant shall indemnify all damages caused to &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; or others, by the use of unauthorized material, the violation of copyright or infringement of any other right.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Declaration of authorship and originality: &lt;/ strong&gt; &lt;br/&gt;
+                        The participant declares to be the creator of the audiovisual content or photo attached and rightful owner of all rights, free intellectual property that apply to them and voluntarily incorporated in the platform of the activity. Consequently, the participant assumes full responsibility and hold harmless &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; and its affiliates from any claims that might make third parties in connection with a breach of intellectual property rights on audiovisual or photographic content deliver to participate in the activity and be liable to &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; of all financial charges arising for the latter to third parties by reason of actions, claims or disputes arising from this cause.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Royalty others: &lt;/ strong&gt; &lt;br/&gt;
+                        Considering that the audiovisual and / or photographic submit content for purposes of participation in the activity, may contain the image of others, namely the graphical representation of your face, body, silhouette or any other form or aspect, identifying it in any medium now known or to be known, as well as voice and other associated features, the participant states, which has the authorization for the use of the image of third parties to be used in your video and / or photography, by any means, for the duration of the activity and up to two (2) years following completion. Consequently, the participant assumes full responsibility and hold harmless &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; from any claims that might make third parties in connection with a violation of image rights and be liable to &lt;strong&gt; ADMINISTRATOR &lt; / strong&gt; of all financial charges arising for the latter to third parties by reason of actions, claims or disputes arising from this cause.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Stock participant: &lt;/ strong&gt; &lt;br/&gt;
+                        With respect to its own image, the participant states: That expressly authorizes a &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; to use and exploit the material that contains your image whole or in part without limit as to the means currently known or unknown, full or partial unlimited way in the Colombian national territory and abroad, for the duration of the activity and up to two (2) years following completion. He further states that expressly waives to demand any compensation to &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;, its affiliates or subsidiaries, by the use or commercial exploitation of his image made.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 11. Third party links &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; can provide service links to third party websites or suppliers who may be invited to participate in a promotional offer. Any expense or liability for these third parties are your responsibility. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; makes no representation or warranty regarding any content, goods and / or services offered by third parties, even if linked from our service, and not be liable for any claims related to the third party content.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The linked sites are not under the control of &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; and may collect data or solicit personal information from the user. &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; is not responsible for their content business practices or privacy policies, or for the collection, use or disclosure of any information those sites may collect. The inclusion of any link does not imply endorsement by &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; of these linked sites.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 12. Dispute Resolution &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        If a dispute with &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;, both the user and &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; appears agree to resolve any claim or controversy at law or equity in accordance with one of the following sections or as agreed in writing. Before resorting to these alternatives, we recommend that you contact us directly to seek a resolution through alternative dispute resolution procedures.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        This Agreement and any disputes arising out of or related to or the Service shall be governed in all respects by the laws of Colombia. You agree that any claim or dispute you may have against &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; must be resolved exclusively by the Colombian jurisdiction, except as otherwise agreed by the parties or as described in the following paragraph arbitration option.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Any difference or dispute between the User and &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; during the terms of use shall be submitted to the decision of an arbitration tribunal, which shall consist of three (3) arbitrators appointed in mutual agreement of the parties, or failing that by the Center for Commercial Arbitration and Conciliation of the Chamber of Commerce of Bogota, on application by any of the parties. The court thus constituted, will meet and welcome the regulations and tariffs Commercial Arbitration and Conciliation of the Chamber of Commerce of Bogota DC, subject to the provisions of the legislation. The award is issued by the Tribunal in law. Each party shall bear the costs and expenses of all lawyers, consultants, advisors, witnesses and employees hired by it.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 13. General provisions &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; a. Severability &lt;/ strong&gt; &lt;br /&gt;
+                        The User and &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt; agree that if one or more of the provisions contained in these Terms of Service or Privacy Policy, was deemed invalid or unenforceable, such invalidity or unenforceability It will not affect any other provision of the Terms of Service, which will be interpreted as if such provision had never been contained there.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; b. Transfer &lt;/ strong&gt; &lt;br /&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; may assign or delegate these Terms of Service and / or the Privacy Policy &lt;strong&gt; ADMINISTRATOR &lt;/ strong&gt;, in whole or in part to any person or entity at any time or without the consent of the user. You may not assign or delegate any rights or obligations under the Terms of Service and Privacy Policy.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; c. Complete Agreement &lt;/ strong&gt; &lt;br /&gt;
+                        These Terms of Service and Privacy Policy supersede all prior agreements between the parties relating to the subject matter hereof, whether electronic, oral or written, established by custom, practice, policy or precedent, between you and &lt; strong&gt; ADMINISTRATOR &lt;/ strong&gt; with respect to the Service.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; d. No Waiver &lt;/ strong&gt; &lt;br /&gt;
+                        Any condition or requirement of this Terms of Use shall be deemed waived or excused. The simple waiver or excuse a breach or violation of any provision of these terms and conditions, shall not be construed as a waiver or excuse any subsequent breach or violation.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; e. Notices &lt;/ strong&gt; &lt;br /&gt;
+                        We can notify you via http://platform.citiesfor.life publications, and by e-mail or any other means of communication the contact information you provide. All notifications that provide without compliance with this Section Notices shall have no legal effect.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 14. Data protection and personal data privacy &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        For participation in the platform &lt;strong&gt; Route &lt;/ strong&gt;, acting as a data controller collects personal information such as: Name, Last Name, Email, and Password.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; collects and uses personal information for self-service management of the page to provide users with information services and promotion. Similarly, &lt;strong&gt; Route &lt;/ strong&gt; makes use of personal data to inform the user about available content. &lt;Strong&gt; Route &lt;/ strong&gt; not put up for sale, rent or lease to others registered their lists on their pages. However, you may occasionally contact you on behalf of external business partners and / or for any &lt;strong&gt; Route &lt;/ strong&gt; in order to inform you about a particular offering that may be of interest, always linked to the subject of this page. In these cases, the user's personal information (name, cell phone, email, city, profile picture, biography, document type, document number, interests) is not transferred to third parties.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; can be collected in the database for use within the platform and promotional activities sensitive data (those that affect the privacy of the owner or whose misuse can lead to discrimination), such as biometrics, in this case &lt;strong&gt; Route &lt;/ strong&gt; guarantees use according to constitutional principles and respect for fundamental rights.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Additionally &lt;strong&gt; Route &lt;/ strong&gt; informs the user as holder of the data enjoys the rights provided in the Constitution and the law, especially the right to know, update, rectify and delete your personal information; and the right to revoke consent to the processing of personal data and all rights established by Law 1581 of 2012 and Decree 1377 of 2013.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; Route &lt;/ strong&gt; is committed to protecting the security of personal information by using technologies and security procedures that guarantee the protection of information from unauthorized access, disclosure, and unauthorized use, likewise, will use the data , particularly those of minors, according to constitutional principles, respect for fundamental rights and interests of minors, if you have any concerns about this, you can send an email to info@citiesfor.life.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Based on the above, as a participant user or parent or guardian of the minor participant:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; I agree expressly voluntary, prior, explicit, informed and unequivocal the collection, storage and use of personal data, as well as minor I represent. &lt;/ Li&gt;
+                        &lt;Li&gt; I agree to receive promotional information by registered mail. &lt;/ Li&gt;
+                        &lt;Li&gt; I declare that the information provided is true, accurate and current. &lt;/ Li&gt;
+                        &lt;Li&gt; I understand and agree that the personal data and other information provided by the participant will be automatically processed and incorporated into the database managed by Dasigno advertising agency responsible for developing the platform. &lt;/ Li&gt;
+                        &lt;Li&gt; give my free, express and informed that the personal information that has been entered is stored, collected or used by &lt;strong&gt; Route &lt;/ strong&gt; directly or through third parties, for communication, sending information and / or marketing. &lt;/ li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        If the user wishes to withdraw from this platform, to ask for any modification, correction or deletion of all data provided to us, to stop receiving commercial information and contact us for any other reason, you can send an email to info @ citiesfor .life
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        I acknowledge that I have read and understand the above terms of use and agree that my use of the platform is a recognition of my ACCEPTANCE OF THE TERMS AND CONDITIONS OF THIS TERMS OF USE AGREEMENT.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 15. Privacy policy &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        Your privacy is important to us. By accepting this Privacy Policy you agree that your information is accessed and used for your account (Facebook, Twitter, Google + and LinkedIn), the data to be used as follows:
+                    &lt;/ P&gt;
+                    &lt;Ul&gt;
+                        &lt;Li&gt; Full name, which will be shown to other users &lt;/ li&gt;
+                        &lt;Li&gt; Your age, which will be consulted to verify the age of the user &lt;/ li&gt;
+                        &lt;Li&gt; The account ID (Facebook, Twitter, Google + and LinkedIn), which will be stored to save the user's progress in the application. &lt;/ Li&gt;
+                    &lt;/ Ul&gt;
+                    &lt;P&gt;
+                        You agree to provide accurate and complete information, and it will update the information as soon as possible after changes. You understand that your user ID, full name, biography, links to social networks and profile photo will be available to the public and that the search engines can index your name and profile photo.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        No information will be distributed to third parties and the only information that will be stored until the user communicates through a message that you want your account to be removed, will be the id of the account (Facebook, Twitter, Google + and LinkedIn).
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The user is solely responsible for maintaining the confidentiality of information access, and be responsible for all uses of your login information.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; 16. Changes to the terms of service and privacy policy &lt;/ strong&gt;
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        &lt;Strong&gt; THE ADMINISTRATOR &lt;/ strong&gt; reserves the right, at our discretion, to change, modify, add or remove portions of these Terms of Service at any time by posting the amended terms on or within the service. You can also give notice of any change to an email or messaging within the Service. It is deemed to have accepted these changes if you continue to use the Service. Unless otherwise indicated. All amended terms automatically take effect after its initial publication.
+                    &lt;/ P&gt;
+                    &lt;P&gt;
+                        The platform &lt;strong&gt; CITIES FOR LIFE &lt;/ strong&gt; always have a link with the latest version of the terms and conditions, you are responsible to check the terms and conditions periodically for changes that could affect had. Continued use of the website following the amendment of the terms and conditions of use, you accept implicitly.
+                    &lt;/ P&gt;</value>
+  </data>
+  <data name="UNSU" xml:space="preserve">
+    <value>Unsubscribe</value>
+  </data>
+  <data name="UNSUBSCRIBE" xml:space="preserve">
+    <value>Unsubscribe</value>
+  </data>
+  <data name="WELCOMCI" xml:space="preserve">
+    <value>Welcome to the community of citizen co-creation</value>
+  </data>
+  <data name="WHATMIND" xml:space="preserve">
+    <value>Tell us what's on your mind</value>
+  </data>
+  <data name="WHICHDO" xml:space="preserve">
+    <value>Which of these ideas do you prefer?</value>
+  </data>
+  <data name="INSTIMPLEM" xml:space="preserve">
+    <value>Leading Institution</value>
+  </data>
+  <data name="INSTSOURCE" xml:space="preserve">
+    <value>Institución origen</value>
+  </data>
+  <data name="ADDYOURCOMMENT" xml:space="preserve">
+    <value>Add your comment</value>
+  </data>
+  <data name="CLASSFINALIZADO" xml:space="preserve">
+    <value>finalizado-ingles</value>
+  </data>
+  <data name="CLASSFINALIZADOINTERNA" xml:space="preserve">
+    <value>finalizado-interna-ingles</value>
+  </data>
+  <data name="IMGHOMESLIDE1" xml:space="preserve">
+    <value>./Resources/Images/img-slide-3-ingles.png</value>
+  </data>
+  <data name="SEARCHESPECIFI" xml:space="preserve">
+    <value>Looking for something specific?</value>
+  </data>
+  <data name="CLASSTOOLTIPMONEDA" xml:space="preserve">
+    <value>tooltip-moneda-ingles</value>
+  </data>
+  <data name="CLASSTOOLTIPMONEDAPROFILE" xml:space="preserve">
+    <value>tooltip-moneda-profile-ingles</value>
+  </data>
+  <data name="TXTOCON" xml:space="preserve">
+    <value>OR WITH</value>
+  </data>
+  <data name="CONTRIBUTOR" xml:space="preserve">
+    <value>CONTRIBUTORS</value>
+  </data>
+  <data name="LEADING" xml:space="preserve">
+    <value>LEADING INSTITUTIONS</value>
+  </data>
+  <data name="PARTNERS" xml:space="preserve">
+    <value>PARTNERS</value>
+  </data>
+  <data name="TXTDIDFOR" xml:space="preserve">
+    <value>Did you forget your password?</value>
+  </data>
+  <data name="MOREINFO" xml:space="preserve">
+    <value>More info</value>
+  </data>
+  <data name="WRITEYOU" xml:space="preserve">
+    <value>Write your mobile number</value>
+  </data>
+  <data name="ENTEREMAIL" xml:space="preserve">
+    <value>Enter your email:</value>
+  </data>
+  <data name="TXTREMPASS" xml:space="preserve">
+    <value>Remember password</value>
+  </data>
+  <data name="DAYREMAINING" xml:space="preserve">
+    <value>Day Remaining</value>
+  </data>
+  <data name="COUNTRY" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="MYIDEAS" xml:space="preserve">
+    <value>My Ideas</value>
+  </data>
+  <data name="TXTCOMALL" xml:space="preserve">
+    <value>Fill out the information and earn 120 points</value>
+  </data>
+  <data name="TXTINFORPRIVA" xml:space="preserve">
+    <value>This information must remain private, no third party should have Access to it.</value>
+  </data>
+  <data name="TXTPERSINFOR" xml:space="preserve">
+    <value>Personal information</value>
+  </data>
+  <data name="TXTAUNNOHAS" xml:space="preserve">
+    <value>You have not participated in the ideas of other citizens. Begins to participate in the co-creation of your city.</value>
+  </data>
+  <data name="CLASSPERFILES" xml:space="preserve">
+    <value>perfil-clasificacion-ingles</value>
+  </data>
+  <data name="ERRORMOVIL" xml:space="preserve">
+    <value>Please enter a valid phone number</value>
+  </data>
+  <data name="ERROREMAIL" xml:space="preserve">
+    <value>Please enter a valid email</value>
+  </data>
+  <data name="ERRORPASSWORD" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="GENDER" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="TXTSELECTLANGAGE" xml:space="preserve">
+    <value>Select your preferred language</value>
+  </data>
+  <data name="TXTCHAPASS" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="TXTCONFPASS" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="TXTNEWPASS" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="VALIDATIONCORREO" xml:space="preserve">
+    <value>You must enter email</value>
+  </data>
+  <data name="VALIDATIONMESSAGE" xml:space="preserve">
+    <value>You must enter a message</value>
+  </data>
+  <data name="VALIDATIONNAME" xml:space="preserve">
+    <value>You must enter the name</value>
+  </data>
+  <data name="VALIDATIONPASSWORD" xml:space="preserve">
+    <value>You must enter a password</value>
+  </data>
+  <data name="VALIDATIONPASSWORDCONFIR" xml:space="preserve">
+    <value>You must confirm your password</value>
+  </data>
+  <data name="VALIDATIONSUBJECT" xml:space="preserve">
+    <value>You must enter a subject</value>
+  </data>
+  <data name="VALIDATIONTERMSCONDITIONS" xml:space="preserve">
+    <value>Must agree to terms and conditions</value>
+  </data>
+  <data name="VALIDATIONCORREOINVALIDO" xml:space="preserve">
+    <value>You must enter a valid format email</value>
+  </data>
+  <data name="VALIDATIONCITY" xml:space="preserve">
+    <value>Debes seleccionar una ciudad</value>
+  </data>
+  <data name="VALIDATIONCOUNTRY" xml:space="preserve">
+    <value>You must select a country</value>
+  </data>
+  <data name="VALIDATIONLOCATION" xml:space="preserve">
+    <value>You must select a location</value>
+  </data>
+  <data name="VALIDATIONPASSWORDMASH" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="VALIDATIONPOLICIES" xml:space="preserve">
+    <value>You must accept the privacy policies</value>
+  </data>
+  <data name="INICIOENBETA" xml:space="preserve">
+    <value>This global co-creation ecosystem is in continuous development. If you have any recommendations or  suggestions, please send them to &lt;a href="mailto:info@citiesfor.life"&gt;info@citiesfor.life&lt;/a&gt;. Together we will integrate knowledge and overcome our cities' challenges.</value>
+  </data>
+</root>

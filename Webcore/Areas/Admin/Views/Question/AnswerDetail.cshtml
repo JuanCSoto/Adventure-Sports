@@ -1,0 +1,55 @@
+﻿@model Domain.Entities.Answer
+@{
+  Layout = null;
+}
+@Styles.Render("~/resources/css/")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryui")
+
+<script>
+  $(document).ready(function () {
+    $('#edit').click(function () {
+      $('#current').hide();
+      $('#update').show();
+    });
+    $('#cancel').click(function () {
+      $('#update').hide();
+      $('#current').show();
+    });
+    $('#save').click(function () {
+      if ($('input[name=txtanswer]').val() == '') {
+        $('#txtwarning').show();
+      } else {
+        $('#FormAnswer').submit();
+      }
+    });
+  })
+</script>
+@using (Html.BeginForm("UpdateAnswer", "Question", new { Area = "Admin" }, FormMethod.Post, new { id = "FormAnswer", enctype = "multipart/form-data" }))
+{
+<table>
+  <tbody>
+    <tr>
+      <th>Imagen</th>
+      <th>Texto</th>
+      <th></th>
+    </tr>
+    <tr id="current">
+      <td style="width:150px;">
+        <img src="@Url.Content("~/files/" + Model.ContentId + "/" + Model.Image)" alt=""/>
+      </td>
+      <td style="width:374px;">@Model.Text</td>
+      <td><img id="edit" src="@Url.Content("~/resources/images/25edit.gif")" alt="" title="Editar"/></td>
+    </tr>
+    <tr id="update" style="display:none;">
+      <td>
+        <input type="hidden" name="id" value="@Model.AnswerId"/>
+        <input type="file" name="fileanswer" class="fileanswer" maxlength="150" style="width: 150px;">
+      </td>
+      <td style="width:374px;"><input type="text" name="txtanswer" maxlength="250" class="text" value="@Model.Text"><br /><span id="txtwarning" style="display:none">Ingresa la respuesta</span></td>
+      <td><img id="save" src="@Url.Content("~/resources/images/35save.gif")" alt="" title="Guardar"/><img id="cancel" src="@Url.Content("~/resources/images/35cancel.gif")" alt="" title="Cancelar"/></td>
+    </tr>
+  </tbody>
+</table>
+}

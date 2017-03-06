@@ -1,0 +1,115 @@
+﻿@model Webcore.Models.FEGeneralFind
+@{
+    Layout = "~/Views/Layouts/_Common.cshtml";
+    string contentStory = Url.Content("~/").TrimEnd('/') + "/SuccessStory/Story/";
+}
+<div class="contenedor-home">
+    <div class="contenido">
+        <div class="contenido-tit">
+            <div class="content-tooltip">
+                <h1>@Model.PageTitle</h1>
+                <p>Hemos encontrado <strong>@ViewBag.TotalRows</strong> resultados relacionados con: <strong>@ViewBag.DatosBusqueda</strong></p>
+            </div>
+            <div id="content-results">
+                <div id="tabs" class="tabs">
+                    <nav>
+                        <ul>
+                            <li class="@((ViewBag.TipoBusqueda == null)?"tab-current":"")"><a href="@Url.Action("Index")?@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.ALLS</a></li>
+                            <li class="@((ViewBag.TipoBusqueda == ((int)Domain.Entities.Enums.SectionEnum.Challenge).ToString())?"tab-current":"")"><a href="@Url.Action("Index", new { type = (int)Domain.Entities.Enums.SectionEnum.Challenge })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.CHALLENGES</a></li>
+                            <li class="@((ViewBag.TipoBusqueda == ((int)Domain.Entities.Enums.SectionEnum.SuccessStory).ToString()) ? "tab-current" : "")"><a href="@Url.Action("Index", new { type = (int)Domain.Entities.Enums.SectionEnum.SuccessStory })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.SUCCESSSTORY</a></li>
+                            <li class="@((ViewBag.TipoBusqueda == ((int)Domain.Entities.Enums.SectionEnum.BlogEntry).ToString()) ? "tab-current" : "")"><a href="@Url.Action("Index", new { type = (int)Domain.Entities.Enums.SectionEnum.BlogEntry })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.BLOG</a></li>
+                        </ul>
+                    </nav>
+                    <div class="content">
+                        <section id="section-1" class="content-current">
+                            @if (Model.ListaGeneralFind.Count == 0)
+                            {
+                                <h4>No hemos encontrado información</h4>
+                            }
+                            else
+                            {
+                                <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" class="table-content-tabs">
+                                    <tbody>
+                                        <tr>
+                                            <th width="60%">@Resources.Global.Messages.TITLE</th>
+                                            <th width="20%">@Resources.Global.Messages.TYPE</th>
+                                            <th width="20%">@Resources.Global.Messages.PUBLISHDATE</th>
+                                        </tr>
+                                        @foreach (Domain.Entities.FrontEnd.GeneralFindPaging dataFind in Model.ListaGeneralFind)
+                                        {
+                                            <tr>
+                                                <td width="60%">
+                                                    @if (dataFind.Type == "46")
+                                                    {
+                                                        <h2><a href="@contentStory@dataFind.Identificador">@(Model.CurrentLanguage.LanguageId.Value == 1 ? Html.Raw(dataFind.NameEnglish) : Html.Raw(dataFind.Name))</a></h2>
+                                                    }
+                                                    else if (dataFind.Type == "31" || dataFind.Type == "32")
+                                                    {
+                                                        <h2><a href="/@dataFind.Friendlyurlid">@(Model.CurrentLanguage.LanguageId.Value == 1 ? Html.Raw(dataFind.NameEnglish) : Html.Raw(dataFind.Name))</a></h2>
+                                                    }
+                                                    else if (dataFind.Type == "34")
+                                                    {
+                                                        <h2><a href="/@dataFind.Friendlyurlid">@(Model.CurrentLanguage.LanguageId.Value == 1 ? Html.Raw(dataFind.NameEnglish) : Html.Raw(dataFind.Name))</a></h2>
+                                                    }
+
+                                                </td>
+                                                <td width="20%" align="center">
+                                                    <h3>
+                                                        @if (dataFind.Type == "34")
+                                                        {
+                                                            <b>@Resources.Global.Messages.BLOG</b>
+                                                        }
+                                                        else if (dataFind.Type == "31" || dataFind.Type == "32")
+                                                        {
+                                                            <b>@Resources.Global.Messages.CHALLENGES</b>
+                                                        }
+                                                        else if (dataFind.Type == "46")
+                                                        {
+                                                            <b>@Resources.Global.Messages.SUCCESSSTORY</b>
+                                                        }
+                                                </h3>
+                                            </td>
+                                            <td width="20%" align="center">
+                                                <h3>@dataFind.JoinDate.ToString("dd-MM-yyyy")</h3>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div id="pagination">
+                                    <ul>
+                                        @{
+                                        ////Paginación
+                                        if (ViewBag.CurrentPage > 1)
+                                        {
+                                            <li><a class="paginacion" href="@Url.Action("Index", new { page = 1, type = ViewBag.TipoBusqueda })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.FIRST</a></li>
+                                            <li><a class="paginacion" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1, type = ViewBag.TipoBusqueda })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.PREVIOUS</a></li>
+                                        }
+                                        for (int index = 1; index <= ViewBag.NroPages; index++)
+                                        {
+                                            if (index == ViewBag.CurrentPage)
+                                            {
+                                                <li><a class="paginacion active">@index.ToString()</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a class="paginacion" href="@Url.Action("Index", new { page = index, type = ViewBag.TipoBusqueda })&@ViewBag.CriteriosBusqueda">@index.ToString()</a></li>
+                                            }
+                                        }
+                                        if (ViewBag.CurrentPage < ViewBag.NroPages)
+                                        {
+                                            <li><a class="paginacion" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1, type = ViewBag.TipoBusqueda })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.NEXT</a></li>
+                                            <li><a class="paginacion" href="@Url.Action("Index", new { page = ViewBag.NroPages, type = ViewBag.TipoBusqueda })&@ViewBag.CriteriosBusqueda">@Resources.Global.Messages.LAST</a></li>
+                                        }
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </section>
+                    </div><!-- /content -->
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model Webcore.Areas.Admin.Models.Parametros
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    <ul id="listado">
+        @foreach (System.Configuration.KeyValueConfigurationElement item in Model.CollValues)
+        {
+            <li>
+                <span class="sptitle">@item.Key</span><br />
+                <span class="spdate">@item.Value</span>
+                <a href="@Url.Action("Detail", new { Area = "Admin" })?key=@item.Key"><img border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+        }
+    </ul>
+</div>

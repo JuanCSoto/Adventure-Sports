@@ -1,0 +1,113 @@
+﻿@model List<Domain.Entities.FrontEnd.MyIdeasPaging>
+@{
+    string date = string.Empty;
+    Domain.Entities.FrontEnd.Video video = null;
+    
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    string picture = siteUrlRoot + "/1024.png";
+    bool userLikeNoLike;
+}
+
+@foreach(Domain.Entities.FrontEnd.MyIdeasPaging idea in Model)
+{
+    video = Business.Utils.GetVideoFromUrl(idea.Video);
+    userLikeNoLike = idea.UserNoLike.Value || idea.UserLike.Value;
+<div class="ideas-perfil izquierda">
+    <div class="perfil-idea">
+        @idea.Name
+    </div>
+    <div class="clear"></div>
+    <div class="perfil-propuesta">
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = idea.IdeaId.Value, type = "idea", email = idea.Email, location = "my-ideas" })
+        <div class="perfil-propuesta-usuario">
+            <div class="perfil-propuesta-usuario-wraper">
+                <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+                <img src="@Business.Utils.fixLocalUserImagePath(idea.UserImage)" alt="avatar" />
+                </a>
+            </div>
+            <div class="izquierda">
+                <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+                <div class="perfil-propuesta-usuario-n">@idea.UserNames</div>
+                <div class="clear"></div>
+                <div class="perfil-propuesta-usuario-f">@Business.Utils.ElapsedTime(idea.Creationdate.Value,Culture)</div>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="perfil-propuesta-contenido">
+            <div class="idea-click-area" data-id="@idea.IdeaId" data-friendly="@idea.Friendlyurlid">
+                <div class="perfil-propuesta-contenido-img">
+                    @if(!string.IsNullOrEmpty(idea.Image))
+                    {
+                        picture = siteUrlRoot + "/files/ideas/" + idea.Image;
+                    <img src="~/files/ideas/@idea.Image" alt="idea image" />
+                    }
+                    else if (video != null)
+                    {                
+                        if (video.Type == "youtube") {
+                            picture = "http://img.youtube.com/vi/" + video.ID + "/default.jpg";
+                    <iframe id="player" type="text/html" width="660" height="330" src="http://www.youtube.com/embed/@video.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>        
+                        }
+                        else if (video.Type == "vimeo") {                            
+                    <iframe src="http://player.vimeo.com/video/@video.ID" width="660" height="330" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>                        
+                        }                
+                    }
+                </div>
+                <div class="cleaar"></div>
+                <div class="perfil-propuesta-contenido-p idea-text" data-render-url="true">
+                    @idea.Text
+                </div>
+                <div class="clear"></div>
+                <a class="perfil-propuesta-contenido-mas">@Resources.Extend.Messages.SEEMORE</a>
+                <div class="clear"></div>
+            </div>
+            <div class="reportar2" data-id="@idea.IdeaId">@Resources.Global.Messages.REPORT</div>
+            <div class="clear"></div>
+            @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl() { 
+                ideaId = idea.IdeaId.Value.ToString(),
+                name = idea.Name, 
+                link = siteUrlRoot + "/" + idea.Friendlyurlid, 
+                picture = picture, 
+                caption = "", 
+                descriptionFB = "Así podemos crear la ciudad que soñamos",
+                descriptionTW = "Así podemos crear la ciudad que soñamos",
+                description = "Así podemos crear la ciudad que soñamos"
+            })
+            <div class="reportar" data-id="@idea.IdeaId">@Resources.Global.Messages.REPORT</div>
+            <div class="gusta">
+                <a @(userLikeNoLike ? "style=background-color:#A7A7A7;" : "class=nomegusta-click") data-id="@idea.IdeaId">
+                    <span class="nomegusta" @(userLikeNoLike ? "" : "")></span>
+                    <span class="votes" @(userLikeNoLike ? "style=background-color:#777;" : "")>@idea.NoLikes</span>
+                </a>
+                <a @(userLikeNoLike ? "style=background-color:#A7A7A7;" : "class=megusta-click") data-id="@idea.IdeaId">
+                    <span class="megusta" @(userLikeNoLike ? "" : "")></span>
+                    <span class="votes" @(userLikeNoLike ? "style=background-color:#777;" : "")>@idea.Likes</span>
+                </a>
+            </div>
+            <div class="clear"></div>
+            <div class="perfil-comentarios">
+                <div id="comments-idea-container-@idea.IdeaId">
+                    @Html.Partial("_ProfileIdeaCommentsList", idea.CollComment)
+                </div>
+                <div class="perfil-comentario">
+                    <div class="perfil-comentario-img">
+                    @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                    {
+                        <img src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                    }
+                    else{
+                        <img src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                    }
+                    </div>
+                    <div class="izquierda">
+                        <input id="comment-idea-text-@idea.IdeaId" data-id="@idea.IdeaId" data-view="_ProfileIdeaCommentsList" data-size="3" data-container="#comments-idea-container-@idea.IdeaId" data-selector=".perfil-comentario-img img" data-scroll="" />
+						<div class="comentar-coment">@Resources.Global.Messages.COMMENT</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+}

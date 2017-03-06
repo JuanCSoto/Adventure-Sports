@@ -1,0 +1,68 @@
+﻿@using System.Web.Optimization;
+@using System.Configuration;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1;" />
+    <link href="~/resources/css/styles.css?10" rel="stylesheet" type="text/css" />
+    <link href="~/resources/css/media.css?10" rel="stylesheet" type="text/css" />
+    <link href="~/resources/css/colorbox.css" rel="stylesheet" type="text/css" />
+    <link href="~/resources/Css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <script src="~/resources/scripts/jquery.colorbox.min.js"></script>
+    <script src="~/resources/scripts/jquery.tinyscrollbar.min.js"></script>
+    <script src="~/resources/scripts/jquery.validate.min.js"></script>
+    <script src="~/resources/scripts/jquery.validate.unobtrusive.min.js"></script>    
+    <script src="~/resources/scripts/jquery.autosize.min.js"></script>
+    <script src="~/resources/scripts/main.js?10"></script>
+    <script src="~/resources/scripts/apm.js?10"></script>
+    <script>
+        var path = '@Url.Content("~").TrimEnd('/')';
+        var siteUrlRoot = document.location.protocol + '@("//" + Request.Url.Host + Request.ApplicationPath)';
+        var authenticated = @(User.Identity.IsAuthenticated ? "true" : "false");
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@(System.Configuration.ConfigurationManager.AppSettings["GoogleApiKey"])&sensor=false&language=es"></script>
+
+    @if (IsSectionDefined("headers"))
+    {
+        @RenderSection("headers")
+    }
+</head>
+<body style="background:transparent;">
+    <!--[if IE ]>
+    <div id="is-ie"></div>
+    <![endif]-->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAppID"])',
+                channelUrl: siteUrlRoot + '/channel.aspx',
+                status: true,
+                xfbml: true
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript">
+        (function() {
+            var hm = document.createElement('script'); hm.type ='text/javascript'; hm.async = true;
+            hm.src = ('++u-heatmap-it+log-js').replace(/[+]/g,'/').replace(/-/g,'.');
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+        
+    @RenderBody()
+    
+    @Html.Partial("_SystemTerms")
+    @Html.Partial("_SystemPrivacy")
+</body>
+</html>

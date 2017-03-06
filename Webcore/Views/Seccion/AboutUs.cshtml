@@ -1,0 +1,86 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.AboutUs Entity = (Business.FrontEnd.AboutUs)Model.Entity;
+    Webcore.Models.FEListBlogs histories = new Webcore.Models.FEListBlogs();
+    histories.BlogsList = Entity.CollBlogEntries;
+    histories.CurrentLanguage = Model.CurrentLanguage;
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    string picture = siteUrlRoot + "/1024.png";
+}
+<div class="contenedor">
+  @*
+    <div class="nosotros-menu">
+        <a style="border-right:1px solid #ddd" id="blogboton">blog</a>
+        <a id="nosotrosboton">nosotros</a>
+    </div>
+  *@
+    <div class="clear"></div>
+    <div class="colum-blog" id="blog">
+        <div class="colum-blog-txt">
+          <div class="compartir-noticia">
+                @Html.Partial("_ShareUrlPulse", new Domain.Entities.FrontEnd.ShrareUrl() { 
+                    name = "Mi Medellín", 
+                    link = siteUrlRoot + "/nosotros", 
+                    picture = picture, 
+                    caption = "", 
+                    descriptionFB = "¡Así transformamos la ciudad con tus ideas!",
+                    descriptionTW = "¡Así transformamos la ciudad con tus ideas!",
+                    description = "¡Así transformamos la ciudad con tus ideas!"
+                })
+            </div>  
+          <div class="clear"></div>
+          <p><b style="font-size:16px;">@ViewBag.US</b><br />
+                <br />
+                @ViewBag.TXTUS1<br />
+                @ViewBag.TXTUS2<br />
+                @ViewBag.TXTUS3</p>
+            
+            
+        </div>
+        <div class="clear"></div>
+        <div class="blog-enlaces">
+            <h1>@ViewBag.TXTNUEENL</h1>
+            <div class="clear"></div>
+            @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceFacebook"]))
+            {
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["EnlaceFacebook"]" target="_blank"><span class="facebook"></span><h2>Facebook</h2></a>
+            <div class="clear"></div>
+            }
+            @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceGoogle"]))
+            {
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["EnlaceGoogle"]" target="_blank"><span class="googlep"></span><h2>Google plus</h2></a>
+            <div class="clear"></div>
+            }
+            @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceTwitter"]))
+            {
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["EnlaceTwitter"]" target="_blank"><span class="twitter"></span><h2>Twitter</h2></a>
+            <div class="clear"></div>
+            }
+            @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceLinkedIn"]))
+            {
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["EnlaceLinkedIn"]" target="_blank"><span class="linkedin"></span><h2>Linkedin</h2></a>
+            }
+        </div>
+        <div class="clear"></div>
+        <div class="blog-archivo">
+            <h1>@ViewBag.FILE</h1>
+            <div class="clear"></div>
+            @Html.Action("ArchiveEntries","Blog")
+        </div>
+    </div>
+    <div class="colum-nosotros" id="nosotros-blog-list-container">
+       <div class="mm2-title-sectionNews"> @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.ARTICLES_SINGULAR, type = "frontend" })</div>
+        @if(User.Identity.IsAuthenticated && Utils.IsBlogAdmin(((Business.Services.CustomPrincipal)User).UserId))
+        {
+          <div class="mm2-create-news">@Resources.Extend.Messages.CREATENEWS</div>
+        }
+        
+        <div class="colum-nosotros-titulo">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.ARTICLES_PLURAL,Model.CurrentLanguage.LanguageId)</div>
+        <div class="clear"></div>
+      <div id="new-blog-content"></div>
+        @Html.Partial("BlogEntriesList", histories)
+    </div>
+    <div class="clear"></div>
+</div>

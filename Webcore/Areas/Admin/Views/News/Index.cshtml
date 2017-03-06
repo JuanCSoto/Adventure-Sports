@@ -1,0 +1,118 @@
+﻿@model Webcore.Areas.Admin.Models.NewsModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section headers {
+    <script src="@Url.Content("~/Resources/Scripts/jquery.fcbkcomplete.min.js")" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jquerycl")
+    @Styles.Render("~/resources/css/")
+    <script type="text/javascript" language="javascript">
+        var tempfiles = new Array();
+        
+        $(document).ready(function () {
+            $.cleditor.defaultOptions.height = 500;
+            $.cleditor.defaultOptions.width = 680;
+            $.cleditor.defaultOptions.docCSSFile = '@Url.Content("~/Resources/Css/frontend.styles.css")'
+            $.cleditor.buttons.image.uploadUrl = '@(Url.Action("UploadImage", "Content", new { Area = "Admin" }) + (Model.IContent != null && Model.IContent.ContentId != null ? "?id=" + Model.IContent.ContentId : ""))';
+        });
+
+        GetXmlJson = function (id) {
+            $('.template').empty();
+            if (id != null && id != undefined && id != '') {
+                $.post('@Url.Action("GetMold", "News")', { id: id }, function (data) {
+                    var cnid = 0;
+                    $(data.content.node).each(function (index) {
+                        cnid++;
+                        var ControlId = '_hf_' + cnid;
+                        $('.template').append('<li>' + this['@@id'] + '<br/>' + rendercontrol(this['@@control'], ControlId) + '</li>');
+                        if (this['@@control'] == 'Wysiwyg') {
+                            $("#" + ControlId).cleditor();
+                        }
+                    });
+                });
+            } 
+        };
+
+        rendercontrol = function (control, id) {
+            switch (control) {
+                case 'TextBox':
+                    return '<input id="' + id + '" name="' + id + '" type="text" class="text" />';
+                case 'Image':
+                    return '<input id="' + id + '" name="' + id + '" type="file" class="text" />';
+                case 'Wysiwyg':
+                    return '<textarea id="' + id + '" name="' + id + '" class="text" ></textarea>';
+                default:
+                    return '';
+            }
+        };
+     </script>
+}
+<div align="right">
+    <ul id="MenuP">
+        <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+    </ul>
+    <div class="cont" align="left">
+         @using (Html.BeginForm("Create", "News", new { Area = "Admin" }, FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+         {
+        @Html.ValidationSummary()
+        @Html.Hidden("GetOut", "0")
+        @Html.Hidden("TempFiles")
+        <hr />
+        <div id="deepfolloweradmin">
+            @Model.DeepFollower
+        </div>
+        @Html.Partial("_ContentPartial", Model);
+        <div class="separator">
+        </div>
+        <div align="center" id="dvadicional" style="clear: both;">
+            <h3>
+                <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.ADDITIONAL_INFORMATION</span>
+                @Html.DropDownListFor(t => t.News.MoldId, new SelectList(Model.CollMold, "MoldId", "Name", Model.News != null && Model.News.MoldId != null ? Model.News.MoldId : null), new { style="float:right; margin:3px; padding:2px 5px;", onchange = "GetXmlJson($(this).val())" })
+            </h3>
+            @Html.HiddenFor(t => t.News.ContentId)
+            <ul class="template" id="fields">
+                @if (Model.CollXmlNode != null && Model.CollXmlNode.Count > 0)
+                {
+                    int count = 0;
+                    foreach (System.Xml.XmlNode item in Model.CollXmlNode)
+                    {
+                        count++;
+                        <li>
+                            @item.Attributes["id"].Value<br />
+                            @switch (item.Attributes["control"].Value)
+	                        {
+                                case "TextBox":
+                                    <text><input type="text" id="_hf_@count" name="_hf_@count" value="@item.InnerText" class="text" /></text>
+                                    break;
+                                case "Image":
+                                    if (!string.IsNullOrEmpty(item.InnerText))
+                                    {
+                                        <text><a href="@Url.Content("~/Files/" + Model.News.ContentId + "/" + item.InnerText)" target="_blank"><img border="0" style="float:left; border:1px solid #e6e2e2; margin-right:5px;" src="@Business.Utils.GetImageContent(item.InnerText, Model.News.ContentId.Value, 44, 44)" width="44" height="44" /></a>    </text>
+                                    }
+                                    <text><input type="file" id="_hf_@count" name="_hf_@count" class="text" />
+                                    <input type="hidden" id="hd_hf_@count" name="hd_hf_@count" value="@item.InnerText" /></text>
+                                    break;
+                                case "Wysiwyg":
+                                    <text><textarea type="file" id="_hf_@count" name="_hf_@count" >@Html.Raw(item.InnerText)</textarea>
+                                    <script type="text/javascript">$(document).ready(function () { $("#_hf_@count").cleditor(); });</script></text>
+                                    break;
+	                        }
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+         }
+        <div align="center" id="contentactions">
+            <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE_EXIT"
+                src="~/resources/images/45savewout.png" />
+            @if (Model.IContent != null && Model.IContent.ContentId != null)
+            {
+                <img onclick="$('#GetOut').val('1');$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+            }
+            <img onclick="window.location.href='@Url.Action("Index", "Content", new { Area = "Admin", mod = Model.Module.ModulId })'" title="@Resources.Global.Messages.CANCEL"
+                src="~/resources/images/45cancelw.png" />
+        </div>
+    </div>
+</div>

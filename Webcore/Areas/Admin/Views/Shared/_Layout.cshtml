@@ -1,0 +1,123 @@
+﻿@model Webcore.Areas.Admin.Models.IAdmin
+@using Business;
+@using Domain.Entities;
+@using System.Text;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Module.Name</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="Shortcut Icon" href="~/Resources/Images/iconapp.ico" type="image/x-icon" />
+    @Styles.Render("~/resources/css/")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")    
+    @if (IsSectionDefined("headers"))
+    {
+        @RenderSection("headers")
+    }
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@(System.Configuration.ConfigurationManager.AppSettings["GoogleApiKey"])&sensor=false&language=es"></script>
+    <script type="text/javascript">        var pathg = '@Url.Content("~/")';</script>
+</head>
+<body>
+    <script type="text/javascript">        divlayer();</script>
+    <div align="center">
+        <div id="loading">
+            @Resources.Global.Messages.LOADING ...
+       
+             </div>
+        <div id="wrap">
+            <div id="bckalert">
+            </div>
+            <div id="dvalert">
+                <div id="dvheadalert">
+                    @Resources.Global.Messages.INFORMATION</div>
+                <div id="dvbodyalert">
+                </div>
+                <div style="clear: both; height:15px;"></div>
+				<div class="login_button" onclick="closealert()" > Aceptar </div>
+				<div style="clear: both; height:15px;"></div>
+            </div>
+            <ul id="header">
+                <li>
+                    <div id="tong">
+                    </div>
+                </li>
+                <li>
+                    <form id="formsearch" action="@Url.Action("Busqueda", "Home", new { Area = "Admin" })" method="post">
+                    <input id="search" name="search" class="searhgen inactive" /></form>
+                </li>
+                <li>| </li>
+                <li>@Model.UserPrincipal.Identity.Name</li>
+                <li>| </li>
+                <li><a href="@Url.Action("Closesession", "Home", new { Area = "Admin" })">@Resources.Global.Messages.CLOSE_SESSION</a></li>
+                 <li>| </li>
+                <li title="@Model.CurrentLanguage.Name" class="lilanguage" onclick="getlanguages()">
+                    @Model.CurrentLanguage.Culturename 
+                    <ul id="ul_languages" style="display:none;"></ul>
+                </li>
+				<li>| </li>
+                <li><a style="padding-top:5px;" title="Home" href="@Url.Action("Inicio", "Home", new { Area = "Admin" })">
+                    <img border="0" src="~/resources/images/home.png" /></a></li>
+            </ul>
+            <div id="titlehead">
+                <div>
+                    @Model.Module.Name</div>
+            </div>
+            <div id="content">
+                <div id="contleft">
+                    @RenderBody()
+                </div>
+                <div id="contright">
+                    <div id="contrightint">
+                        @{
+                            Domain.Entities.Modul mod = Model.ColModul.FirstOrDefault(t => t.ModulId == Model.Module.ModulId);
+                            bool IsSubModul = (mod != null && mod.ParentId != null);
+                        }
+                        <div class="contrightint-title">
+                            <div id="dvmod" style="left:@(IsSubModul ? "0px" : "8px");">
+                                @Resources.Global.Messages.MODULS
+                            </div>
+                        </div>
+                        <ul style="@(IsSubModul ? "left:0px;" : null)" id="MenuS2">
+                         	<li class="back_sub" onclick="back()">
+								Regresar
+                         </li>   
+							@if (IsSubModul)
+                            {
+									foreach (Domain.Entities.Modul item in Model.ColModul.Where(t => t.ParentId == mod.ParentId))
+                                {
+                                <li @Html.GetItemModul(item, Model.Module.ModulId, Model.ColModul, Model.Module.ModulId != null ? Model.Module.ModulId.ToString() : "null")>
+                                    @item.Name
+                                </li>
+                                }
+                                
+                            }
+                        </ul>
+                        <ul style="@(IsSubModul ? "left:-220px;" : null)" id="MenuS">
+                         <li class="ini_btn"><a title="Home" href="@Url.Content("~/Admin/Home/Inicio")">
+										Inicio
+									</a>
+							</li>   
+							
+							@foreach (Domain.Entities.Modul item in Model.ColModul.Where(t => t.ParentId == null))
+                            {
+                             <li @Html.GetItemModul(item, Model.Module.ModulId, Model.ColModul, Model.Module.ModulId != null ? Model.Module.ModulId.ToString() : "null")>
+                                @item.Name
+                                @if (Model.ColModul.Count(t => t.ParentId == item.ModulId) > 0)
+                                {
+                                <span>@Model.ColModul.Count(t => t.ParentId == item.ModulId)</span>
+                                }
+                             </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+﻿@model  Webcore.Areas.Admin.Models.DetailModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Resources/Css/postulates/styles.css" rel="stylesheet" />
+
+<div id="contctncontent">
+    <div class="cont" align="left">
+        <form class="general-form">
+            <section class="row">
+                <span>@Resources.Global.Messages.CATEGORY</span>
+                <p class="results">@Model.SuccessStoryPostulate.CategoryName</p>
+            </section>
+            <div class="separator"></div>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tbody>
+                    <tr>
+                        <td width="50%">
+                            <section class="row">
+                                <span>@Resources.Global.Messages.PROJECT_RESPONSIBLE</span>
+                                <p class="results">@Model.SuccessStoryPostulate.ResponsibleNames</p>
+                            </section>
+                        </td>
+                        <td width="50%">
+                            <section class="row">
+                                <span>@Resources.Global.Messages.EMAIL</span>
+                                <p class="results">@Model.SuccessStoryPostulate.ResponsibleEmail</p>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table cellpadding="0" cellspacing="0" border="0" align="left" width="100%">
+                                <tr>
+                                    <td width="50%">
+                                        <section class="row">
+                                            <span>@Resources.Global.Messages.JOB_TITLE</span>
+                                            <p class="results">@Model.SuccessStoryPostulate.ResponsibleJobTitle</p>
+                                        </section>
+                                    </td>
+                                    <td width="50%">
+                                        <section class="row">
+                                            <span>@Resources.Global.Messages.ORGANIZATION</span>
+                                            <p class="results">@Model.SuccessStoryPostulate.ResponsibleOrganization</p>
+                                        </section>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table cellpadding="0" cellspacing="0" border="0" align="left" width="100%">
+                                <tr>
+                                    <td width="50%">
+                                        <section class="row">
+                                            <span>@Resources.Global.Messages.COUNTRY</span>
+                                            <p class="results">@Model.SuccessStoryPostulate.CountryName</p>
+                                        </section>
+                                    </td>
+                                    <td width="50%">
+                                        <section class="row">
+                                            <span>@Resources.Global.Messages.CITY</span>
+                                            <p class="results">@Model.SuccessStoryPostulate.CityName</p>
+                                        </section>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="separator"></div>
+            <section class="row">
+                <span>@Resources.Global.Messages.RESPONSIBLE_ENTITIES</span>
+                <p class="results">@Model.SuccessStoryPostulate.ResponsibleEntities</p>
+            </section>
+            <div class="separator"></div>
+            <section class="row">
+                <span>@Resources.Global.Messages.PROJECT_NAME</span>
+                <p class="results">@Model.SuccessStoryPostulate.Name</p>
+            </section>
+            <section class="row">
+                <span>@Resources.Global.Messages.PROJECT_DESCRIPTION</span>
+                <p class="results">@Model.SuccessStoryPostulate.Description</p>
+            </section>
+            <section class="row">
+                <span>@Resources.Global.Messages.CONCRETE_PROBLEMS</span>
+                <p class="results">@Model.SuccessStoryPostulate.ConcreteProblems</p>
+            </section>
+            <section class="row">
+                <span>@Resources.Global.Messages.INNOVATIVE_URBAN_SOLUTION</span>
+                <p class="results">@Model.SuccessStoryPostulate.InnovativeUrbanSolution</p>
+            </section>
+            <div class="separator"></div>
+            <section class="row">
+                <span>@Resources.Global.Messages.KEYWORDS</span>
+                <p class="results">@Model.TagsText</p>
+            </section>
+            <div class="separator"></div>
+            <section class="row">
+                <span>@Resources.Global.Messages.DOCUMENTS</span>
+                <p class="results">@Model.SuccessStoryPostulate.Documents</p>
+            </section>
+            <div class="separator"></div>
+            <section class="row">
+                <ul class="case-buttons">
+                    <li>@Html.ActionLink(Resources.Global.Messages.REJECT_SUCCESS_STORY, "Reject", "SuccessStoryPostulate", new { id = Model.SuccessStoryPostulate.Id, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId }, new { @class = "blue-button-border" })</li>
+                    <li>@Html.ActionLink(Resources.Global.Messages.PUBLISH_SUCCESS_STORY, "Index", "SuccessStory", new { mod = Model.Module.ModulId, idpostulate = Model.SuccessStoryPostulate.Id, sectionId = ViewBag.SectionId }, new { @class = "blue-button" })</li>
+                </ul>
+            </section>
+        </form>
+    </div>
+</div>

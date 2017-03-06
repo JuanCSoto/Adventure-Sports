@@ -1,0 +1,62 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string value = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.HEADER_IMAGE);
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@ViewBag.HEADBOARD</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icono" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTCOLORHEAD<span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="30" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.HEADER_COLOR)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.HEADER_COLOR)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTTESTPROG<span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="20" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.HEADER_BIG)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.HEADER_BIG)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTTEXTIDEAS <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="10" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.HEADER_IDEAS)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.HEADER_IDEAS)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTTEXTFOLL<span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="20" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.HEADER_SMALL)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.HEADER_SMALL)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <div class="centrado">
+    <div class="alerta-aceptar">
+      <a>
+        <h3>@ViewBag.SAVE</h3>
+        <span></span>
+      </a>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

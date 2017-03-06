@@ -1,0 +1,18 @@
+﻿@model Domain.Entities.FrontEnd.ContentBlogIdea
+@{
+    Layout = null;
+    ViewBag.Title = "_ContentIdeasFinished";
+}
+
+<div class="ideas-block" id="ideasBlock" style="display: block;">
+    <div class="ideas-blog" id="content-ideas"><h4>@Resources.Global.Messages.IDEA</h4></div>
+    <div class="ideas-blog" id="content-blog"><h4>BLOG</h4></div>
+    <div class="clear"></div>
+    <div id="ideas-list-container">
+        @Html.Partial("_CardIdeasList", Model.Ideas)
+    </div>
+    <div id="blog-list-container" style="display: none;">
+        @Html.Partial("_ContentBlogEntriesList", Model.BlogEntries)
+    </div>
+    <div class="clear"></div>
+</div>

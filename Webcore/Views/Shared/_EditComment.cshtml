@@ -1,0 +1,16 @@
+﻿@model Domain.Entities.Comment
+@{
+  Layout = null;
+  string content = Url.Content("~").TrimEnd('/');
+  string classV2 = string.Empty;
+  int? maxLength = ViewBag.TextLenght;
+}
+
+<input type="hidden" id="edit-comment-id" value="@Model.IdeaId" />
+<div class="color-box-content edit-idea-box">
+  <textarea id="comment-text" data-id="@Model.CommentId" data-view="_ContentIdeaCommentsList" data-size="3" data-container="#comments-idea-container-@Model.IdeaId" data-selector=".idea-comentario-imagen img" data-scroll="" data-length="200" data-event-bind="false" class="@(classV2.Length > 0 ? "coment-txt" : "")">@Model.Text</textarea>
+	<div class="comentar-coment ccv2">@Resources.Global.Messages.COMMENT</div>
+  <div class="clear"></div>
+  <div class="comentar-counter contv2"><span id="comment-idea-counter">200</span>@Resources.Global.Messages.CHARACTERS</div>
+  <div class="clear"></div>
+</div>

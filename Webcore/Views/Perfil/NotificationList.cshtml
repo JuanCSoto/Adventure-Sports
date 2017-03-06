@@ -1,0 +1,28 @@
+﻿@model List<Domain.Entities.SystemNotification>
+@{
+  Layout = null;
+}
+
+@foreach (Domain.Entities.SystemNotification notification in Model)
+{
+  
+    <div class="mm2-item-notifications-big">
+      <div class="mm2-photo-notifications">
+        <div class="img-vertical-middle-overflow">
+          <img class="min-56" src="@Business.Utils.fixLocalUserImagePath(notification.UserImage)" alt="avatar" />
+        </div>
+      </div>
+      <div class="mm2-container-text-notification">
+        <div class="mm2-notification-text-big">
+          @if(!notification.Seen.Value)
+          {
+          <span @*class="blink-text"*@>@ViewBag.NEWA</span> 
+          }
+          @Html.Raw(notification.Value)
+        </div>
+        <div class="mm2-notification-time">@Business.Utils.ElapsedTime(notification.CreationDate.Value,Culture)</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  
+}

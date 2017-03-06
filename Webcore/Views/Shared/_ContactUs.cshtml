@@ -1,0 +1,96 @@
+﻿@model Domain.Entities.FrontEnd.ContactUs
+@{
+    Layout = "~/Views/Layouts/_Layer.cshtml";
+    string content = Url.Content("~/").TrimEnd('/');
+}
+@if (Model.Sent)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.alerta-cerrar').click(closeColorbox);
+            $('.alerta-aceptar').click(closeColorbox);
+        });
+    </script>
+    <div id="contact-us-successful" data-messageexito="@Resources.Extend.Messages.MESSAGESUCCESFULL"></div>
+}
+else
+{
+    <div style="width:801px;">
+        <div class="alerta registro" style="margin:auto;">
+            <div class="alerta-titulo">
+                <h1>@Resources.Global.Messages.CONTACTUS</h1>
+                <a class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></a>
+            </div>
+
+            <div class="clear"></div>
+            @using (Html.BeginForm("contacto", "home", FormMethod.Post, new { id = "ConactUsForm", enctype = "multipart/form-data" }))
+            {
+                <div class="registro-item">
+                    <div class="registro-txt">@Resources.Extend.Messages.NAMEANDLAST</div>
+                    @Html.TextBoxFor(i => i.Names, new { @class = "registro-input", maxlength = "100", data_no_number = true })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Names)</div>
+                <div class="clear"></div>
+                <div class="registro-item">
+                    <div class="registro-txt">@Resources.Global.Messages.EMAIL</div>
+                    @Html.TextBoxFor(i => i.Email, new { @class = "registro-input", maxlength = "250" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Email)</div>
+                <div class="clear"></div>
+                <div class="registro-item">
+                    <div class="registro-txt">@Resources.Global.Messages.MATTER</div>
+                    @Html.TextBoxFor(i => i.Subject, new { @class = "registro-input", maxlength = "100" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Subject)</div>
+                <div class="clear"></div>
+                <div class="registro-item">
+                    <div class="registro-txt">@Resources.Global.Messages.MESSAGE <br /><h6 style="margin-right:5px;"><span id="user-text-counter">500</span>@Resources.Global.Messages.CHARACTERS</h6></div>
+                    @Html.TextAreaFor(i => i.Message, new { @class = "registro-input", rows = 4, style = "resize:none;" })
+
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Message)</div>
+                <div class="clear"></div>
+            }
+            <div class="clear"></div>
+            <div class="centrado">
+                <div id="contacto-aceptar" class="alerta-aceptar">
+                    <a>
+
+                        <h3 class="contact-send">@Resources.Global.Messages.SEND</h3>
+                        <span class="no-padding"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div style="font-family: Nunito, sans-serif;color: gray;float:left;width:200px;font-size: 13px;text-align: right;margin-left:86px;margin-bottom:20px;">
+                @Resources.Extend.Messages.CANALSO<a href="mailto:info@citiesfor.life" style="color: gray;font-family: mimedellinb, arial black, Helvetica, Arial, sans-serif;">info@citiesfor.life</a> @Resources.Extend.Messages.SOCIAL
+            </div>
+            <div style="float:left;margin-top:10px;margin-left:10px;">
+                @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceFacebook"]))
+                {
+                    <a href="@System.Configuration.ConfigurationManager.AppSettings["EnlaceFacebook"]" target="_blank" class="facebooki" style="width:36px;height:36px;float:left;margin-left:10px;cursor:pointer;"></a>
+                }
+                @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceTwitter"]))
+                {
+                    <a href="@System.Configuration.ConfigurationManager.AppSettings["EnlaceTwitter"]" target="_blank" class="twitteri" style="width:36px;height:36px;float:left;margin-left:10px;cursor:pointer;"></a>
+                }
+                @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceLinkedIn"]))
+                {
+                    <a href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceLinkedIn"])" target="_blank" class="linkedini" style="width:36px;height:36px;float:left;margin-left:10px;cursor:pointer;"></a>
+                }
+                @if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["EnlaceInstagram"]))
+                {
+                    <a href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceInstagram"])" target="_blank" class="i-instagram" style="width:36px;height:36px;float:left;margin-left:10px;cursor:pointer;"></a>
+                }
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+}

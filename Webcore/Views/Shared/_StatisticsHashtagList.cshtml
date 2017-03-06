@@ -1,0 +1,32 @@
+﻿@model Dictionary<string, string>
+@{
+  int total = 0;
+}
+@if (Model.Count > 0)
+{
+  <div>
+    <div class="mm2-container-box-barras2">
+      @{
+  total = Model.Sum(p => Convert.ToInt32(p.Value));
+      }
+      @foreach (KeyValuePair<string, string> hashtag in Model)
+      {
+        <div class="mm2-container-barraest">
+          <div class="mm2-barraest1"></div>
+          <div class="mm2-barraest2 color-bar2" data-bar-percent="hashtag" data-value="@hashtag.Value" data-percent="@(Convert.ToInt32(hashtag.Value) * 100 / total)">
+            <div class="mm2-barraest-text">@hashtag.Key:</div>
+          </div>
+          <div class="mm2-barraest-text">@hashtag.Key:</div>
+          <div class="mm2-barraest-text2" data-bar-value="hashtag" data-value="@hashtag.Value">@Convert.ToInt32(hashtag.Value).ToString("##,##0")</div>
+          <div class="clear"></div>
+        </div>
+      }
+    </div>
+  </div>
+}
+else if (ViewBag.PageIndex == null || ViewBag.PageIndex == 0)
+{  
+  <div class="chart-margin">
+    <h5>@ViewBag.TXTNOHAYRESBUS</h5>
+  </div>
+}

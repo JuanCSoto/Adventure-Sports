@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<style type="text/css">
+    .terminos p
+    {
+        text-align: justify;
+    }
+</style>
+<div class="alerta-contenedor" style="margin-left:4px;">
+    <div id="system-terms" class="alerta registro" style="width:760px;">
+        <div class="alerta-titulo">
+            <h1>@Html.Raw(@Resources.Extend.Messages.TXTTERMCOND)</h1>
+            <div class="alerta-cerrar">
+                <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+            </div>
+        </div>
+        <div class="clear" style="height: 30px;"></div>
+        <div id="scrollbar1" style="width:740px;">
+            <div class="scrollbar">
+                <div class="track">
+                    <div class="thumb">
+                        <div class="end"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="viewport" style="width:715px;">
+                <div class="overview">
+                    <div class="terminos">
+                  @Html.Raw(Resources.Extend.Messages.TERMINS1)
+                        @Html.Raw(Resources.Extend.Messages.TERMINS2) 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!--<div class="centrado">
+            <div id="terminos-aceptar" class="alerta-aceptar">
+                <a>
+                    <h3>aceptar</h3>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>-->
+    </div>
+</div>

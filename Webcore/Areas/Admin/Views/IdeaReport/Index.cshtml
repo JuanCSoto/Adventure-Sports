@@ -1,0 +1,118 @@
+﻿@model Webcore.Areas.Admin.Models.IdeaReport
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    var ctnback = new contentclass();
+    ctnback.NotFound = '@Resources.Extend.Messages.NO_RECORDS_FOUND';
+    ctnback.TextFind = '@Resources.Extend.Messages.FIND_BY_TEXT';
+    initialize = function () { ctnback.droppable(); }
+
+    $(function () {
+        ctnback.resizable();
+        ctnback.sortable();
+        ctnback.draggable();
+        ctnback.droppable();
+
+        $('#SectionId').val(0);
+        ideasReports();
+    });
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <div>
+        <a onclick="ideacleanall()" class="hrefmen" href="javascript:void(0);">
+            <img title="@Resources.Global.Messages.CLEAN" id="imgmore" border="0" width="23" height="23" src="~/resources/images/25clean.gif" /></a>
+        <a onclick="$('#loading').show();ideareportfindall(1, @Model.Module.ModulId);" class="hrefmen" href="javascript:void(0);">
+            <img border="0" width="23" height="23" src="~/resources/images/25search.gif" />
+            <span>@Resources.Global.Messages.FIND</span></a>&nbsp;&nbsp;
+        <input onkeypress="findsubm(event, function() { ideareportfindall(1, @Model.Module.ModulId); })" onblur="blurfind(this, '@Resources.Extend.Messages.FIND_BY_TEXT')" onfocus="focusfind(this, '@Resources.Extend.Messages.FIND_BY_TEXT')"
+            id="txname" class="textfind inactive" value="@Resources.Extend.Messages.FIND_BY_TEXT"
+            type="text" />
+        <input type="hidden" id="SectionId" />
+        <input type="hidden" id="idCount" value="@Model.CollIdeaReport.Count()" />
+        <input type="hidden" id="idPage" value="1" />
+        <input type="hidden" id="ModulId" value="@Model.Module.ModulId" />
+    </div>
+    <div id="more">
+        <div>@Resources.Extend.Messages.APPLY_FILTERS</div>
+        <select onchange="$('#loading').show();ideareportfindall(1, @Model.Module.ModulId);" id="ddlstatus" class="dropsfil">
+            <option>-@Resources.Global.Messages.STATUS-</option>
+            <option value="true">@Resources.Global.Messages.CHECKED</option>
+            <option value="false">@Resources.Global.Messages.PENDING</option>
+        </select>
+        <select onchange="$('#loading').show();ideareportfindall(1, @Model.Module.ModulId);" id="ddlfilter" class="dropsfil">
+            <option>-@Resources.Global.Messages.SORT-</option>
+            <option value="0">@Resources.Global.Messages.CREATION_DATE</option>
+            <option value="1">@Resources.Global.Messages.DESCRIPTION</option>
+        </select>
+    </div>
+    <hr />
+    <div id="contenttreecont">
+    <div id="divslice">
+    <div id="contctncontent">
+        <span class="spntitle">@Resources.Global.Messages.CONTENTS</span>
+            <table cellspacing="0" cellpadding="10" class="ideareporttable">
+                <thead>
+                    <tr valign="middle" style="background-color:#f9f9f9; text-transform: uppercase; font-size:13px;">
+                        <th width="150" class="centered">@Resources.Global.Messages.IDEA</th>
+                        <th class="centered">@Resources.Global.Messages.MOTIVE</th>
+                        <th class="centered">@Resources.Global.Messages.DESCRIPTION</th>
+                        <th class="centered">@Resources.Global.Messages.CHECKED</th>
+                        <th class="centered">@Resources.Extend.Messages.BLOCK_IDEA</th>
+                        <th class="centered">@Resources.Extend.Messages.BLOCK_USER</th>
+                    </tr>
+                </thead>
+                <tbody id="listado">
+                @foreach (Domain.Entities.FrontEnd.IdeaReportPaging idea in Model.CollIdeaReport)
+                {
+                    
+					bool ideaActive = idea.IdeaActive.Value;
+                    bool ideaUserActive = idea.IdeaUserActive.Value;
+                    <tr valign="top" id="li@(idea.IdeaReportId)">
+                        <td class="bltable" width="150" onclick="if(ctnback.clicOk) { ctnback.contentselect(this, @idea.IdeaReportId); } else { ctnback.clicOk = true; }">@Business.Utils.TruncateWord(idea.IdeaText, 45)</td>
+                        <td class="bltable" onclick="if(ctnback.clicOk) { ctnback.contentselect(this, @idea.IdeaReportId); } else { ctnback.clicOk = true; }">@idea.Motive</td>
+                        <td class="bltable" onclick="if(ctnback.clicOk) { ctnback.contentselect(this, @idea.IdeaReportId); } else { ctnback.clicOk = true; }">@Business.Utils.TruncateWord(idea.Text, 45)</td>
+                        <td 	class="centered bltable">@if(!idea.Status.Value)
+                            {
+                            <a class="check-report" data-id="@idea.IdeaReportId">@Resources.Global.Messages.CHECKED</a>
+                            }
+                            else
+                            {
+                            <img src="@Url.Content("~/resources/images/25check.png")" />
+                            }
+                        </td>
+						
+                        <td class="centered bltable" data-id="@idea.IdeaId">
+                            <a class="block-idea" style="display:@(ideaActive?"block":"none");">@Resources.Extend.Messages.BLOCK_IDEA</a>
+                            <a class="unblock-idea" style="display:@(ideaActive?"none":"block");">@Resources.Extend.Messages.UNBLOCK_IDEA</a>
+                        </td>
+                        <td class="centered bltable" data-id="@idea.IdeaUserId">
+                            <a class="block-idea-user" style="display:@(ideaUserActive?"block":"none");">@Resources.Extend.Messages.BLOCK_USER</a>
+                            <a class="unblock-idea-user" style="display:@(ideaUserActive?"none":"block");">@Resources.Extend.Messages.UNBLOCK_USER</a>
+                        </td>
+						
+                    </tr>
+						
+                }
+                </tbody>
+            </table>
+        <div style="@(Model.Total <= 8 ? "display:none;" : "display:block;")" id="dvpaginator" align="left">
+            <img style="cursor: pointer;" onclick="ideareportpaging(@Model.Module.ModulId)" width="25" height="25"
+                src="~/resources/images/25down.gif" />
+            <span><span id="spnnumregis">@Model.CollIdeaReport.Count()</span> @Resources.Global.Messages.FROM <span id="spnresult">@Model.Total</span>
+                @Model.Module.Name</span>
+        </div>
+
+    </div>
+    </div>
+    </div>
+</div>
+<div style="display:none;" align="center" id="contentactions">
+    <input id="contentid" type="hidden" />
+    <img onclick="opendiv(450,600,'@Url.Action("ViewDetail", "IdeaReport", new { Area = "Admin" })?id=' + $('#contentid').val());" title="@Resources.Global.Messages.INFORMATION" src="~/resources/images/45iw.png" />
+    <img onclick="$('.liact').removeClass('liact');$('#contentactions').slideUp();$('#contentid').val(null);" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+</div>

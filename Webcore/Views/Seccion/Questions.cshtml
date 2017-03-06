@@ -1,0 +1,34 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;    
+    Business.FrontEnd.Questions Entity = (Business.FrontEnd.Questions)Model.Entity;
+}
+<div class="contenedor">
+    <div class="seccion-titulo">
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_DESCRIPTION, type = "frontend" })
+        <h1>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_PLURAL)</h1>
+        @*<div class="seccion-filtro">
+            <div class="seccion-filtro-submenu" id="activoSubmenu">
+                <div>Activas</div>
+                <div>Finalizadas</div>
+            </div>
+            <div class="seccion-filtro-act">activas</div>
+            <a><img src="~/resources/images/mimedellin/flecha.png" border="0" id="activoBoton" alt="icon" /></a>
+        </div>*@
+        <div class="clear"></div>
+        <h2>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_DESCRIPTION)</h2>
+    </div>
+    <div class="clear"></div>
+    <div class="seccion-filtros-block">
+        <a data-id="1">@ViewBag.RANDOM</a>
+        <a id="default-filter" data-id="2">@ViewBag.LATEST</a>
+        <a data-id="3">@ViewBag.POPULAR</a>
+        <a data-id="4">@ViewBag.RECOMMENDED</a>
+    </div>
+    <div class="clear"></div>
+    <div id="questions-list-container" class="izquierda">
+        @Html.Partial("QuestionsList", Entity.CollQuestions)
+    </div>
+    <div class="clear"></div>
+</div>

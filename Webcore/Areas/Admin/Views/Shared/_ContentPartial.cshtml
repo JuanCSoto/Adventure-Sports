@@ -1,0 +1,332 @@
+﻿@model Webcore.Areas.Admin.Models.IContent
+
+<link href="~/Resources/Css/select2.min.css" rel="stylesheet" />
+<script src="~/Resources/Scripts/select2-4.0.0.min.js"></script>
+<script type="text/javascript">
+
+    function setSearchEventSelect2() {
+        $('.select2-selection input[type="search"]').on('paste', function (event) {
+            event.preventDefault();
+        }).on('keypress', function (event) {
+            var regularExpression = /^\w+$/;
+            var key = String.fromCharCode(event.charCode ? event.charCode : event.which);
+            if (!regularExpression.test(key))
+                event.preventDefault();
+        });
+    }
+
+    function addNewsTags() {
+        var newsTags = $('[name="newTags"]').val().split('|');
+        var dataArray = $('.select2-multiple').select2('data');
+        var $element = $('.select2-multiple');
+        if ($('[name="newTags"]').val() != "") {
+            newsTags.forEach(function (entry) {
+
+                var $option = $("<option selected></option>");
+                $option.val(entry);
+                $option.text(entry);
+                $element.append($option);
+                $element.trigger("change");
+
+                dataArray.push({ "Name": entry, "Id": entry, "selected": 'true' });
+
+            });
+            $('.select2-multiple').select2("data", dataArray);
+        }
+    }
+
+    function setInputSelect2() {
+        $('.select2-multiple').select2({
+            tags: true
+        }).on("select2:select", function (event) {
+            var tag = event.params.data;
+            var tags = '';
+
+            if (tag.element === undefined) {                
+                tags = $('[name="newTags"]');
+                tags.val(tags.val().concat(tags.val() ? '|'.concat(tag.text) : tag.text));
+            } else {
+                tags = $('[name="existingTags"]');
+                tags.val(tags.val().concat(tags.val() ? '|'.concat(tag.id) : tag.id));
+            }
+
+            setSearchEventSelect2();
+        }).on("select2:unselect", function (event) {
+            var tag = event.params.data;
+            var tags = $('[name="newTags"]');
+            tags.val('|'.concat(tags.val()).concat('|').replace('|'.concat(tag.text).concat('|'), '|'));
+            tags.val(tags.val().substr(1, tags.val().length - 2));
+            tags = $('[name="existingTags"]');
+            tags.val('|'.concat(tags.val()).concat('|').replace('|'.concat(tag.id).concat('|'), '|'));
+            tags.val(tags.val().substr(1, tags.val().length - 2));
+            setSearchEventSelect2();
+        }).select2('val', $('[name="existingTags"]').val().split('|'));
+    }
+
+    $(document).ready(function () {
+        setInputSelect2();
+        setSearchEventSelect2();
+        addNewsTags();
+        $("#accordion").accordion();       
+
+        $("#filespos").sortable({
+            opacity: 0.7,
+            axis: 'y',
+            handle: '.handle',
+            stop: function (event, ui) {
+                $('#loading').show();
+                var source = ui.item.children('.handle');
+                var id = source.attr('id');
+                var newid = $('#li' + id).prev().children('.handle').attr('id');
+                var limit = false;
+
+                if (newid == undefined) {
+                    newid = $('#li' + id).next().children('.handle').attr('id');
+                    limit = true;
+                }
+
+                if (newid != undefined) {
+                    $.post('@Url.Action("ChangeOrderFile", "Content")', { fileattachId: id, prevId: newid, limit: limit }, function (data) {
+                        if (data != null && data.result)
+                            $('#loading').hide();
+                    });
+                }
+            }
+        });
+
+        $("input[name=imageVideoGroup]:radio").change(function () {
+            if ($('input[name=imageVideoGroup]:checked').val() == 'video') {
+                $('#imageSelected').hide();
+                $('#videoSelected').show();
+            }
+            else {
+                $('#imageSelected').show();
+                $('#videoSelected').hide();
+            }
+        });
+    });
+</script>
+@if (Model.IContent != null && Model.IContent.ContentId != null)
+{
+    <div class="headerscontent headercontentleft">
+        <a target="_blank" href="~/files/@Model.IContent.ContentId/@Model.IContent.Image">
+            <img border="0" width="70" height="70" src="@Business.Utils.GetImageContent(Model.IContent.Image, Model.IContent.ContentId.Value, 70, 70)" />
+        </a>
+    </div>
+    <div class="headerscontent headercontentcenter">
+        <b>@Resources.Global.Messages.CREATION_DATE</b><br />
+        <span>@Model.IContent.Joindate.Value.ToString("F")</span>
+    </div>
+    <div class="headerscontent headercontentright">
+        <b>@Resources.Global.Messages.MODIFIED_DATE</b><br />
+        <span>@Model.IContent.Updatedate.Value.ToString("F")</span>
+    </div>
+}
+<div style="width:753px;">
+    <div id="cnleft">
+        <h3>
+            <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.INFORMATION</span>
+        </h3>
+        @Html.HiddenFor(t => t.IContent.ContentId)
+        @Html.Hidden("IContent.SectionId", (Model.IContent != null && Model.IContent.SectionId != null) ? Model.IContent.SectionId.ToString() : null)
+        @Html.Hidden("IContent.ModulId", (Model.IContent != null && Model.IContent.ModulId != null) ? Model.IContent.ModulId.ToString() : null)
+        <ul id="fields">
+            <li>
+                @Resources.Global.Messages.NAME *<br />
+                @Html.TextBoxFor(t => t.IContent.Name, new { @class = "text", maxlength = "200" })
+            </li>
+            <li>
+                @Resources.Global.Messages.NAME2 *<br />
+                @Html.TextBoxFor(t => t.IContent.NameIngles, new { @class = "text", maxlength = "200" })
+            </li>
+            @if (Model.Categories != null)
+            {
+                <li>
+                    @Resources.Global.Messages.CATEGORY<br />
+                    <div style="position:relative;">
+                        @Html.TextBoxFor(t => t.IContent.Category, new { @class = "text", maxlength = "200", autocomplete = "off" })
+                        <div id="auto-fill-container" class="auto-fill-container">
+                            @foreach (Domain.Entities.FrontEnd.Category category in Model.Categories)
+                            {
+                                <div class="auto-fill">@category.Name</div>
+                            }
+                        </div>
+                    </div>
+                </li>
+            }
+            @*if (Model.IContent != null && Model.IContent.Frienlyname != null)
+                {
+                <li>@Resources.Global.Messages.FRIENDLY_URL<br />
+                    @Html.TextBoxFor(t => t.IContent.Frienlyname, new { @class = "text", maxlength = "200" })
+                </li>
+                }*@
+            <li id="content-tags">
+                Tags<br />
+                @Html.DropDownListFor(model => model.IdsTag, Model.Tags, new { @class = "drops select2-multiple", @multiple = "multiple", @SelectedValue = ViewBag.SelectedTags })
+                @Html.Hidden("existingTags", (string)ViewBag.SelectedTags)
+                @Html.Hidden("newTags", (string)ViewBag.NewsTags)
+            </li>
+            <li>
+                <span id="short-description">@Resources.Global.Messages.INTRODUCTION *</span><br />
+                @Html.EditorFor(t => t.IContent.Shortdescription)
+                <span class="spenum" id="spdes">250</span>
+                <script type="text/javascript">
+                    $('#IContent_Shortdescription').keyup(function () {
+                        valid_long(this, 250, $('#spdes'));
+                    });
+                </script>
+            </li>
+            <li>
+                <span id="short-description2">@Resources.Global.Messages.INTRODUCTION2 *</span><br />
+                @Html.EditorFor(t => t.IContent.ShortdescriptionIngles)
+                <span class="spenum" id="spdes">250</span>
+                <script type="text/javascript">
+                    $('#IContent_ShortdescriptionIngles').keyup(function () {
+                        valid_long(this, 250, $('#spdes'));
+                    });
+                </script>
+            </li>
+
+            <li id="content-template">
+                Template<br />
+                @{IEnumerable<SelectListItem> typeEnums = Model.Templates.Select(e => new SelectListItem() { Text = e.ToString(), Value = e.ToString() });}
+                @Html.DropDownListFor(t => t.IContent.Template, typeEnums, new { @class = "drops" })
+            </li>
+            <li>
+                @Resources.Global.Messages.IMAGE * <!--/ @Resources.Global.Messages.VIDEO--><br />
+                  <!--<div>
+        <input typ
+                e="radio" name="imageVideoGroup" value="image" checked> @Resources.Global.Messages.IMAGE
+                    <input type="radio" name="imageVideoGroup" value="video"> Video
+                </div>-->
+                <div id="imageSelected"
+                >
+                <div id="imageSelected">
+                    <input id="contentImage" name="contentImage" class="text" type="file" /><br />
+                    <a onclick="$('#dvredim').toggle('fast')" href="javascript:void(0);">
+                        <img border="0" width="15" height="15" src="@Url.Content("~/resources/images/next.png")" />
+                        @Resources.Global.Messages.RESIZE
+                    </a><br />
+                    <div id="dvredim">
+                        @Resources.Global.Messages.WIDTH (px)
+                        <input id="imgwidth" name="imgwidth" class="textredim" type="text" value="680" />
+                        @Resources.Global.Messages.HEIGHT (px)
+                        <input id="imgheight" name="imgheight" class="textredim" type="text" value="320" />
+                    </div>
+                </div>
+                <!--<div id="videoSelected" style="display:none;">
+                    @Html.TextBoxFor(t => t.IContent.Video, new { @class = "text", maxlength = "50" })
+                </div>-->
+                @*if(!String.IsNullOrEmpty(Model.IContent.Video)){
+                    <script>
+                    $(document).ready(function(){
+                    $('#videoSelected').show();
+                    $('#imageSelected').hide();
+                    })
+                    </script>
+                    }*@
+            </li>
+            <li id="content-background-image">
+                @Resources.Global.Messages.BACKCROUNDIMAGE<br />
+                <div id="imageSelected2">
+                    <input id="contentCoverImage" name="contentCoverImage" class="text" type="file" /><br />
+                </div>
+            </li>
+            <li>
+                <div class="divcheck">
+                    @Resources.Global.Messages.ACTIVE<br />
+                    @Html.CheckBox("IContent.Active", Model.IContent != null && Model.IContent.Active != null ? Model.IContent.Active.Value : true, new { @class = "check" })
+                </div>
+                <div id="content-featured" class="divcheck">
+                    @Resources.Global.Messages.FEATURED<br />
+                    @Html.CheckBox("IContent.Private", Model.IContent != null && Model.IContent.Private != null ? Model.IContent.Private.Value : false, new { @class = "check" })
+                </div>
+                <div id="content-widget" class="divcheck">
+                    Widget<br />
+                    @Html.CheckBox("IContent.Widget", Model.IContent != null && Model.IContent.Widget != null ? Model.IContent.Widget.Value : false, new { @class = "check" })
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="cnrigth">
+        <div id="accordion">
+            <h3>
+                <img width="20" height="20" src="~/resources/images/nextwhite.png" /><a href="#">
+                    @Resources.Global.Messages.LOAD
+                    @Resources.Global.Messages.FILES
+                </a>
+            </h3>
+            <div align="left">
+                <ul id="fields">
+                    <li>
+                        <img onclick="bc_addFieldvideo()" style="float: left;" src="~/resources/images/video.jpg" />
+                        <div class="upload">
+                            <input name="upload" id="upload" type="file" />
+                        </div>
+                    </li>
+                </ul>
+                <div style="background-image: url(@Url.Content("~/resources/images/uploadfiles.gif")); background-repeat: no-repeat;
+                     background-position center;" class="cont_list_files" id="cont_list_files">
+                    <ul class="list_files" id="list_files"></ul>
+                </div>
+                <script type="text/javascript">
+                    bc_load('upload', 'list_files', 1);
+                </script>
+            </div>
+            @if (Model.IContent != null && Model.IContent.ContentId != null)
+            {
+                <h3>
+                    <img width="20" height="20" src="~/resources/images/nextwhite.png" /><a href="#">@Resources.Extend.Messages.UPLOADED_FILES @(Model.ListFiles != null && Model.ListFiles.Count() > 0 ? "(" + Model.ListFiles.Count().ToString() + ")" : "")</a>
+                </h3>
+                <div align="center">
+                    <div style="background-image: url(@Url.Content("~/resources/images/loadfiles.gif")); background-repeat: no-repeat;
+                         background-position center;" class="cont_list_files lifil">
+                        <ul id="filespos">
+                            @if (Model.ListFiles != null)
+                            {
+                                foreach (Domain.Entities.Fileattach item in Model.ListFiles)
+                                {
+                                    <li id="li@(item.FileattachId)">
+                                        <img order="@item.Orderliness" id="@item.FileattachId" class="handle" src="~/resources/images/handlemini.gif" />
+                                        <img title="@Resources.Global.Messages.DELETE" class="delfil" onclick="deletefile(@item.FileattachId, this)" class="del" align="right" width="20" height="20" src="~/resources/images/25del.gif" />
+                                        <a target="_blank" href="@(item.Type != Domain.Entities.Fileattach.TypeFile.Video ? Url.Content("~/files/" + item.ContentId + "/" + item.Filename) : item.Name)">
+                                            <img border="0" width="35" height="35" align="left" src="@Business.Utils.GetIconFile(item)" />
+                                        </a>
+                                        <div data-id="@(item.FileattachId)">
+                                            <span onclick="updatefile(this, true)">@(item.Name != null ? item.Name : item.Filename)</span>
+                                            <input maxlength="30" onblur="updatefile(this, false)" type="text" />
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <h3>
+                    <img width="20" height="20" src="~/resources/images/nextwhite.png" /><a href="#">@Resources.Global.Messages.RELATED_CONTENT @(Model.ListContent != null && Model.ListContent.Count() > 0 ? "(" + Model.ListContent.Count().ToString() + ")" : "")</a>
+                </h3>
+                <div>
+                    <div align="left" style="background-image: url(@Url.Content("~/resources/images/relcontent.gif"));
+                         background-repeat no-repeat; background-position center;" class="cont_list_files">
+                        <input onclick="opendiv(650,650,'@Url.Action("ContentRelation", "Content", new { Area = "Admin" })?contentId=@Model.IContent.ContentId');" type="button" class="buttons"
+                               value="Relacionar contenido" />
+                        <ul class="list_files">
+                            @if (Model.ListContent != null)
+                            {
+                                foreach (Domain.Entities.ContentRel item in Model.ListContent)
+                                {
+                                    <li>
+                                        <img class="del" onclick="dettachcontent(@item.ContentId, @Model.IContent.ContentId, this)" width="20" height="20" align="right" title="Desasociar contenido" src="~/resources/images/25del.gif" />
+                                        <span class="sptitle">@item.Name</span><br />
+                                        <span class="spdate">@item.ModulName</span>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

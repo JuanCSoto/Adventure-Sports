@@ -1,0 +1,29 @@
+﻿@model Webcore.Areas.Admin.Models.Roles
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    deleteModul = function () {
+        return confirm("@Resources.Extend.Messages.DELETE_ITEM");
+    };
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" href="@Url.Action("Detail", new { Area = "Admin" })">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px; font-family: Segoe UI Light;">@Resources.Global.Messages.NEW</span></a>
+    <hr />
+    <ul id="listado">
+        @foreach (Domain.Entities.Rol item in Model.CollRols)
+        {
+            <li>
+                <span class="sptitle">@item.Name</span><br />&nbsp;
+                <a onclick="return deleteModul()" href="@Url.Action("Delete", new { Area = "Admin", id = item.RolId.Value })"><img title="@Resources.Global.Messages.DELETE" border="0" align="right" width="25" height="25" src="~/resources/images/25del.gif" /></a>
+                <a href="@Url.Action("Detail", new { Area = "Admin", id = item.RolId.Value })"><img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,303 @@
+﻿@model Webcore.Models.FEContenido
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.Question Entity = (Business.FrontEnd.Question)Model.Entity;
+    Model.Content.Ideas = Entity.IdeasCount;
+    Domain.Entities.Fileattach video = Entity.CollFiles.FirstOrDefault(t => t.Type == Domain.Entities.Fileattach.TypeFile.Video);
+    string content = Url.Content("~/").TrimEnd('/');
+    int counter = 0;
+    int days = (int)Math.Ceiling((Entity.ObjQuestion.EndDate.Value - Entity.ObjQuestion.StartDate.Value).TotalDays);
+    int endDay = (int)Math.Ceiling((Entity.ObjQuestion.EndDate.Value - DateTime.Now).TotalDays);
+    int percentage;
+    bool ended;
+    if (endDay > 0)
+    {
+        percentage = ((endDay * 100 / days) * -1) + 100;
+        ended = false;
+    }
+    else
+    {
+        percentage = 100;
+        ended = true;
+    }
+
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    string picture = siteUrlRoot + "/files/" + Entity.ObjContent.ContentId + "/" + Entity.ObjContent.Image;
+}
+
+<div class="contenedor">
+    <div class="izquierda" style="display:none">
+        <div class="descripcion-block">
+            @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl() { 
+                name = Entity.ObjContent.Name, 
+                link = siteUrlRoot + "/" + Entity.ObjContent.Frienlyname, 
+                picture = picture, 
+                caption = "", 
+                descriptionFB = "MiMedellín es una plataforma de Co-creación Ciudadana en donde las ideas y la inspiración de todos forman parte de la transformación de nuestra Ciudad.",
+                descriptionTW = "Mira esta idea que podrá transformar a #MiMedellin en",
+                description = Entity.ObjContent.Shortdescription 
+            })
+            <div class="descripcion-titulo">@Model.Content.Name</div>
+            <div class="clear"></div>
+            <div class="descripcion-texto">
+                @Html.Raw(Entity.ObjQuestion.Description)
+            </div>
+        </div>
+        <div class="clear"></div>
+        @if(Model.Versus){
+        <div class="vrs-block">
+            <div class="comunidad-info" style="display: block; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565;">
+                <div class="tooltip">Elige la idea que más te guste para nuestra ciudad.</div>
+            </div>
+            <h1>vota por tu idea favorita</h1>
+            <div class="clear"></div>
+            <div class="idea-versus" data-id="@Model.Content.ContentId">
+                <div class="vrs-img"><img src="~/resources/images/mimedellin/vs.png" /></div>
+                <div class="vrs-block-img" style="margin-right:2px"><img src="@Url.Content("~/resources/images/mimedellin/versus-izq.jpg")" alt=""/></div>
+                <div class="vrs-block-img"><img src="@Url.Content("~/resources/images/mimedellin/versus-der.jpg")" alt=""/></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        }
+        <div class="top-block">
+            <div class="content-tooltip">
+                <h1>top 10 de ideas</h1>
+                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -43px; margin-top: 24px;">
+                    <div class="tooltip">Encuentra las mejores ideas de la pregunta en la que estas navegando</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            @Html.Partial("_ContentIdeasTop", Entity.TopIdeas)
+        </div>
+        <div class="clear"></div>
+    </div>
+        
+    <div class="izquierda">
+		<div class="pregunta-multi-v2">¿CUÁL DE LOS SIGUIENTES PROYECTOS TE GUSTARÍA VER EJECUTADO PARA EL 2014?</div>
+		<div class="clear"></div>
+        <div class="media-block media-block-pre">
+            <div class="media-titulo">@Model.Content.Name</div>
+
+            @switch (Entity.ObjQuestion.Type)
+            {
+                case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+                    int? total = Entity.CollAnswers.Sum(a => a.Count);
+                    total = total != 0 ? total : 1;
+                    counter = 0;
+                <div class="opciones-block">
+                @foreach(Domain.Entities.Answer answer in Entity.CollAnswers)
+                {
+                    counter++;
+                    <div class="opcion">                        
+                        <div class="izquierda">
+                            <img src="~/files/@answer.ContentId/@answer.Image" />
+                            <div class="clear"></div>
+                            @if(Model.Voted)
+                            {
+                            <div class="opcion-porcentaje2">@((int)((answer.Count * 100) / total))%</div>
+                            }
+                            else
+                            {
+                            <div class="opcion-porcentaje2">?%</div>
+                            }
+                        </div>
+                        
+                        <div class="opcion-txt">
+                            <h1>opcion @counter:</h1>
+                            <p>@answer.Text</p>
+                            <div class="clear"></div>
+                            @if (!ended && !Model.Voted)
+                            {
+                            <div class="opcion-votar bv-v2" data-id="@answer.AnswerId">
+                                <a>
+                                    <h2>votar</h2>
+                                    <span></span>
+                                </a>
+                            </div>
+                            }                            
+                        </div>
+                        <div class="opcion-porcentaje">
+                            @if(Model.Voted)
+                            {
+                            <span>@((int)((answer.Count * 100) / total))%</span>
+								<div class="clear"></div>
+								<span>VOTOS:774</span>
+                            }
+                            else
+                            {
+                            <div class="opcion-votar" data-id="@answer.AnswerId">
+                                <a>
+                                    <h2>votar</h2>
+                                    <span></span>
+                                </a>
+                            </div>
+                            }
+                            <div class="clear"></div>
+                            @if (!ended && !Model.Voted)
+                            {
+                            <div class="opcion-votar2" data-id="@answer.AnswerId">
+                                <a>
+                                    <h2>votar</h2>
+                                    <span></span>
+                                </a>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                }
+                </div>
+                    break;
+                    
+                case Domain.Entities.Question.TypeQuestion.Abierta:
+                <div class="finalizado-interna" style="display:@(ended ? "block" : "none")"></div>
+                <div class="media-imagen-grande"><img src="~/files/@Model.Content.ContentId/683x320-@Model.Content.Image" /></div>
+                if (Entity.CollFiles.Count > 0)
+                {
+                <div class="clear"></div>
+                <div class="media-items">
+                    @{counter = 0;}
+                    @foreach(Domain.Entities.Fileattach file in Entity.CollFiles)
+                    {
+                        counter++;
+                        if (file.Filename.Length == 11)
+                        {
+                    <div class="media-item borde-der" type="video" yt="@file.Filename">
+                        <div class="media-item-v"></div>
+                        <img src="http://img.youtube.com/vi/@file.Filename/default.jpg" width="170" height="105" />
+                    </div>
+                        }
+                        else
+                        {
+                    <div class="media-item borde-der" type="image"><img src="~/files/@Model.Content.ContentId/170x105-@file.Filename" /></div>
+                        }
+                        if (counter >= 3)
+                        {
+                            break;
+                        }
+                    }
+                    <div class="media-item media-item-selected"><img src="~/files/@Model.Content.ContentId/170x105-@Model.Content.Image" /></div>
+                </div>
+                }
+                    break;
+                case Domain.Entities.Question.TypeQuestion.Ubicacion:
+                <div id="map-canvas" style="width:683px; height:320px;"></div>
+                <input id="Answer_XCoordinate" type="hidden"/>
+                <input id="Answer_YCoordinate" type="hidden"/>
+                    break;
+            }
+            <div class="clear"></div>
+            <div class="media-texto">
+                <p>
+                    @Html.Raw(Entity.ObjQuestion.Description)
+                </p>
+            </div>
+            
+            <div class="clear"></div>
+			<div class="anchovotos">
+            <div class="media-barra bv2">
+                <span></span>
+                <div class="media-barra-color-v2@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+            </div>
+			<div class="izquierda">
+                <div class="content-tooltip">                            
+                    @switch(Entity.ObjQuestion.Type)
+                    {
+                        case Domain.Entities.Question.TypeQuestion.Abierta:
+                            <div class="media-indicador pregunta-3@(ended ? " preguntagris" : "")">
+                    				<span></span><div class="clear"></div>
+                    				<h1>Pregunta Abierta</h1>
+                                    <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: 23px; margin-top: 0px;">
+                                        <div class="tooltip">Cuéntanos tu opinión</div>
+                                    </div>
+								</div>
+                            break;
+                        case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+                            <div class="media-indicador pregunta2-3@(ended ? " preguntagris2" : "")">
+                    				<span></span><div class="clear"></div>
+                    				<h1>Seleccion <br/>Multiple</h1>
+                                    <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: 23px; margin-top: 0px;">
+                                        <div class="tooltip">Escoge tu respuesta</div>
+                                    </div>
+								</div>
+                            break;
+                        case Domain.Entities.Question.TypeQuestion.Ubicacion:
+                            <div class="media-indicador pregunta3-3@(ended ? " preguntagris3" : "")">
+                    				<span></span><div class="clear"></div>
+                    				<h1>Ubicacion</h1>
+                                    <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: 23px; margin-top: 0px;">
+                                        <div class="tooltip">Ubica tu respuesta en el mapa</div>
+                                    </div>
+								</div>
+                            break;
+                    }
+                </div>
+                @if(!string.IsNullOrEmpty(Entity.ObjQuestion.Prize))
+                {
+                <div class="media-indicador premio3">
+                    <span></span><div class="clear"></div>
+                    <h1>@Entity.ObjQuestion.Prize</h1>
+                </div>
+                }
+                @if(!ended)
+                {
+                <div class="media-indicador restantes3">
+                    <span>@endDay</span><div class="clear"></div>
+                    <h1>días<br />restantes</h1>
+                </div>
+                }
+            </div>
+            <div class="compartir compartir-v2">
+                @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl() { 
+                    name = Entity.ObjContent.Name, 
+                    link = siteUrlRoot + "/" + Entity.ObjContent.Frienlyname, 
+                    picture = picture, 
+                    caption = "", 
+                    descriptionFB = "MiMedellín es una plataforma de Co-creación Ciudadana en donde las ideas y la inspiración de todos forman parte de la transformación de nuestra Ciudad.",
+                    descriptionTW = "Mira esta idea que podrá transformar a #MiMedellin en",
+                    description = Entity.ObjContent.Shortdescription 
+                })
+            </div>
+			 </div>
+			 <div class="numvotostotal">
+			 	<h4>cantidad de votos:</h4>
+				<h3>3.890</h3>
+			 </div>
+            <div class="clear"></div>
+			
+			<div class="compartir compartir-v2 v2v">
+                @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl() { 
+                    name = Entity.ObjContent.Name, 
+                    link = siteUrlRoot + "/" + Entity.ObjContent.Frienlyname, 
+                    picture = picture, 
+                    caption = "", 
+                    descriptionFB = "MiMedellín es una plataforma de Co-creación Ciudadana en donde las ideas y la inspiración de todos forman parte de la transformación de nuestra Ciudad.",
+                    descriptionTW = "Mira esta idea que podrá transformar a #MiMedellin en",
+                    description = Entity.ObjContent.Shortdescription 
+                })
+            </div>
+            
+            <div class="clear"></div>
+            <input id="idea-content-id" type="hidden" value="@Model.Content.ContentId" />
+            @if(!ended)
+            {
+            Model.Content.TextLenght = 350;
+            @Html.Partial("_CreateIdea", Model.Content)
+            }
+        </div>
+        <div class="clear"></div>
+        @if (DateTime.Compare(DateTime.Now.Date, Entity.ObjQuestion.EndDate.Value) >= 0)
+        {
+            @Html.Partial("_ContentIdeasFinished", new Domain.Entities.FrontEnd.ContentBlogIdea() { BlogEntries = Entity.BlogEntries, Ideas = Entity.CollIdeas})
+        }
+        else
+        {
+            @Html.Partial("_ContentIdeas", Entity.CollIdeas)
+        }
+        <div class="top-block2" id="topBlock">
+            @Html.Partial("_ContentIdeasTop2", Entity.TopIdeas)
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

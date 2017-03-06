@@ -1,0 +1,71 @@
+﻿@model bool
+@{    
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+}
+@if (Model)
+{
+  @:<div id="layerRegistro" class="alerta ingreso">
+}
+<div class="alerta-titulo">
+        <h1>@ViewBag.LOGIN</h1>
+        @if (Model)
+        {
+        <div class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></div>
+        }
+    </div>
+    <div class="alerta-logo"><img class="site-logo" src="@content@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.LOGO))" alt="logo" /></div>
+    <div class="clear"></div>
+    <div class="ingresarcon">
+        <h1>@ViewBag.TXTLOGWITH<span>:</span></h1>
+        <a class="facebooki"></a>
+        <a class="twitteri"></a>
+        <a class="googlei"></a>
+        <a class="linkedini"></a>
+        <a class="phone-icon" id="show-phone-login"></a>
+    </div>
+    <div class="clear"></div>
+    <div class="separai"></div>
+    <div class="ocon">@Resources.Extend.Messages.TXTOCON</div>
+    <div class="separad"></div>
+    <div class="clear"></div>
+    <div id="email-login-fields">
+      <input id="entry-email" class="ingresa-input correo" />
+      <div class="clear"></div>
+      <div class="error" id="entry-mail-error">@Resources.Extend.Messages.ERROREMAIL</div>
+      <div class="clear"></div>
+      <input id="entry-password" class="ingresa-input clave" type="password" />
+      <div class="clear"></div>
+      <div class="error" id="entry-password-error">@Resources.Extend.Messages.ERRORPASSWORD</div>
+      <div class="clear"></div>
+    </div>
+    <div id="phone-login-fields" style="display:none;">
+      <input id="entry-phone" placeholder="@Resources.Extend.Messages.WRITEYOU" class="ingresa-input cell" maxlength="10" data-only-number="true" />
+      <div class="clear"></div>
+      <div class="error" id="entry-phone-error">@Resources.Extend.Messages.ERRORMOVIL</div>
+      <div class="clear"></div>
+    </div>
+<div class="centrado5">
+    <div class="alerta-aceptar">
+        <a>
+            <h3>@ViewBag.ACCEPT</h3>
+            <span class="accept-span" ></span>
+        </a>
+    </div>
+    </div>
+
+    <div class="clear"></div>
+<div class="mm2-text-cel">
+@ViewBag.TXTIFYOUHAVE
+    
+
+
+</div>
+<div class="mm2-ico-cel2"></div>
+    <div class="olvidolink"><a id="recovery">@Resources.Extend.Messages.TXTDIDFOR</a></div>
+    <div class="registrarseb"><a>@ViewBag.REGISTER</a></div>
+    <div class="clear"></div>
+@if (Model)
+{
+@:</div>
+}

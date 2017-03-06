@@ -1,0 +1,35 @@
+﻿@model List<Domain.Entities.User>
+@{
+  int count = 0;
+  if (ViewBag.PageIndex != null)
+  {
+    count = ViewBag.PageIndex * 6;
+  }
+}
+@if (Model.Count > 0)
+{
+  <div>
+    @foreach (Domain.Entities.User user in Model)
+    {
+      <div class="mm2-item-list-ranking-stadistics">
+        <div class="mm2-number-top-chart">@(++count)</div>
+        <div class="mm2-img-userclose">
+          <div class="img-vertical-middle-overflow">
+            <img class="min-35" src="@Business.Utils.fixLocalUserImagePath(user.Image)" alt="avatar" />
+          </div>
+        </div>
+        <div class="mm2-text-item-listranking">
+          <div class="mm2-name-listranking">@user.Names</div>
+          <div class="mm2-points-user-ranking">@user.Medallos.ToString("##,##0")</div>
+        </div>
+        <div class="clear"></div>
+      </div>        
+    }
+  </div>
+}
+else if (ViewBag.PageIndex == null || ViewBag.PageIndex == 0)
+{
+  <div class="chart-margin">
+    <h5>@ViewBag.TXTNOHAYRESBUS</h5>
+  </div>
+}

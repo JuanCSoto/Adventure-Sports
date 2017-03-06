@@ -1,0 +1,67 @@
+﻿@model Webcore.Areas.Admin.Models.AllyModel
+@{
+  Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+  List<SelectListItem> allySizes = new List<SelectListItem>();
+  allySizes.Add(new SelectListItem() { Selected = true, Text = "Aliado", Value = "1" });
+}
+
+@section headers {
+    <script src="@Url.Content("~/Resources/Scripts/jquery.fcbkcomplete.min.js")" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jquerycl")
+    <script type="text/javascript" language="javascript">
+      var tempfiles = new Array();      
+     </script>
+}
+<div align="right">
+  <ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+    <li>@Resources.Global.Messages.LIST</li>
+  </ul>
+  <div class="cont" align="left">
+    @using (Html.BeginForm("Create", "Ally", new { Area = "Admin" }, FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+    {
+      @Html.ValidationSummary()
+      @Html.Hidden("GetOut", "0")
+      @Html.Hidden("TempFiles")
+      <hr />
+      <div id="deepfolloweradmin">
+        @Model.DeepFollower
+      </div>
+      @Html.Partial("_ContentPartial", Model);
+      <div class="separator">
+      </div>
+      <div align="center" id="dvadicional" style="clear: both;">
+        <h3>
+          <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.ADDITIONAL_INFORMATION</span>
+        </h3>
+        @Html.HiddenFor(t => t.Ally.ContentId)
+        <ul class="template" id="fields">
+          <li>
+            Link *<br />
+            @Html.TextBoxFor(t => t.Ally.Link)
+          </li>
+          <li>
+            Tipo *<br />
+            @Html.DropDownListFor(t => t.Ally.Size, allySizes)
+          </li>
+        </ul>
+      </div>
+    }
+    <div align="center" id="contentactions">
+      <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE_EXIT" src="~/resources/images/45savewout.png" />
+      @if (Model.IContent != null && Model.IContent.ContentId != null)
+      {
+        <img onclick="$('#GetOut').val('1');$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+      }
+      <img onclick="window.location.href='@Url.Action("Index", "Content", new { Area = "Admin", mod = Model.Module.ModulId })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+  </div>
+</div>
+<script>  
+  $('#content-tags').remove();
+  $('#content-template').hide();
+  $('#cnrigth').hide();
+  $('#content-featured').hide();
+  $('#content-widget').hide();
+  $('#content-background-image').hide();
+</script>

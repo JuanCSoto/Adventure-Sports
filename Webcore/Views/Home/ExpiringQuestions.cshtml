@@ -1,0 +1,107 @@
+﻿@model List<Domain.Entities.FrontEnd.ExpiringQuestions>
+@{
+    Layout = null;
+    string content = Url.Content("~/").TrimEnd('/');
+    int percentage = 0;
+    int endDay = 0;
+    int days = 0;
+    string link = string.Empty;
+    bool ended = false;
+
+    string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+}
+@if(Model.Count > 0)
+{
+<div class="contenido">
+    <div class="contenido-tit">
+        <div class="comunidad-info" style="display: block; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565;">
+            <div class="tooltip">@ViewBag.TXTRESPARCON</div>
+        </div>
+        <a href="@content/preguntas">ViewBag.QUESTIONS</a>
+        <h2>@ViewBag.TXTTUSIDEA</h2>
+    </div>
+    <div class="clear"></div>
+    @foreach (Domain.Entities.FrontEnd.ExpiringQuestions question in Model)
+    {
+        days = (int)Math.Ceiling((question.EndDate.Value - question.StartDate.Value).TotalDays);
+        endDay = (int)Math.Ceiling((question.EndDate.Value - DateTime.Now).TotalDays);
+        if (endDay > 0)
+        {
+            percentage = ((endDay * 100 / days) * -1) + 100;
+            ended = false;
+        }
+        else
+        {
+            percentage = 100;
+            ended = true;
+        }
+        link = string.Concat(content, "/", question.Friendlyurlid);
+    <div class="contenido-historia">
+        <a href="@(link)"><div class="finalizado" style="display:@(ended ? "block" : "none")"></div></a>
+        <a href="@(link)"><img src="~/files/@question.ContentId/340x250-@question.Image" alt="@question.Name" /></a>
+        <div class="clear"></div>
+        <a href="@(link)"><p>@question.Name</p></a>
+        <div class="clear"></div>
+        <div class="contenido-historia-barra">
+            <span></span>
+            <div class="barra-color2@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+        </div>
+        <div class="clear"></div>
+        <div class="content-tooltip">
+        @switch(question.Type)
+        {
+            case Domain.Entities.Question.TypeQuestion.Abierta:
+        <div class="historia-item pregunta@(ended ? " preguntagris" : "")">
+            <span></span>
+            <h1>Abierta</h1>
+            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -21px;">
+                <div class="tooltip">ViewBag.TXTCUEOPI</div>
+            </div>
+        </div>
+                break;
+            case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+        <div class="historia-item pregunta2@(ended ? " preguntagris2" : "")">
+            <span></span>
+            <h1>Seleccion<br />@ViewBag.MULTIPLE</h1>            
+            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -21px;">
+                <div class="tooltip">ViewBag.TXTESCREP</div>
+            </div>
+        </div>
+                break;
+            case Domain.Entities.Question.TypeQuestion.Ubicacion:
+        <div class="historia-item pregunta3@(ended ? " preguntagris3" : "")">
+            <span></span>
+            <h1>@ViewBag.LOCATION</h1>            
+            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -21px;">
+                <div class="tooltip">@Resources.Extend.Messages.PLACEMAP</div>
+            </div>
+        </div>
+                break;
+        }
+        </div>
+        @if(false) // TODO: Depende de si tiene premio o no
+        {
+        <div class="historia-item premio2@(ended ? " premiogris" : "")">
+            <span></span>
+            <h1>@ViewBag.WISH <br />@ViewBag.PREMIUM</h1>
+        </div>
+        }
+        @if(!ended)
+        {
+        <div class="historia-item restantes2@(ended ? " gris" : "")">
+            <span>@endDay</span>
+            <h1>@ViewBag.TXTDIARES</h1>
+        </div>
+        }
+        <div class="clear"></div>
+        <div class="participa-block">
+            <a href="@(link)">@buttonText</a>
+            <div class="participa-comentarios">
+                <h1>@question.Ideas</h1>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+}

@@ -1,0 +1,72 @@
+﻿@model Webcore.Areas.Admin.Models.Login
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Administrador de contenidos</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="Shortcut Icon" href="~/Resources/Images/iconapp.ico" type="image/x-icon" />
+    @Styles.Render("~/resources/css/")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#Password').keypress(function (event) {
+                if (event.keyCode == 13) {
+                    $('#Form1').submit();
+                }
+            })
+        })
+    </script>
+</head>
+<body class="log-body">
+    <div align="center">
+        <div class="login_wrap">
+            <div class="logo_dasigno_top"></div>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "Form1" }))
+            
+            {
+                if (Request.QueryString["ReturnUrl"] != null)
+                {
+                <text>
+                @Html.Hidden("ReturnUrl", Request.QueryString["ReturnUrl"])
+                </text>
+                }
+            <div id="login">
+                <div class="title_login">
+                    Administrador de contenidos
+                </div>
+                <table width="50%">
+                    <tr>
+                        <td>
+                            @Html.ValidationSummary()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            @Html.TextBoxFor(t => t.Email, new { @class = "text correo_log", @placeholder = "Correo electrónico" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            @Html.PasswordFor(t => t.Password, new { @class = "text key_log", @placeholder = "Contraseña" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <div class="login_button" onclick="$('#Form1').submit()">
+                                Entrar
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            }
+        </div>
+    </div>
+    <!--<div style="height: 150px; background-color: #f9f9f9; width: 100%; position: fixed; bottom: 0px;">
+    </div>-->
+</body>
+</html>

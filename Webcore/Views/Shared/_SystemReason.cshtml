@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+<div class="alerta-contenedor">
+    <div id="system-reason" class="alerta default">
+        <div class="alerta-titulo">
+            <h1 id="reason-title"></h1>
+            <div class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></div>
+        </div>
+        <div class="clear"></div>
+        <p id="reason-message"></p>
+        <div class="clear"></div>
+        <textarea id="reason-text" type="text" maxlength="100" placeholder="Compártenos tu razón"></textarea>
+        <div class="clear"></div>
+        <div class="centrado3">
+            <div class="alerta-aceptar margin-alert">
+                <a>
+                    <h3>@Resources.Global.Messages.ACCEPT</h3>
+                    
+                </a>
+            </div>
+        </div>
+        <div class="alerta-cancelar">
+          <a>
+            <h3>@Resources.Global.Messages.CANCEL</h3>
+            
+          </a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

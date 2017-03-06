@@ -1,0 +1,57 @@
+﻿@model Webcore.Areas.Admin.Models.InfoContent
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.Content.Name</title>
+    @Styles.Render("~/resources/css/")
+    <style>
+        body { background-color:White; }
+        .tit { font-size:18px; font-family:Segoe UI Light; background-color:#25A0DB; color:White; padding-bottom:15px; min-height:70px; }
+        #det { margin:0px; padding:0px; clear:both; margin-left:10px; }
+        #det li { list-style:none; }
+        #det span { font-size:15px;  }
+        #det label { font-size:12px; color:#25A0DB; margin-left:5px;  }
+        .imgp { margin:5px; border:1px solid white; }
+    </style>
+</head>
+<body>
+    <div style="width:450px; height:255px;">
+        <img onclick="window.parent.closediv()" class="img-close-div" src="~/resources/images/closer.png" />
+        <img class="imgp" align="left" width="70" height="70" src="@Business.Utils.GetImageContent(Model.Content.Image, Model.Content.ContentId.Value, 70, 70)" />
+        <div class="tit" style="line-height:18px; padding-top:10px;">@Model.Content.Name</div>
+        <ul id="det">
+            <li>
+                <span>@Resources.Global.Messages.FRIENDLY_URL</span><br />
+                <label>@Model.Content.Frienlyname</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.SECTION</span><br />
+                <label>@Model.DeepFollower</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.CREATION_DATE</span><br />
+                <label>@Model.Content.Joindate.Value.ToString("F") </label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.MODIFIED_DATE</span><br />
+                <label>@Model.Content.Updatedate.Value.ToString("F")</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.AUTHOR</span><br />
+                <label>@Model.Autor</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.RELATED_CONTENT</span><br />
+                <label>@Model.CountContent</label>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+

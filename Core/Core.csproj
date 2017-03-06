@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Brokers\TagBroker.cs" />
+    <Compile Include="Brokers\CityBroker.cs" />
+    <Compile Include="Brokers\CountryBroker.cs" />
+    <Compile Include="Brokers\GeneralFindBroker.cs" />
+    <Compile Include="Brokers\SuccessStoryPostulateBroker.cs" />
+    <Compile Include="Brokers\SuccessStoryBroker.cs" />
+    <Compile Include="Bussiness\TagBussiness.cs" />
+    <Compile Include="Bussiness\CityBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\ITagBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\ICityBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\IGeneralFindBussiness.cs" />
+    <Compile Include="Bussiness\CountryBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\ICountryBussiness.cs" />
+    <Compile Include="Bussiness\GeneralFindBussiness.cs" />
+    <Compile Include="Bussiness\Repositories\ITagRepository.cs" />
+    <Compile Include="Bussiness\Repositories\ICityRepository.cs" />
+    <Compile Include="Bussiness\Repositories\ICountryRepository.cs" />
+    <Compile Include="Bussiness\Repositories\IGeneralFindRepository.cs" />
+    <Compile Include="Bussiness\SuccessStoryPostulateBussiness.cs" />
+    <Compile Include="Bussiness\CategoryBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\ICategoryBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\ISuccessStoryBussiness.cs" />
+    <Compile Include="Bussiness\Contracts\ISuccessStoryPostulateBussiness.cs" />
+    <Compile Include="Bussiness\Repositories\ISuccessStoryPostulateRepository.cs" />
+    <Compile Include="Bussiness\Repositories\ICategoryRepository.cs" />
+    <Compile Include="Brokers\CategoryBroker.cs" />
+    <Compile Include="Bussiness\Repositories\ISuccessStoryRepository.cs" />
+    <Compile Include="Bussiness\SuccessStoryBussiness.cs" />
+    <Compile Include="Facades\TagFacade.cs" />
+    <Compile Include="Facades\CityFacade.cs" />
+    <Compile Include="Facades\CountryFacade.cs" />
+    <Compile Include="Facades\GeneralFindFacade.cs" />
+    <Compile Include="Facades\SuccessStoryPostulateFacade.cs" />
+    <Compile Include="Facades\CategoryFacade.cs" />
+    <Compile Include="Facades\SuccessStoryFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Agents\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{e1c29ed6-d5ff-4f71-a1c5-d585f9fe471e}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

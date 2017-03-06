@@ -1,0 +1,72 @@
+﻿@model Webcore.Areas.Admin.Models.InfoIdeaReport
+
+@{
+    Layout = null;
+    Domain.Entities.FrontEnd.Video video = Business.Utils.GetVideoFromUrl(Model.IdeaReportPaging.IdeaVideo);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.IdeaReportPaging.Text</title>
+    @Styles.Render("~/resources/css/")
+    <style>
+        body { background-color:White; }
+        .tit { font-size:18px; font-family:Segoe UI Light; background-color:#25A0DB; color:White; padding-bottom:15px; min-height:70px; }
+        #det { margin:0px; padding:0px; clear:both; margin-left:10px; }
+        #det li { list-style:none; }
+        #det span { font-size:15px;  }
+        #det label { font-size:12px; color:#25A0DB; margin-left:5px;  }
+        .imgp { margin:5px; border:1px solid white; }
+    </style>
+</head>
+<body>
+    <div style="width:450px; height:600px;">
+        <img onclick="window.parent.closediv()" class="img-close-div" src="~/resources/images/closer.png" />
+        <div class="tit">@Resources.Global.Messages.DETAIL</div>
+        <ul id="det">
+            <li>
+                <span>@Resources.Global.Messages.MOTIVE</span><br />
+                <label>@Model.IdeaReportPaging.Motive </label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.DESCRIPTION</span><br />
+                <label>@Model.IdeaReportPaging.Text </label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.CREATION_DATE</span><br />
+                <label>@Model.IdeaReportPaging.Date.Value.ToString("F") </label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.AUTHOR</span><br />
+                <label>@Model.Autor</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.IDEA</span><br />
+                <label>@Model.IdeaReportPaging.IdeaText</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.USER_NAME</span><br />
+                <label>@Model.IdeaReportPaging.IdeaUserNames</label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.IMAGE / @Resources.Global.Messages.VIDEO</span><br />
+                @if (video == null && !string.IsNullOrEmpty(Model.IdeaReportPaging.IdeaImage))
+                {
+                <img class="imgp" align="left" width="425" height="230" src="@Business.Utils.GetImageContent(Model.IdeaReportPaging.IdeaImage, Model.IdeaReportPaging.IdeaId.Value, 425, 230)" />
+                }
+                else if (video != null){
+                    if (video.Type == "youtube") {
+                <iframe id="player" type="text/html" width="425" height="230" src="http://www.youtube.com/embed/@video.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>
+                    }
+                    else if (video.Type == "vimeo") {
+                <iframe src="http://player.vimeo.com/video/@video.ID" width="425" height="230" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    }
+                }
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+

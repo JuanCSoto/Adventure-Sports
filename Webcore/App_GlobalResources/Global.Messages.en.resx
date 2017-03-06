@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCEPT" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ACTIVITY" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="ADDITIONAL_INFORMATION" xml:space="preserve">
+    <value>Additional information</value>
+  </data>
+  <data name="ADMINISTRATION" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="AGE" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="AGO" xml:space="preserve">
+    <value>Ago</value>
+  </data>
+  <data name="ALL" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="ALLIES" xml:space="preserve">
+    <value>Allies</value>
+  </data>
+  <data name="ANSWERs" xml:space="preserve">
+    <value>Answers</value>
+  </data>
+  <data name="ANY" xml:space="preserve">
+    <value>any</value>
+  </data>
+  <data name="AUTHOR" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="BACKCROUNDIMAGE" xml:space="preserve">
+    <value>Background image</value>
+  </data>
+  <data name="BEENIMPACT" xml:space="preserve">
+    <value>What has been its impact?</value>
+  </data>
+  <data name="BODY" xml:space="preserve">
+    <value>body:</value>
+  </data>
+  <data name="BUDGET" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="CHALL" xml:space="preserve">
+    <value>challenge</value>
+  </data>
+  <data name="CHALLENGES" xml:space="preserve">
+    <value>Urban Challenges</value>
+  </data>
+  <data name="CHALLENGESFACED" xml:space="preserve">
+    <value>What challenges have you faced?</value>
+  </data>
+  <data name="CHARACTERS" xml:space="preserve">
+    <value>Characters</value>
+  </data>
+  <data name="CHECKED" xml:space="preserve">
+    <value>Checked</value>
+  </data>
+  <data name="CITIZENS" xml:space="preserve">
+    <value>Citizens</value>
+  </data>
+  <data name="CITY" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CLEAN" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="CLONE_CONTENT" xml:space="preserve">
+    <value>Clone Content</value>
+  </data>
+  <data name="CLOSE_SESSION" xml:space="preserve">
+    <value>Close session</value>
+  </data>
+  <data name="COMMENT" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="COMMENTS" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="COMMENTSSINGULAR" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CONCRETE_PROBLEMS" xml:space="preserve">
+    <value>What are the concrete problems which have been approached or/and solved?</value>
+  </data>
+  <data name="CONTACT" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="CONTACTUS" xml:space="preserve">
+    <value>Contact Us!</value>
+  </data>
+  <data name="CONTENT" xml:space="preserve">
+    <value>Content in Spanish</value>
+  </data>
+  <data name="CONTENT2" xml:space="preserve">
+    <value>Content in English</value>
+  </data>
+  <data name="CONTENTS" xml:space="preserve">
+    <value>Contents</value>
+  </data>
+  <data name="CONTENT_AVAILABLE" xml:space="preserve">
+    <value>Content available</value>
+  </data>
+  <data name="CONTROLLER" xml:space="preserve">
+    <value>Controller</value>
+  </data>
+  <data name="COUNTRY" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="CREATION_DATE" xml:space="preserve">
+    <value>Creation date</value>
+  </data>
+  <data name="CREATIVE" xml:space="preserve">
+    <value>Creative</value>
+  </data>
+  <data name="DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DEACTIVATE" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DELIVERYDATE" xml:space="preserve">
+    <value>Delivery Date</value>
+  </data>
+  <data name="DESCRIBE" xml:space="preserve">
+    <value>I describe it:</value>
+  </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DESIRE" xml:space="preserve">
+    <value>desire</value>
+  </data>
+  <data name="DETAIL" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="DOCUMENTS" xml:space="preserve">
+    <value>Videos, Pictures, News, Other documents</value>
+  </data>
+  <data name="DOCUMENTS_HELP" xml:space="preserve">
+    <value>Please insert links which describe the project</value>
+  </data>
+  <data name="EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EMAIL_EXAMPLE" xml:space="preserve">
+    <value>email@email.com</value>
+  </data>
+  <data name="END_DATE" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="ENTITIESRESPONSIBLE" xml:space="preserve">
+    <value>Entities responsible</value>
+  </data>
+  <data name="ERASE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EXAMPLE" xml:space="preserve">
+    <value>Example</value>
+  </data>
+  <data name="EXPORT" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="FEATURED" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="FILE" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FILES" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="FIND" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="FIRST" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="FOLDERS" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="FOLLOWING" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="FOOTERLEAD" xml:space="preserve">
+    <value>leads</value>
+  </data>
+  <data name="FOOTERSPONSOR" xml:space="preserve">
+    <value>Allies</value>
+  </data>
+  <data name="FRIENDLY_URL" xml:space="preserve">
+    <value>Friendly url</value>
+  </data>
+  <data name="FROM" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="GENDER" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="GETINSPIRED2" xml:space="preserve">
+    <value>GET INSPIRED</value>
+  </data>
+  <data name="HATE" xml:space="preserve">
+    <value>Hate</value>
+  </data>
+  <data name="HEARTBEAT" xml:space="preserve">
+    <value>Heartbeats</value>
+  </data>
+  <data name="HEIGHT" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="IDEA" xml:space="preserve">
+    <value>Idea</value>
+  </data>
+  <data name="IDEAGENERATOR" xml:space="preserve">
+    <value>Idea generator</value>
+  </data>
+  <data name="IMAGE" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="INACTIVE" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="INNOVATIVE_URBAN_SOLUTION" xml:space="preserve">
+    <value>Why do you consider the project as an innovative urban solution?</value>
+  </data>
+  <data name="INNOVATIVE_URBAN_SOLUTION_HELP" xml:space="preserve">
+    <value>Please refer on social impact, replicability, reputation (awards) etc.</value>
+  </data>
+  <data name="INTERESTS" xml:space="preserve">
+    <value>Interests</value>
+  </data>
+  <data name="INTRODUCTION" xml:space="preserve">
+    <value>Introduction in Spanish</value>
+  </data>
+  <data name="INTRODUCTION2" xml:space="preserve">
+    <value>Introduction in English</value>
+  </data>
+  <data name="JOB_TITLE" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="JOB_TITLE_EXAMPLE" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="JOINUS" xml:space="preserve">
+    <value>I BELIEVE TOO!</value>
+  </data>
+  <data name="KEYWORDS" xml:space="preserve">
+    <value>Keywords</value>
+  </data>
+  <data name="KEYWORDS_HELP" xml:space="preserve">
+    <value>Please give us some keywords that describe your case better</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="LANGUAGE_DEFAULT" xml:space="preserve">
+    <value>Language by default</value>
+  </data>
+  <data name="LAST" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="LEGENDARY" xml:space="preserve">
+    <value>Legendary</value>
+  </data>
+  <data name="LIST" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="LOAD" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="LOADING" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="LOCATION" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="MAN" xml:space="preserve">
+    <value>Man</value>
+  </data>
+  <data name="MATTER" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
+  <data name="MESSAGE" xml:space="preserve">
+    <value>Message:</value>
+  </data>
+  <data name="MOBILE" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="MODEL" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="MODIFIED_DATE" xml:space="preserve">
+    <value>Modified date</value>
+  </data>
+  <data name="MODULS" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="MOTIVE" xml:space="preserve">
+    <value>Motive</value>
+  </data>
+  <data name="MULTIPLE" xml:space="preserve">
+    <value>multiple</value>
+  </data>
+  <data name="NAME" xml:space="preserve">
+    <value>Name in Spanish</value>
+  </data>
+  <data name="NAME2" xml:space="preserve">
+    <value>Name in English</value>
+  </data>
+  <data name="NETWORKS" xml:space="preserve">
+    <value>NetWorks</value>
+  </data>
+  <data name="NEW" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NEWS" xml:space="preserve">
+    <value>NEWS</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="OPENQUESTION" xml:space="preserve">
+    <value>Open Question</value>
+  </data>
+  <data name="ORDER" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="ORGANIZATION" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="PARTICIPATES" xml:space="preserve">
+    <value>Co-create</value>
+  </data>
+  <data name="PASSWORD" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PENDING" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="PEOPLE" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="PERMISSIONS" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="PHONE" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="POPULAR" xml:space="preserve">
+    <value>Popular</value>
+  </data>
+  <data name="PORGRAPHY" xml:space="preserve">
+    <value>pornography</value>
+  </data>
+  <data name="POSITION" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="POSTULATES_SUCCESS_STORY" xml:space="preserve">
+    <value>Postulates your success story</value>
+  </data>
+  <data name="POSTULATIONSLIST" xml:space="preserve">
+    <value>Postulations List</value>
+  </data>
+  <data name="PREFIX" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="PREVIOUS" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="PRIZE" xml:space="preserve">
+    <value>Prize in Spanish</value>
+  </data>
+  <data name="PRIZE2" xml:space="preserve">
+    <value>Prize in English</value>
+  </data>
+  <data name="PROACTIVE" xml:space="preserve">
+    <value>Proactive</value>
+  </data>
+  <data name="PROBLEMSSOLVED" xml:space="preserve">
+    <value>What are the concrete problems which have been approached or/and solved? (in Spanish)</value>
+  </data>
+  <data name="PROBLEMSSOLVED2" xml:space="preserve">
+    <value>What are the concrete problems which have been approached or/and solved? (in English)</value>
+  </data>
+  <data name="PROFESSION" xml:space="preserve">
+    <value>Profession</value>
+  </data>
+  <data name="PROFILES" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="PROJECTLEADERS" xml:space="preserve">
+    <value>Contact person</value>
+  </data>
+  <data name="PROJECT_DESCRIPTION" xml:space="preserve">
+    <value>Description of the Project</value>
+  </data>
+  <data name="PROJECT_DESCRIPTION_HELP" xml:space="preserve">
+    <value>Please inform us about the goals and most relevant characteristics of the project</value>
+  </data>
+  <data name="PROJECT_NAME" xml:space="preserve">
+    <value>Name of the Project</value>
+  </data>
+  <data name="PROJECT_NAME_HELP" xml:space="preserve">
+    <value>The use of bikes to improve mobility in Medellin</value>
+  </data>
+  <data name="PROJECT_RESPONSIBLE" xml:space="preserve">
+    <value>Project Responsible</value>
+  </data>
+  <data name="PROYECTS" xml:space="preserve">
+    <value>SUCCESS STORIES</value>
+  </data>
+  <data name="PUBLISHED" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="POSTULATING_SUCCESS_STORY" xml:space="preserve">
+    <value>Postulate success story</value>
+  </data>
+  <data name="PUBLISH_SUCCESS_STORY" xml:space="preserve">
+    <value>PUBLISH SUCCESS STORY</value>
+  </data>
+  <data name="QUALITY" xml:space="preserve">
+    <value>500</value>
+  </data>
+  <data name="QUESTION" xml:space="preserve">
+    <value>QUESTION</value>
+  </data>
+  <data name="RANDOM" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="READMORE" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="RECENT" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="RECOMMEND" xml:space="preserve">
+    <value>Recommend</value>
+  </data>
+  <data name="RECOMMENDED" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="REJECTED" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="REJECT_SUCCESS_STORY" xml:space="preserve">
+    <value>REJECT SUCCESS STORY</value>
+  </data>
+  <data name="RELATEDLINKS" xml:space="preserve">
+    <value>Related Links</value>
+  </data>
+  <data name="RELATEDURLS" xml:space="preserve">
+    <value>Related URLs&lt;br /&gt;Up to one URL per line, maximum 250 characters&lt;br /&gt;</value>
+  </data>
+  <data name="RELATED_CONTENT" xml:space="preserve">
+    <value>Related content</value>
+  </data>
+  <data name="REPORT" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="REQUIRED_FIELD" xml:space="preserve">
+    <value>Required Field</value>
+  </data>
+  <data name="RESIZE" xml:space="preserve">
+    <value>Resize</value>
+  </data>
+  <data name="RESPONSIBLE_ENTITIES" xml:space="preserve">
+    <value>Responsible Entities</value>
+  </data>
+  <data name="RESPONSIBLE_ENTITIES_HELP" xml:space="preserve">
+    <value>Public or Private Institutions, NGOs or other institutions that planned and implemented the project</value>
+  </data>
+  <data name="REVOLUTIONARY" xml:space="preserve">
+    <value>Revolutonary</value>
+  </data>
+  <data name="ROOT" xml:space="preserve">
+    <value>Root</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SAVE_EXIT" xml:space="preserve">
+    <value>Save and exit</value>
+  </data>
+  <data name="SCORE" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SECTION" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="SECTIONS" xml:space="preserve">
+    <value>Sections</value>
+  </data>
+  <data name="SELECT" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>selection</value>
+  </data>
+  <data name="SELECTVERBO" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SELECT_CATEGORY" xml:space="preserve">
+    <value>Select a Category</value>
+  </data>
+  <data name="SELECT_CITY" xml:space="preserve">
+    <value>Select a City</value>
+  </data>
+  <data name="SELECT_COUNTRY" xml:space="preserve">
+    <value>Select a Country</value>
+  </data>
+  <data name="SEND" xml:space="preserve">
+    <value>send</value>
+  </data>
+  <data name="SHARE" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="SIZE" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="SORT" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="START_DATE" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="STORYNAME" xml:space="preserve">
+    <value>Story Name</value>
+  </data>
+  <data name="STORYSTATUS" xml:space="preserve">
+    <value>Story Status</value>
+  </data>
+  <data name="TYPE" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="URBANSOLUTION" xml:space="preserve">
+    <value>Why do you consider the project as an innovative urban solution? (in Spanish)&lt;br /&gt;Please refer on social impact, replicability, reputation (awards) etc.&lt;br /&gt;</value>
+  </data>
+  <data name="URBANSOLUTION2" xml:space="preserve">
+    <value>Why do you consider the project as an innovative urban solution? (in English)&lt;br /&gt;Please refer on social impact, replicability, reputation (awards) etc.&lt;br /&gt;</value>
+  </data>
+  <data name="USERS" xml:space="preserve">
+    <value>users</value>
+  </data>
+  <data name="USER_NAME" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="VIDEO" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VIOLENCE" xml:space="preserve">
+    <value>Violencia</value>
+  </data>
+  <data name="VISI" xml:space="preserve">
+    <value>Visit</value>
+  </data>
+  <data name="VISIT" xml:space="preserve">
+    <value>VISIT ONE ANOTHER</value>
+  </data>
+  <data name="VOTE" xml:space="preserve">
+    <value>vote</value>
+  </data>
+  <data name="WELCOME" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="WIDTH" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="WOMAN" xml:space="preserve">
+    <value>Woman</value>
+  </data>
+  <data name="YOINED" xml:space="preserve">
+    <value>joined</value>
+  </data>
+  <data name="PLACEHOLDERFIND" xml:space="preserve">
+    <value>What content you want to find?</value>
+  </data>
+  <data name="FINDREULTS" xml:space="preserve">
+    <value>Resultados de búsqueda</value>
+  </data>
+  <data name="BLOG" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="SUCCESSSTORY" xml:space="preserve">
+    <value>Success Stories</value>
+  </data>
+  <data name="PUBLISHDATE" xml:space="preserve">
+    <value>Publish date</value>
+  </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ALLS" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="NAMETAG" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>Home</value>
+  </data>
+</root>

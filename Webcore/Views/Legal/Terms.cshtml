@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Layouts/_Layer.cshtml";
+}
+<style type="text/css">
+    .terminos p
+    {
+        text-align: justify;
+    }
+</style>
+<div id="terms" class="alerta registro" style="width:760px;">
+    <div class="alerta-titulo">
+        <h1>@Resources.Extend.Messages.TXTTERMCOND</h1>
+    </div>
+    <div class="clear" style="height: 30px;"></div>
+    <div id="scrollbar1" style="width:740px;">
+        <div class="scrollbar">
+            <div class="track">
+                <div class="thumb">
+                    <div class="end"></div>
+                </div>
+            </div>
+        </div>
+        <div class="viewport" style="width:715px;">
+            <div class="overview">
+                <div class="terminos">
+                    @Resources.Extend.Messages.TERANDCON
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--<div class="centrado">
+        <div id="terminos-aceptar" class="alerta-aceptar">
+            <a>
+                <h3>aceptar</h3>
+                <span></span>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>-->
+</div>

@@ -1,0 +1,44 @@
+@model Domain.Entities.FrontEnd.ShrareUrl
+@{
+    Layout = null;
+}
+
+<div id="compartir-home" class="mm2-sharemm2 mm2redespos content-tooltip">    
+    <div class="clear"></div>
+    <div id="compartirblock" class="compartir-div-home">
+        <div class="compartir-div-t">
+            <h1>@Resources.Global.Messages.NETWORKS</h1>
+            <div class="compartir-div-a" id="compartirbc"><img src="~/resources/images/current/cerrar.png" alt="icon" /></div>
+        </div>
+        <div class="clear"></div>
+        <div class="compartir-data" 
+            data-idea-id="@Model.ideaId"
+            data-name="@Model.name"
+            data-link="@Model.link"
+            data-short-link=""
+            data-picture="@Model.picture"
+            data-caption="@Model.caption"
+            data-description="@Model.description"
+            data-description-fb="@Model.descriptionFB"
+            data-description-tw="@Model.descriptionTW">
+            <div class="compartir-div-item" data-id="facebook">
+			    <a class="c-facebook">Facebook</a>
+		    </div>
+            <div class="compartir-div-item" data-id="twitter">
+			    <a class="c-twitter">Twitter</a>
+		    </div>
+            <div class="compartir-div-item" data-id="google">
+			    <a class="c-google">Google +</a>
+		    </div>
+            <div class="compartir-div-item" data-id="linkedin">
+			    <a class="c-linkedin">Linkedin</a>
+		    </div>
+            <div class="compartir-div-item" data-id="correo">
+                <a class="c-correo">@Resources.Global.Messages.EMAIL</a>
+            </div>
+        </div>
+    </div>
+    <div class="comunidad-info button-share-home" >
+      <div class="tooltip">@Resources.Global.Messages.SHARE</div>
+    </div>
+</div>

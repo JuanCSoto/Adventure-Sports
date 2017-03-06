@@ -1,0 +1,18 @@
+﻿@model Webcore.Models.FEHome
+@{
+  Layout = "~/Views/Layouts/_Common.cshtml";  
+}
+
+@if (ViewBag.Key != null)
+{
+  <script>
+    setTimeout(function () {
+      cancelNotification('@ViewBag.Key');
+    }, 100);
+  </script>
+}
+
+<div class="clear"></div>
+<div class="contenedor-home">
+  @Html.Partial("_Search", 0)
+</div>

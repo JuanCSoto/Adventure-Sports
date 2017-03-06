@@ -1,0 +1,25 @@
+﻿@model Webcore.Areas.Admin.Models.Lenguaje
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" href="@Url.Action("Detail", new { Area = "Admin" })">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px; font-family: Segoe UI Light;">@Resources.Global.Messages.NEW</span></a>
+    <hr />
+    <ul id="listado">
+        @foreach (Domain.Entities.Language item in Model.CollLanguage)
+        {
+            <li>
+                <span class="sptitle">@item.Name</span><br />
+                <span class="spdate">@item.Culturename</span> @Html.Raw(item.IsDefault.Value ? " - <span class='spalias'>" + Resources.Global.Messages.LANGUAGE_DEFAULT + "</span>" : "")
+                <a href="@Url.Action("Detail", new { Area = "Admin", id = item.LanguageId.Value })"><img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+        }
+    </ul>
+</div>

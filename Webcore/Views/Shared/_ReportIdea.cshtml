@@ -1,0 +1,42 @@
+﻿@model int
+@{
+    Layout = null;
+}
+
+<div class="alerta default">
+    <div class="alerta-titulo">
+        <h1>@Resources.Global.Messages.REPORT</h1>
+        <div class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></div>
+    </div>
+    <div class="clear"></div>
+    <div class="default-t">@Resources.Extend.Messages.WHYCONTENT</div>
+    <div class="clear"></div>
+  <div class="reporta-select-container">
+    <select class="reporta-select" id="report-motive">
+        <option>@Resources.Global.Messages.SELECTVERBO</option>
+        <option value="Odio">@Resources.Global.Messages.HATE</option>
+        <option value="Violencia">@Resources.Global.Messages.VIOLENCE</option>
+        <option value="Pornografia">@Resources.Global.Messages.PORGRAPHY</option>
+        <option value="Otro">@Resources.Global.Messages.OTHER</option>
+    </select>
+  </div>
+    <div class="clear"></div>
+    <div class="error" id="report-motive-error">@Resources.Extend.Messages.SELECTREASON</div>
+    <div class="clear"></div>
+    <div class="default-t">@Resources.Global.Messages.DESCRIBE</div>
+    <div class="clear"></div>
+    <textarea class="default-textarea" id="report-text"></textarea>
+    <div class="clear"></div>
+    <!--<div class="error" id="report-text-error">Ingresa una descripción superior a 20 caracteres</div>-->
+    <div class="clear"></div>
+    <div class="centrado">
+        <div class="alerta-aceptar reportar-idea">
+            <a>
+                <h3>@Resources.Global.Messages.REPORT</h3>
+                <span></span>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<input type="hidden" id="report-idea-id" data-id="@Model" />

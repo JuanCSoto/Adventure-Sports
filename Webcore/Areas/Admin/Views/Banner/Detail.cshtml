@@ -1,0 +1,171 @@
+﻿@model Webcore.Areas.Admin.Models.Banners
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section headers {
+@Scripts.Render("~/bundles/jquerycl")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.cleditor.defaultOptions.width = 400;
+        $.cleditor.buttons.image.uploadUrl = '@Url.Action("UploadImage", "Banner")';
+        $("#bannerhtml").cleditor();
+    });
+    
+    sendinfo = function () {
+        var value = $('#bannerFile').val();
+        var b = value.toLowerCase().split('.');
+        
+        if($('#type').val() != '2')
+        {
+            var valid = /^(gif|jpg|png|jpeg|swf)$/.test(b[b.length - 1]);
+            @Html.Raw(Model.Banner != null ? "if(value != '') {" : "")
+            if (valid) {
+                if (b[b.length - 1] == 'swf') {
+                    if ($('#Banner_Width').val() == '') {
+                        $('#Banner_Width').addClass('input-validation-error');
+                        alerts('Debes ingresar el Ancho del archivo swf');
+                        return;
+                    }
+
+                    if ($('#Banner_Height').val() == '') {
+                        $('#Banner_Height').addClass('input-validation-error');
+                        alerts('Debes ingresar el Alto del archivo swf');
+                        return;
+                    }
+                }
+            }
+            else {
+                alerts('Debes ingresar un archivo válido. (jpg, jpeg, gif, png, swf)');
+                return;
+            }
+             @Html.Raw(Model.Banner != null ? "}" : "")
+
+        }
+        bindsections();
+        if ($('#sectionsid').val() != '') {
+            
+            closealert();
+            $('#Form1').submit();
+        }
+        else {
+            alerts('Debe seleccionar por lo menos una sección');
+        }
+    };
+
+    bindsections = function () {
+        var ids = new Array();
+        $('#ful input:checkbox').each(function (index) {
+            if (this.checked) {
+                ids[ids.length] = this.value;
+            }
+        });
+
+        $('#sectionsid').val(ids.join(','));
+    };
+
+    changetype = function () {
+        var val = $('#type').val();
+        $('.nohtml').each(function(index) {
+            if(val == '2')
+                $(this).hide();
+            else
+                $(this).show();
+        });
+
+        if(val == '2') {
+            $('.ishtml').show();
+        }
+        else {
+            $('.ishtml').hide();
+        }
+    };
+</script>
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "Banner", FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+    {
+    @Html.Hidden("sectionsid", "")
+    @Html.ValidationSummary()
+    <div id="ful" class="fieldsusers ulbanner">
+        <span class="spntitle">@Resources.Global.Messages.SECTIONS</span><br />
+        <input type="checkbox" value="0" id="0" checked="@(Model.IsHome != null && Model.IsHome.Value)" />
+        <label for="0">Home</label>
+        @Html.Raw(Model.TreeView) 
+    </div>
+    <ul id="fields" class="fieldsusersr fieldsbanner">
+        <li><span class="spntitle">@Resources.Global.Messages.INFORMATION</span> </li>
+        <li>
+            @Resources.Extend.Messages.TYPE_OF_BANNER<br />
+            <select onchange="changetype()" class="drops" id="type" name="type">
+                <option value="0">Imagen o flash</option>
+                <option selected="@(Model.Banner != null && Model.Banner.Bannertype == 2)" value="2">Html</option>
+            </select>
+        </li>
+        @if (Model.Banner != null)
+        {
+        <li @Html.Raw(Model.Banner.Bannertype == 2 ? "style='display:none;'" : "") class="nohtml">
+            <table class="previewbanner">
+                <tr><td align="center" valign="middle">
+                    @Html.Raw(Model.Banner.Bannertype != 2 ? Business.Utils.GetBannerPreview(Model.Banner, 100, 100) : "")
+                </td></tr>
+            </table>
+        </li>
+        <li>
+            @Resources.Global.Messages.DATE<br />
+            <span class="spdate">@Model.Banner.Bannerdate.Value.ToLongDateString()</span>
+        </li>
+        }
+        <li>@Resources.Global.Messages.NAME<br />
+            @Html.TextBoxFor(t => t.Banner.Name, new { @class = "text val", maxlength = "100" })
+        </li>
+        <li @Html.Raw(Model.Banner != null && Model.Banner.Bannertype == 2 ? "style='display:none;'" : "") class="nohtml">
+            Nombre botón
+            <br />
+            @Html.TextBoxFor(t => t.Banner.Onclick, new { @class = "text val", maxlength = "100" })
+        </li>
+        <li @Html.Raw(Model.Banner != null && Model.Banner.Bannertype == 2 ? "style='display:none;'" : "") class="nohtml">@Resources.Global.Messages.FILE<br />
+            <input type="file" class="text val" id="bannerFile" name="BannerFile" />
+        </li>
+        <li>
+            @Resources.Global.Messages.ACTIVE<br />
+            @Html.CheckBox("Banner.Active", Model.Banner != null && Model.Banner.Active != null ? Model.Banner.Active.Value : false)
+        </li>
+        <li @Html.Raw(Model.Banner != null && Model.Banner.Bannertype == 2 ? "style='display:none;'" : "") class="nohtml">
+            <div class="divcheck2">
+            @Resources.Global.Messages.WIDTH<br />
+            @Html.TextBox("Banner.Width", Model.Banner != null && Model.Banner.Width != null ? Model.Banner.Width.ToString() : null, new { @class = "text val" })</div>
+            <div class="divcheck2">
+            @Resources.Global.Messages.HEIGHT<br />
+            @Html.TextBox("Banner.Height", Model.Banner != null && Model.Banner.Height != null ? Model.Banner.Height.ToString() : null, new { @class = "text val" })
+            </div>
+            <div class="clear"></div>
+        </li>
+        <li>
+            @Resources.Global.Messages.POSITION<br />
+            @Html.DropDownList("Banner.PositionId", new SelectList(Model.Collposition, "PositionId", "Name", Model.Banner != null && Model.Banner.PositionId != null ? Model.Banner.PositionId : null), new { @class = "drops" })
+        </li>
+        <li @Html.Raw(Model.Banner != null && Model.Banner.Bannertype == 2 ? "style='display:none;'" : "") class="nohtml">
+            Url
+            <br />
+            @Html.TextBoxFor(t => t.Banner.Navigateurl, new { @class = "text val", maxlength = "100" })
+        </li>
+        <li @Html.Raw(Model.Banner != null && Model.Banner.Bannertype == 2 ? "" : "style=\"display:none;\"") class="ishtml">
+            Banner html<br />
+            <textarea id="bannerhtml" name="bannerhtml">@Html.Raw(Model.Banner != null && Model.Banner.Bannertype == 2 ? Model.Banner.Bannerfile : "")</textarea>
+        </li>
+    </ul>
+    }
+    <div align="center" id="contentactions">
+        <img onclick="sendinfo()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null)
+        {
+        <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>

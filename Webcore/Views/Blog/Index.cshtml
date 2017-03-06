@@ -1,0 +1,128 @@
+﻿@model Webcore.Models.FEBlogEntry
+@{
+  Layout = null;
+  Domain.Entities.BlogEntry Entity = (Domain.Entities.BlogEntry)Model.Entity;
+  string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+  string picture = siteUrlRoot + "/1024.png";
+  string image = Model.ObjContent.Image;
+  string video = Model.ObjContent.Video;
+  if (!string.IsNullOrEmpty(image))
+  {
+    picture = siteUrlRoot + "/files/" + Entity.ContentId + "/" + image;
+  }
+  else if (video != null)
+  {
+    picture = "http://img.youtube.com/vi/" + video + "/default.jpg";
+  }
+}
+
+<div class="layer-block">
+  <div class="layer-cerrar"><a>
+    <img src="~/resources/images/mimedellin/cerrar.png" alt="icon" /></a></div>
+                @if (Model.CurrentLanguage.LanguageId == 1)
+                {
+                  <div class="layer-titulo">
+                    @Model.ObjContent.NameIngles
+                  </div>
+                }
+                else
+                {
+                    <div class="layer-titulo">
+                        @Model.ObjContent.Name
+                    </div>
+                }
+  <div class="clear"></div>
+  <div class="layer-contenido">
+    <div id="scrollbar2">
+      <div class="scrollbar">
+        <div class="track">
+          <div class="thumb">
+            <div class="end"></div>
+          </div>
+        </div>
+      </div>
+      <div class="viewport">
+        <div class="overview">
+          <div class="layer-usuario">
+            <div class="izquierda">
+              <h2>Hace @Business.Utils.ElapsedTime(Model.ObjContent.Joindate.Value,Culture)</h2>
+            </div>
+          </div>
+          <div class="clear"></div>
+          @if (!string.IsNullOrEmpty(image) || video != null)
+          {
+            <div class="nosotros-contenido-img">
+              @if (video != null)
+              {
+                <iframe id="player" type="text/html" width="683" height="320" src="http://www.youtube.com/embed/@video?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>                            
+              }
+              @if (!string.IsNullOrEmpty(image) && video == null)
+              {
+                if (Model.CurrentLanguage.LanguageId == 1)
+                {
+                    <img src="~/files/@Model.ObjContent.ContentId/@image" alt="@Model.ObjContent.NameIngles" />
+                }
+                else
+                {
+                    <img src="~/files/@Model.ObjContent.ContentId/@image" alt="@Model.ObjContent.Name" />
+                }
+              }
+            </div>
+            <div class="clear"></div>
+          }
+          <div class="clear"></div>
+                @if (Model.CurrentLanguage.LanguageId == 1)
+                {
+                    <div class="layer-idea">@Html.Raw(Entity.DescriptionIngles)</div>
+                }
+                else
+                {
+                    <div class="layer-idea">@Html.Raw(Entity.Description)</div>
+                }
+          <div class="clear" style="height: 10px;"></div>
+          @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl()
+           {
+             name = Entity.Description, 
+             link = siteUrlRoot + "/" + Model.ObjContent.Frienlyname,
+             picture = picture,
+             caption = "",
+             descriptionFB = ViewBag.TXTASITRAIDE,
+             descriptionTW = ViewBag.TXTASITRAIDE,
+             description = ViewBag.TXTASITRAIDE
+           })
+          <div class="clear"></div>
+          <div class="layer-comentarios">
+            <div class="layer-comentarios-t">@Resources.Global.Messages.COMMENTS</div>
+            <div class="clear"></div>
+            <div class="layer-comentario">
+              <div class="layer-comentario-imagen">
+                <div class="img-vertical-middle-overflow">
+                @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                {
+                  <img class="min-32" src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                }
+                else
+                {
+                  <img class="min-32" src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                }
+                </div>
+              </div>
+              <div class="generic-comment izquierda" style="width: 880px;">
+                <textarea id="layer-comment-text" data-id="@Entity.ContentId" data-length="200" data-event-bind="false" data-view="_LayerIdeaCommentsList" data-size="10" data-container="#comments-list-container" data-selector=".layer-comentario img" data-scroll="#scrollbar2"></textarea>
+                <div class="comentar-coment">@Resources.Global.Messages.COMMENT</div>
+                <div class="clear"></div>
+                <div class="comentar-counter-no-image contv2"><span id="comment-counter-@Model.ObjContent.ContentId">200</span> @Resources.Global.Messages.CHARACTERS</div>            				            
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div id="comments-list-container">
+              @Html.Partial("_LayerIdeaCommentsList", Model.CollComments)
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input id="content-id" type="hidden" value="@Entity.ContentId" />

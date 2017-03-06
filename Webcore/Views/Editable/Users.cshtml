@@ -1,0 +1,64 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');  
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>Textos para usuarios</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@Resources.Global.Messages.DESCRIPTION</div>
+      <div class="editable-input">
+        <input type="text" maxlength="50" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.USERS_DESCRIPTION)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_DESCRIPTION)"/>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">Tooltip:</div>
+      <div class="editable-input">
+        <input type="text" maxlength="60" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.USERS_TOOLTIP)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_TOOLTIP)"/>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">Singular:</div>
+      <div class="editable-input">
+        <input type="text" maxlength="10" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.USERS_SINGULAR)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_SINGULAR)"/>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">Plural:</div>
+      <div class="editable-input">
+        <input type="text" maxlength="10" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.USERS_PLURAL)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_PLURAL)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <div class="centrado">
+    <div class="alerta-aceptar">
+      <a>
+        <h3>@Resources.Global.Messages.SAVE</h3>
+        <span></span>
+      </a>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

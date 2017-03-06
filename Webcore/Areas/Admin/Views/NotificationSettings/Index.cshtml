@@ -1,0 +1,66 @@
+﻿@model Webcore.Areas.Admin.Models.NotificationSettingsModel
+@{
+  Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+  string content = Url.Content("~/").TrimEnd('/');
+}
+
+<script>
+  var path = '@Url.Content("~").TrimEnd('/')';
+
+  function onlyNumbers(event) {
+    if ((event.which >= 48 && event.which <= 57) || event.which == 0 || event.which == 8) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  $(document).ready(function () {
+    $('#finishing-process').unbind('keypress').keypress(onlyNumbers);
+
+    $('#aceptar').click(function () {
+      var valuesJSON = [];
+      $.each($('.editable-value'), function (index, obj) {
+        valuesJSON[valuesJSON.length] = {
+          TypeID: $(obj).attr('data-id'),
+          ValueType: $(obj).attr('data-type'),
+          Value: $(obj).val(),
+        };
+      });
+
+      var stringJSON = JSON.stringify(valuesJSON);
+
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: path + '/editable/savechanges',
+        data: {
+          json: stringJSON
+        }
+      }).done(function (json) {
+        if (json.result) {
+          document.location.href = document.location.href;
+        }
+        else {
+          alert('Esta acción no se pudo realizar.');
+        }
+      });
+    });
+  });
+</script>
+<div style="text-align: left">
+  <form>
+    Nombre remitente - notificación correo     
+    <br />
+    <input type="text" class="editable-value text" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.ADMIN_EMAIL_NAME)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.ADMIN_EMAIL_NAME)"/>
+    <br />
+    Numero de días pulso por finalizar - notificación sistema 
+    <br />
+    <input id="finishing-process" type="text" class="editable-value text" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.ADMIN_N_FINISHING_PROCESS)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.ADMIN_N_FINISHING_PROCESS)"/>
+    <br />
+    <br />
+    <button id="aceptar" type="button">Guardar</button>
+    <button type="reset">Cancelar</button>
+  </form>
+</div>

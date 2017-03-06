@@ -1,0 +1,49 @@
+@model List<Domain.Entities.FrontEnd.CommentsPaging>
+@{
+  string date = string.Empty;
+
+  int? userId = ViewBag.CurrentUserId;
+  bool? ideaOwner = ViewBag.IdeaOwner;
+}
+@foreach (Domain.Entities.FrontEnd.CommentsPaging comment in Model)
+{
+<div class="layer-comentario" data-id="@comment.CommentId.Value">
+    <div class="edit-container-comment mm2-edit-layer-comment"></div>
+     <div class="admin-adjust">@Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = comment.CommentId.Value, type = "comment", email = comment.Email, location = "layer-comments" })</div>
+
+    <a href="@Url.Content("~")perfil/index/@(comment.UserId)">
+        <div class="layer-comentario-imagen">
+          <div class="img-vertical-middle-overflow">
+            <img class="min-32" src="@Business.Utils.fixLocalUserImagePath(comment.UserImage)" alt="avatar" />
+          </div>
+        </div>    
+    </a>
+    <div class="izquierda" style="width:880px;">
+        <a href="@Url.Content("~")perfil/index/@(comment.UserId)"><h1>@comment.UserNames</h1></a>
+        <h6> @Business.Utils.ElapsedTime(comment.Creationdate.Value,Culture)</h6>
+        <div class="clear"></div>
+        <p>
+            @comment.Text
+        </p>
+    </div>
+        <div class="idea-comentario-admin">
+       
+
+
+
+
+        @if (userId.HasValue && comment.UserId == userId)
+        {
+          <div class="element-action-comment editar-comentario" data-id="@comment.CommentId" data-location="layer-comments">@Resources.Global.Messages.EDIT</div>
+        }
+
+
+
+        @if (userId.HasValue && comment.UserId == userId || ideaOwner.HasValue && ideaOwner.Value)
+{
+    <div class="element-action-comment borrar-comentario" data-id="@comment.CommentId" data-location="layer-comments" data-title-modal="@Resources.Extend.Messages.DELETE_COMMENT_TITLE" data-message-modal="@Resources.Extend.Messages.DELETE_COMMENT_MESSAGE">@Resources.Global.Messages.ERASE</div>
+}
+    </div>
+</div>
+<div class="clear"></div>
+}

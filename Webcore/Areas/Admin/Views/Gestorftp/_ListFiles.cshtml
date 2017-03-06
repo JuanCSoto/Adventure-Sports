@@ -1,0 +1,12 @@
+﻿@model System.IO.FileInfo[]
+<ul id="listado">
+@foreach (System.IO.FileInfo item in Model)
+{
+    <li data-sel="on" onclick="selectli(this, $(this).attr('data-sel'), '@item.FullName.Replace(@"\", "\\\\")')">
+        <img align="left" src="~/resources/images/@(Business.Utils.GetIconExtension(item.Name))" />
+        <span class="sptitle">@item.Name</span>
+        <br />
+        <span class="spdate">@item.CreationTime.ToString("dd / MM / yyyy")</span> | <span class="spdate">@item.LastWriteTime.ToString("dd / MM / yyyy")</span>
+    </li>
+}
+</ul>

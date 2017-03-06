@@ -1,0 +1,1563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADDYOURCOMMENT" xml:space="preserve">
+    <value>Agrega tu comentario</value>
+  </data>
+  <data name="ALONECAN" xml:space="preserve">
+    <value>Solo puedes escribir 250 caractéres</value>
+  </data>
+  <data name="APPLY_FILTERS" xml:space="preserve">
+    <value>Seleccione los filtros que desea aplicar</value>
+  </data>
+  <data name="BANNERNO" xml:space="preserve">
+    <value>Banner no disponible</value>
+  </data>
+  <data name="BLOCK_IDEA" xml:space="preserve">
+    <value>Bloquear idea</value>
+  </data>
+  <data name="BLOCK_USER" xml:space="preserve">
+    <value>Bloquear usuario</value>
+  </data>
+  <data name="BYJOINN" xml:space="preserve">
+    <value>Uniendo fuerzas podremos construir la ciudad que soñamos</value>
+  </data>
+  <data name="CANALSO" xml:space="preserve">
+    <value>Tambíen, puedes escribirnos a</value>
+  </data>
+  <data name="CHOOSEANSWER" xml:space="preserve">
+    <value>Escoge tu respuesta</value>
+  </data>
+  <data name="CHOOSECITY" xml:space="preserve">
+    <value>Elige la idea que más te guste para nuestra ciudad.</value>
+  </data>
+  <data name="CITIZENPARTI" xml:space="preserve">
+    <value>Participación ciudadana</value>
+  </data>
+  <data name="CITIZENSCO" xml:space="preserve">
+    <value>ciudadanos están co-creando en CITIES FOR LIFE</value>
+  </data>
+  <data name="CITYCHA" xml:space="preserve">
+    <value>Reto ciudad</value>
+  </data>
+  <data name="CITYHEARD" xml:space="preserve">
+    <value>Cuando tú hablas, la ciudad escucha.</value>
+  </data>
+  <data name="CLASSFINALIZADO" xml:space="preserve">
+    <value>finalizado-espanol</value>
+  </data>
+  <data name="CLASSFINALIZADOINTERNA" xml:space="preserve">
+    <value>finalizado-interna-espanol</value>
+  </data>
+  <data name="CLASSPERFILES" xml:space="preserve">
+    <value>perfil-clasificacion-espanol</value>
+  </data>
+  <data name="CLASSTOOLTIPMONEDA" xml:space="preserve">
+    <value>tooltip-moneda-espanol</value>
+  </data>
+  <data name="CLASSTOOLTIPMONEDAPROFILE" xml:space="preserve">
+    <value>tooltip-moneda-profile-espanol</value>
+  </data>
+  <data name="CLEAN_AUDIT" xml:space="preserve">
+    <value>¿Esta seguro que desea eliminar los registros de la auditoria?</value>
+  </data>
+  <data name="CLEAN_AUDIT_MESSAGE" xml:space="preserve">
+    <value>Elimina toda la información de la auditoria de la aplicación.</value>
+  </data>
+  <data name="CLEAN_LOG" xml:space="preserve">
+    <value>¿Esta seguro que desea eliminar los registros del log de la aplicación?</value>
+  </data>
+  <data name="CLEAN_LOG_MESSAGES" xml:space="preserve">
+    <value>Elimina toda la información del log de errores</value>
+  </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="COMPROMCITIZENS" xml:space="preserve">
+    <value>Ciudadanos comprometidos</value>
+  </data>
+  <data name="CONFIRMPASSWORD" xml:space="preserve">
+    <value>Tu contraseña ha sido cambiada.</value>
+  </data>
+  <data name="CONFIRM_PASSWORD" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="CONTRIBUTOR" xml:space="preserve">
+    <value>PATROCINADORES</value>
+  </data>
+  <data name="CREATENEWS" xml:space="preserve">
+    <value>Crear Noticia</value>
+  </data>
+  <data name="CURRENT_ROLE" xml:space="preserve">
+    <value>Roles actuales</value>
+  </data>
+  <data name="DATAPROTECTION" xml:space="preserve">
+    <value>Política de protección de datos</value>
+  </data>
+  <data name="DAYREMAINING" xml:space="preserve">
+    <value>días &lt;br&gt; restantes</value>
+  </data>
+  <data name="DAYS" xml:space="preserve">
+    <value>día(s) de acabarse</value>
+  </data>
+  <data name="DAYSREMA" xml:space="preserve">
+    <value>días restantes</value>
+  </data>
+  <data name="DELETE_ITEM" xml:space="preserve">
+    <value>¿Esta seguro que desea eliminar el registro?</value>
+  </data>
+  <data name="DISABLEMAIL" xml:space="preserve">
+    <value>Si no deseas seguir recibiendo estos correos, escríbenos a info@citiesfor.life con la palabra "desactivar correo"</value>
+  </data>
+  <data name="DISCOVERHOW" xml:space="preserve">
+    <value>Descubre cuantos likes y comentarios ha generado tu participación.</value>
+  </data>
+  <data name="DOYOUKNOW" xml:space="preserve">
+    <value>¿Sabes lo que logras cuando te empoderas de tu territorio?&lt;br&gt;&lt;span&gt; Estos proyectos te demuestran que las ciudades las crean sus habitantes.&lt;/span&gt;</value>
+  </data>
+  <data name="ECOCITIESFORLIFE" xml:space="preserve">
+    <value>El ecosistema CITIES FOR LIFE espera tu aporte.</value>
+  </data>
+  <data name="EDITIDEA" xml:space="preserve">
+    <value>Edita tu idea</value>
+  </data>
+  <data name="EMAILME" xml:space="preserve">
+    <value>Enviarme un correo cuando una de mis idea sea bloqueada</value>
+  </data>
+  <data name="ENTEREMAIL" xml:space="preserve">
+    <value>Ingresa tu correo electrónico:</value>
+  </data>
+  <data name="ENTERMESS" xml:space="preserve">
+    <value>Ingresa un mensaje</value>
+  </data>
+  <data name="ERRORBLOCKED" xml:space="preserve">
+    <value>Estás bloqueado.</value>
+  </data>
+  <data name="ERROREMAIL" xml:space="preserve">
+    <value>Ingresa un correo válido</value>
+  </data>
+  <data name="ERRORMAXIDEA" xml:space="preserve">
+    <value>Tu idea debe tener máximo</value>
+  </data>
+  <data name="ERRORMESSAGESEMAIL" xml:space="preserve">
+    <value>El correo no es válido</value>
+  </data>
+  <data name="ERRORMESSAGESEMAIL2" xml:space="preserve">
+    <value>Este correo no tiene una cuenta asociada.</value>
+  </data>
+  <data name="ERRORMIN20" xml:space="preserve">
+    <value>Tu idea debe tener mínimo 20 caracteres.</value>
+  </data>
+  <data name="ERRORMOVIL" xml:space="preserve">
+    <value>Ingresa un número celular válido</value>
+  </data>
+  <data name="ERRORMOVILINVALIDO" xml:space="preserve">
+    <value>Número celular invalido</value>
+  </data>
+  <data name="ERRORPASSWORD" xml:space="preserve">
+    <value>Ingresa una contraseña</value>
+  </data>
+  <data name="ERRORPASSWORDINVALIDO" xml:space="preserve">
+    <value>El correo o la contraseña es incorrecta. ¡Intenta de nuevo!</value>
+  </data>
+  <data name="ERRORPASSWORDNOSAVE" xml:space="preserve">
+    <value>Aún no cambiamos tu contraseña. ¡Vuelve a intentarlo!</value>
+  </data>
+  <data name="ERRORREDESSOCIALES" xml:space="preserve">
+    <value>Tu información no ha sido actualizada, puede que la dirección ingresada no sea válida. ¡Ingresa la dirección completa!</value>
+  </data>
+  <data name="ERRORSELECTMAP" xml:space="preserve">
+    <value>Por favor selecciona una ubicación en el mapa.</value>
+  </data>
+  <data name="ERRORTITULO" xml:space="preserve">
+    <value>¡Información incorrecta!</value>
+  </data>
+  <data name="ERRORVIDEOINVALIDO" xml:space="preserve">
+    <value>Ingresa un vídeo válido.</value>
+  </data>
+  <data name="ERRORVOTO" xml:space="preserve">
+    <value>Tu voto no ha sido guardado, ¡Ya habías votado en esta pregunta!</value>
+  </data>
+  <data name="ERRORVOTOSAVE" xml:space="preserve">
+    <value>Tu voto no ha sido guardado. ¡Intenta de nuevo!</value>
+  </data>
+  <data name="ESATHAT" xml:space="preserve">
+    <value>ESA QUE SE EDIFICA CON EL APORTE DE TODOS.</value>
+  </data>
+  <data name="EXPORT_AUDIT" xml:space="preserve">
+    <value>Exporta la información de la auditoria de la aplicación a formato excel.</value>
+  </data>
+  <data name="EXPORT_LOG" xml:space="preserve">
+    <value>Exporta la información del log de errores a formato excel.</value>
+  </data>
+  <data name="FAILED_INFORMATION" xml:space="preserve">
+    <value>No se pudo verificar la información</value>
+  </data>
+  <data name="FINDBEST" xml:space="preserve">
+    <value>Encuentra las mejores ideas de la pregunta en la que estás navegando</value>
+  </data>
+  <data name="FINDOUT" xml:space="preserve">
+    <value>¡Entérate!</value>
+  </data>
+  <data name="FIND_BY_NAME" xml:space="preserve">
+    <value>Buscar por el nombre</value>
+  </data>
+  <data name="FIND_BY_TEXT" xml:space="preserve">
+    <value>Buscar por palabra o frase</value>
+  </data>
+  <data name="FUTURE" xml:space="preserve">
+    <value>Las buenas  ideas nos llevan a ese futuro donde queremos estar.</value>
+  </data>
+  <data name="GENDER" xml:space="preserve">
+    <value>Genero</value>
+  </data>
+  <data name="GENERAL_SEARCH" xml:space="preserve">
+    <value>Busqueda general</value>
+  </data>
+  <data name="GETTOKNOW" xml:space="preserve">
+    <value>!CONÓCENOS!</value>
+  </data>
+  <data name="HOMESECTIONS7" xml:space="preserve">
+    <value>&lt;span&gt;¿Quieres saber más de nuestras experiencias?&lt;/span&gt;&lt;br&gt;Aquí te contamos algunas historias de ciudades para la vida.</value>
+  </data>
+  <data name="HOME_SECCION4" xml:space="preserve">
+    <value>¿Tienes una propuesta que puede transformar ciudades para la vida?&lt;br&gt;&lt;span&gt;Aquí puedes compartirlas con ciudadanos de todo el mundo.&lt;/span&gt;</value>
+  </data>
+  <data name="IKNOW" xml:space="preserve">
+    <value>Ya se</value>
+  </data>
+  <data name="IMAGEMX" xml:space="preserve">
+    <value>Imagen Máximo 5MB</value>
+  </data>
+  <data name="IMGHOMESLIDE1" xml:space="preserve">
+    <value>/Resources/Images/img-slide-3-espanol.png</value>
+  </data>
+  <data name="INFORMATION_AUDIT" xml:space="preserve">
+    <value>Mantenimiento de la información de la auditoria de la aplicación.</value>
+  </data>
+  <data name="INFORMATION_LOG" xml:space="preserve">
+    <value>Mantenimiento del log de errores de la aplicación.</value>
+  </data>
+  <data name="INFORMATION_SECTION" xml:space="preserve">
+    <value>Seleccione una de las secciones para modificar la información.</value>
+  </data>
+  <data name="INNOVATION" xml:space="preserve">
+    <value>Este año el Encuentro Global tendrá lugar en París, donde estamos ansiosos de presentar nuestros mejores casos de éxito e ideas de como enfrentar retos urbanos. &lt;br /&gt;&lt;br /&gt;
+Empecemos por compartir conocimiento y fortalecer la colaboración entre nuestras ciudades. Emprender este camino por sí sólo puede resultar abrumador. Nosotros creemos que es más emocionante, divertido y exitoso cuando co-creamos, comunicamos y encendemos el motor del cambio mancomunadamente.</value>
+  </data>
+  <data name="INSPIRED" xml:space="preserve">
+    <value>Inspírate, crea y transforma aquí:</value>
+  </data>
+  <data name="INSTIMPLEM" xml:space="preserve">
+    <value>Institucion que Implementa</value>
+  </data>
+  <data name="INSTSOURCE" xml:space="preserve">
+    <value>Intitucion origen</value>
+  </data>
+  <data name="ITGOES" xml:space="preserve">
+    <value>Sube un video</value>
+  </data>
+  <data name="ITGOESIMA" xml:space="preserve">
+    <value>Sube una imagen</value>
+  </data>
+  <data name="JOININITIATIVE" xml:space="preserve">
+    <value>Participa en esta iniciativa ciudadana</value>
+  </data>
+  <data name="LAST_ACTIVITY" xml:space="preserve">
+    <value>Ultimas actividades</value>
+  </data>
+  <data name="LEADING" xml:space="preserve">
+    <value>LIDERA</value>
+  </data>
+  <data name="LOAD_FILES" xml:space="preserve">
+    <value>Cargar archivos</value>
+  </data>
+  <data name="LONGTEXT" xml:space="preserve">
+    <value>&lt;p&gt;
+                            &lt;strong&gt;PROTECCIÓN  DE DATOS Y POLÍTICA DE PRIVACIDAD DATOS PERSONALES&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Para la participación en la plataforma, &lt;strong&gt;RUTA N&lt;/strong&gt;, actuando como responsable de los datos, recopila información personal, como: Nombre, Apellido, email, usuario y contraseña.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; recopila y utiliza la información personal para la propia administración de los servicios de la página, para ofrecer a los usuarios los servicios de información y promoción. De la misma manera, &lt;strong&gt;RUTA N&lt;/strong&gt; hace uso de los datos personales para informar al usuario sobre contenidos disponibles. &lt;strong&gt;RUTA N&lt;/strong&gt; no pone a la venta, alquila ni arrienda a terceros sus listas de registrados en sus páginas. No obstante, puede que en ocasiones se ponga en contacto con el usuario en nombre de ciertos aliados externos y/o para informarle sobre el lanzamiento de ofertas concretas que pudieran ser de su interés, siempre vinculados al objeto de esta página. En estos casos, la información personal del usuario (nombre y apellidos, teléfonos, correo electrónico, ciudad, foto de perfil, biografía, tipo de documento, número de documento, intereses, u otra información privada) no se transfiere a terceros.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; puede recolectar en la base de datos, para el uso dentro de la plataforma y actividades promocionales, datos sensibles (aquellos que afectan la intimidad del titular o cuyo uso indebido puede generar discriminación), tales como datos biométricos. En tal caso &lt;strong&gt;RUTA N&lt;/strong&gt; garantiza el uso de acuerdo con los principios constitucionales de Colombia y el respeto por los derechos fundamentales.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Adicionalmente, &lt;strong&gt;RUTA N&lt;/strong&gt; le informa al usuario que como titular de los datos goza de los derechos previstos en la Constitución de Colombia y la ley, especialmente el derecho a conocer, actualizar, rectificar y suprimir su información personal; así como el derecho a revocar el consentimiento otorgado para el tratamiento de datos personales y todos los derechos establecidos en la Ley 1581 (Ley de Protección de Datos Personales) de 2012 y el Decreto 1377 de 2013.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; se compromete a proteger la seguridad de la información personal haciendo uso de tecnologías y procedimientos de seguridad que garantizan la protección de la información frente al acceso, revelación y usos no autorizados, así mismo, usará los datos, en especial aquellos de los menores de edad, de acuerdo con los principios constitucionales, respetando los derechos fundamentales y el interés superior de los menores de edad, si tiene cualquier inquietud al respecto, puede enviar un correo electrónico a: info@citiesfor.life
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Con base en lo anteriormente expuesto, en calidad de participante usuario o padre o acudiente del participante menor de edad:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Acepto de manera expresa, voluntaria, previa, explícita, informada e inequívoca la recopilación, almacenamiento y tratamiento de mis datos personales, así como los del menor de edad que represento.&lt;/li&gt;
+                            &lt;li&gt;Acepto el envío de información promocional al correo electrónico registrado.&lt;/li&gt;
+                            &lt;li&gt;Declaro que la información suministrada es cierta, fidedigna y actualizada.&lt;/li&gt;
+                            &lt;li&gt;Entiendo y acepto que los datos personales y demás información suministrados por el participante serán objeto de tratamiento automatizado e incorporada a la base de datos administrada por la corporación &lt;strong&gt;RUTA N&lt;/strong&gt;.&lt;/li&gt;
+                            &lt;li&gt;Otorgo mi consentimiento libre, expreso e informado para que la información personal que se ha ingresado sea almacenada, recopilada o utilizada por &lt;strong&gt;RUTA N&lt;/strong&gt; directamente o a través de terceros, con fines de comunicación, envío de información y/o para mercadeo.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            Si el usuario desea darse de baja de esta plataforma, solicitar alguna modificación, corrección o supresión de todos los datos que nos ha proporcionado, dejar de recibir información comercial, así como contactarse con nosotros por cualquier otra causa, puede enviar un correo electrónico a info@citiesfor.life
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Yo reconozco que he leído y entiendo los anteriores términos de uso y acepto que mi USO DE LA PLATAFORMA ES UN RECONOCIMIENTO DE MI ACEPTACIÓN DE LOS TÉRMINOS Y CONDICIONES DEL PRESENTE ACUERDO DE CONDICIONES DE USO.
+                        &lt;/p&gt;
+                        &lt;p&gt;&lt;strong&gt;Política de privacidad&lt;/strong&gt;&lt;/p&gt;
+                        &lt;p&gt;
+                            Su privacidad es importante para nosotros. Al aceptar esta política de privacidad el usuario acepta que su información sea consultada y usada de su cuenta (Facebook, Twitter, Google + o Linkedin), los datos que se utilizarán los siguientes:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Nombre completo, el cual será mostrado a los demás usuarios&lt;/li&gt;
+                            &lt;li&gt;Su edad, la cual será́ consultada para comprobar la edad del usuario&lt;/li&gt;
+                            &lt;li&gt;El id de cuenta (Facebook, Twitter, Google + o Linkedin), el cual será almacenado para poder guardar el progreso del usuario en la aplicación.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            El usuario acepta que proporcionará información exacta y completa, y que va a actualizar la información lo antes posible después de cambios. Usted entiende que su Id de usuario, nombres y apellidos, biografía, link a redes sociales y foto de perfil estarán disponibles al público y que los motores de búsqueda pueden indexar su nombre y la foto de su perfil.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Ninguna información será distribuida a terceros y la única información que será almacenada, hasta que el usuario comunique por medio de un mensaje que desea que su cuenta sea eliminada, será el id de la cuenta (Facebook, Twitter, Google + o Linkedin).
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario es el único responsable de mantener la confidencialidad de la información de acceso, y será responsable de todos los usos de la información de acceso.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;Cambios a los términos del servicio y la política de  privacidad&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; se reserva el derecho, a discreción, de cambiar, modificar, añadir o eliminar partes de estas condiciones de servicio en cualquier momento, publicando los términos enmendados en o dentro del servicio. También puede dar aviso de cualquier cambio en un mensaje de correo electrónico o mensajería dentro del servicio. Se considerará que ha aceptado estos cambios si continua utilizando el servicio. Salvo que se indique lo contrario, todos los términos enmendados entrarán automáticamente en vigencia después de su publicación inicial.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            La plataforma de cocreación &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; siempre contará con un link con la última versión de los términos y condiciones, el usuario será́ responsable de comprobar los términos y condiciones periódicamente por si hubiese cambios que pudieran afectarle. Si continúa utilizando el sitio web tras la modificación de los términos y condiciones de uso, los estará́ aceptando implícitamente.
+                        &lt;/p&gt;</value>
+  </data>
+  <data name="MAILTO" xml:space="preserve">
+    <value>El correo se enviara a</value>
+  </data>
+  <data name="MAINIMAGE" xml:space="preserve">
+    <value>La imagen principal para tu noticia</value>
+  </data>
+  <data name="MANUAL_ORDER" xml:space="preserve">
+    <value>Orden manual</value>
+  </data>
+  <data name="MESSAGESSSENDEMAIL1" xml:space="preserve">
+    <value>Revisa tu correo</value>
+  </data>
+  <data name="MESSAGESSSENDEMAIL2" xml:space="preserve">
+    <value>Enviamos un mensaje a tu correo electrónico para que cambies tu contraseña.</value>
+  </data>
+  <data name="MOREINFO" xml:space="preserve">
+    <value>Más info</value>
+  </data>
+  <data name="MOREOF" xml:space="preserve">
+    <value>Más de</value>
+  </data>
+  <data name="MOSTCOMM" xml:space="preserve">
+    <value>Más comentadas</value>
+  </data>
+  <data name="MYACTIVITY" xml:space="preserve">
+    <value>Mi Actividad</value>
+  </data>
+  <data name="MYIDEAS" xml:space="preserve">
+    <value>Mis Ideas</value>
+  </data>
+  <data name="NAMEANDLAST" xml:space="preserve">
+    <value>Nombre y Apellidos:</value>
+  </data>
+  <data name="NEAREST" xml:space="preserve">
+    <value>Los ciudadanos más cercanos</value>
+  </data>
+  <data name="NORESULTPARAMETRO" xml:space="preserve">
+    <value>No se encontraron resultados para el parámetro de búsqueda</value>
+  </data>
+  <data name="NO_RECORDS_FOUND" xml:space="preserve">
+    <value>No se encontraron registros</value>
+  </data>
+  <data name="PARTICIPATING" xml:space="preserve">
+    <value>Ciudadanos participando</value>
+  </data>
+  <data name="PARTNERS" xml:space="preserve">
+    <value>ALIADOS</value>
+  </data>
+  <data name="PLACEMAP" xml:space="preserve">
+    <value>Ubica tu respuesta en el mapa</value>
+  </data>
+  <data name="PLEASEIT" xml:space="preserve">
+    <value>Por favor ingresa los caracteres que ves en la imagen:</value>
+  </data>
+  <data name="POSTULATES" xml:space="preserve">
+    <value>Postula tu Reto</value>
+  </data>
+  <data name="POSTULATESTUDY" xml:space="preserve">
+    <value>Postula tu Caso de Éxito</value>
+  </data>
+  <data name="PRIVACYALL" xml:space="preserve">
+    <value>&lt;p&gt;
+                        &lt;strong&gt;PROTECCIÓN  DE DATOS Y POLÍTICA DE PRIVACIDAD DATOS PERSONALES&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Para la participación en la plataforma, &lt;strong&gt;RUTA N&lt;/strong&gt;, actuando como responsable de los datos, recopila información personal, como: Nombre, Apellido, email, usuario y contraseña.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; recopila y utiliza la información personal para la propia administración de los servicios de la página, para ofrecer a los usuarios los servicios de información y promoción. De la misma manera, &lt;strong&gt;RUTA N&lt;/strong&gt; hace uso de los datos personales para informar al usuario sobre contenidos disponibles. &lt;strong&gt;RUTA N&lt;/strong&gt; no pone a la venta, alquila ni arrienda a terceros sus listas de registrados en sus páginas. No obstante, puede que en ocasiones se ponga en contacto con el usuario en nombre de ciertos aliados externos y/o para informarle sobre el lanzamiento de ofertas concretas que pudieran ser de su interés, siempre vinculados al objeto de esta página. En estos casos, la información personal del usuario (nombre y apellidos, teléfonos, correo electrónico, ciudad, foto de perfil, biografía, tipo de documento, número de documento, intereses, u otra información privada) no se transfiere a terceros.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; puede recolectar en la base de datos, para el uso dentro de la plataforma y actividades promocionales, datos sensibles (aquellos que afectan la intimidad del titular o cuyo uso indebido puede generar discriminación), tales como datos biométricos. En tal caso &lt;strong&gt;RUTA N&lt;/strong&gt; garantiza el uso de acuerdo con los principios constitucionales de Colombia y el respeto por los derechos fundamentales.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Adicionalmente, &lt;strong&gt;RUTA N&lt;/strong&gt; le informa al usuario que como titular de los datos goza de los derechos previstos en la Constitución de Colombia y la ley, especialmente el derecho a conocer, actualizar, rectificar y suprimir su información personal; así como el derecho a revocar el consentimiento otorgado para el tratamiento de datos personales y todos los derechos establecidos en la Ley 1581 (Ley de Protección de Datos Personales) de 2012 y el Decreto 1377 de 2013.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; se compromete a proteger la seguridad de la información personal haciendo uso de tecnologías y procedimientos de seguridad que garantizan la protección de la información frente al acceso, revelación y usos no autorizados, así mismo, usará los datos, en especial aquellos de los menores de edad, de acuerdo con los principios constitucionales, respetando los derechos fundamentales y el interés superior de los menores de edad, si tiene cualquier inquietud al respecto, puede enviar un correo electrónico a: info@citiesfor.life
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Con base en lo anteriormente expuesto, en calidad de participante usuario o padre o acudiente del participante menor de edad:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Acepto de manera expresa, voluntaria, previa, explícita, informada e inequívoca la recopilación, almacenamiento y tratamiento de mis datos personales, así como los del menor de edad que represento.&lt;/li&gt;
+                        &lt;li&gt;Acepto el envío de información promocional al correo electrónico registrado.&lt;/li&gt;
+                        &lt;li&gt;Declaro que la información suministrada es cierta, fidedigna y actualizada.&lt;/li&gt;
+                        &lt;li&gt;Entiendo y acepto que los datos personales y demás información suministrados por el participante serán objeto de tratamiento automatizado e incorporada a la base de datos administrada por la corporación &lt;strong&gt;RUTA N&lt;/strong&gt;.&lt;/li&gt;
+                        &lt;li&gt;Otorgo mi consentimiento libre, expreso e informado para que la información personal que se ha ingresado sea almacenada, recopilada o utilizada por &lt;strong&gt;RUTA N&lt;/strong&gt; directamente o a través de terceros, con fines de comunicación, envío de información y/o para mercadeo.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        Si el usuario desea darse de baja de esta plataforma, solicitar alguna modificación, corrección o supresión de todos los datos que nos ha proporcionado, dejar de recibir información comercial, así como contactarse con nosotros por cualquier otra causa, puede enviar un correo electrónico a info@citiesfor.life
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Yo reconozco que he leído y entiendo los anteriores términos de uso y acepto que mi USO DE LA PLATAFORMA ES UN RECONOCIMIENTO DE MI ACEPTACIÓN DE LOS TÉRMINOS Y CONDICIONES DEL PRESENTE ACUERDO DE CONDICIONES DE USO.
+                    &lt;/p&gt;
+                    &lt;p&gt;&lt;strong&gt;Política de privacidad&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p&gt;
+                        Su privacidad es importante para nosotros. Al aceptar esta política de privacidad el usuario acepta que su información sea consultada y usada de su cuenta (Facebook, Twitter, Google + o Linkedin), los datos que se utilizarán los siguientes:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Nombre completo, el cual será mostrado a los demás usuarios&lt;/li&gt;
+                        &lt;li&gt;Su edad, la cual será́ consultada para comprobar la edad del usuario&lt;/li&gt;
+                        &lt;li&gt;El id de cuenta (Facebook, Twitter, Google + o Linkedin), el cual será almacenado para poder guardar el progreso del usuario en la aplicación.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        El usuario acepta que proporcionará información exacta y completa, y que va a actualizar la información lo antes posible después de cambios. Usted entiende que su Id de usuario, nombres y apellidos, biografía, link a redes sociales y foto de perfil estarán disponibles al público y que los motores de búsqueda pueden indexar su nombre y la foto de su perfil.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Ninguna información será distribuida a terceros y la única información que será almacenada, hasta que el usuario comunique por medio de un mensaje que desea que su cuenta sea eliminada, será el id de la cuenta (Facebook, Twitter, Google + o Linkedin).
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario es el único responsable de mantener la confidencialidad de la información de acceso, y será responsable de todos los usos de la información de acceso.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;Cambios a los términos del servicio y la política de  privacidad&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; se reserva el derecho, a discreción, de cambiar, modificar, añadir o eliminar partes de estas condiciones de servicio en cualquier momento, publicando los términos enmendados en o dentro del servicio. También puede dar aviso de cualquier cambio en un mensaje de correo electrónico o mensajería dentro del servicio. Se considerará que ha aceptado estos cambios si continua utilizando el servicio. Salvo que se indique lo contrario, todos los términos enmendados entrarán automáticamente en vigencia después de su publicación inicial.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        La plataforma de cocreación &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; siempre contará con un link con la última versión de los términos y condiciones, el usuario será́ responsable de comprobar los términos y condiciones periódicamente por si hubiese cambios que pudieran afectarle. Si continúa utilizando el sitio web tras la modificación de los términos y condiciones de uso, los estará́ aceptando implícitamente.
+                    &lt;/p&gt;</value>
+  </data>
+  <data name="PRIVACYPO" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="PROFILEPI" xml:space="preserve">
+    <value>Foto de perfil:</value>
+  </data>
+  <data name="PROPOSEDSOLUTION" xml:space="preserve">
+    <value>PROPUESTAS DE SOLUCIÓN</value>
+  </data>
+  <data name="REMOVEPIC" xml:space="preserve">
+    <value>Borrar imagen</value>
+  </data>
+  <data name="RESOURCE_NOT_FOUND" xml:space="preserve">
+    <value>Lo sentímos. El recurso que buscas ya no esta disponible</value>
+  </data>
+  <data name="SAVESETTINGS" xml:space="preserve">
+    <value>Guardar configuración</value>
+  </data>
+  <data name="SEARCHESPECIFI" xml:space="preserve">
+    <value>¿Buscas algo específico?</value>
+  </data>
+  <data name="SEARCH_RESULT" xml:space="preserve">
+    <value>Resultado de la busqueda</value>
+  </data>
+  <data name="SEEMORE" xml:space="preserve">
+    <value>Ver más</value>
+  </data>
+  <data name="SELECTREASON" xml:space="preserve">
+    <value>Selecciona un motivo</value>
+  </data>
+  <data name="SENDAN" xml:space="preserve">
+    <value>Enviarme un correo cuando un pulso está a</value>
+  </data>
+  <data name="SENDINGMAIL" xml:space="preserve">
+    <value>ENVIO DE CORREO</value>
+  </data>
+  <data name="SENDME" xml:space="preserve">
+    <value>Enviarme un correo cuando un pulso finalice</value>
+  </data>
+  <data name="SENDNEW" xml:space="preserve">
+    <value>Enviarme un correo cuando se publique un nuevo pulso</value>
+  </data>
+  <data name="SHAREITHERE" xml:space="preserve">
+    <value>COMPARTIRLAS</value>
+  </data>
+  <data name="SHAREVOTE" xml:space="preserve">
+    <value>Miremos al mundo con ojos "Co-Creadores", creyendo en la coopetición en vez de la competición!</value>
+  </data>
+  <data name="SOCIAL" xml:space="preserve">
+    <value>o a través de las redes sociales</value>
+  </data>
+  <data name="SOCIALMEDIA" xml:space="preserve">
+    <value>Redes Sociales</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>Las acciones hablan más fuerte que los sueños.</value>
+  </data>
+  <data name="START_TYPING" xml:space="preserve">
+    <value>Empieza a escribir</value>
+  </data>
+  <data name="SUBJECT" xml:space="preserve">
+    <value>Ingresa un asunto</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Casos de exito</value>
+  </data>
+  <data name="SUPPORT" xml:space="preserve">
+    <value>Sustenta tu idea, sube un video</value>
+  </data>
+  <data name="SUPPORTPHOTO" xml:space="preserve">
+    <value>Apoya tu idea, sube una foto</value>
+  </data>
+  <data name="SYSTEM_ERROR" xml:space="preserve">
+    <value>El sistema esta ocupado. Intenta Nuevamente</value>
+  </data>
+  <data name="TELLCITY" xml:space="preserve">
+    <value>¡CUÉNTANOS TUS IDEAS INNOVADORAS Y CONSTRUYE LA CIUDAD QUE SUEÑAS!</value>
+  </data>
+  <data name="TELLOPINION" xml:space="preserve">
+    <value>Cuéntanos tu opinión</value>
+  </data>
+  <data name="TERANDCON" xml:space="preserve">
+    <value>&lt;p&gt;
+                        &lt;strong&gt;TÉRMINOS DE USO PLATAFORMA CITIES FOR LIFE&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Lea atentamente los siguientes términos de uso (las “condiciones de uso” o “acuerdo”) antes de empezar a usar los servicios ofrecidos en “la plataforma de cocreación CITIES FOR LIFE”.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;Resumen de la plataforma de cocreación CITIES FOR LIFE&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Plataforma donde los  y los representantes de ciudades del mundo pueden participar aportando ideas en los retos y preguntas planteados en la plataforma por medio de texto, imágenes y videos no musicalizados.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;1. Términos del acuerdo&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Los términos de este acuerdo regulan la relación entre el &lt;strong&gt;USUARIO&lt;/strong&gt; y &lt;strong&gt;RUTA N&lt;/strong&gt;, (en adelante "EL ADMINISTRADOR" con respecto al uso de la plataforma y sus servicios relacionados (el "Servicio").
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; es una sociedad colombiana. &lt;strong&gt;El USUARIO&lt;/strong&gt; puede contactarse con nosotros a través del correo electrónico &lt;a href="mailto:info@citiesfor.life"&gt;info@citiesfor.life&lt;/a&gt;.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Al crear una cuenta o acceder o utilizar el Servicio, usted acepta y quedará vinculado por estas Condiciones de servicio y otorga su consentimiento expreso para la recopilación, uso y almacenamiento de su información como se describe en la Política de privacidad presente en este documento.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; es titular exclusivo de los derechos de propiedad intelectual relativos al diseño del sitio web y a la información contenida en él, incluyendo la apariencia de las combinaciones de colores, las formas de los botones, otros elementos gráficos del sitio web y la sensación que transmiten. Esta propiedad intelectual está protegida, por leyes de derechos de autor, marcas registradas, patentes y secretos industriales y por otros derechos de propiedad intelectual.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;2. Acceder al servicio&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Podrán participar todas las personas naturales mayores de 18 años.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario debe proporcionar todos los equipos y software necesarios para conectarse al Servicio, incluyendo pero no limitado a, un dispositivo móvil, en los casos en que el servicio ofrece un componente móvil. El usuario es responsable de cualquier cargo, incluida la conexión a Internet o tarifas móviles en que incurra al acceder al servicio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;3. Cómo usar el servicio&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Para participar en la plataforma &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; podrá ingresar con su cuenta de Facebook, Twitter, Google + o Linkedin. Si no cuenta con ninguna de estas redes sociales podrá registrarse en el formulario de la plataforma ingresando los siguientes datos: Nombres, apellidos, teléfono o celular, correo electrónico, ciudad foto de perfil (opcional) y aceptar los términos y condiciones y la política de privacidad de la plataforma.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;Una vez registrado usted podrá participar de la siguiente manera:&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;a. Publicar retos.&lt;/strong&gt; Se publicarán periódicamente retos en la plataforma en donde los usuarios deberán publicar ideas y propuestas que respondan al reto planteado. Un reto es una pregunta que se publica en la plataforma y que tiene como objetivo encontrar propuestas de solución innovadoras y viables para desarrollar en las ciudades según el área de impacto definidas.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;¿Cómo ganar un Reto de Ciudad?&lt;/strong&gt;&lt;br /&gt;
+                        El presupuesto asociado al Reto Ciudad servirá para llevar a cabo la idea posteriormente. Para la elección de la idea que posiblemente se llevará a cabo se tendrá en cuenta lo siguiente: 
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;El usuario deberá ser parte del Top 10.&lt;/li&gt;
+                        &lt;li&gt;Posteriormente &lt;strong&gt;RUTA N&lt;/strong&gt; elegirá la mejor idea del Top 10 de acuerdo con un comité, [JJ2] que analizará la idea y su viabilidad (El comité analizará si se puede llevar a cabo la idea ganadora).&lt;/li&gt;
+                        &lt;li&gt;El ganador del Reto Ciudad se publicará posteriormente en el blog del reto.&lt;/li&gt;
+                        &lt;li&gt;En caso de no existir un ganador, se comunicará la razón por la cual no hubo ganador.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;b. Responder preguntas&lt;/strong&gt;&lt;br /&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; hará preguntas a los  para que con sus ideas puedan aportar a la construcción de una mejor ciudad. Se formularán tres (3) tipos de pregunta: abiertas, de selección múltiple y preguntas para seleccionar puntos de ubicación en un mapa de Medellín.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;c. Otras acciones dentro de la plataforma&lt;/strong&gt;&lt;br /&gt;
+                        El usuario también podrá:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Comentar sobre las ideas o respuestas de otros usuarios.&lt;/li&gt;
+                        &lt;li&gt;Dar “Me gusta” (manito arriba) a las ideas o comentarios de otros usuarios.&lt;/li&gt;
+                        &lt;li&gt;Dar “No me gusta” (manito abajo) a las ideas o comentarios de otros usuarios.&lt;/li&gt;
+                        &lt;li&gt;Compartir los contenidos de la plataforma en redes sociales (Facebook, Twitter, Google + y Linkedin) y correo electrónico.&lt;/li&gt;
+                        &lt;li&gt;Editar el perfil en donde se podrá editar o agregar la siguiente información:
+                            &lt;ul&gt;
+                                &lt;li&gt;Biografía - Háblanos de ti (Visible para otros usuarios).&lt;/li&gt;
+                                &lt;li&gt;Tipo de documento y número de documento (No será visible para otros usuarios).&lt;/li&gt;
+                                &lt;li&gt;Teléfono o celular. (No será visible para otros usuarios).&lt;/li&gt;
+                                &lt;li&gt;E-mail. (No será visible para otros usuarios).&lt;/li&gt;
+                                &lt;li&gt;Ubicación. (No será visible para otros usuarios).&lt;/li&gt;
+                                &lt;li&gt;Nueva contraseña.&lt;/li&gt;
+                                &lt;li&gt;Foto de perfil (opcional).&lt;/li&gt;
+                                &lt;li&gt;Intereses.&lt;/li&gt;
+                                &lt;li&gt;Link a sus Redes sociales (Facebook, Twitter, Google + y Linkedin).&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;d. Sección Versus&lt;/strong&gt;&lt;br /&gt;
+                        En esta sección se pondrán a prueba dos (2) ideas y respuestas publicados por usuarios de manera aleatoria con el fin de que otros voten por la que más les guste.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;e. Ganar puntos&lt;/strong&gt;&lt;br /&gt;
+                        Algunas acciones dentro de la plataforma le otorgarán puntos virtuales al usuario con el fin de destacarse dentro de la sección “Ciudadanos que están participando”.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;f. Ingresar al TOP 10 y la sección lo mejor de lo mejor&lt;/strong&gt;&lt;br /&gt;
+                        Para ingresar en el Top 10 de usuario se ha definido una fórmula, así:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Ideas o pregunta con mayor cantidad de visitas, mayor cantidad de “Me gusta” menos la cantidad de “No me gusta” más la cantidad de comentarios. El total de esta fórmula definirá a los usuarios que ingresan a esta sección.&lt;/li&gt;
+                        &lt;li&gt;Para ingresar a los más innovadores de “Lo mejor de lo mejor” de La plataforma, se tendrán en cuenta a aquellos usuarios que tengan la mayor cantidad de puntos sobre una idea.&lt;/li&gt;
+                        &lt;li&gt;Para ingresar a las ideas más populares en “Lo mejor de lo mejor” de la plataforma se sumará la cantidad de “Me gusta” menos la cantidad de “No me gusta” de un usuario.&lt;/li&gt;
+                        &lt;li&gt;Para ingresar a las ideas más votadas en “Lo mejor de lo mejor” se sumarán la cantidad de “Me gusta” sobre una idea.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;g. Reportar un contenido&lt;/strong&gt;&lt;br /&gt;
+                        Sobre cada idea o respuesta de la plataforma otro usuario podrá reportarlo al administrador en caso de que lo considere inapropiado. Para poder hacerlo deberá ingresar al botón reportar sobre la idea o pregunta y escribir la razón por la cual considera el contenido inapropiado. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; determinará qué hacer con el contenido.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;4. Licencia para utilizar el servicio&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario solo puede utilizar el servicio y el contenido que ofrece este sitio web para fines no comerciales, siempre respetando las opiniones de otros usuarios y estas condiciones de uso. Por lo tanto, el usuario se compromete a no utilizar el Servicio para ningún otro propósito.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Está prohibido utilizar herramientas de recopilación de datos (data mining), robots o herramientas similares que recopilen y extraigan datos del contenido, enmarcar cualquier parte del sitio web o de su contenido, así como reproducir, reimprimir, copiar, almacenar, exhibir públicamente, emitir, transmitir, modificar, traducir, reprogramar, publicar, sublicenciar, asignar, transferir, vender, prestar o distribuir de cualquier otra forma el contenido sin consentimiento previo por escrito de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;. Está prohibido eludir los mecanismos incluidos en el contenido para evitar la distribución o reproducción no autorizadas del contenido.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede requerir realizar actualizaciones del servicio. El usuario reconoce y acepta que &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede actualizar el Servicio con o sin notificación previa. El usuario reconoce y acepta que es posible que tenga que actualizar el software de terceros de vez en cuando con el fin de recibir el servicio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;5. Restricciones&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Las siguientes restricciones se aplican a la utilización del Servicio:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Facebook, Twitter, Google + o Linkedin no patrocinan, avalan, ni administran de modo alguno esta plataforma, ni están asociados con ella.&lt;/li&gt; 
+                        &lt;li&gt;Acorde a la reglamentación de Facebook, Twitter, Google + o Linkedin una persona solo puede tener un perfil, por lo tanto los usuarios no podrán participar con más de un perfil de Facebook dentro de la plataforma.&lt;/li&gt;
+                        &lt;li&gt;Para acceder al servicio el usuario debe ser mayor de 13 años.&lt;/li&gt;
+                        &lt;li&gt;Usted deberá controlar su cuenta para restringir el uso por parte de menores de edad, y se le niega el acceso a niños menores de 13 años. El usuario acepta toda la responsabilidad por cualquier uso no autorizado del servicio por parte de menores en relación con su Cuenta.&lt;/li&gt;
+                        &lt;li&gt;El usuario es responsable de sus opiniones, en tal sentido, se compromete a respetar las opiniones de otros usuarios. Las opiniones de los usuarios no representan el sentir de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;.&lt;/li&gt;
+                        &lt;li&gt;El usuario deberá utilizar la plataforma exclusivamente para fines no comerciales, evitando proselitismo político o de otro tipo.&lt;/li&gt; 
+                        &lt;li&gt;El usuario no puede utilizar el servicio para participar en cualquier conducta ilegal.&lt;/li&gt;
+                        &lt;li&gt;Si el usuario accede al servicio deberá cumplir con las presentes Condiciones de Servicio.&lt;/li&gt;
+                        &lt;li&gt;El usuario es responsable de las imágenes o contenido que comparte mediante la plataforma, por tal razón mantiene indemne a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; por cualquier reclamación relacionada con derechos de autor y propiedad intelectual.&lt;/li&gt;
+                        &lt;li&gt;El usuario se abstendrá de musicalizar cualquier video que comparta en la plataforma.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;6. Limitaciones de la licencia&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Cualquier intento por interrumpir o interferir en el servicio, es una violación a estos términos de uso y puede ser una transgresión a la normatividad penal y civil. Al aceptar estos términos de uso, el usuario acepta que bajo ninguna circunstancia:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Utilizará el servicio para promover la violación de cualquier ley o regulación aplicable.&lt;/li&gt;
+                        &lt;li&gt;Utilizará cheats, exploits, software de automatización, robots, mods hacks, o cualquier otro software de terceros no autorizados diseñados para modificar o interferir con el Servicio o modificará los archivos que forman parte del servicio.&lt;/li&gt;
+                        &lt;li&gt;Modificará los archivos que forman parte del servicio. 
+                        &lt;li&gt;Realizará acciones tendientes a interrumpir, sobrecargar, ayudar o asistir en la interrupción o la sobrecarga de cualquier ordenador o servidor que se utiliza para ofrecer o apoyar el Servicio.&lt;/li&gt;
+                        &lt;li&gt;Ayudará o participará en cualquier tipo de ataque, incluyendo sin limitación la distribución de un virus, ataques de denegación de servicio en el Servicio, o de otros intentos de interrumpir el servicio o el uso de cualquier otra persona o disfrute del servicio.&lt;/li&gt;
+                        &lt;li&gt;Intentará obtener acceso no autorizado al Servicio, cuentas registradas para otros o para las computadoras, servidores, o redes conectadas al Servicio por cualquier otro medio de la interfaz de usuario, incluyendo pero no limitadora, por eludir o modificar, en un intento para evitar o modificar, o alentar o ayudar a cualquier otra persona para evitar o modificar, cualquier seguridad, tecnología, dispositivo o software que es parte del Servicio.&lt;/li&gt;
+                        &lt;li&gt;Publicará información amenazante, obscena, difamatoria, calumniosa, o racial, sexual, religiosa o de otra forma objetable u ofensiva.&lt;/li&gt;
+                        &lt;li&gt;Publicará cualquier información que contenga desnudos, violencia excesiva o un tema ofensivo, o que contenga un enlace a dicho contenido.&lt;/li&gt;
+                        &lt;li&gt;No intentará acosar, abusar o dañar a otra persona.&lt;/li&gt;
+                        &lt;li&gt;Pondrá a disposición a través del Servicio cualquier material o información que viole cualquier derecho de autor, marca registrada, patente, secreto comercial, derecho de privacidad, derecho de publicidad, u otros derechos de cualquier persona o entidad.&lt;/li&gt;
+                        &lt;li&gt;Transmitirá comunicaciones no autorizadas a través del Servicio, incluyendo el correo basura, cartas en cadena, correo basura y los materiales que promueven los elementos de malware, spyware y descargable.&lt;/li&gt;
+                        &lt;li&gt;Utilizará ningún software de terceros no autorizados que acceda, intercepte, o de otra manera recoge la información desde o a través del servicio o que se encuentren en tránsito desde o hacia el servicio, incluyendo, sin limitación, cualquier software que lee las áreas de memoria RAM o corrientes de tráfico de la red.&lt;/li&gt;
+                        &lt;li&gt;Anulará todas las cabeceras de exclusión de robots u otras medidas que empleamos para restringir el acceso al servicio o utilizar cualquier software, tecnología o dispositivo para enviar contenidos o mensajes, raspar, araña, o se arrastran del Servicio, o de la cosecha o manipular los datos.&lt;/li&gt;
+                        &lt;li&gt;Utilizará, facilitará, creará o mantendrá cualquier conexión no autorizada al Servicio, incluyendo sin limitación (1) cualquier conexión a servidores no autorizados que emula, o los intentos de emular cualquier parte del Servicio, o (2) cualquier conexión con los programas, herramientas o software no autorizados.&lt;/li&gt;
+                        &lt;li&gt;Realizará ingeniería inversa, descompilará, desensamblará, descifrará o intentará derivar el código fuente de cualquier software subyacente u otra propiedad intelectual utilizada para proporcionar el servicio.&lt;/li&gt;
+                        &lt;li&gt;Copiará, modificará o distribuirá los derechos o el contenido de la plataforma, o derechos de autor o marcas registradas de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; o utilizará cualquier método para copiar o distribuir el contenido del servicio, salvo lo específicamente permitido en estas Condiciones de servicio.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede limitar, suspender, terminar, modificar o eliminar cuentas o acceso a los servicios o partes del mismo si usted ha incumplido cualquiera de los términos del servicio, con o sin aviso previo, sin que ello implique, bajo ninguna circunstancia, compensación o pago alguno. Usted puede cancelar cualquier cuenta registrada a su nombre en cualquier momento, eliminar cualquier comentario en cualquier momento.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;7. Limitaciones de responsabilidad&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se responsabiliza de los posibles errores u omisiones que pudieran existir en los contenidos de este sitio. A su vez, estos contenidos pueden ser modificados, desarrollados o actualizados sin notificación previa, sometiéndose el usuario a las modificaciones que se realicen de acuerdo con estas condiciones de uso.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se responsabiliza por las acciones que el usuario pueda llegar a realizar al estar expuesto al contenido del sitio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario reconoce y acepta que, en toda la extensión permitida por la ley aplicable, las renuncias de responsabilidad contenidas en este documento se aplican a cualquier daño o perjuicio de todo tipo causado por o relacionados con el uso o imposibilidad de uso del servicio por cualquier causa o acción alguna, y que &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se hace responsable por daños indirectos, accidentales, especiales, ejemplares o indirectos, incluyendo pérdida de beneficios, voluntad o datos, de ninguna manera que resulten del uso de, o la imposibilidad de usar el servicio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario acepta indemnizar, guardar y mantener a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, contratistas, empleados, agentes y sus proveedores de terceros, licenciatarios y socios de toda reclamación, pérdidas, daños, responsabilidades, incluyendo honorarios y gastos legales, que surjan de su uso o mal uso del Servicio, o cualquier violación por parte suya de estos Términos de Servicio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no garantiza que las ideas de los usuarios sean llevadas a cabo, pero en caso de que ello suceda, el usuario acepta no recibir remuneración, indemnización, honorarios o valor económico alguno por la realización de sus ideas.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;8. Exoneración de garantías&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; ofrece el sitio web en su estado actual, con todos los defectos que pueda tener y según disponibilidad. No se ofrece garantías expresas sobre el mismo. Igualmente, no existe obligación por parte de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de proporcionar ningún tipo de soporte en absoluto. No se asume ninguna garantía implícita que avale que el sitio web y todos los programas de software, los contenidos y los servicios distribuidos a través del sitio web sean vendibles, de calidades satisfactorias, precisas, oportunas o idóneas para una necesidad o una finalidad concreta o que no vulneren ningún derecho.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario acepta que el uso del servicio es bajo su propio riesgo y se entrega "tal cual" sin garantía de ningún tipo, expresas o implícitas, incluyendo, sin limitación, garantías de título o garantías implícitas de no infracción, comercialización o idoneidad para un propósito particular. Sin perjuicio de lo anterior, tampoco &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; garantiza que el servicio se brinde sin interrupciones o errores.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se hace responsable de cualquier retraso o incumplimiento por causas fuera del control razonable de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, incluyendo, pero sin limitarse a fuerza mayor y caso fortuito.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;9. Sistema de comentarios&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El sistema de comentarios es proporcionado por la plataforma, el usuario acepta usar este medio bajo su propia responsabilidad, reconociendo los términos y condiciones, los links u opiniones que se presenten en este medio no son parte de &lt;strong&gt;RUTA N&lt;/strong&gt; y pertenecen directamente al usuario que realizó el comentario, cualquier daño que estos puedan causar no son responsabilidad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario es el único responsable por el Contenido de usuario que publique o transmita a través del sistema de comentarios. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no asume ninguna responsabilidad por la conducta de cualquier usuario, la presentación de cualquier Contenido de Usuario, y no asume ninguna responsabilidad por la vigilancia del servicio de contenido inapropiado o ilegal o conducta.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no puede garantizar que otros miembros no van a usar las ideas y la información que usted comparte en el sistema de comentarios. Por lo tanto, si usted tiene una idea o información que desee mantener confidencial y / o no desea que otros usen, no la publique en la plataforma. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no tendrá ninguna responsabilidad de evaluar el uso o compensar por cualquier idea o información que usted puede optar por presentar.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Si usted presenta sugerencias, propuestas, comentarios u otros materiales en el sistema de comentarios, usted entiende y acepta que &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; (1) no tendrá ninguna obligación de mantener sus envíos confidenciales, (2) no tendrá ninguna obligación de devolver sus Envíos o responder de alguna manera, y (3) puede usar sus sugerencias sin previo aviso ni compensación alguna para usted.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        EL USUARIO es el único responsable de sus interacciones con otros usuarios del servicio y cualquier otra entidad con los que interactúa a través del servicio de comentarios. Si usted tiene una disputa con uno o más usuarios, nos libera de reclamos, demandas y daños (reales o resultantes) de cualquier tipo y naturaleza, conocidos y desconocidos, que surjan de o relacionados de alguna manera con dichos conflictos.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;10. Propiedad intelectual&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El Servicio (incluyendo, pero sin limitarse a títulos, código informático, temas, objetos, historias, diálogos, frases, conceptos, ilustraciones, animaciones, sonidos, composiciones musicales, efectos audiovisuales, métodos de operación, los derechos morales, la documentación, etc.) son obras de propiedad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; se reserva todos los derechos, incluyendo, pero sin limitarse a todos los derechos de propiedad intelectual u otros derechos de propiedad, en relación con el Servicio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario acepta y reconoce que no tendrá propiedad o derechos similares sobre la plataforma &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; y sus contenidos y además reconoce y acepta que todos los derechos son y para siempre serán propiedad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        De manera expresa EL USUARIO acepta, que su participación en la plataforma en ningún caso podrá́ desconocer derechos de autor, propiedad intelectual o cualquier otro derecho de terceros. El participante deberá ser propietario del material que va a utilizar en la plataforma, esto es: fotos, imágenes y dibujos (sin que esta enunciación sea taxativa), o en caso de no ser el propietario, se responsabiliza de ser un legítimo tenedor del material y de obtener previamente todos los derechos necesarios para su uso.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El participante indemnizará todos los perjuicios causados a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; o a terceros, por la utilización de material no autorizado, la violación de derechos de autor o la vulneración de cualquier otro derecho.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;Declaración de Autoría y Originalidad:&lt;/strong&gt;&lt;br/&gt;
+                        El participante declara ser el creador del contenido audiovisual o fotográfico que adjunta y propietario legítimo de todos los derechos de propiedad intelectual aplicables a los mismos, que libre y voluntariamente ha incorporado en la plataforma de la actividad. En consecuencia, el participante asume total responsabilidad y mantendrá indemne a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; y sus vinculadas frente a cualquier reclamación que pudieran efectuar terceras personas con ocasión de una vulneración a derechos de propiedad intelectual sobre el contenido audiovisual o fotográfico que entregue para participar en la actividad y será responsable frente a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de todas las cargas pecuniarias que pudieran derivarse para esta última a favor de terceros con motivo de acciones, reclamaciones o conflictos originados por dicha causa.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;Imagen de terceros:&lt;/strong&gt;&lt;br/&gt;
+                        Tomando en consideración que los contenidos audiovisuales y/o fotográficos presentados por el usuario para efectos de su participación en la actividad, pueden contener la imagen de terceros, esto es, la representación gráfica de su cara, cuerpo, silueta o cualquier otro tipo de forma o aspecto, que lo identifique bajo cualquier medio conocido o por conocer, así como su voz y demás características asociadas, el participante declara, que cuenta con la autorización para el uso de la imagen de los terceros que sea utilizada en su video y/o fotografía, por cualquier medio, durante la vigencia de la actividad y hasta los dos (2) años siguientes a su finalización. En consecuencia, el participante asume total responsabilidad y mantendrá indemne a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; frente a cualquier reclamación que pudieran efectuar terceras personas con ocasión de una vulneración a derechos de imagen y será́ responsable frente a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de todas las cargas pecuniarias que pudieran derivarse para esta última a favor de terceros con motivo de acciones, reclamaciones o conflictos originados por dicha causa.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;Imagen del participante:&lt;/strong&gt;&lt;br/&gt;
+                        Con respecto de su propia imagen, el participante declara lo siguiente: Que autoriza de manera expresa a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; para utilizar y explotar, el material que contenga su imagen de manera total o parcial en forma ilimitada en cuanto a los medios actualmente conocidos o por conocer, de manera total o parcial en forma ilimitada en el territorio nacional colombiano y en el mundo, durante la vigencia de la actividad y hasta los dos (2) años siguientes a su finalización. Además declara Que renuncia de manera expresa a exigir cualquier tipo de compensación a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, sus vinculadas o subsidiarias, por el uso o explotación comercial que realicen de su imagen.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;11. Enlaces a terceros&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede proporcionar enlaces en el servicio a los sitios web de terceros o proveedores que pueden invitarlo a participar en una oferta promocional. Cualquier gasto u obligación con estos terceros son de su responsabilidad. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no hace ninguna representación o garantía con respecto a cualquier contenido, bienes y / o servicios ofrecidos por terceros, incluso si se vincula a partir de nuestro servicio, y no será responsable por cualquier reclamo relacionado con los contenidos de terceros.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Los sitios vinculados no están bajo el control de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; y pueden recoger datos o solicitar información personal del usuario. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no es responsable de sus prácticas de negocios de contenido, o políticas de privacidad, o para la recogida, uso o divulgación de cualquier información que estos sitios pueden recolectar. La inclusión de estos vínculos no implica aprobación por parte de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de estos sitios enlazados.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;12. Resolución de disputas&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Si surge una disputa con &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, tanto el usuario como &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; están de acuerdo con resolver cualquier reclamación o controversia conforme a derecho o equidad de acuerdo con una de las secciones siguientes, o como se acuerde por escrito. Antes de recurrir a estas alternativas, se recomienda que se contacte directamente con nosotros para buscar una solución por medio de procedimientos alternativos de solución de controversias.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El presente Acuerdo y, cualquier disputa que surja de o relacionada con ella o con el Servicio, se regirá́ en todos los aspectos por las leyes de Colombia. El usuario acepta que cualquier reclamo o disputa que pueda tener contra &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; debe ser resuelto exclusivamente por la jurisdicción colombiana, con excepción de lo acordado por las partes o como se describe en el párrafo siguiente opción de arbitraje.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Cualquier diferencia o controversia que surja entre el Usuario y &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; con ocasión de los términos de uso, será́ sometida a la decisión de un Tribunal de Arbitramento, el cual estará́ integrado por tres (3) árbitros designados de mutuo acuerdo por las partes, o en su defecto por el Centro de Arbitraje y Conciliación Mercantil de la Cámara de comercio de Bogotá́ D.C., previa solicitud presentada por cualquiera de las PARTES. El tribunal así constituido, sesionará y se acogerá al reglamento y tarifas del Centro de Arbitraje y Conciliación Mercantil de la Cámara de Comercio de Bogotá́ D.C., sujetándose a lo dispuesto en la legislación vigente. El laudo que emita el Tribunal será́ en derecho. Cada PARTE correrá́ con los costos y gastos de todos los abogados, consultores, asesores, testigos y empleados contratados por la misma.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;13. Disposiciones generales&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;a. Divisibilidad&lt;/strong&gt;&lt;br /&gt;
+                        El Usuario y &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; están de acuerdo con que en caso de que una o más de las disposiciones contenidas en estas Condiciones del servicio o de la Política de privacidad, fuera juzgada nula o ineficaz, tal nulidad o ineficacia no afectará ninguna otra disposición de las condiciones del servicio, las cuales serán interpretado como si tal disposición nunca hubiera estado contenida ahí.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;b. Cesión&lt;/strong&gt;&lt;br /&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; podrá ceder o delegar estas Condiciones de servicio y/o la Política de privacidad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, en todo o en parte, a cualquier persona o entidad en cualquier momento con o sin el consentimiento del Usuario. El usuario no podrá ceder o delegar los derechos u obligaciones bajo los Términos de Servicio o Política de privacidad.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;c. Acuerdo completo&lt;/strong&gt;&lt;br /&gt;
+                        Estas Condiciones del servicio y las políticas de privacidad reemplazan todos los acuerdos anteriores de las partes relacionadas con la materia objeto del mismo, tanto de manera electrónica, oral o escrita, establecida por la costumbre, práctica, política o precedente, entre el usuario y &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; con respecto al Servicio.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;d. No Renuncia&lt;/strong&gt;&lt;br /&gt;
+                        Ningún requisito o exigencia de esta condiciones de uso será considerado como renunciado o excusado. La simple renuncia o excusa de un incumplimiento o violación a cualquier disposición de estas condiciones de uso, no podrá́ ser interpretado como una renuncia o excusa de cualquier incumplimiento o violación posterior.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;e. Avisos&lt;/strong&gt;&lt;br /&gt;
+                        Podemos notificarle a través de publicaciones en http://platform.citiesfor.life, y por correo electrónico o por cualquier otro medio de comunicación la información de contacto que usted nos proporciona. Todas las notificaciones que le proporcionan, sin el cumplimiento de esta Sección de Avisos No tendrán ningún efecto legal.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;14. Protección de datos y política de privacidad datos personales&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Para la participación en la plataforma &lt;strong&gt;RUTA N&lt;/strong&gt;, actuando como responsable de los datos, recopila información personal, como: Nombre, Apellido, Email, Usuario y Contraseña.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; recopila y utiliza la información personal para la propia administración de los servicios de la página, para ofrecer a los usuarios los servicios de información y promoción. De la misma manera, &lt;strong&gt;RUTA N&lt;/strong&gt; hace uso de los datos personales para informar al usuario sobre contenidos disponibles. &lt;strong&gt;RUTA N&lt;/strong&gt; no pone a la venta, alquila ni arrienda a terceros sus listas de registrados en sus páginas. No obstante, puede que en ocasiones se ponga en contacto con el usuario en nombre de ciertos aliados comerciales externos y/o para alguna &lt;strong&gt;RUTA N&lt;/strong&gt; con el fin de informarle sobre el lanzamiento de ofertas concretas que pudieran ser de su interés, siempre vinculados al objeto de esta página. En estos casos, la información personal del usuario (Nombre y apellidos, teléfono celular, correo electrónico, ciudad, foto de perfil, biografía, tipo de documento, número de documento, intereses) no se transfiere a terceros.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; puede recolectar en la base de datos para el uso dentro de la plataforma y actividades promocionales datos sensibles (aquellos que afectan la intimidad del titular o cuyo uso indebido puede generar discriminación), tales como datos biométricos, en tal caso &lt;strong&gt;RUTA N&lt;/strong&gt; garantiza el uso de acuerdo a los principios constitucionales y el respeto por los derechos fundamentales.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Adicionalmente &lt;strong&gt;RUTA N&lt;/strong&gt; le informa al usuario que como titular del dato goza de los derechos previstos en la Constitución y la ley, especialmente el derecho a conocer, actualizar, rectificar y suprimir su información personal; así como el derecho a revocar el consentimiento otorgado para el tratamiento de datos personales y todos los derechos establecidos en la Ley 1581 de 2012 y el Decreto 1377 de 2013.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;RUTA N&lt;/strong&gt; se compromete a proteger la seguridad de la información personal haciendo uso de tecnologías y procedimientos de seguridad que garantizan la protección de la información frente al acceso, revelación y usos no autorizados, así mismo, usará los datos, en especial aquellos de los menores de edad, de acuerdo a los principios constitucionales, respetando los derechos fundamentales y el interés superior de los menores de edad, si tiene cualquier inquietud al respecto, puede enviar un correo electrónico a info@citiesfor.life.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Con base en lo anteriormente expuesto, en calidad de participante usuario o padre o acudiente del participante menor de edad:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Acepto de manera expresa, voluntaria, previa, explícita, informada e inequívoca la recopilación, almacenamiento y tratamiento de mis datos personales, así como los del menor de edad que represento.&lt;/li&gt;
+                        &lt;li&gt;Acepto el envío de información promocional al correo electrónico registrado.&lt;/li&gt;
+                        &lt;li&gt;Declaro que la información suministrada es cierta, fidedigna y actualizada.&lt;/li&gt;
+                        &lt;li&gt;Entiendo y acepto que los datos personales y demás información suministrados por el participante serán objeto de tratamiento automatizado e incorporada a la base de datos administrada por la agencia de publicidad Dasigno, encargada de desarrollar la Plataforma.&lt;/li&gt;
+                        &lt;li&gt;Otorgo mi consentimiento libre, expreso e informado para que la información personal que se ha ingresado sea almacenada, recopilada o utilizada por &lt;strong&gt;RUTA N&lt;/strong&gt; directamente o a través de terceros, con fines de comunicación, envío de información y/o para mercadeo.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        Si el usuario desea retirarse de esta plataforma, solicitar alguna modificación, corrección o supresión de todos los datos que nos ha proporcionado, dejar de recibir información comercial, así como contactarse con nosotros por cualquier otra causa, puede enviar un correo electrónico a info@citiesfor.life
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Yo reconozco que he leído y entiendo los términos anteriores de Uso y acepto que mi USO DE LA PLATAFORMA ES UN RECONOCIMIENTO DE MI ACEPTACIÓN DE LOS TÉRMINOS Y CONDICIONES DEL PRESENTE ACUERDO DE CONDICIONES DE USO.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;15. Política de privacidad&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Su privacidad es importante para nosotros. Al aceptar esta política de privacidad el usuario acepta que su información sea consultada y usada de su cuenta (Facebook, Twitter, Google + o Linkedin), los datos que se utilizarán los siguientes:
+                    &lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Nombre completo, el cual será mostrado a los demás usuarios&lt;/li&gt;
+                        &lt;li&gt;Su edad, la cual será́ consultada para comprobar la edad del usuario&lt;/li&gt;
+                        &lt;li&gt;El id de cuenta (Facebook, Twitter, Google + o Linkedin), el cual será almacenado para poder guardar el progreso del usuario en la aplicación.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        El usuario acepta que proporcionará información exacta y completa, y que va a actualizar la información lo antes posible después de cambios. Usted entiende que su Id de usuario, nombres y apellidos, biografía, link a redes sociales y foto de perfil estarán disponibles al público y que los motores de búsqueda pueden indexar su nombre y la foto de su perfil.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        Ninguna información será distribuida a terceros y la única información que será almacenada, hasta que el usuario comunique por medio de un mensaje que desea que su cuenta sea eliminada, será el id de la cuenta (Facebook, Twitter, Google + o Linkedin).
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        El usuario es el único responsable de mantener la confidencialidad de la información de acceso, y será responsable de todos los usos de la información de acceso.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;16. Cambios a los términos del servicio y la política de privacidad&lt;/strong&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; se reserva el derecho, a nuestra discreción, de cambiar, modificar, añadir o eliminar partes de estas Condiciones de servicio en cualquier momento publicando los términos enmendados en o dentro del servicio. También puede dar aviso de cualquier cambio en un mensaje de correo electrónico o mensajería dentro del Servicio. Se considerará que ha aceptado estos cambios si continúa utilizando el Servicio. Salvo que se indique lo contrario. Todos los términos enmendados entrarán automáticamente en vigencia después de su publicación inicial.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        La plataforma &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; siempre contará con un link con la última versión de los términos y condiciones, el usuario será responsable de comprobar los términos y condiciones periódicamente por si hubiese cambios que pudieran afectarle. Si continúa utilizando el sitio web tras la modificación de los términos y condiciones de uso, los estará́ aceptando implícitamente.
+                    &lt;/p&gt;</value>
+  </data>
+  <data name="TERMINS1" xml:space="preserve">
+    <value>&lt;p&gt;
+                            &lt;strong&gt;TÉRMINOS DE USO PLATAFORMA CITIES FOR LIFE&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Lea atentamente los siguientes términos de uso (las “condiciones de uso” o “acuerdo”) antes de empezar a usar los servicios ofrecidos en “la plataforma de cocreación CITIES FOR LIFE”.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;Resumen de la plataforma de cocreación CITIES FOR LIFE&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Plataforma donde los ciudadanos y los representantes de ciudades del mundo pueden participar aportando ideas en los retos y preguntas planteados en la plataforma por medio de texto, imágenes y videos no musicalizados.
+                        &lt;/p&gt;</value>
+  </data>
+  <data name="TERMINS2" xml:space="preserve">
+    <value>&lt;p&gt;
+                            &lt;strong&gt;1. Términos del acuerdo&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Los términos de este acuerdo regulan la relación entre el &lt;strong&gt;USUARIO&lt;/strong&gt; y &lt;strong&gt;RUTA N&lt;/strong&gt;, (en adelante "EL ADMINISTRADOR" con respecto al uso de la plataforma y sus servicios relacionados (el "Servicio").
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; es una sociedad colombiana. &lt;strong&gt;El USUARIO&lt;/strong&gt; puede contactarse con nosotros a través del correo electrónico &lt;a href="mailto:info@citiesfor.life"&gt;info@citiesfor.life&lt;/a&gt;.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Al crear una cuenta o acceder o utilizar el Servicio, usted acepta y quedará vinculado por estas Condiciones de servicio y otorga su consentimiento expreso para la recopilación, uso y almacenamiento de su información como se describe en la Política de privacidad presente en este documento.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; es titular exclusivo de los derechos de propiedad intelectual relativos al diseño del sitio web y a la información contenida en él, incluyendo la apariencia de las combinaciones de colores, las formas de los botones, otros elementos gráficos del sitio web y la sensación que transmiten. Esta propiedad intelectual está protegida, por leyes de derechos de autor, marcas registradas, patentes y secretos industriales y por otros derechos de propiedad intelectual.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;2. Acceder al servicio&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Podrán participar todas las personas naturales mayores de 18 años.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario debe proporcionar todos los equipos y software necesarios para conectarse al Servicio, incluyendo pero no limitado a, un dispositivo móvil, en los casos en que el servicio ofrece un componente móvil. El usuario es responsable de cualquier cargo, incluida la conexión a Internet o tarifas móviles en que incurra al acceder al servicio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;3. Cómo usar el servicio&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Para participar en la plataforma &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; podrá ingresar con su cuenta de Facebook, Twitter, Google + o Linkedin. Si no cuenta con ninguna de estas redes sociales podrá registrarse en el formulario de la plataforma ingresando los siguientes datos: Nombres, apellidos, teléfono o celular, correo electrónico, ciudad foto de perfil (opcional) y aceptar los términos y condiciones y la política de privacidad de la plataforma.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;Una vez registrado usted podrá participar de la siguiente manera:&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;a. Publicar retos.&lt;/strong&gt; Se publicarán periódicamente retos en la plataforma en donde los usuarios deberán publicar ideas y propuestas que respondan al reto planteado. Un reto es una pregunta que se publica en la plataforma y que tiene como objetivo encontrar propuestas de solución innovadoras y viables para desarrollar en las ciudades según el área de impacto definidas.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;¿Cómo ganar un Reto de Ciudad?&lt;/strong&gt;&lt;br /&gt;
+                            El presupuesto asociado al Reto Ciudad servirá para llevar a cabo la idea posteriormente. Para la elección de la idea que posiblemente se llevará a cabo se tendrá en cuenta lo siguiente: 
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;El usuario deberá ser parte del Top 10.&lt;/li&gt;
+                            &lt;li&gt;Posteriormente &lt;strong&gt;RUTA N&lt;/strong&gt; elegirá la mejor idea del Top 10 de acuerdo con un comité, [JJ2] que analizará la idea y su viabilidad (El comité analizará si se puede llevar a cabo la idea ganadora).&lt;/li&gt;
+                            &lt;li&gt;El ganador del Reto Ciudad se publicará posteriormente en el blog del reto.&lt;/li&gt;
+                            &lt;li&gt;En caso de no existir un ganador, se comunicará la razón por la cual no hubo ganador.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;b. Responder preguntas&lt;/strong&gt;&lt;br /&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; hará preguntas a los ciudadanos para que con sus ideas puedan aportar a la construcción de una mejor ciudad. Se formularán tres (3) tipos de pregunta: abiertas, de selección múltiple y preguntas para seleccionar puntos de ubicación en un mapa de Medellín.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;c. Otras acciones dentro de la plataforma&lt;/strong&gt;&lt;br /&gt;
+                            El usuario también podrá:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Comentar sobre las ideas o respuestas de otros usuarios.&lt;/li&gt;
+                            &lt;li&gt;Dar “Me gusta” (manito arriba) a las ideas o comentarios de otros usuarios.&lt;/li&gt;
+                            &lt;li&gt;Dar “No me gusta” (manito abajo) a las ideas o comentarios de otros usuarios.&lt;/li&gt;
+                            &lt;li&gt;Compartir los contenidos de la plataforma en redes sociales (Facebook, Twitter, Google + y Linkedin) y correo electrónico.&lt;/li&gt;
+                            &lt;li&gt;Editar el perfil en donde se podrá editar o agregar la siguiente información:
+                                &lt;ul&gt;
+                                    &lt;li&gt;Biografía - Háblanos de ti (Visible para otros usuarios).&lt;/li&gt;
+                                    &lt;li&gt;Tipo de documento y número de documento (No será visible para otros usuarios).&lt;/li&gt;
+                                    &lt;li&gt;Teléfono o celular. (No será visible para otros usuarios).&lt;/li&gt;
+                                    &lt;li&gt;E-mail. (No será visible para otros usuarios).&lt;/li&gt;
+                                    &lt;li&gt;Ubicación. (No será visible para otros usuarios).&lt;/li&gt;
+                                    &lt;li&gt;Nueva contraseña.&lt;/li&gt;
+                                    &lt;li&gt;Foto de perfil (opcional).&lt;/li&gt;
+                                    &lt;li&gt;Intereses.&lt;/li&gt;
+                                    &lt;li&gt;Link a sus Redes sociales (Facebook, Twitter, Google + y Linkedin).&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;d. Sección Versus&lt;/strong&gt;&lt;br /&gt;
+                            En esta sección se pondrán a prueba dos (2) ideas y respuestas publicados por usuarios de manera aleatoria con el fin de que otros voten por la que más les guste.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;e. Ganar puntos&lt;/strong&gt;&lt;br /&gt;
+                            Algunas acciones dentro de la plataforma le otorgarán puntos virtuales al usuario con el fin de destacarse dentro de la sección “Ciudadanos que están participando”.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;f. Ingresar al TOP 10 y la sección lo mejor de lo mejor&lt;/strong&gt;&lt;br /&gt;
+                            Para ingresar en el Top 10 de usuario se ha definido una fórmula, así:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Ideas o pregunta con mayor cantidad de visitas, mayor cantidad de “Me gusta” menos la cantidad de “No me gusta” más la cantidad de comentarios. El total de esta fórmula definirá a los usuarios que ingresan a esta sección.&lt;/li&gt;
+                            &lt;li&gt;Para ingresar a los más innovadores de “Lo mejor de lo mejor” de La plataforma, se tendrán en cuenta a aquellos usuarios que tengan la mayor cantidad de puntos sobre una idea.&lt;/li&gt;
+                            &lt;li&gt;Para ingresar a las ideas más populares en “Lo mejor de lo mejor” de la plataforma se sumará la cantidad de “Me gusta” menos la cantidad de “No me gusta” de un usuario.&lt;/li&gt;
+                            &lt;li&gt;Para ingresar a las ideas más votadas en “Lo mejor de lo mejor” se sumarán la cantidad de “Me gusta” sobre una idea.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;g. Reportar un contenido&lt;/strong&gt;&lt;br /&gt;
+                            Sobre cada idea o respuesta de la plataforma otro usuario podrá reportarlo al administrador en caso de que lo considere inapropiado. Para poder hacerlo deberá ingresar al botón reportar sobre la idea o pregunta y escribir la razón por la cual considera el contenido inapropiado. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; determinará qué hacer con el contenido.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;4. Licencia para utilizar el servicio&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario solo puede utilizar el servicio y el contenido que ofrece este sitio web para fines no comerciales, siempre respetando las opiniones de otros usuarios y estas condiciones de uso. Por lo tanto, el usuario se compromete a no utilizar el Servicio para ningún otro propósito.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Está prohibido utilizar herramientas de recopilación de datos (data mining), robots o herramientas similares que recopilen y extraigan datos del contenido, enmarcar cualquier parte del sitio web o de su contenido, así como reproducir, reimprimir, copiar, almacenar, exhibir públicamente, emitir, transmitir, modificar, traducir, reprogramar, publicar, sublicenciar, asignar, transferir, vender, prestar o distribuir de cualquier otra forma el contenido sin consentimiento previo por escrito de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;. Está prohibido eludir los mecanismos incluidos en el contenido para evitar la distribución o reproducción no autorizadas del contenido.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede requerir realizar actualizaciones del servicio. El usuario reconoce y acepta que &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede actualizar el Servicio con o sin notificación previa. El usuario reconoce y acepta que es posible que tenga que actualizar el software de terceros de vez en cuando con el fin de recibir el servicio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;5. Restricciones&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Las siguientes restricciones se aplican a la utilización del Servicio:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Facebook, Twitter, Google + o Linkedin no patrocinan, avalan, ni administran de modo alguno esta plataforma, ni están asociados con ella.&lt;/li&gt; 
+                            &lt;li&gt;Acorde a la reglamentación de Facebook, Twitter, Google + o Linkedin una persona solo puede tener un perfil, por lo tanto los usuarios no podrán participar con más de un perfil de Facebook dentro de la plataforma.&lt;/li&gt;
+                            &lt;li&gt;Para acceder al servicio el usuario debe ser mayor de 13 años.&lt;/li&gt;
+                            &lt;li&gt;Usted deberá controlar su cuenta para restringir el uso por parte de menores de edad, y se le niega el acceso a niños menores de 13 años. El usuario acepta toda la responsabilidad por cualquier uso no autorizado del servicio por parte de menores en relación con su Cuenta.&lt;/li&gt;
+                            &lt;li&gt;El usuario es responsable de sus opiniones, en tal sentido, se compromete a respetar las opiniones de otros usuarios. Las opiniones de los usuarios no representan el sentir de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;.&lt;/li&gt;
+                            &lt;li&gt;El usuario deberá utilizar la plataforma exclusivamente para fines no comerciales, evitando proselitismo político o de otro tipo.&lt;/li&gt; 
+                            &lt;li&gt;El usuario no puede utilizar el servicio para participar en cualquier conducta ilegal.&lt;/li&gt;
+                            &lt;li&gt;Si el usuario accede al servicio deberá cumplir con las presentes Condiciones de Servicio.&lt;/li&gt;
+                            &lt;li&gt;El usuario es responsable de las imágenes o contenido que comparte mediante la plataforma, por tal razón mantiene indemne a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; por cualquier reclamación relacionada con derechos de autor y propiedad intelectual.&lt;/li&gt;
+                            &lt;li&gt;El usuario se abstendrá de musicalizar cualquier video que comparta en la plataforma.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;6. Limitaciones de la licencia&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Cualquier intento por interrumpir o interferir en el servicio, es una violación a estos términos de uso y puede ser una transgresión a la normatividad penal y civil. Al aceptar estos términos de uso, el usuario acepta que bajo ninguna circunstancia:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Utilizará el servicio para promover la violación de cualquier ley o regulación aplicable.&lt;/li&gt;
+                            &lt;li&gt;Utilizará cheats, exploits, software de automatización, robots, mods hacks, o cualquier otro software de terceros no autorizados diseñados para modificar o interferir con el Servicio o modificará los archivos que forman parte del servicio.&lt;/li&gt;
+                            &lt;li&gt;Modificará los archivos que forman parte del servicio. 
+                            &lt;li&gt;Realizará acciones tendientes a interrumpir, sobrecargar, ayudar o asistir en la interrupción o la sobrecarga de cualquier ordenador o servidor que se utiliza para ofrecer o apoyar el Servicio.&lt;/li&gt;
+                            &lt;li&gt;Ayudará o participará en cualquier tipo de ataque, incluyendo sin limitación la distribución de un virus, ataques de denegación de servicio en el Servicio, o de otros intentos de interrumpir el servicio o el uso de cualquier otra persona o disfrute del servicio.&lt;/li&gt;
+                            &lt;li&gt;Intentará obtener acceso no autorizado al Servicio, cuentas registradas para otros o para las computadoras, servidores, o redes conectadas al Servicio por cualquier otro medio de la interfaz de usuario, incluyendo pero no limitadora, por eludir o modificar, en un intento para evitar o modificar, o alentar o ayudar a cualquier otra persona para evitar o modificar, cualquier seguridad, tecnología, dispositivo o software que es parte del Servicio.&lt;/li&gt;
+                            &lt;li&gt;Publicará información amenazante, obscena, difamatoria, calumniosa, o racial, sexual, religiosa o de otra forma objetable u ofensiva.&lt;/li&gt;
+                            &lt;li&gt;Publicará cualquier información que contenga desnudos, violencia excesiva o un tema ofensivo, o que contenga un enlace a dicho contenido.&lt;/li&gt;
+                            &lt;li&gt;No intentará acosar, abusar o dañar a otra persona.&lt;/li&gt;
+                            &lt;li&gt;Pondrá a disposición a través del Servicio cualquier material o información que viole cualquier derecho de autor, marca registrada, patente, secreto comercial, derecho de privacidad, derecho de publicidad, u otros derechos de cualquier persona o entidad.&lt;/li&gt;
+                            &lt;li&gt;Transmitirá comunicaciones no autorizadas a través del Servicio, incluyendo el correo basura, cartas en cadena, correo basura y los materiales que promueven los elementos de malware, spyware y descargable.&lt;/li&gt;
+                            &lt;li&gt;Utilizará ningún software de terceros no autorizados que acceda, intercepte, o de otra manera recoge la información desde o a través del servicio o que se encuentren en tránsito desde o hacia el servicio, incluyendo, sin limitación, cualquier software que lee las áreas de memoria RAM o corrientes de tráfico de la red.&lt;/li&gt;
+                            &lt;li&gt;Anulará todas las cabeceras de exclusión de robots u otras medidas que empleamos para restringir el acceso al servicio o utilizar cualquier software, tecnología o dispositivo para enviar contenidos o mensajes, raspar, araña, o se arrastran del Servicio, o de la cosecha o manipular los datos.&lt;/li&gt;
+                            &lt;li&gt;Utilizará, facilitará, creará o mantendrá cualquier conexión no autorizada al Servicio, incluyendo sin limitación (1) cualquier conexión a servidores no autorizados que emula, o los intentos de emular cualquier parte del Servicio, o (2) cualquier conexión con los programas, herramientas o software no autorizados.&lt;/li&gt;
+                            &lt;li&gt;Realizará ingeniería inversa, descompilará, desensamblará, descifrará o intentará derivar el código fuente de cualquier software subyacente u otra propiedad intelectual utilizada para proporcionar el servicio.&lt;/li&gt;
+                            &lt;li&gt;Copiará, modificará o distribuirá los derechos o el contenido de la plataforma, o derechos de autor o marcas registradas de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; o utilizará cualquier método para copiar o distribuir el contenido del servicio, salvo lo específicamente permitido en estas Condiciones de servicio.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede limitar, suspender, terminar, modificar o eliminar cuentas o acceso a los servicios o partes del mismo si usted ha incumplido cualquiera de los términos del servicio, con o sin aviso previo, sin que ello implique, bajo ninguna circunstancia, compensación o pago alguno. Usted puede cancelar cualquier cuenta registrada a su nombre en cualquier momento, eliminar cualquier comentario en cualquier momento.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;7. Limitaciones de responsabilidad&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se responsabiliza de los posibles errores u omisiones que pudieran existir en los contenidos de este sitio. A su vez, estos contenidos pueden ser modificados, desarrollados o actualizados sin notificación previa, sometiéndose el usuario a las modificaciones que se realicen de acuerdo con estas condiciones de uso.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se responsabiliza por las acciones que el usuario pueda llegar a realizar al estar expuesto al contenido del sitio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario reconoce y acepta que, en toda la extensión permitida por la ley aplicable, las renuncias de responsabilidad contenidas en este documento se aplican a cualquier daño o perjuicio de todo tipo causado por o relacionados con el uso o imposibilidad de uso del servicio por cualquier causa o acción alguna, y que &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se hace responsable por daños indirectos, accidentales, especiales, ejemplares o indirectos, incluyendo pérdida de beneficios, voluntad o datos, de ninguna manera que resulten del uso de, o la imposibilidad de usar el servicio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario acepta indemnizar, guardar y mantener a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, contratistas, empleados, agentes y sus proveedores de terceros, licenciatarios y socios de toda reclamación, pérdidas, daños, responsabilidades, incluyendo honorarios y gastos legales, que surjan de su uso o mal uso del Servicio, o cualquier violación por parte suya de estos Términos de Servicio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no garantiza que las ideas de los usuarios sean llevadas a cabo, pero en caso de que ello suceda, el usuario acepta no recibir remuneración, indemnización, honorarios o valor económico alguno por la realización de sus ideas.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;8. Exoneración de garantías&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; ofrece el sitio web en su estado actual, con todos los defectos que pueda tener y según disponibilidad. No se ofrece garantías expresas sobre el mismo. Igualmente, no existe obligación por parte de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de proporcionar ningún tipo de soporte en absoluto. No se asume ninguna garantía implícita que avale que el sitio web y todos los programas de software, los contenidos y los servicios distribuidos a través del sitio web sean vendibles, de calidades satisfactorias, precisas, oportunas o idóneas para una necesidad o una finalidad concreta o que no vulneren ningún derecho.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario acepta que el uso del servicio es bajo su propio riesgo y se entrega "tal cual" sin garantía de ningún tipo, expresas o implícitas, incluyendo, sin limitación, garantías de título o garantías implícitas de no infracción, comercialización o idoneidad para un propósito particular. Sin perjuicio de lo anterior, tampoco &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; garantiza que el servicio se brinde sin interrupciones o errores.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no se hace responsable de cualquier retraso o incumplimiento por causas fuera del control razonable de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, incluyendo, pero sin limitarse a fuerza mayor y caso fortuito.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;9. Sistema de comentarios&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El sistema de comentarios es proporcionado por la plataforma, el usuario acepta usar este medio bajo su propia responsabilidad, reconociendo los términos y condiciones, los links u opiniones que se presenten en este medio no son parte de &lt;strong&gt;RUTA N&lt;/strong&gt; y pertenecen directamente al usuario que realizó el comentario, cualquier daño que estos puedan causar no son responsabilidad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario es el único responsable por el Contenido de usuario que publique o transmita a través del sistema de comentarios. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no asume ninguna responsabilidad por la conducta de cualquier usuario, la presentación de cualquier Contenido de Usuario, y no asume ninguna responsabilidad por la vigilancia del servicio de contenido inapropiado o ilegal o conducta.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no puede garantizar que otros miembros no van a usar las ideas y la información que usted comparte en el sistema de comentarios. Por lo tanto, si usted tiene una idea o información que desee mantener confidencial y / o no desea que otros usen, no la publique en la plataforma. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no tendrá ninguna responsabilidad de evaluar el uso o compensar por cualquier idea o información que usted puede optar por presentar.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Si usted presenta sugerencias, propuestas, comentarios u otros materiales en el sistema de comentarios, usted entiende y acepta que &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; (1) no tendrá ninguna obligación de mantener sus envíos confidenciales, (2) no tendrá ninguna obligación de devolver sus Envíos o responder de alguna manera, y (3) puede usar sus sugerencias sin previo aviso ni compensación alguna para usted.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            EL USUARIO es el único responsable de sus interacciones con otros usuarios del servicio y cualquier otra entidad con los que interactúa a través del servicio de comentarios. Si usted tiene una disputa con uno o más usuarios, nos libera de reclamos, demandas y daños (reales o resultantes) de cualquier tipo y naturaleza, conocidos y desconocidos, que surjan de o relacionados de alguna manera con dichos conflictos.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;10. Propiedad intelectual&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El Servicio (incluyendo, pero sin limitarse a títulos, código informático, temas, objetos, historias, diálogos, frases, conceptos, ilustraciones, animaciones, sonidos, composiciones musicales, efectos audiovisuales, métodos de operación, los derechos morales, la documentación, etc.) son obras de propiedad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; se reserva todos los derechos, incluyendo, pero sin limitarse a todos los derechos de propiedad intelectual u otros derechos de propiedad, en relación con el Servicio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario acepta y reconoce que no tendrá propiedad o derechos similares sobre la plataforma &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; y sus contenidos y además reconoce y acepta que todos los derechos son y para siempre serán propiedad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            De manera expresa EL USUARIO acepta, que su participación en la plataforma en ningún caso podrá́ desconocer derechos de autor, propiedad intelectual o cualquier otro derecho de terceros. El participante deberá ser propietario del material que va a utilizar en la plataforma, esto es: fotos, imágenes y dibujos (sin que esta enunciación sea taxativa), o en caso de no ser el propietario, se responsabiliza de ser un legítimo tenedor del material y de obtener previamente todos los derechos necesarios para su uso.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El participante indemnizará todos los perjuicios causados a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; o a terceros, por la utilización de material no autorizado, la violación de derechos de autor o la vulneración de cualquier otro derecho.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;Declaración de Autoría y Originalidad:&lt;/strong&gt;&lt;br/&gt;
+                            El participante declara ser el creador del contenido audiovisual o fotográfico que adjunta y propietario legítimo de todos los derechos de propiedad intelectual aplicables a los mismos, que libre y voluntariamente ha incorporado en la plataforma de la actividad. En consecuencia, el participante asume total responsabilidad y mantendrá indemne a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; y sus vinculadas frente a cualquier reclamación que pudieran efectuar terceras personas con ocasión de una vulneración a derechos de propiedad intelectual sobre el contenido audiovisual o fotográfico que entregue para participar en la actividad y será responsable frente a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de todas las cargas pecuniarias que pudieran derivarse para esta última a favor de terceros con motivo de acciones, reclamaciones o conflictos originados por dicha causa.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;Imagen de terceros:&lt;/strong&gt;&lt;br/&gt;
+                            Tomando en consideración que los contenidos audiovisuales y/o fotográficos presentados por el usuario para efectos de su participación en la actividad, pueden contener la imagen de terceros, esto es, la representación gráfica de su cara, cuerpo, silueta o cualquier otro tipo de forma o aspecto, que lo identifique bajo cualquier medio conocido o por conocer, así como su voz y demás características asociadas, el participante declara, que cuenta con la autorización para el uso de la imagen de los terceros que sea utilizada en su video y/o fotografía, por cualquier medio, durante la vigencia de la actividad y hasta los dos (2) años siguientes a su finalización. En consecuencia, el participante asume total responsabilidad y mantendrá indemne a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; frente a cualquier reclamación que pudieran efectuar terceras personas con ocasión de una vulneración a derechos de imagen y será́ responsable frente a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de todas las cargas pecuniarias que pudieran derivarse para esta última a favor de terceros con motivo de acciones, reclamaciones o conflictos originados por dicha causa.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;Imagen del participante:&lt;/strong&gt;&lt;br/&gt;
+                            Con respecto de su propia imagen, el participante declara lo siguiente: Que autoriza de manera expresa a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; para utilizar y explotar, el material que contenga su imagen de manera total o parcial en forma ilimitada en cuanto a los medios actualmente conocidos o por conocer, de manera total o parcial en forma ilimitada en el territorio nacional colombiano y en el mundo, durante la vigencia de la actividad y hasta los dos (2) años siguientes a su finalización. Además declara Que renuncia de manera expresa a exigir cualquier tipo de compensación a &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, sus vinculadas o subsidiarias, por el uso o explotación comercial que realicen de su imagen.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;11. Enlaces a terceros&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; puede proporcionar enlaces en el servicio a los sitios web de terceros o proveedores que pueden invitarlo a participar en una oferta promocional. Cualquier gasto u obligación con estos terceros son de su responsabilidad. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no hace ninguna representación o garantía con respecto a cualquier contenido, bienes y / o servicios ofrecidos por terceros, incluso si se vincula a partir de nuestro servicio, y no será responsable por cualquier reclamo relacionado con los contenidos de terceros.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Los sitios vinculados no están bajo el control de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; y pueden recoger datos o solicitar información personal del usuario. &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; no es responsable de sus prácticas de negocios de contenido, o políticas de privacidad, o para la recogida, uso o divulgación de cualquier información que estos sitios pueden recolectar. La inclusión de estos vínculos no implica aprobación por parte de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; de estos sitios enlazados.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;12. Resolución de disputas&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Si surge una disputa con &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, tanto el usuario como &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; están de acuerdo con resolver cualquier reclamación o controversia conforme a derecho o equidad de acuerdo con una de las secciones siguientes, o como se acuerde por escrito. Antes de recurrir a estas alternativas, se recomienda que se contacte directamente con nosotros para buscar una solución por medio de procedimientos alternativos de solución de controversias.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El presente Acuerdo y, cualquier disputa que surja de o relacionada con ella o con el Servicio, se regirá́ en todos los aspectos por las leyes de Colombia. El usuario acepta que cualquier reclamo o disputa que pueda tener contra &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; debe ser resuelto exclusivamente por la jurisdicción colombiana, con excepción de lo acordado por las partes o como se describe en el párrafo siguiente opción de arbitraje.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Cualquier diferencia o controversia que surja entre el Usuario y &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; con ocasión de los términos de uso, será́ sometida a la decisión de un Tribunal de Arbitramento, el cual estará́ integrado por tres (3) árbitros designados de mutuo acuerdo por las partes, o en su defecto por el Centro de Arbitraje y Conciliación Mercantil de la Cámara de comercio de Bogotá́ D.C., previa solicitud presentada por cualquiera de las PARTES. El tribunal así constituido, sesionará y se acogerá al reglamento y tarifas del Centro de Arbitraje y Conciliación Mercantil de la Cámara de Comercio de Bogotá́ D.C., sujetándose a lo dispuesto en la legislación vigente. El laudo que emita el Tribunal será́ en derecho. Cada PARTE correrá́ con los costos y gastos de todos los abogados, consultores, asesores, testigos y empleados contratados por la misma.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;13. Disposiciones generales&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;a. Divisibilidad&lt;/strong&gt;&lt;br /&gt;
+                            El Usuario y &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; están de acuerdo con que en caso de que una o más de las disposiciones contenidas en estas Condiciones del servicio o de la Política de privacidad, fuera juzgada nula o ineficaz, tal nulidad o ineficacia no afectará ninguna otra disposición de las condiciones del servicio, las cuales serán interpretado como si tal disposición nunca hubiera estado contenida ahí.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;b. Cesión&lt;/strong&gt;&lt;br /&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; podrá ceder o delegar estas Condiciones de servicio y/o la Política de privacidad de &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt;, en todo o en parte, a cualquier persona o entidad en cualquier momento con o sin el consentimiento del Usuario. El usuario no podrá ceder o delegar los derechos u obligaciones bajo los Términos de Servicio o Política de privacidad.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;c. Acuerdo completo&lt;/strong&gt;&lt;br /&gt;
+                            Estas Condiciones del servicio y las políticas de privacidad reemplazan todos los acuerdos anteriores de las partes relacionadas con la materia objeto del mismo, tanto de manera electrónica, oral o escrita, establecida por la costumbre, práctica, política o precedente, entre el usuario y &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; con respecto al Servicio.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;d. No Renuncia&lt;/strong&gt;&lt;br /&gt;
+                            Ningún requisito o exigencia de esta condiciones de uso será considerado como renunciado o excusado. La simple renuncia o excusa de un incumplimiento o violación a cualquier disposición de estas condiciones de uso, no podrá́ ser interpretado como una renuncia o excusa de cualquier incumplimiento o violación posterior.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;e. Avisos&lt;/strong&gt;&lt;br /&gt;
+                            Podemos notificarle a través de publicaciones en http://platform.citiesfor.life, y por correo electrónico o por cualquier otro medio de comunicación la información de contacto que usted nos proporciona. Todas las notificaciones que le proporcionan, sin el cumplimiento de esta Sección de Avisos No tendrán ningún efecto legal.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;14. Protección de datos y política de privacidad datos personales&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Para la participación en la plataforma &lt;strong&gt;RUTA N&lt;/strong&gt;, actuando como responsable de los datos, recopila información personal, como: Nombre, Apellido, Email, Usuario y Contraseña.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; recopila y utiliza la información personal para la propia administración de los servicios de la página, para ofrecer a los usuarios los servicios de información y promoción. De la misma manera, &lt;strong&gt;RUTA N&lt;/strong&gt; hace uso de los datos personales para informar al usuario sobre contenidos disponibles. &lt;strong&gt;RUTA N&lt;/strong&gt; no pone a la venta, alquila ni arrienda a terceros sus listas de registrados en sus páginas. No obstante, puede que en ocasiones se ponga en contacto con el usuario en nombre de ciertos aliados comerciales externos y/o para alguna &lt;strong&gt;RUTA N&lt;/strong&gt; con el fin de informarle sobre el lanzamiento de ofertas concretas que pudieran ser de su interés, siempre vinculados al objeto de esta página. En estos casos, la información personal del usuario (Nombre y apellidos, teléfono celular, correo electrónico, ciudad, foto de perfil, biografía, tipo de documento, número de documento, intereses) no se transfiere a terceros.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; puede recolectar en la base de datos para el uso dentro de la plataforma y actividades promocionales datos sensibles (aquellos que afectan la intimidad del titular o cuyo uso indebido puede generar discriminación), tales como datos biométricos, en tal caso &lt;strong&gt;RUTA N&lt;/strong&gt; garantiza el uso de acuerdo a los principios constitucionales y el respeto por los derechos fundamentales.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Adicionalmente &lt;strong&gt;RUTA N&lt;/strong&gt; le informa al usuario que como titular del dato goza de los derechos previstos en la Constitución y la ley, especialmente el derecho a conocer, actualizar, rectificar y suprimir su información personal; así como el derecho a revocar el consentimiento otorgado para el tratamiento de datos personales y todos los derechos establecidos en la Ley 1581 de 2012 y el Decreto 1377 de 2013.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;RUTA N&lt;/strong&gt; se compromete a proteger la seguridad de la información personal haciendo uso de tecnologías y procedimientos de seguridad que garantizan la protección de la información frente al acceso, revelación y usos no autorizados, así mismo, usará los datos, en especial aquellos de los menores de edad, de acuerdo a los principios constitucionales, respetando los derechos fundamentales y el interés superior de los menores de edad, si tiene cualquier inquietud al respecto, puede enviar un correo electrónico a info@citiesfor.life.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Con base en lo anteriormente expuesto, en calidad de participante usuario o padre o acudiente del participante menor de edad:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Acepto de manera expresa, voluntaria, previa, explícita, informada e inequívoca la recopilación, almacenamiento y tratamiento de mis datos personales, así como los del menor de edad que represento.&lt;/li&gt;
+                            &lt;li&gt;Acepto el envío de información promocional al correo electrónico registrado.&lt;/li&gt;
+                            &lt;li&gt;Declaro que la información suministrada es cierta, fidedigna y actualizada.&lt;/li&gt;
+                            &lt;li&gt;Entiendo y acepto que los datos personales y demás información suministrados por el participante serán objeto de tratamiento automatizado e incorporada a la base de datos administrada por la agencia de publicidad Dasigno, encargada de desarrollar la Plataforma.&lt;/li&gt;
+                            &lt;li&gt;Otorgo mi consentimiento libre, expreso e informado para que la información personal que se ha ingresado sea almacenada, recopilada o utilizada por &lt;strong&gt;RUTA N&lt;/strong&gt; directamente o a través de terceros, con fines de comunicación, envío de información y/o para mercadeo.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            Si el usuario desea retirarse de esta plataforma, solicitar alguna modificación, corrección o supresión de todos los datos que nos ha proporcionado, dejar de recibir información comercial, así como contactarse con nosotros por cualquier otra causa, puede enviar un correo electrónico a info@citiesfor.life
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Yo reconozco que he leído y entiendo los términos anteriores de Uso y acepto que mi USO DE LA PLATAFORMA ES UN RECONOCIMIENTO DE MI ACEPTACIÓN DE LOS TÉRMINOS Y CONDICIONES DEL PRESENTE ACUERDO DE CONDICIONES DE USO.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;15. Política de privacidad&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Su privacidad es importante para nosotros. Al aceptar esta política de privacidad el usuario acepta que su información sea consultada y usada de su cuenta (Facebook, Twitter, Google + o Linkedin), los datos que se utilizarán los siguientes:
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Nombre completo, el cual será mostrado a los demás usuarios&lt;/li&gt;
+                            &lt;li&gt;Su edad, la cual será́ consultada para comprobar la edad del usuario&lt;/li&gt;
+                            &lt;li&gt;El id de cuenta (Facebook, Twitter, Google + o Linkedin), el cual será almacenado para poder guardar el progreso del usuario en la aplicación.&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                            El usuario acepta que proporcionará información exacta y completa, y que va a actualizar la información lo antes posible después de cambios. Usted entiende que su Id de usuario, nombres y apellidos, biografía, link a redes sociales y foto de perfil estarán disponibles al público y que los motores de búsqueda pueden indexar su nombre y la foto de su perfil.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            Ninguna información será distribuida a terceros y la única información que será almacenada, hasta que el usuario comunique por medio de un mensaje que desea que su cuenta sea eliminada, será el id de la cuenta (Facebook, Twitter, Google + o Linkedin).
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            El usuario es el único responsable de mantener la confidencialidad de la información de acceso, y será responsable de todos los usos de la información de acceso.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;16. Cambios a los términos del servicio y la política de privacidad&lt;/strong&gt;
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;strong&gt;EL ADMINISTRADOR&lt;/strong&gt; se reserva el derecho, a nuestra discreción, de cambiar, modificar, añadir o eliminar partes de estas Condiciones de servicio en cualquier momento publicando los términos enmendados en o dentro del servicio. También puede dar aviso de cualquier cambio en un mensaje de correo electrónico o mensajería dentro del Servicio. Se considerará que ha aceptado estos cambios si continúa utilizando el Servicio. Salvo que se indique lo contrario. Todos los términos enmendados entrarán automáticamente en vigencia después de su publicación inicial.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                            La plataforma &lt;strong&gt;CITIES FOR LIFE&lt;/strong&gt; siempre contará con un link con la última versión de los términos y condiciones, el usuario será responsable de comprobar los términos y condiciones periódicamente por si hubiese cambios que pudieran afectarle. Si continúa utilizando el sitio web tras la modificación de los términos y condiciones de uso, los estará́ aceptando implícitamente.
+                        &lt;/p&gt;</value>
+  </data>
+  <data name="TRANSCITY" xml:space="preserve">
+    <value>&lt;span&gt;Transforma tu ciudad y&lt;/span&gt;&lt;br&gt;Haz que tu voz tenga eco en cualquier parte del mundo.</value>
+  </data>
+  <data name="TRANSFOR" xml:space="preserve">
+    <value>Únete a la transformación de nuestra ciudad</value>
+  </data>
+  <data name="TXTAUNNOHAS" xml:space="preserve">
+    <value>Aún no has participado en las ideas de otros ciudadanos. Empieza a participar en la cocreación de tu ciudad.</value>
+  </data>
+  <data name="TXTCHAPASS" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="TXTCOMALL" xml:space="preserve">
+    <value>Completa toda la información y gana 120 puntos</value>
+  </data>
+  <data name="TXTCONFPASS" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="TXTDIDFOR" xml:space="preserve">
+    <value>¿Olvidaste tu contraseña?</value>
+  </data>
+  <data name="TXTINFORPRIVA" xml:space="preserve">
+    <value>Esta información es privada, ningún otro ciudadano tiene acceso a ella</value>
+  </data>
+  <data name="TXTNEWPASS" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="TXTOCON" xml:space="preserve">
+    <value>O CON</value>
+  </data>
+  <data name="TXTPERSINFOR" xml:space="preserve">
+    <value>Información personal</value>
+  </data>
+  <data name="TXTREMPASS" xml:space="preserve">
+    <value>Recordar contraseña</value>
+  </data>
+  <data name="TXTSELECTLANGAGE" xml:space="preserve">
+    <value>Seleccione su idioma de preferencia</value>
+  </data>
+  <data name="TXTTERMCOND" xml:space="preserve">
+    <value>Términos y condiciones</value>
+  </data>
+  <data name="TYPE_OF_BANNER" xml:space="preserve">
+    <value>Tipo de banner</value>
+  </data>
+  <data name="UNBLOCK_IDEA" xml:space="preserve">
+    <value>Desbloquear idea</value>
+  </data>
+  <data name="UNBLOCK_USER" xml:space="preserve">
+    <value>Desbloquear usuario</value>
+  </data>
+  <data name="UNSU" xml:space="preserve">
+    <value>Dar de baja</value>
+  </data>
+  <data name="UNSUBSCRIBE" xml:space="preserve">
+    <value>Darme de baja</value>
+  </data>
+  <data name="UPLOADED_FILES" xml:space="preserve">
+    <value>Archivos cargados</value>
+  </data>
+  <data name="UPLOADPHOTO" xml:space="preserve">
+    <value>Sube una imagen</value>
+  </data>
+  <data name="USER_BAD_PASSWORD" xml:space="preserve">
+    <value>La contraseña es incorrecta, Por favor verifica nuevamente.</value>
+  </data>
+  <data name="USER_NOT_FOUND" xml:space="preserve">
+    <value>El usuario no esta en el sistema</value>
+  </data>
+  <data name="VALIDACIONDELETEUSER" xml:space="preserve">
+    <value>¿Estás seguro de querer borrar permanentemente el usuario en Cities for Life?</value>
+  </data>
+  <data name="VALIDACIONDELETEUSER2" xml:space="preserve">
+    <value>Recuerda que esta es tu casa y puedes regresar cuando quieras.</value>
+  </data>
+  <data name="VALIDACIONDELETEUSER2ADMIN" xml:space="preserve">
+    <value>¿Por que lo das de baja?</value>
+  </data>
+  <data name="VALIDACIONDELETEUSERHEADER" xml:space="preserve">
+    <value>¿Borrar la información?</value>
+  </data>
+  <data name="VALIDACIONDELETEUSERHEADER2" xml:space="preserve">
+    <value>¿Estás seguro?</value>
+  </data>
+  <data name="VALIDATIONCITY" xml:space="preserve">
+    <value>Debes seleccionar una ciudad</value>
+  </data>
+  <data name="VALIDATIONCORREO" xml:space="preserve">
+    <value>Debes ingresar el correo electrónico</value>
+  </data>
+  <data name="VALIDATIONCORREOINVALIDO" xml:space="preserve">
+    <value>Debes ingresar un formato válido de correo</value>
+  </data>
+  <data name="VALIDATIONCOUNTRY" xml:space="preserve">
+    <value>Debes seleccionar un país</value>
+  </data>
+  <data name="VALIDATIONIDIOMA" xml:space="preserve">
+    <value>Debes ingresar un idioma</value>
+  </data>
+  <data name="VALIDATIONLOCATION" xml:space="preserve">
+    <value>Debes seleccionar una ubicación</value>
+  </data>
+  <data name="VALIDATIONMESSAGE" xml:space="preserve">
+    <value>Debes ingresar un mensaje</value>
+  </data>
+  <data name="VALIDATIONNAME" xml:space="preserve">
+    <value>Debes ingresar el nombre</value>
+  </data>
+  <data name="VALIDATIONPASSWORD" xml:space="preserve">
+    <value>Debes ingresar una contraseña</value>
+  </data>
+  <data name="VALIDATIONPASSWORDCONFIR" xml:space="preserve">
+    <value>Debes confirmar tu contraseña</value>
+  </data>
+  <data name="VALIDATIONPASSWORDMASH" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="VALIDATIONPOLICIES" xml:space="preserve">
+    <value>Debes aceptar las politicas de privacidad</value>
+  </data>
+  <data name="VALIDATIONSUBJECT" xml:space="preserve">
+    <value>Debes ingresar un asunto</value>
+  </data>
+  <data name="VALIDATIONTERMSCONDITIONS" xml:space="preserve">
+    <value>Debes aceptar los términos y condiciones</value>
+  </data>
+  <data name="ValIDATIONTEST" xml:space="preserve">
+    <value>TEST</value>
+  </data>
+  <data name="VALID_SECTION_CONTENT" xml:space="preserve">
+    <value>Debes seleccionar una secci&amp;oacute;n para crear el contenido.</value>
+  </data>
+  <data name="VERYGOOD" xml:space="preserve">
+    <value>¡Muy bien!</value>
+  </data>
+  <data name="VIYOU" xml:space="preserve">
+    <value>Video youtube</value>
+  </data>
+  <data name="WEALREADY" xml:space="preserve">
+    <value>Ya somos</value>
+  </data>
+  <data name="WELCOMCI" xml:space="preserve">
+    <value>No ha habido un momento más emocionante para ser parte de la comunidad global CITIES FOR LIFE que éste. Luego del lanzamiento durante el 1er Encuentro Global Cities for Life en Medellin, en septiembre 2015, nuestro alcance internacional e impacto continúan creciendo.</value>
+  </data>
+  <data name="WHATMIND" xml:space="preserve">
+    <value>Cuéntanos, qué tienes en mente</value>
+  </data>
+  <data name="WHICHDO" xml:space="preserve">
+    <value>¿Cúal de estas ideas te gusta más?</value>
+  </data>
+  <data name="WHYCONTENT" xml:space="preserve">
+    <value>¿Por qué reportas este contenido?</value>
+  </data>
+  <data name="WRITECOMMENT" xml:space="preserve">
+    <value>escribe tu comentario aquí</value>
+  </data>
+  <data name="WRITEINTRO" xml:space="preserve">
+    <value>Escribe una introducción</value>
+  </data>
+  <data name="WRITEITHERE" xml:space="preserve">
+    <value>Escríbelo aquí</value>
+  </data>
+  <data name="WRITETITLE" xml:space="preserve">
+    <value>Escribe aquí el título</value>
+  </data>
+  <data name="WRITEYOU" xml:space="preserve">
+    <value>Escribe tu número celular</value>
+  </data>
+  <data name="YOUCANGO" xml:space="preserve">
+    <value>Puedes subir una imagen o un video de Youtube</value>
+  </data>
+  <data name="YOURCOULD" xml:space="preserve">
+    <value>Tu idea podría llevarse a cabo</value>
+  </data>
+  <data name="YOU_ARE_IN" xml:space="preserve">
+    <value>Usted se encuentra en</value>
+  </data>
+  <data name="MESSAGESUCCESFULL" xml:space="preserve">
+    <value>Tu mensaje ha sido enviado. Pronto nos comunicaremos contigo.</value>
+  </data>
+  <data name="DELETE_COMMENT_MESSAGE" xml:space="preserve">
+    <value>¿Estás seguro de borrar tu comentario?</value>
+  </data>
+  <data name="DELETE_COMMENT_TITLE" xml:space="preserve">
+    <value>¿Borrar tu Comentario?</value>
+  </data>
+  <data name="DELETE_IDEA_MESSAGE" xml:space="preserve">
+    <value>¿Estás seguro de borrar tu idea?</value>
+  </data>
+  <data name="DELETE_IDEA_TITLE" xml:space="preserve">
+    <value>¿Borrar tu Idea?</value>
+  </data>
+  <data name="DELETE_NEWS_MESSAGE" xml:space="preserve">
+    <value>¿Estás seguro de borrar esta noticia?</value>
+  </data>
+  <data name="DELETE_NEWS_TITLE" xml:space="preserve">
+    <value>¿Borrar Noticia?</value>
+  </data>
+  <data name="INICIOENBETA" xml:space="preserve">
+    <value>Este ecosistema de co-creación global está en continuo desarrollo. Si tienes sugerencias y recomendaciones, envíalas a &lt;a href="mailto:info@citiesfor.life"&gt;info@citiesfor.life&lt;/a&gt;. Juntos integraremos el conocimiento y superaremos los retos de nuestras ciudades.</value>
+  </data>
+  <data name="SUBJECTWELCOME" xml:space="preserve">
+    <value>¡Bienvenido a Cities for Life!‏</value>
+  </data>
+  <data name="YOUHAVEQUESTION" xml:space="preserve">
+    <value>Si tiene alguna pregunta, por favor escríbanos a</value>
+  </data>
+</root>

@@ -1,0 +1,33 @@
+﻿@model Webcore.Areas.Admin.Models.Parametros
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div align="right">
+    <ul id="MenuP">
+        <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+    </ul>
+    <div class="cont" align="left">
+        <hr />
+        @using (Html.BeginForm("Detail", "Parametros", FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary()
+            <ul id="fields">
+                <li>Key<br />
+                    <b>@Model.Keyvalue.Key</b>
+                    @Html.HiddenFor(t => t.Keyvalue.Key)
+                </li>
+                <li>Value<br />
+                    @Html.EditorFor(t => t.Keyvalue.Value)
+                </li>
+            </ul>
+        }
+        <div align="center" id="contentactions">
+            <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+            <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('objValue_value').addClass('');
+</script>

@@ -1,0 +1,50 @@
+﻿@model Exception
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lo sentimos</title>
+    @Styles.Render("~/resources/css/")
+</head>
+<body>
+    <div align="center">
+        <div id="wrap">
+            <div id="subtitlehead" class="logmargin">
+                :( Oops lo sentimos !
+            </div>
+            <hr />
+            <div id="content">
+                <div id="contenterror">
+                    <table width="80%">
+                        <tr>
+                            <td align="left">
+                                <span class="subtitleserror">Ha ocurrido una incidencia no controlada por la aplicación:</span><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <span class="messageerror">Mensaje</span>
+                                <div class="descriptionerror">@Model.Message</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <span class="messageerror">Descripción</span>
+                                <div class="descriptionerror">@Model.StackTrace</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                                <input type="button" onclick="history.back(-1)" value="Volver" class="buttons" />
+                            </td>
+                        </tr>
+                    </table>    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

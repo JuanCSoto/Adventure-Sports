@@ -1,0 +1,517 @@
+﻿@model List<Domain.Entities.FrontEnd.FeaturedChallengesQuestions>
+@{
+  Layout = null;
+  int counter = 0;
+  string content = Url.Content("~/").TrimEnd('/');
+  int percentage = 0;
+  int endDay = 0;
+  int days = 0;
+  string link = string.Empty;
+  bool ended = false;
+  bool first = true;
+  bool video = false;
+
+  string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+}
+@if (Model.Count > 0)
+{
+  @*
+  <div style="cursor:pointer;" onclick="setTimeoutBanner();">START</div>
+  <div style="cursor:pointer;" onclick="removeTimeoutBanner();">STOP</div>
+  *@
+<div class="banner_v2">
+    @foreach (Domain.Entities.FrontEnd.FeaturedChallengesQuestions item in Model)
+    {
+      counter++;
+      if (!item.IsBlog.Value)
+      {
+        days = (int)Math.Ceiling((item.EndDate.Value - item.StartDate.Value).TotalDays);
+        endDay = (int)Math.Ceiling((item.EndDate.Value - DateTime.Now).TotalDays);
+        if (endDay > 0)
+        {
+          percentage = ((endDay * 100 / days) * -1) + 100;
+          ended = false;
+        }
+        else
+        {
+          percentage = 100;
+          ended = true;
+        }
+        link = string.Concat(content, "/", item.Friendlyurlid);
+      }
+      else
+      {
+        link = string.Concat(content, "/nosotros");
+      }
+
+      if (item.Video.Length > 0)
+      {
+        video = true;
+      }
+      else
+      {
+        video = false;
+      }
+
+      if (first)
+      {
+    <div class="banner_v2-img">
+        <div style="position:relative;overflow:hidden;width:100%;height:455px;">
+            
+            <a id="banner-link" href="@(link)" style="position:absolute;top:0;left:0px;width:100%;height:100%;">
+                @if (video)
+                {
+                <div id="player-holder"></div>
+                <script>
+                  loadVideo('@item.Video');
+                </script>
+                }
+                else
+                {
+                <img src="~/files/@item.ContentId/1800x800-@item.CoverImage" alt="banner" />
+                }
+            </a>
+            <a id="banner-link-2" style="position:absolute;top:0;left:0px;width:100%;height:100%;">
+                
+            </a>            
+        </div>
+        <div id="flecha-izquierda" class="flechas-v2_1"><img src="@content/resources/images/mimedellin/flechab-2.png" alt="icon" /></div>
+	      <div id="flecha-derecha" class="flechas-v2_2"><img src="@content/resources/images/mimedellin/flechab-1.png" alt="icon" /></div>
+    </div>
+      }
+	<div class="banner-info2" @(first ? "" : "style=display:none;") data-banner="@counter" data-video="@video.ToString().ToLower()" data-video-id="@item.Video" data-image="/files/@item.ContentId/1800x800-@item.CoverImage" data-link="@link">
+		
+		<div class="clear"></div>
+		<a href="@(link)"><div class="green-box"><div class="banner-info-txt2">@item.Name</div></div></a>
+        @if (!item.IsBlog.Value)
+        {
+		<div class="clear"></div>
+		<div class="banner-info-barra_v2">
+			<div class="banner-info-barrar_v2"></div>
+			<div class="banner-info-barrap_v2">
+                <span class="banner-barra-v2 @(ended ? " barra-color-finalizado" : "")" data-percent="@percentage"></span>
+			</div>
+		</div>
+        }
+		<div class="clear"></div>
+		<div class="banner-info-his2">
+            <div class="content-tooltip">
+            @if (item.IsBlog.Value)
+            {
+                <div class="featured-blog">@item.Shortdescription</div>
+            }
+            @switch (item.QuestionType)
+            {
+              case Domain.Entities.Question.TypeQuestion.Abierta:                    
+                    <div class="banner-his2-item preguntaabierta@(ended ? "-gris" : "")">
+				        <h6></h6>
+				        <div class="clear"></div>
+				        <h4>@Resources.Global.Messages.OPENQUESTION</h4>
+                        <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -18px; margin-top: 0px;">
+                            <div class="tooltip">@ViewBag.TXTCUEOPI</div>
+                        </div>
+			        </div>
+                break;
+              case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+                     <div class="banner-his2-item multiple-v2@(ended ? "-gris" : "")">
+				        <h6></h6>
+				        <div class="clear"></div>
+				        <h4>@Resources.Global.Messages.SELECTION<br />@Resources.Global.Messages.MULTIPLE</h4>
+                        <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -18px; margin-top: 0px;">
+                            <div class="tooltip">@Resources.Extend.Messages.CHOOSEANSWER</div>
+                        </div>
+					  </div>
+                break;
+              case Domain.Entities.Question.TypeQuestion.Ubicacion:
+                     <div class="banner-his2-item ubicacion-v2@(ended ? "-gris" : "")">
+				        <h6></h6>
+				        <div class="clear"></div>
+				        <h4>@Resources.Global.Messages.LOCATION</h4>
+                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -18px; margin-top: 0px;">
+                    <div class="tooltip">@Resources.Extend.Messages.PLACEMAP</div>
+                </div>
+					  </div>
+                break;
+            }
+            @switch (item.ChallengeType)
+            {
+              case Domain.Entities.Challenge.TypeChallenge.Participacion_Ciudadana:
+                      <div class="banner-his2-item desafiopersona@(ended ? "-gris" : "")">
+				        <h6></h6>
+				        <div class="clear"></div>
+				        <h4>@Resources.Extend.Messages.CITIZENPARTI</h4>
+                        <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -18px; margin-top: 0px;">
+                            <div class="tooltip">@Resources.Extend.Messages.JOININITIATIVE</div>
+                        </div>
+					  </div>
+                break;
+              case Domain.Entities.Challenge.TypeChallenge.Reto_Ciudad:
+                     <div class="banner-his2-item desafiociudad@(ended ? "-gris" : "")">
+				        <h6></h6>
+				        <div class="clear"></div>
+				        <h4>@Resources.Extend.Messages.CITYCHA</h4>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -18px; margin-top: 0px;">
+                                <div class="tooltip">@Resources.Extend.Messages.YOURCOULD</div>
+                            </div>
+					  </div>
+                break;
+            }
+            </div>            
+            @if (!string.IsNullOrEmpty(item.Prize))
+            {
+            <div class="content-tooltip">
+                <div class="banner-his2-item premiov2">                
+				    <h6>@Resources.Global.Messages.PRIZE</h6>
+				    <div class="clear"></div>
+				    <h4></h4>
+                    <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -16px; margin-top: 10px;">
+                        <div class="tooltip">@item.Prize</div>
+                    </div>
+                </div>
+            </div>
+            }            
+            @if (!ended && !item.IsBlog.Value)
+            {
+			<div class="banner-his2-item diasv2">
+				<h6>@endDay</h6>
+				<div class="clear"></div>
+				<h4>@ViewBag.TXTDIARES</h4>
+			</div>
+            }
+		</div>
+		<div class="clear"></div>
+        <div class="participa-block">
+            <a href="@(link)">@buttonText</a>
+            <div class="participa-comentarios">
+                <h1>@item.Ideas</h1>
+                <span></span>
+            </div>
+        </div>
+	</div>
+            first = false;
+    }
+</div>
+    first = true;
+    
+<div class="banner">
+    @foreach (Domain.Entities.FrontEnd.FeaturedChallengesQuestions item in Model)
+    {
+      if (!item.IsBlog.Value)
+      {
+        days = (int)Math.Ceiling((item.EndDate.Value - item.StartDate.Value).TotalDays);
+        endDay = (int)Math.Ceiling((item.EndDate.Value - DateTime.Now).TotalDays);
+        if (endDay > 0)
+        {
+          percentage = ((endDay * 100 / days) * -1) + 100;
+          ended = false;
+        }
+        else
+        {
+          percentage = 100;
+          ended = true;
+        }
+        link = string.Concat(content, "/", item.Friendlyurlid);
+      }
+      else
+      {
+        link = string.Concat(content, "/nosotros");
+      }
+        
+    <div id="banner-info-@item.ContentId" class="banner-info" @(first ? "style=display:block" : "")>
+        @{first = false;}
+        <div class="banner-info-tit">
+            @if (item.QuestionType.HasValue)
+            {
+            <a href="@(content)/preguntas"><h1>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_SINGULAR)</h1></a>
+            }
+            else if (item.ChallengeType.HasValue)
+            {
+            <a href="@(content)/retos"><h1>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.CHALLENGES_SINGULAR)</h1></a>
+            }
+            else if (item.IsBlog.Value)
+            {
+            <a href="@(content)/nosotros"><h1>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.ARTICLES_SINGULAR)</h1></a>    
+            }         
+        </div>
+        <div class="clear"></div>
+        <a href="@(link)"><p>@item.Name</p></a>
+        @if (!item.IsBlog.Value)
+        {
+        <div class="banner-info-barra">
+            <span></span>
+            <div class="barra-color @(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+        </div>
+        }
+        <div class="clear"></div>
+        <div class="content-tooltip">
+            @switch (item.QuestionType)
+            {
+              case Domain.Entities.Question.TypeQuestion.Abierta:
+                    <div class="baner-info-item pregunta-2@(ended ? " preguntagris" : "")">
+            				<span></span>
+            				<div class="clear"></div>
+            				<h1>@Resources.Global.Messages.OPENQUESTION</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -24px; margin-top: 15px;">
+                                <div class="tooltip">@Resources.Extend.Messages.TELLOPINION</div>
+                            </div>
+					  </div>
+                break;
+              case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+                    <div class="baner-info-item pregunta2-2@(ended ? " preguntagris2" : "")">
+            				<span></span>
+            				<div class="clear"></div>
+            				<h1>@Resources.Global.Messages.SELECTION<br />@Resources.Global.Messages.MULTIPLE</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -24px; margin-top: 15px;">
+                                <div class="tooltip">@Resources.Extend.Messages.CHOOSEANSWER</div>
+                            </div>
+					  </div>
+                break;
+              case Domain.Entities.Question.TypeQuestion.Ubicacion:
+                    <div class="baner-info-item pregunta3-2@(ended ? " preguntagris3" : "")">
+            				<span></span>
+            				<div class="clear"></div>
+            				<h1>@Resources.Global.Messages.LOCATION</h1>
+                    <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -24px; margin-top: 15px;">
+                        <div class="tooltip">@Resources.Extend.Messages.PLACEMAP</div>
+                    </div>
+					  </div>
+                break;
+            }
+            @switch (item.ChallengeType)
+            {
+              case Domain.Entities.Challenge.TypeChallenge.Participacion_Ciudadana:
+                    <div class="baner-info-item participacion@(ended ? " participacion3gris" : "")">
+            				<span></span>
+            				<div class="clear"></div>
+            				<h1>@Resources.Extend.Messages.CITIZENPARTI</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -24px; margin-top: 15px;">
+                                <div class="tooltip">@Resources.Extend.Messages.JOININITIATIVE</div>
+                            </div>
+					  </div>
+                break;
+              case Domain.Entities.Challenge.TypeChallenge.Reto_Ciudad:
+                    <div class="baner-info-item ciudadana@(ended ? " ciudadana2gris" : "")">
+            				<span></span>
+            				<div class="clear"></div>
+            				<h1>@Resources.Extend.Messages.CITYCHA</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -24px; margin-top: 15px;">
+                                <div class="tooltip">@Resources.Extend.Messages.YOURCOULD</div>
+                            </div>
+					  </div>
+                break;
+            }
+        </div>
+        @if (!string.IsNullOrEmpty(item.Prize))
+        {
+        <div class="content-tooltip">
+        <div class="baner-info-item premio">
+            <span></span>
+            <div class="clear"></div>
+            <h1>@Resources.Global.Messages.PRIZE</h1>
+            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -34px; margin-top: 15px;">
+                <div class="tooltip">@item.Prize</div>
+            </div>
+        </div>
+        </div>
+        }
+        @if (item.People.HasValue)
+        {
+        <div class="baner-info-item unidos">
+            <span>0/@item.People</span>
+            <div class="clear"></div>
+            <h1>@Resources.Extend.Messages.WEALREADY</h1>
+        </div>
+        }
+        @if (!ended && !item.IsBlog.Value)
+        {
+        <div class="baner-info-item restantes">
+            <span>@endDay</span>
+            <div class="clear"></div>
+            <h1>@Resources.Extend.Messages.DAYSREMA</h1>
+        </div>
+        }
+        <div class="clear"></div>
+        <div class="participa-block">
+            <a href="@(link)">@buttonText</a>
+            <div class="participa-comentarios">
+                <h1>@item.Ideas</h1>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    }
+
+    @if (@Model[0].Video.Length > 0)
+    {
+      video = true;
+    }
+    else
+    {
+      video = false;
+    }
+
+    <div style="position:relative;overflow:hidden;height:350px;width:768px">
+        <div class="banner-panoramica pan1" id="Pan">
+            <a id="banner-link-pan" href="@(content)/@Model[0].Friendlyurlid" style="position:absolute;top:0;left:0px;width:768px;height:350px;">
+                @if (video)
+                {
+                <div id="player-holder2"></div>
+                <script>
+                  loadVideo2('@Model[0].Video');
+                </script>
+                }
+                else
+                {
+                <img src="~/files/@Model[0].ContentId/683x350-@Model[0].Image" alt="banner" />
+                }
+            </a>
+            <a id="banner-link-pan-2" style="position:absolute;top:0;left:768px;width:768px;height:350px;">
+                
+            </a>
+        </div>
+        <div id="flecha-izquierda-pan" class="flechas-v2_1"><img src="@content/resources/images/mimedellin/flechab-2.png" alt="icon" /></div>
+	      <div id="flecha-derecha-pan" class="flechas-v2_2"><img src="@content/resources/images/mimedellin/flechab-1.png" alt="icon" /></div>
+    </div>    
+    <div class="banner-infop-wraper">
+    @{counter = 0; first = true;}
+    @foreach (Domain.Entities.FrontEnd.FeaturedChallengesQuestions item in Model)
+    {
+      counter++;
+      if (!item.IsBlog.Value)
+      {
+        days = (int)Math.Ceiling((item.EndDate.Value - item.StartDate.Value).TotalDays);
+        endDay = (int)Math.Ceiling((item.EndDate.Value - DateTime.Now).TotalDays);
+        percentage = ((endDay * 100 / days) * -1) + 100;
+        link = string.Concat(content, "/", item.Friendlyurlid);
+      }
+      else
+      {
+        link = string.Concat(content, "/nosotros");
+      }
+
+      if (item.Video.Length > 0)
+      {
+        video = true;
+      }
+      else
+      {
+        video = false;
+      }
+        
+        <div id="banner-infop-@item.ContentId" class="banner-infop" data-banner-pan="@counter" data-video="@video.ToString().ToLower()" data-video-id="@item.Video" data-image="/files/@item.ContentId/683x350-@item.Image" data-link="@link" @(first ? "style=display:block" : "")>
+            <div class="banner-infop-tit">
+                @if (item.QuestionType.HasValue)
+                {
+                <a href="@(content)/preguntas"><h1>@Resources.Global.Messages.QUESTION</h1></a>
+                }
+                else if (item.ChallengeType.HasValue)
+                {
+                <a href="@(content)/retos"><h1>@Resources.Global.Messages.CHALL</h1></a>
+                }
+                else if (item.IsBlog.Value)
+                {
+                <a href="@(content)/nosotros"><h1>@Resources.Global.Messages.NEWS</h1></a>    
+                }   
+            </div>
+            <div class="clear"></div>
+            <a href="@(link)"><p>@item.Name</p></a>
+            <div class="clear"></div>
+            @if (!item.IsBlog.Value)
+            {
+            <div class="banner-infop-barra">
+                <span></span>
+                <div class="barra-colorp">
+                    <span data-percent="@percentage"></span>
+                </div>
+            </div>
+            }
+            <div class="clear"></div>
+            
+                @switch (item.QuestionType)
+                {
+                  case Domain.Entities.Question.TypeQuestion.Abierta:
+                        <div class="baner-info-item preguntap@(ended ? " preguntapgris" : "")">
+                				<span></span>
+                				<div class="clear"></div>
+                				<h1>@Resources.Global.Messages.OPENQUESTION</h1>
+							</div>
+                    break;
+                  case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+                        <div class="baner-info-item preguntap2@(ended ? " preguntapgris2" : "")">
+                				<span></span>
+                				<div class="clear"></div>
+                				<h1>@Resources.Global.Messages.SELECTION<br/>@Resources.Global.Messages.MULTIPLE</h1>
+							</div>
+                    break;
+                  case Domain.Entities.Question.TypeQuestion.Ubicacion:
+                        <div class="baner-info-item preguntap3@(ended ? " preguntapgris3" : "")">
+                				<span></span>
+                				<div class="clear"></div>
+                				<h1>@Resources.Global.Messages.LOCATION</h1>
+							</div>
+                    break;
+                }
+                @switch (item.ChallengeType)
+                {
+                  case Domain.Entities.Challenge.TypeChallenge.Participacion_Ciudadana:
+                        <div class="baner-info-item participacionp@(ended ? " participacionpgris" : "")">
+                				<span></span>
+                				<div class="clear"></div>
+                				<h1>@Resources.Extend.Messages.CITIZENPARTI</h1>
+							</div>
+                    break;
+                  case Domain.Entities.Challenge.TypeChallenge.Reto_Ciudad:
+                        <div class="baner-info-item ciudadaniap@(ended ? " ciudadaniapgris" : "")">
+                				<span></span>
+                				<div class="clear"></div>
+                				<h1>@Resources.Global.Messages.CHALL<br/>@Resources.Global.Messages.CITY</h1>
+							</div>
+                    break;
+                }
+
+            @if (!string.IsNullOrEmpty(item.Prize))
+            {
+            <div class="content-tooltip">
+            <div class="baner-info-item premiop">
+                <span></span>
+                <div class="clear"></div>
+                <h1>@Resources.Global.Messages.PRIZE</h1>
+                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -16px; margin-top: 15px;">
+                    <div class="tooltip">@item.Prize</div>
+                </div>
+            </div>
+            </div>
+            } 
+            @if (item.People.HasValue)
+            {
+            <div class="baner-info-item unidosp">
+                <span>0/@item.People</span>
+                <div class="clear"></div>
+                <h1>@Resources.Extend.Messages.WEALREADY</h1>
+            </div>
+            }
+            @if (!ended && !item.IsBlog.Value)
+            {
+            <div class="baner-info-item restantesp">
+                <span>@endDay</span>
+                <div class="clear"></div>
+                <h1>@Resources.Extend.Messages.DAYSREMA</h1>
+            </div>
+            }
+            <div class="participa-block" style="margin-top:20px;">
+                <a href="@(link)">@buttonText</a>
+                <div class="participa-comentarios">
+                    <h1>@item.Ideas</h1>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+            first = false;
+    }
+    </div>
+</div>
+  @*
+  <div style="cursor:pointer;" onclick="setTimeoutBanner();">START</div>
+  <div style="cursor:pointer;" onclick="removeTimeoutBanner();">STOP</div>
+  *@
+}

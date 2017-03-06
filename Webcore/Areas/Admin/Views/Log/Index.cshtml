@@ -1,0 +1,19 @@
+﻿@model Webcore.Areas.Admin.Models.Logs
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Model.Module.Name</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @Resources.Extend.Messages.INFORMATION_LOG
+    <p>
+        <input onclick="window.location.href='@Url.Action("ExportLog", new { Area = "Admin" })'" type="button" class="buttons" value="@Resources.Global.Messages.EXPORT" />
+        @Resources.Extend.Messages.EXPORT_LOG
+    </p>
+    <p>
+        <input onclick="if(confirm('@Resources.Extend.Messages.CLEAN_LOG')) { window.location.href='@Url.Action("CleanLog", new { Area = "Admin" })'; }" type="button" class="buttons" value="@Resources.Global.Messages.CLEAN" />
+        @Resources.Extend.Messages.CLEAN_LOG_MESSAGES
+    </p>
+</div>

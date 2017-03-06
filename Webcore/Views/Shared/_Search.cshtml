@@ -1,0 +1,39 @@
+﻿@model int
+@{
+    Layout = null;
+   
+
+    string users = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_PLURAL);
+}
+
+<div class="search-container-general">
+    <div class="mm2-pretxt-search">@ViewBag.TXTLOOKING</div>
+  @if (Model != 0)
+  {
+  <div id="search-content" data-id="@Model"></div>
+  }
+  <input  class="mm2-searchfield-home" id="search-text" type="text" maxlength="100" placeholder="@Resources.Extend.Messages.WRITEITHERE" />
+    <div class="mm2-container-select-search">
+    <div class="mm2-divstyle-search"></div>
+  <select class="mm2-select-search" id="search-type">    
+    @if (Model == 0)
+    {
+    <option value="3" selected>@Resources.Global.Messages.CHALLENGES</option>
+    <option value="2">@ViewBag.IDEASPLURAL</option>
+    }
+    else
+    {
+    <option value="2" selected>@ViewBag.IDEASPLURAL</option>
+    }
+    <option value="1">@Resources.Global.Messages.CITIZENS</option>
+  </select>
+        </div>
+  <button class="send-search" id="send-search">
+    
+    <div class="send-search-icon">@Resources.Global.Messages.FIND</div><div class="mm2-searchicon" ></div>
+    </button>
+</div>
+<div class="clear"></div>
+<div id="search-result">
+  
+</div>

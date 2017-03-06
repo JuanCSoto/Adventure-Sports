@@ -1,0 +1,37 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+  Layout = "~/Views/Layouts/" + Model.Layout;
+  Business.FrontEnd.Community Entity = (Business.FrontEnd.Community)Model.Entity;
+}
+
+
+<div class="mm2-container-page">
+  <div class="community-admin-div">
+    @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.COMMUNITY_TEXT_1, type = "frontend" })
+  </div>
+  <div class="mm2-tittle-seccion">        
+    <div class="mm2-tittle-name">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.COMMUNITY_TEXT_1,Model.CurrentLanguage.LanguageId)
+        <div class="community-number-tittle">
+        @Entity.TotalParticipants.ToString("#,##0.")</div> @Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.COMMUNITY_TEXT_2,Model.CurrentLanguage.LanguageId)</div>
+    <div class="mm2-title-name">            
+      @Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.COMMUNITY_DESCRIPTION,Model.CurrentLanguage.LanguageId)
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="mm2-line-sep"></div>
+  <div class="mm2-container-community">
+    <div id="community-filters" class="mm2-container-organizer">
+      <div data-id="2" class="selected mm2-item-organizer">@ViewBag.LASTEST</div>
+      <div data-id="1" class="mm2-item-organizer">@ViewBag.ACTIVE</div>
+      @if (User.Identity.IsAuthenticated)
+      {
+        <div data-id="3" class="mm2-item-organizer">@ViewBag.CLOSE</div>
+      }
+    </div>
+    <div class="clear"></div>
+    <div id="search-result">
+    </div>
+  </div>
+</div>
+

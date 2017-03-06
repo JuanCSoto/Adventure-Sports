@@ -1,0 +1,27 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.FAQ Entity = (Business.FrontEnd.FAQ)Model.Entity;    
+}
+<div class="contenedor">
+    <div class="nosotros-contenedor">
+        <div class="nosotros-titulo">
+            <h1>@ViewBag.TXTPREFRE</h1>
+        </div>
+
+        @foreach (Domain.Entities.FrontEnd.FAQList faq in Entity.CollFAQ)
+        {
+        <div class="clear"></div>
+        <div class="pregunta-block">
+            <div class="pregunta-block-p"><a><p>@faq.Name</p><span><img src="~/resources/images/mimedellin/p2.png" alt="icon" /></span></a></div>
+            <div class="clear"></div>
+            <div class="pregunta-block-text">
+                <p>
+                    @Html.Raw(faq.Description)
+                </p>
+            </div>
+        </div>
+        }
+    </div>
+</div>

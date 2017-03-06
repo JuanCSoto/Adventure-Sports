@@ -1,0 +1,108 @@
+﻿@model List<Domain.Entities.FrontEnd.IdeasPaging>
+@{
+    Layout = null;
+    Domain.Entities.Content content = ViewBag.Content;
+}
+@if (Model != null && Model.Count > 1)
+{
+    string date0 = Business.Utils.ElapsedTime(Model[0].Creationdate.Value, Culture);
+    string date1 = Business.Utils.ElapsedTime(Model[1].Creationdate.Value, Culture);
+    Domain.Entities.FrontEnd.Video video0 = Business.Utils.GetVideoFromUrl(Model[0].Video);
+    Domain.Entities.FrontEnd.Video video1 = Business.Utils.GetVideoFromUrl(Model[1].Video);
+    <input id="ideaIdA" type="hidden" value="@Model[0].IdeaId" />
+    <input id="ideaIdB" type="hidden" value="@Model[1].IdeaId" />
+    <div class="vs-titulo">@content.Name</div>
+    <div class="clear"></div>
+    <div class="vs-img"><img src="@Url.Content("~/resources/images/current/vs2.png")" alt="icon" /></div>
+
+    <div class="clear"></div>
+    <div class="izquierda" style="margin:0 0 0 20px">
+        <input type="hidden" id="versus-contentId" value="@Model[0].ContentId" />
+        <div class="vs-item morado">
+            <div class="vs-usuario izquierda">
+                <div class="vs-div-img left">
+                    <div class="img-vertical-middle-overflow">
+                        <img class="min-40" src="@Business.Utils.fixLocalUserImagePath(Model[0].UserImage)" alt="avatar" />
+                    </div>
+                </div>
+                <div class="vs-usuario-n izquierda">
+                    <a href="@Url.Content("~/Perfil/Index/" + Model[0].UserId)"><h1>@Model[0].UserNames</h1></a>
+                    <h2>@date0</h2>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="vs-contenido izquierda">
+                @if (!string.IsNullOrEmpty(Model[0].Image) && video0 == null)
+                {
+                    <img class="izquierda" src="~/files/ideas/@Model[0].Image" alt="idea image" />
+                }
+                @if (video0 != null)
+                {
+                    if (video0.Type == "youtube")
+                    {
+                        <iframe class="izquierda" type="text/html" src="http://www.youtube.com/embed/@video0.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>
+                    }
+                    else if (video0.Type == "vimeo")
+                    {
+                        <iframe class="izquierda" src="http://player.vimeo.com/video/@video0.ID" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    }
+                }
+                <div class="clear"></div>
+                <p class="izquierda" data-render-url="true">@Model[0].Text</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="vs-item azul">
+            <div class="vs-usuario derecha">
+                <div class="vs-div-img right">
+                    <div class="img-vertical-middle-overflow">
+                        <img class="min-40" src="@Business.Utils.fixLocalUserImagePath(Model[1].UserImage)" alt="avatar" />
+                    </div>
+                </div>
+                <div class="vs-usuario-n derecha">
+                    <a href="@Url.Content("~/Perfil/Index/" + Model[1].UserId)"><h1>@Model[1].UserNames</h1></a>
+                    <h2 class="alineard">@date1</h2>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="vs-contenido derecha">
+                @if (!string.IsNullOrEmpty(Model[1].Image) && video1 == null)
+                {
+                    <img class="derecha" src="~/files/ideas/@Model[1].Image" alt="idea image" />
+                }
+                @if (video1 != null)
+                {
+                    if (video1.Type == "youtube")
+                    {
+                        <iframe class="derecha" type="text/html" src="http://www.youtube.com/embed/@video1.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>
+                    }
+                    else if (video1.Type == "vimeo")
+                    {
+                        <iframe class="derecha" src="http://player.vimeo.com/video/@video1.ID" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    }
+                }
+                <div class="clear"></div>
+                <p class="derecha alineard" data-render-url="true">@Model[1].Text</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="botoenes-vs">
+            <div class="alerta-aceptar">
+                <a class="versus-vote-idea" data-id="@Model[1].IdeaId">
+                    <h3>@Resources.Global.Messages.VOTE</h3>
+                    <span></span>
+                </a>
+            </div>
+
+            <div class="ninguna">@Resources.Global.Messages.ANY</div>
+
+            <div class="alerta-aceptar">
+                <a class="versus-vote-idea" data-id="@Model[0].IdeaId">
+                    <h3>@Resources.Global.Messages.VOTE</h3>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </div>
+}

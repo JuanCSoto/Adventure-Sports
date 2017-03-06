@@ -1,0 +1,130 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.SuccessStory Entity = (Business.FrontEnd.SuccessStory)Model.Entity;
+    string content = Url.Content("~/").TrimEnd('/') + "SuccessStory/Story/";
+}
+<div class="container">
+    <div id="Content" ng-app="CitiesForLife">
+
+
+        <div class="container" ng-controller="SuccessStoryController">
+            <div class="col-md-12 col-xs-12 container-tit">
+                <h2>@ViewBag.SUCCESSSTORY</h2><span>@ViewBag.TXTUNTTRA</span>
+            </div>
+            <div class="row" style="margin-top: 80px;">
+                <div id="pulsecontainer" class="pulse-container">
+                    @foreach (Domain.Entities.FrontEnd.SuccessStoryList successstory in Entity.CollSuccessStory)
+                    {
+                        <div id="contenCases" class="col-md-3 col-sm-6 col-xs-12" >
+                            <a href="@content@successstory.ContentId">
+                                <div class="cases">
+                                    @*Comentariado 03Mzo2016 <span class="TargetCiudadPais">@successstory.NameEs, @successstory.Country</span>*@
+                                    <img src="@Html.Raw(@Url.Content("~/") + "files/"+successstory.ContentId+"/511x255-"+ successstory.Image)" />
+                                    <h3>@Html.Raw(successstory.Name)</h3>
+                                    <p>@Html.Raw(successstory.Shortdescription)</p>
+                                    <hr />
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!--PopUP-->
+        <div id="mymodal" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<link href="~/Resources/Css/Cards.css" rel="stylesheet" />
+<link href="~/Resources/Css/PopUp.css" rel="stylesheet" />
+<script src="~/Resources/Scripts/PopUp.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script>
+
+    window.cases = [];
+    var app = angular.module('CitiesForLife', [])
+        .controller('SuccessStoryController', function ($scope) {
+            var citys = [];
+            var institutionImplementes = [];
+            var institutionSources = [];
+            var categorys = [];
+
+
+
+            $scope.cases = window.cases;
+            $scope.citys = _.object(_.map(citys, function (item) {
+                return [item.City, item]
+            }));
+            $scope.institutionImplementes = _.object(_.map(institutionImplementes, function (item) {
+                return [item.InstitutionImplements, item]
+            }));
+            $scope.institutionSources = _.object(_.map(institutionSources, function (item) {
+                return [item.InstitutionSource, item]
+            }));
+            $scope.categorys = _.object(_.map(categorys, function (item) {
+                return [item.Category, item]
+            }));
+
+            $scope.filter = function (name) {
+                if ($scope.item != '-1') {
+                    $scope.cases = window.cases.filter(function (item) {
+                        return item[name] == $scope.item
+                    });
+                    $scope.currentPage = 0;
+                } else {
+                    $scope.cases = window.cases;
+                }
+            };
+
+            $scope.currentPage = 0; //COMIENZA DESDE
+            $scope.pageSize = 8; //CANTIDAD POR PAGINA
+            $scope.numberOfPages = function () {
+                return Math.ceil($scope.cases.length / $scope.pageSize);
+            }
+
+        });
+
+    app.filter('startFrom', function () {
+        return function (input, start) {
+            start = +start;
+            return input.slice(start);
+        }
+    });
+
+
+    $(window).resize(function () {
+        execMansory();
+    });
+    $(document).ready(function () {
+        execMansory();
+    });
+
+    function execMansory() {
+        $('#pulsecontainer').masonry({
+            itemSelector: '#contenCases',
+            columnWidth: '#contenCases',
+            percentPosition: true,
+            isAnimated: true
+        });
+    }
+</script>

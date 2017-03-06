@@ -1,0 +1,35 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string value = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_FAQ);
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>edita el menu</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content" style="margin: 10px;">
+    <div class="registro-item">
+      <div class="registro-txt">Home FAQ:</div>
+      <div class="seleccionar-imagen">        
+        <input type="text" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.MENU_FAQ)" data-type="text" value="@value"/>        
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+    <div class="centrado">
+  <div class="alerta-aceptar">
+    <a>
+      <h3>guardar</h3>
+      <span></span>
+    </a>
+  </div>
+        </div>
+  <div class="clear"></div>
+</div>

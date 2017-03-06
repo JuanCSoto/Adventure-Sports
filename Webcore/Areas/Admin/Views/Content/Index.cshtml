@@ -1,0 +1,173 @@
+﻿@model Webcore.Areas.Admin.Models.Content
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<int> coll = ViewBag.CollClone;
+}
+<script type="text/javascript">
+    var ctnback = new contentclass();
+    ctnback.NotFound = '@Resources.Extend.Messages.NO_RECORDS_FOUND';
+    ctnback.TextFind = '@Resources.Extend.Messages.FIND_BY_NAME';
+    ctnback.UrlNewContent = '@Url.Action("Index", Model.Module.Controller, new { Area = "Admin", mod = Model.Module.ModulId })';
+    ctnback.UrlDetailContent = '@Url.Action("Detail", Model.Module.Controller, new { Area = "Admin", mod = Model.Module.ModulId })';
+    initialize = function () { ctnback.droppable(); }
+
+    $(function () {
+        ctnback.resizable();
+        ctnback.sortable();
+        ctnback.draggable();
+        ctnback.droppable();
+    });
+    $(document).ready(function () {
+        switch(@(Model.Module.ModulId)){
+            case 51:
+                $('#31 span').click();
+                break;
+            case 52:
+                $('#32 span').click();
+                break;
+            case 54:
+                $('#34 span').click();
+                break;
+            case 1065:
+                $('#46 span').click();
+                break;
+            case 55:
+                $('#0 span').click();
+                $('#newcontent').hide();
+                break;
+            case 58:
+                $('#35 span').click();
+                break;
+            case 61:
+                $('#newcontent').hide();
+                $('#36 span').click();
+                break;
+            case 60:
+                $('#newcontent').hide();
+                $('#37 span').click();
+                break;
+            case 62:
+                $('#42 span').click();
+                break;
+        }
+        $('#conttreecontent').hide();
+        if($('#SectionId').val() != '46'){
+            $("#postulateList").hide();
+        }else{
+            var postulateListUrl = $("#postulateList").attr("href") + '&sectionId=' + $('#SectionId').val();
+            $("#postulateList").attr("href", postulateListUrl);
+        }
+    });
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <div>
+        <a onclick="ctnback.cleanall()" class="hrefmen" href="javascript:void(0);">
+            <img title="@Resources.Global.Messages.CLEAN" id="imgmore" border="0" width="23" height="23" src="~/resources/images/25clean.gif" />
+        </a>
+        <a class="hrefmen" onclick="ctnback.newcontent('@Resources.Extend.Messages.VALID_SECTION_CONTENT')" href="javascript:void(0);" id="newcontent">
+            <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+            <span>@Resources.Global.Messages.NEW</span>
+        </a>&nbsp;&nbsp;
+        <a onclick="ctnback.deleteall()" class="hrefmen" href="javascript:void(0);" style="display: none;">
+            <img border="0" width="23" height="23" src="~/resources/images/25del.gif" />
+            <span>@Resources.Global.Messages.DELETE</span>
+        </a>&nbsp;&nbsp;
+        <a onclick="$('#loading').show();ctnback.findall(1, @Model.Module.ModulId);" class="hrefmen" href="javascript:void(0);">
+            <img border="0" width="23" height="23" src="~/resources/images/25search.gif" />
+            <span>@Resources.Global.Messages.FIND</span>
+        </a>&nbsp;&nbsp;
+        <input onkeypress="findsubm(event, function() { ctnback.findall(1, @Model.Module.ModulId); })" onblur="blurfind(this, '@Resources.Extend.Messages.FIND_BY_NAME')" onfocus="focusfind(this, '@Resources.Extend.Messages.FIND_BY_NAME')"
+               id="txname" class="textfind inactive" value="@Resources.Extend.Messages.FIND_BY_NAME"
+               type="text" />
+        <input type="hidden" id="SectionId" />
+        <input type="hidden" id="idCount" value="@Model.CollContent.Count()" />
+        <input type="hidden" id="idPage" value="1" />
+        <input type="hidden" id="ModulId" value="@Model.Module.ModulId" />
+    </div>
+    <div id="more">
+        <div>@Resources.Extend.Messages.APPLY_FILTERS</div>
+        <select onchange="$('#loading').show();ctnback.findall(1, @Model.Module.ModulId);" id="ddlstatus" class="dropsfil">
+            <option>-@Resources.Global.Messages.STATUS-</option>
+            <option value="true">@Resources.Global.Messages.ACTIVE</option>
+            <option value="false">@Resources.Global.Messages.INACTIVE</option>
+        </select>
+        <select onchange="$('#loading').show();ctnback.findall(1, @Model.Module.ModulId);" id="ddlfilter" class="dropsfil">
+            <option>-@Resources.Global.Messages.SORT-</option>
+            <option value="0">@Resources.Extend.Messages.MANUAL_ORDER</option>
+            <option value="1">@Resources.Global.Messages.CREATION_DATE</option>
+            <option value="2">@Resources.Global.Messages.NAME</option>
+        </select>
+    </div>
+
+    @Html.ActionLink(Resources.Global.Messages.POSTULATIONSLIST, "List", "SuccessStoryPostulate", new { mod = Model.Module.ModulId }, new { id = "postulateList" })
+    <hr />
+    <div id="contenttreecont">
+        <div id="divslice">
+            <div id="conttreecontent">
+                <span class="spntitle">@Resources.Global.Messages.SECTIONS</span>
+                <ul>
+                    <li>
+                        <div id="0">
+                            <img height="15" width="15" src="~/resources/images/15add.gif" />
+                            <span onclick="ctnback.binddetail(0)">@Resources.Global.Messages.ALL</span>
+                        </div>
+                    </li>
+                    @foreach (Domain.Entities.Section item in Model.CollSection)
+                    {
+                        <li>
+                            <div id="@item.SectionId">
+                                <nobr>
+                                    <img onclick="expand(this, @item.SectionId);" height="15" width="15" src="~/resources/images/15add.gif" />
+                                    <span onclick="ctnback.binddetail2(@item.SectionId)">@item.Name</span>
+                                </nobr>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div id="contctncontent">
+                <span class="spntitle">@Resources.Global.Messages.CONTENTS</span>
+                <ul id="listado">
+                    @foreach (Domain.Entities.Content item in Model.CollContent)
+                    {
+                        <li id="li@(item.ContentId)" ondblclick="ctnback.editcontent(@item.ContentId)" onclick="if(ctnback.clicOk) { ctnback.contentselect(this, @item.ContentId); } else { ctnback.clicOk = true; }">
+                            @*<input style="float:right;" onclick="ctnback.clicOk = false;" type="checkbox" value="@item.ContentId" />*@
+                            <img order="@item.Orderliness" id="@item.ContentId" class="handle" style="float:left;" src="@Business.Utils.GetImageContent(item.Image, item.ContentId.Value, 44, 44)" width="44" height="44" />
+                            <div class="info-content">
+                                <span title="Arrastre hacia una sección para cambiarla." class="sptitle cursor">@Business.Utils.TruncateWord(item.Name, 85)</span><br />
+                                <span class="spdate">@item.Joindate.Value.ToString("F")</span>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                    }
+                </ul>
+                <div style="@(Model.Total <= 8 ? "display:none;" : "display:block;")" id="dvpaginator" align="left">
+                    <img style="cursor: pointer;" onclick="ctnback.contentpagin(@Model.Module.ModulId)" width="25" height="25"
+                         src="~/resources/images/25down.gif" />
+                    <span>
+                        <span id="spnnumregis">@Model.CollContent.Count()</span> @Resources.Global.Messages.FROM <span id="spnresult">@Model.Total</span>
+                        @Model.Module.Name
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none;" align="center" id="contentactions">
+    <input id="contentid" type="hidden" />
+    <img onclick="ctnback.editcontent($('#contentid').val())" title="@Resources.Global.Messages.EDIT" src="~/resources/images/45editw.png" />
+    <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { ctnback.deletecontent($('#contentid').val()); }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" style="display:none;" />
+    <img onclick="opendiv(450,350,'@Url.Action("ViewDetail", "Content", new { Area = "Admin" })?id=' + $('#contentid').val());" title="@Resources.Global.Messages.INFORMATION" src="~/resources/images/45iw.png" />
+    <img onclick="opendiv(650,650,'@Url.Action("ContentRelation", "Content", new { Area = "Admin" })?contentId=' + $('#contentid').val())" title="@Resources.Global.Messages.RELATED_CONTENT" src="~/resources/images/45refreshi.png" />
+    <img onclick="$('.liact').removeClass('liact');$('#contentactions').slideUp();$('#contentid').val(null);" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    <img onclick="ctnback.addClone($('#contentid').val(), '@Resources.Global.Messages.CLONE_CONTENT', '@Resources.Extend.Messages.VALID_SECTION_CONTENT')" title="@Resources.Global.Messages.CLONE_CONTENT" src="~/Resources/Images/clone.png" style="display:none;" />
+</div>
+@if (coll != null)
+{
+    @:<div id="dvClone"><img onclick="ctnback.CloneContent('@Resources.Extend.Messages.VALID_SECTION_CONTENT')" title="@Resources.Global.Messages.CLONE_CONTENT" src="@Url.Content("~/Resources/Images/clone.png")"><span>@coll.Count</span></div>
+}

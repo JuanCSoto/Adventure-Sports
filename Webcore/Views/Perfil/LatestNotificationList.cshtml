@@ -1,0 +1,19 @@
+﻿@model List<Domain.Entities.SystemNotification>
+
+@{
+    Layout = null;
+}
+
+@foreach(Domain.Entities.SystemNotification notification in Model)
+{
+  <div class="mm2-notification-float-item">
+    <div class="mm2-notification-text-item">
+      @if(!notification.Seen.Value)
+      {
+      <span @*class="blink-text"*@>@ViewBag.NEWA</span> 
+      }
+      @Html.Raw(notification.Value)
+    </div>
+    <div class="mm2-timer-notificationfloat">@Business.Utils.ElapsedTime(notification.CreationDate.Value,Culture)</div>
+  </div>
+}

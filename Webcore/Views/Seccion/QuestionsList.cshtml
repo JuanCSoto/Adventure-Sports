@@ -1,0 +1,96 @@
+﻿@model List<Domain.Entities.FrontEnd.QuestionsPaging>
+@{
+    Layout = null;    
+    string content = Url.Content("~/").TrimEnd('/');
+    int percentage = 0;
+    int endDay = 0;
+    int days = 0;
+    string link = string.Empty;
+    bool ended = false;
+
+    string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+}
+
+@foreach (Domain.Entities.FrontEnd.QuestionsPaging question in Model)
+{
+    days = (int)Math.Ceiling((question.EndDate.Value - question.StartDate.Value).TotalDays);
+    endDay = (int)Math.Ceiling((question.EndDate.Value - DateTime.Now).TotalDays);
+    percentage = ((endDay * 100 / days) * -1) + 100;
+    if (endDay > 0)
+    {
+        percentage = ((endDay * 100 / days) * -1) + 100;
+        ended = false;
+    }
+    else
+    {
+        percentage = 100;
+        ended = true;
+    }
+    link = string.Concat(content, "/", question.Friendlyurlid);
+    <div data-id="@question.ContentId" class="seccion-pregunta">        
+        <div class="seccion-pregunta-img">
+            <a href="@(link)"><div class="finalizado" style="display:@(ended ? "block" : "none")"></div></a>
+            <a href="@(link)"><img src="~/files/@question.ContentId/340x320-@question.Image" alt="@question.Name" /></a>
+        </div>
+        <a href="@(link)"><div class="seccion-pregunta-titulo">@question.Name</div></a>
+        <div class="clear"></div>
+        <div class="pregunta-barra">
+            <span></span>
+            <div class="pregunta-barra-color@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+        </div>
+        <div class="clear"></div>
+        <div class="izquierda">     
+            <div class="content-tooltip">
+                @switch(question.Type)
+                {
+                    case Domain.Entities.Question.TypeQuestion.Abierta:
+                        <div class="historia-item pregunta@(ended ? " preguntagris" : "")">
+                				<span></span>
+                				<h1>Abierta</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -23px; margin-top: 45px;">
+                                <div class="tooltip">@ViewBag.TXTCUEOPI</div>
+                            </div>
+						  </div>
+                        break;
+                    case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+                        <div class="historia-item pregunta2@(ended ? " preguntagris2" : "")">
+                				<span></span>
+                				<h1>@Resources.Global.Messages.SELECTION<br/>@Resources.Global.Messages.MULTIPLE</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -23px; margin-top: 45px;">
+                                <div class="tooltip">@Resources.Extend.Messages.CHOOSEANSWER</div>
+                            </div>
+						  </div>
+                        break;
+                    case Domain.Entities.Question.TypeQuestion.Ubicacion:
+                        <div class="historia-item pregunta3@(ended ? " preguntagris3" : "")">
+                				<span></span>
+                				<h1>@ViewBag.LOCATION</h1>
+                            <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -23px; margin-top: 45px;">
+                                <div class="tooltip">@ViewBag.TXTUBIRESMAP</div>
+                            </div>
+						  </div>
+                        break;
+                }
+            </div>
+            @if(false) // TODO: Depende de si tiene premio o no
+            {
+            <div class="pregunta-item premio5">
+                <span></span><div class="clear"></div>
+                <h1>Gana <br/>@ViewBag.PREMIUM</h1>
+            </div>
+            }
+            @if(!ended)
+            {
+            <div class="pregunta-item restantes5">
+                <span>@endDay</span><div class="clear"></div>
+                <h1>Días <br/>@ViewBag.RESIDUARY</h1>
+            </div>
+            }
+        </div>
+        <div class="clear"></div>
+        <div class="participa-block margen2">
+            <a href="@(link)">@buttonText</a>
+            <div class="participa-comentarios"><h1>@question.Ideas</h1><span></span></div>
+        </div>
+    </div>
+}

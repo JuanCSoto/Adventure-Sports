@@ -1,0 +1,38 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+  Layout = "~/Views/Layouts/" + Model.Layout;
+  Business.FrontEnd.Allies Entity = (Business.FrontEnd.Allies)Model.Entity;
+  Domain.Entities.Ally ally = null;
+}
+
+<div class="mm2-container-page">
+  <div class="mm2-tittle-seccion">
+    <div class="mm2-tittle-name">@ViewBag.ALLIES</div>
+    <div class="mm2-title-name">@ViewBag.TXTJUNCIU</div>
+
+
+  </div>
+  <div class="clear"></div>
+  <div class="mm2-line-sep"></div>
+  <div class="mm2-container-community">
+
+  @foreach (Domain.Entities.Content content in Entity.Contents)
+  {
+    ally = Entity.AlliesDetail.Where(ad => ad.ContentId == content.ContentId).FirstOrDefault();
+    <div class="mm2-card-aliados">
+      <div class="mm2-img-card-aliados">
+        <div class="img-vertical-middle"><img class="fit-image" src="~/files/@content.ContentId/@content.Image" alt="@content.Name" /></div>        
+      </div>
+      <div class="mm2-line-gray"></div>
+      <div class="mm2-containertxt-aliados">
+        <div class="mm2-tittle-card-aliados">@content.Name</div>
+        <div class="mm2-description-card-aliados">
+          <div data-crop-height="108">@content.Shortdescription</div>       
+        </div> 
+        <div class="mm2-button-aliados"><a href="@ally.Link" target="_blank">@Resources.Global.Messages.VISI</a></div>
+      </div>
+    </div>
+  }
+  </div>
+</div>

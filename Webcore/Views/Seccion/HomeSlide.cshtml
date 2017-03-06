@@ -1,0 +1,302 @@
+﻿@model Webcore.Models.FESeccion<object>
+
+@{
+    string content = Url.Content("~/").TrimEnd('/');
+    Layout = "~/Views/Layouts/_Common.cshtml";
+
+}
+
+@if (ViewBag.Key != null)
+{
+    <script>
+        setTimeout(function () {
+            cancelNotification('@ViewBag.Key');
+        }, 100);
+    </script>
+}
+
+<div id="header-menu">
+
+    <div id="side-menu">
+        <nav>
+            <ul id="side-menu-inner">
+                <a id="seccion1" href="#seccion-1" data-hash="iniciob"><li class="active"></li></a>
+                <a id="seccion3" href="#seccion-3" data-hash="casos-de-exito"><li></li></a>
+                <a id="seccion4" href="#seccion-4" data-hash="retos"><li></li></a>
+                <a id="seccion5" href="#seccion-5" data-hash="ciudadanos"><li></li></a>
+                <a id="seccion7" href="#seccion-7" data-hash="blog"><li></li></a>
+                <a id="seccion8" href="#seccion-8" data-hash="faq"><li></li></a>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div id="seccion-1" class="seccion superpuesto">
+    <!-- <a class="btn-cuentanos" href="#">
+        <img src="img/btn-cuentanos.jpg" alt="Cuéntanos qué quieres hacer con tu idea">
+    </a> -->
+    <div id="slider" style="height: 100%; max-width: 100%; position: relative; top:0px;">
+        <ul class="bjqs">
+            <li>
+                <div class="video-slide" data-vide-bg="/Resources/Videos/slider-1n" data-vide-options="loop: true, muted: true, position: 0% 0%, posterType: jpg, resizing: true">
+                    <div class="container">
+                        <img src="@Resources.Extend.Messages.IMGHOMESLIDE1" width="985" height="328" alt="" />
+                        <div class="BetaText">@Html.Raw(Resources.Extend.Messages.INICIOENBETA)</div>
+                    </div>
+                </div>
+            </li>
+            <!-- <li id="slide-2">
+                <div class="video-slide" style="background-image: url('img/slider-2.jpg');">
+                    <div class="container">
+                        <h1><span>¿Quieres hacer parte</span><br>del desarrollo de tu ciudad? </h1>
+                        <h2>¡Únete a esta creación colectiva de ideas y retos!</h2>
+                    </div>
+                </div>
+            </li>
+             <li>
+                <div class="video-slide" style="background-image: url('img/slider-3.jpg');">
+                    <div class="container">
+                        <img src="img/img-slide-3.png" width="985" height="328" alt=""/>
+                    </div>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+<!-- ///////////////////////////////////////////////// SECCION 2 -->
+<!-- <div id="seccion-2" class="seccion">
+    <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="animated" data-fx="fadeInLeft">PARTICIPA</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="animated" data-fx="fadeInRight">conoce los distintos retos urbanos para que ganes puntos e insignias de reconocimiento.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- ///////////////////////////////////////////////// SECCION 3 -->
+@*<div id="seccion-3" class="seccion" data-stellar-background-ratio="0.5">*@
+`         <div id="seccion-3" class="seccion">
+    <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-7">
+                    <h1>@Resources.Global.Messages.PROYECTS</h1>
+                    <h2>@Html.Raw(Resources.Extend.Messages.DOYOUKNOW)</h2>
+                    <a href="/Casos" class="boton" target="_self">@Resources.Global.Messages.GETINSPIRED2</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ///////////////////////////////////////////////// SECCION 4 -->
+
+<div id="seccion-4" class="seccion superpuesto" data-vide-bg="/Resources/Videos/slider-4n" data-vide-options="loop: true, muted: true, position: 50% 50%, autoplay: true, posterType: jpg">
+    <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1>@Html.Raw(@Resources.Extend.Messages.PROPOSEDSOLUTION)</h1>
+                    <div class="overlay-text">
+                        <h2>@Html.Raw(@Resources.Extend.Messages.HOME_SECCION4)</h2>
+                    </div>
+                    <a href="/Home" class="boton" target="_self">@Resources.Extend.Messages.SHAREITHERE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ///////////////////////////////////////////////// SECCION 5 -->
+@*<div id="seccion-5" class="seccion" data-stellar-background-ratio="0.5">*@
+<div id="seccion-5" class="seccion">
+    <div class="bg-fractales"></div>
+    <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@Html.Raw(Resources.Extend.Messages.WEALREADY)</h3>
+                    <h1>@Resources.Global.Messages.QUALITY</h1>
+                    <h3 class="comprometidos">@Html.Raw(Resources.Extend.Messages.COMPROMCITIZENS)</h3>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <h2>@Html.Raw(Resources.Extend.Messages.TRANSCITY)</h2>
+                    <a href="/Ciudadanos" class="boton" target="_self">@Resources.Extend.Messages.GETTOKNOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ///////////////////////////////////////////////// SECCION 6 -->
+<!-- <div id="seccion-6" class="seccion superpuesto" data-vide-bg="videos/seccion-6" data-vide-options="loop: true, muted: true, position: 50% 50%, posterType: jpg">
+     <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2><span>Son muchos los ciudadanos comprometidos con sus espacios.</span> Conoce a quienes siempre están activos en CITIES FOR LIFE!</h2>
+                    <a href="#" class="boton">Una comunidad empoderada</a>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 top-ciudadanos">
+                    <div class="overlay-text">
+                        <h3>Ciudadanos top</h3>
+                        <div class="nombre">Carlos Enrique Canales</div>
+                        <div class="ranking"><span>1.</span> 4.209</div>
+                        <div class="nombre">ACZ</div>
+                        <div class="ranking"><span>2.</span> 3.691</div>
+                        <div class="nombre">Juan camilo manzuera</div>
+                        <div class="ranking"><span>3.</span> 2.781</div>
+                        <div class="nombre">Sergio Andres Ortiz</div>
+                        <div class="ranking"><span>4.</span> 2.641</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- ///////////////////////////////////////////////// SECCION 7 -->
+
+<div id="seccion-7" class="seccion" data-vide-bg="/Resources/Videos/slider-7n" data-vide-options="loop: true, muted: true, position: 50% 50%, posterType: jpg">
+    <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h2>@Html.Raw(@Resources.Extend.Messages.HOMESECTIONS7)</h2>
+                    <a href="/nosotros" class="boton" target="_self">@Resources.Extend.Messages.FINDOUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ///////////////////////////////////////////////// SECCION 8 -->
+@*<div id="seccion-8" class="seccion" data-stellar-background-ratio="0.5">*@
+<div id="seccion-8" class="seccion">
+    <div class="centrado-vertical">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <!-- <h1>?</h1> -->
+                    <br>
+                    <br>
+
+                    <h2>@Html.Raw(@Resources.Extend.Messages.ECOCITIESFORLIFE)</h2>
+                    <a href="javascript:showEntry();" class="boton">@Resources.Global.Messages.JOINUS</a>
+                    <!-- <a href="#" class="boton">CONOCE MÁS ACERCA DE CITIES FOR LIFE</a> -->
+                    <!-- <h2>¿QUé dudas tienes Resuélvelas en nuestras Preguntas Frecuentes para construir entre todos la ciudad que soñamos.</h2> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ///////////////////////////////////////////////// SECCION 9 -->
+
+<div id="seccion-9">
+    <div class="container">
+        <div>
+            <div class="logo-footer">
+                <p>@Resources.Extend.Messages.LEADING</p>
+
+                <a href="http://www.rutanmedellin.org/" target="_blank">
+                    <img src="~/Resources/Images/rutaN-footer.jpg" width="87" height="63" alt="" />
+                </a>
+                <a href="http://www.medellin.gov.co/" target="_blank">
+                    <img src="~/Resources/Images/alcaldia-footer2.jpg" width="97" height="63" alt="" />
+                </a>
+            </div>
+            <div class="logo-footer">
+                <p>@Resources.Extend.Messages.PARTNERS</p>
+                <a href="http://www.worldbank.org/" target="_blank">
+                    <img src="~/Resources/Images/worldBank-footer.jpg" width="215" height="49" alt="" />
+                </a>
+                <a href="http://unhabitat.org/" target="_blank">
+                    <img src="~/Resources/Images/unHabitat-footer.jpg" width="180" height="49" alt="" />
+                </a>
+                <a href="http://www.iadb.org/es/banco-interamericano-de-desarrollo,2837.html" target="_blank">
+                    <img src="~/Resources/Images/bid-footer.jpg" width="110" height="49" alt="" />
+                </a>
+                @*<img src="~/Resources/Images/caf-footer.jpg" width="81" height="49" alt=""/>*@
+                <a href="http://www.cideu.org/" target="_blank">
+                    <img src="~/Resources/Images/cideu-footer.jpg" width="119" height="48" alt="" />
+                </a>
+            
+            </div>
+
+            <div class="logo-footer">
+                <p>@Resources.Extend.Messages.CONTRIBUTOR</p>
+                @*  <img src="~/Resources/Images/colombiaLider-footer.jpg" width="111" height="69" alt=""/>*@
+                <a href="http://www.eafit.edu.co/social/Paginas/inicio2.aspx" target="_blank">
+                    <img src="~/Resources/Images/eafitSocial-footer.jpg" width="76" height="68" alt="" />
+                </a>
+                <a href="http://inspiralab.net/" target="_blank">
+                    <img src="~/Resources/Images/inspira-footer.jpg" width="76" height="68" alt="" />
+                </a>
+                @*<img src="~/Resources/Images/invimed-footer.jpg" width="90" height="69" alt=""/>*@
+            </div>
+
+        </div>
+    </div>
+    @* <div class="bg-verde">
+           <div class="containerBV">© CITIES FOR LIFE Global Meeting Medellín 2015</div>
+        </div>*@
+</div>
+
+
+@if (!string.IsNullOrEmpty(Model.Token))
+{
+    <div id="reset-password" data-token="@Model.Token"></div>
+}
+
+@*   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="~/Resources/Scripts/vendor/jquery-1.11.2.min.js"><\/script>')</script>*@
+<script src="~/Resources/Scripts/jquery.flexnav.min.js"></script>
+<script src="~/Resources/Scripts/jquery.stellar.min.js"></script>
+<script src="~/Resources/Scripts/jquery.vide.js"></script>
+<script src="~/Resources/Scripts/bjqs-1.3.min.js"></script>
+
+
+<!-- Tweenmax -->
+<script src="~/Resources/Scripts/greensock/jquery.gsap.min.js"></script>
+<script src="~/Resources/Scripts/greensock/TimelineLite.min.js"></script>
+<script src="~/Resources/Scripts/greensock/TimelineMax.min.js"></script>
+<script src="~/Resources/Scripts/greensock/TweenLite.min.js"></script>
+
+<script src="~/Resources/Scripts/greensock/TweenMax.min.js"></script>
+
+<script src="~/Resources/Scripts/main.js"></script>
+
+
+<!--PopUP-->
+<div id="Postula" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>@Resources.Extend.Messages.TELLCITY</h4>
+                <p>@Resources.Extend.Messages.ESATHAT</p>
+                <a href="javascript: CasoExito();" data-id="Success" style="background-color: #01928D; padding: 5px; border-radius: 5px; color: #fff; margin: 5px 0; display: inline-block;">@Resources.Extend.Messages.POSTULATESTUDY</a>
+                <a href="javascript: Retos();" data-id="Challenge" style="background-color: #01928D; padding: 5px; border-radius: 5px; color: #fff; margin: 5px 0; display: inline-block; ">@Resources.Extend.Messages.POSTULATES</a>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+

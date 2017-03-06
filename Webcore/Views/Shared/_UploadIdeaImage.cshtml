@@ -1,0 +1,49 @@
+﻿@model string
+@{    
+  Layout = "~/Views/Layouts/_ImageFrame.cshtml";
+  bool? edit = ViewBag.Edit;
+  int? ideaId = ViewBag.IdeaId;
+}
+@if (Model != null)
+{
+  <script>
+    parent.iFrameImageLoaded = true;
+  @if (edit.HasValue && edit.Value && ideaId.HasValue)
+  {
+    <text>
+    parent.clearFileError(@ideaId);
+    parent.showUpdateIdeaImage('@ideaId', '@Model');
+    parent.$('#idea-video-url').hide(function () {
+      parent.$('#idea-video-url').val('');
+    });
+    </text>
+  }
+  else
+  {
+    <text>    
+    parent.clearFileError(0);
+    parent.showCreateIdeaImage('@Model');
+    parent.$('#idea-video-url').hide(function () {
+      parent.$('#idea-video-url').val('');
+    });
+    </text>
+  }
+  </script>
+}
+else
+{
+  <script>
+    parent.iFrameImageLoaded = true;
+  </script>
+}
+<div id="idea-file-wraper">
+  @using (Html.BeginForm("uploadideaimage", "idea", FormMethod.Post, new { id = "idea-form-file", enctype = "multipart/form-data" }))
+  {
+    if (edit.HasValue && edit.Value && ideaId.HasValue)
+    {
+    <input name="edit" class="idea-file" type="hidden" value="true" />
+    <input name="ideaId" class="idea-file" type="hidden" value="@ideaId" />
+    }
+    <input id="ideaFile" name="ideaFile" class="idea-file" type="file" />
+  }
+</div>

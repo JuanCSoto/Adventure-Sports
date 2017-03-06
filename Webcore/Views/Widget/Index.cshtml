@@ -1,0 +1,225 @@
+﻿@{
+  Layout = null;
+  string siteUrlRoot = string.Concat("http://", Request.Url.Host, Request.ApplicationPath).TrimEnd('/');
+  string content = Url.Content("~").TrimEnd('/');
+
+  int percentage = 0;
+  int endDay = 0;
+  int days = 0;
+  string link = string.Empty;
+  bool ended = false;
+
+  Domain.Entities.FrontEnd.Pulse pulseWidget = ViewBag.PulseWidget;
+  List<Domain.Entities.FrontEnd.Pulse> pulses = ViewBag.Pulses;
+  List<Domain.Entities.FrontEnd.UserProfilePaging> partipants = ViewBag.Partipants;
+  int totalParticipants = ViewBag.TotalParticipants;
+  int height = ViewBag.Height;
+
+  if(pulseWidget !=null)
+  {
+    days = (int)Math.Ceiling((pulseWidget.EndDate.Value - pulseWidget.StartDate.Value).TotalDays);
+    endDay = (int)Math.Ceiling((pulseWidget.EndDate.Value - DateTime.Now).TotalDays);
+    if (endDay > 0)
+    {
+      percentage = ((endDay * 100 / days) * -1) + 100;
+      ended = false;
+    }
+    else
+    {
+      percentage = 100;
+      ended = true;
+    }
+
+    link = string.Concat(content, "/", pulseWidget.Friendlyurlid);
+  }
+}
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Widget MiMedellín</title>
+  <link href="@Url.Content("~/icon.png")" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="@content/resources/widget/css/foundation.css" />
+  <link rel="stylesheet" href="@content/resources/widget/css/main.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+  <!--contenido principal-->
+  <div class="row contenedor-general">
+    <!--header-->
+    <div class="small-6 medium-6 columns logo"></div>
+    <div class="small-6 medium-6 columns visitar">
+      <a href="@content/" target="_blank">
+        <div class="visitar-boton">@Resources.Global.Messages.VISIT</div>
+      </a>
+    </div>
+    <!--fin header-->
+    <div class="small 12 columns scroll" style="height: @(450 - (615 - height))px">
+      <div class="row">
+        <!--contenido principal-->
+        <div class="small-12 columns principal">
+
+
+          <!--bloque-1-->
+          @if(pulseWidget !=null)
+          {
+            if (pulseWidget.ChallengeType.HasValue)
+            {
+              <div class="row">
+                <div class="small-12 columns img-1">
+                  <img src="~/files/@pulseWidget.ContentId/340x250-@pulseWidget.Image" alt="@pulseWidget.Name" style="width: 100%; height: auto;">
+                </div>
+              </div>
+              <div class="row titulo-1">
+                <div class="small-12 columns texto-1">@pulseWidget.Name</div>
+                <div class="small-12 columns barra-1">
+                  <div class="progreso">
+                    <div class="fill" data-percent="@percentage"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-participate">
+                <div class="date">Queda@(endDay > 1 ? "n" : string.Empty) @endDay día@(endDay > 1 ? "s" : string.Empty)</div>
+                <div class="container-but-participate" style="width: 158px;">
+                  <a href="@link" target="_blank">
+                    <div class="participa">@Resources.Global.Messages.PARTICIPATES</div>
+                  </a>
+                  <div class="numero">@pulseWidget.Ideas.ToString("#,##0")</div>
+                </div>
+              </div>
+            }
+            else if (pulseWidget.QuestionType.HasValue)
+            {
+              <div class="row">
+                <div class="small-12 columns img-1">
+                  <img src="~/files/@pulseWidget.ContentId/340x250-@pulseWidget.Image" alt="@pulseWidget.Name" style="width: 100%; height: auto;">
+                </div>
+              </div>
+              <div class="row titulo-1">
+                <div class="small-12 columns texto-1">@pulseWidget.Name</div>
+                <div class="small-12 columns barra-1">
+                  <div class="progreso">
+                    <div class="fill" data-percent="@percentage"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-participate">
+                <div class="date">Queda@(endDay > 1 ? "n" : string.Empty) @endDay día@(endDay > 1 ? "s" : string.Empty)</div>
+                <div class="container-but-participate" style="width: 158px;">
+                  <a href="@link" target="_blank">
+                    <div class="participa">@Resources.Global.Messages.PARTICIPATES</div>
+                  </a>
+                  <div class="numero">@pulseWidget.Ideas.ToString("#,##0")</div>
+                </div>
+              </div>
+            }
+          }
+
+
+          <!--fin bloque-1-->
+
+          @foreach (Domain.Entities.FrontEnd.Pulse pulse in pulses)
+          {
+            days = (int)Math.Ceiling((pulse.EndDate.Value - pulse.StartDate.Value).TotalDays);
+            endDay = (int)Math.Ceiling((pulse.EndDate.Value - DateTime.Now).TotalDays);
+            if (endDay > 0)
+            {
+              percentage = ((endDay * 100 / days) * -1) + 100;
+              ended = false;
+            }
+            else
+            {
+              percentage = 100;
+              ended = true;
+            }
+
+            link = string.Concat(content, "/", pulse.Friendlyurlid);
+
+            if (pulse.ChallengeType.HasValue)
+            {
+            <div class="container-title-total">
+              <div class="small-5 columns img-2">
+                <img src="~/files/@pulse.ContentId/340x250-@pulse.Image" alt="@pulse.Name" style="max-width: 100%; height: auto;">
+              </div>
+              <div class="small-7 columns texto-1">
+                @pulse.Name
+                <div class="progreso-2">
+                  <div class="fill" data-percent="@percentage"></div>
+                </div>
+              </div>
+            </div>
+            <div class="container-participate">
+              <div class="date">Queda@(endDay > 1 ? "n" : string.Empty) @endDay día@(endDay > 1 ? "s" : string.Empty)</div>
+              <div class="container-but-participate">
+                <a href="@(link)" target="_blank">
+                  <div class="participa">@Resources.Global.Messages.PARTICIPATES</div>
+                </a>
+                <div class="numero">@pulse.Ideas.ToString("##,##0")</div>
+              </div>
+            </div>            
+            }
+            else if (pulse.QuestionType.HasValue)
+            {              
+            <div class="container-title-total">
+                
+              <div class="small-5 columns img-2">
+                <img src="~/files/@pulse.ContentId/340x250-@pulse.Image" alt="@pulse.Name" style="max-width: 100%; height: auto;">
+              </div>
+              <div class="small-7 columns texto-1">
+                @pulse.Name
+                <div class="progreso-2">
+                  <div class="fill" data-percent="@percentage"></div>
+                </div>
+              </div>
+            </div>
+            <div class="container-participate">
+              <div class="date">Queda@(endDay > 1 ? "n" : string.Empty) @endDay día@(endDay > 1 ? "s" : string.Empty)</div>
+              <div class="container-but-participate">
+                <a href="@(link)" target="_blank">
+                  <div class="participa">@Resources.Global.Messages.PARTICIPATES</div>
+                </a>
+                <div class="numero">@pulse.Ideas.ToString("##,##0")</div>
+              </div>
+            </div>            
+            }
+          }
+        </div>
+      </div>
+      <!--fin contenido principal-->
+    </div>
+
+    <!--footer-->
+    <div class="row footer">
+      <div class="small-12 columns texto-final">@Resources.Extend.Messages.MOREOF @(totalParticipants.ToString("##,##0")) @Resources.Extend.Messages.CITIZENSCO </div>
+      <div align="justify" class="small-12 columns usuarios">
+        @foreach(Domain.Entities.FrontEnd.UserProfilePaging user in partipants)
+        {
+          <div class="user">            
+              <div class="img-vertical-middle-overflow">
+                <img class="min-profile" src="@Business.Utils.fixLocalUserImagePath(user.Image)" alt="avatar" />
+              </div>
+          </div>
+        }
+        <span class="stretch"></span>
+      </div>
+    </div>
+
+    <!--fin footer-->
+  </div>
+  <!--fin contenido principal-->
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $("[data-percent]").each(function (index, obj) {
+      var percent = $(obj).attr('data-percent');
+      if (percent >= 0) {
+        $(obj).animate({ width: percent + '%' }, 1000);
+        $(obj).removeAttr('data-percent');
+      }
+    });
+  </script>
+</body>
+</html>
+

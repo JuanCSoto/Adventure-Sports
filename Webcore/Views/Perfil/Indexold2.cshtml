@@ -1,0 +1,408 @@
+﻿@model Webcore.Models.FEPerfil
+@{
+  Layout = "~/Views/Layouts/_Common.cshtml";
+  Domain.Entities.FrontEnd.Video video = null;
+  Domain.Entities.UserSetting setting = null;
+  int currentUserId = ((Business.Services.CustomPrincipal)User).UserId;
+  string content = Url.Content("~/").TrimEnd('/');
+  string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+  string picture = Business.Utils.fixLocalUserImagePath(Model.ObjUser.Image);
+  bool isFrontEndAdmin = ((Business.Services.CustomPrincipal)User).IsFrontEndAdmin;
+  if (picture.IndexOf("http") == -1)
+  {
+    picture = siteUrlRoot + picture;
+  }
+  string tipoPerfilImagen = "";
+
+  switch (Model.ObjUser.UserRank)
+  {
+    case "Ciudadano":
+      tipoPerfilImagen = "c1";
+      break;
+    case "Paisano":
+      tipoPerfilImagen = "c2";
+      break;
+    case "Proactivo":
+      tipoPerfilImagen = "c3";
+      break;
+    case "Innovador":
+      tipoPerfilImagen = "c4";
+      break;
+    case "Legendario":
+      tipoPerfilImagen = "c5";
+      break;
+  }
+
+  int percentage = 30;
+  if (!string.IsNullOrEmpty(Model.ObjUser.Genre))
+  {
+    percentage += 10;
+  }
+  if (!string.IsNullOrEmpty(Model.ObjUser.Image) && !Model.ObjUser.Image.Equals("~/files/imagesuser/default.png"))
+  {
+    percentage += 10;
+  }
+  if (Model.ObjUser.Age.HasValue)
+  {
+    percentage += 10;
+  }
+  if (!string.IsNullOrEmpty(Model.ObjUser.Profession))
+  {
+    percentage += 10;
+  }
+  if (!string.IsNullOrEmpty(Model.ObjUser.Phone))
+  {
+    percentage += 10;
+  }
+  if (Model.ObjUser.CountryId.HasValue)
+  {
+    percentage += 10;
+  }
+  if (Model.ObjUser.CityId.HasValue)
+  {
+    percentage += 10;
+  }
+}
+
+<div class="perfil-block">
+  <div class="mm2-container-perfilnew2">
+    <div class="perfil-u-img">
+      <div class="img-vertical-middle-overflow">
+        <img class="min-100" src="@Business.Utils.fixLocalUserImagePath(Model.ObjUser.Image)" alt="avatar" />
+      </div>
+    </div>
+                    
+    <div class="mm2-title-usernew">   
+      @if (currentUserId == Model.ObjUser.UserId)
+      {
+      <div class="update-profile mm2-iconedit-profile" data-option=""></div>
+      }
+      <div class="perfil-usuario-nombre">@Model.ObjUser.Names</div>
+      <div class="clear"></div>
+      <div class="perfil-usuario-puntos2">
+        <span></span>@Model.ObjUser.Medallos.ToString("##,##0")
+        <div class="tooltip-moneda-profile"></div>
+      </div>
+      <div class="clear"></div>
+      <div class="perfil-usuario-puntos">
+        <span></span>@Model.ObjUser.Medallos.ToString("##,##0")
+        <div class="tooltip-moneda-profile"></div>
+      </div>
+      <div class="clear"></div>
+
+      <div class="content-tooltip">
+          
+        <div class="perfil-clasificacion" style="background: url(@Url.Content("~/resources/images/MiMedellin/c1.png")) no-repeat;">@Model.ObjUser.UserRank</div>
+          
+        <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: 31px; margin-top: 21px;">
+           
+          @switch (Model.ObjUser.UserRank)
+          {
+            case "Proactivo":
+            <div class="tooltip-nivel"></div>
+              break;
+            case "Ideador":
+           <div class="tooltip-nivel"></div>
+              break;
+            case "Creativo":
+            <div class="tooltip-nivel"></div>
+              break;
+            case "Revolucionario":
+            <div class="tooltip-nivel"></div>
+              break;
+            case "Legendario":
+            <div class="tooltip-nivel"></div>
+              break;
+          }
+        </div>
+      </div>
+    </div>
+    @if (currentUserId == Model.ObjUser.UserId)
+    {
+      <div id="show-email-setting">
+          <div class="text-email-setting">Configuración de notificaciones</div>
+          <div class="icon-email-setting"></div>
+          </div>
+      <div class="clear"></div>
+      <div id="email-setting-container" class="mm2-container-page" style="display:none;">
+        <div class="mm2-notificationconfig-tittle">
+          Configuración de notificaciones al correo
+        </div>
+        <div class="clear"></div>
+
+        <div class="mm2-containeritems-config">
+          <form id="email-setting">
+            <div class="mm2-item-notificationconfig">
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("send-receive-n-idea-like")).FirstOrDefault(); }
+              <input type="checkbox" class="checkbox-config" name="sendReceiveIdeaLike" @(setting != null && setting.Value.Equals("true") ? "checked" : string.Empty)>
+              <div class="mm2-txt-notificationconfig">
+                Enviarme un correo cuando una de mis ideas tenga 
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("value-receive-n-idea-like")).FirstOrDefault(); }
+                <input name="valueReceiveIdeaLike" style="width: 31px; text-align: center;" type="text" value="@(setting != null ? setting.Value : "0")" />
+                voto(s)
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mm2-item-notificationconfig">
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("send-new-process")).FirstOrDefault(); }
+              <input type="checkbox" class="checkbox-config" name="sendNewProcess" @(setting != null && setting.Value.Equals("true") ? "checked" : string.Empty)>
+              <div class="mm2-txt-notificationconfig">Enviarme un correo cuando se publique un nuevo pulso </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mm2-item-notificationconfig">
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("send-finishing-process")).FirstOrDefault(); }
+              <input type="checkbox" class="checkbox-config" name="sendFinishingProcess" @(setting != null && setting.Value.Equals("true") ? "checked" : string.Empty)>
+              <div class="mm2-txt-notificationconfig">
+                Enviarme un correo cuando un pulso está a
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("value-finishing-process")).FirstOrDefault(); }
+                <input name="valueFinishingProcess" style="width: 31px;text-align: center;" type="text" value="@(setting != null ? setting.Value : "0")" />
+                día(s) de acabarse
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mm2-item-notificationconfig">
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("send-finished-process")).FirstOrDefault(); }
+              <input type="checkbox" class="checkbox-config" name="sendFinishedProcess" @(setting != null && setting.Value.Equals("true") ? "checked" : string.Empty)>
+              <div class="mm2-txt-notificationconfig">Enviarme un correo cuando un pulso finalice</div>
+            </div>
+            <div class="clear"></div>
+            <div class="mm2-item-notificationconfig">
+              @{ setting = Model.CollSetting.Where(s => s.KeyWord.Equals("send-idea-blocked")).FirstOrDefault(); }
+              <input type="checkbox" class="checkbox-config" name="sendIdeaBlocked" @(setting != null && setting.Value.Equals("true") ? "checked" : string.Empty)>
+              <div class="mm2-txt-notificationconfig">Enviarme un correo cuando una de mis idea sea bloqueada</div>
+            </div>
+            <div class="clear"></div>
+            <div id="send-email-setting" class="mm2boton">Guardar configuración</div>
+          </form>
+        </div>
+      </div>
+    }
+    <div class="clear"></div>
+    <div class="mm2-container-tabs-profile">
+      <div class="perfil-botones">
+        @if (Model.UserPrincipal.Identity.IsAuthenticated && Model.UserPrincipal.UserId == Model.ObjUser.UserId)
+        {
+          <a id="my-ideas" class="perfil-boton perfil-boton-selected" style="border-right: 1px solid #ddd">Mis @Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.IDEAS_PLURAL)</a>
+          <a id="my-conversations" class="perfil-boton">Mi actividad</a>    
+        }
+        else
+        {
+          <a id="my-ideas" class="perfil-boton perfil-boton-selected" style="border-right: 1px solid #ddd">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.IDEAS_PLURAL)</a>
+          <a id="my-conversations" class="perfil-boton">Actividad</a> 
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contenedor">
+  <div class="colum-blog" id="perfil">
+    <div class="mm2-container-lateralprofile">
+      @if (currentUserId == Model.ObjUser.UserId)
+      {
+        <div class="mm2-module-profile">
+          <div class="mm2-txt1-module">Perfil en: @percentage%</div>
+          <div class="mm2-container-barraprofile">
+            <div class="mm2-barra1-profile"></div>
+            <div class="mm2-barra2-profile" data-percent="@percentage"></div>
+          </div>
+          <div class="clear"></div>
+          <div class="mm2-txt2-module">Completa toda la información y gana 120 puntos</div>
+        </div>
+        <div class="mm2-module-profile">
+          <div class="mm2-txt1-module-tittle">
+            Información personal<div class="update-profile mm2-iconedit-profile" data-option="personal"></div>
+          </div>
+          <div class="mm2-txt2-module">Esta información es privada, ningún otro ciudadano tiene acceso a ella.</div>
+          <div class="mm2-container-txtmodule">
+            @if (!string.IsNullOrEmpty(Model.ObjUser.Genre))
+            {
+              <div class="mm2-txt3-module"><span class="mm2-bold">Genero:</span> @(Model.ObjUser.Genre == "F" ? "Mujer" : "Hombre")</div>
+            }
+            @if (Model.ObjUser.Age.HasValue)
+            {
+              <div class="mm2-txt3-module"><span class="mm2-bold">Edad:</span> @Model.ObjUser.Age</div>
+            }
+            @if (!string.IsNullOrEmpty(Model.ObjUser.Profession))
+            {
+              <div class="mm2-txt3-module"><span class="mm2-bold">Profesión:</span> @Model.ObjUser.Profession</div>
+            }
+            @if (!string.IsNullOrEmpty(Model.ObjUser.Phone))
+            {
+              <div class="mm2-txt3-module"><span class="mm2-bold">Teléfono:</span> @Model.ObjUser.Phone</div>
+            }
+            @if (Model.ObjUser.CityId.HasValue && Model.ObjUser.CountryId.HasValue)
+            {
+              <div class="mm2-txt3-module"><span class="mm2-bold">País:</span> @Model.Country</div>
+              <div class="mm2-txt3-module"><span class="mm2-bold">Ciudad:</span> @Model.City</div>              
+            }
+          </div>
+          <div class="clear"></div>
+
+        </div>
+      }
+
+      @if (currentUserId == Model.ObjUser.UserId || (!string.IsNullOrEmpty(Model.ObjUser.FacebookLink) || !string.IsNullOrEmpty(Model.ObjUser.GoogleLink) || !string.IsNullOrEmpty(Model.ObjUser.TwitterLink) || !string.IsNullOrEmpty(Model.ObjUser.LinkedinLink)))
+      {
+        <div class="mm2-module-profile">
+          <div class="mm2-txt1-module-tittle">
+            Redes Sociales
+          </div>
+          @if (User.Identity.IsAuthenticated && currentUserId == Model.ObjUser.UserId)
+          {
+            <input type="hidden" value="Aún no has participado en las ideas de otros ciudadanos. Empieza a participar en la cocreación de tu ciudad." id="no-conversations-error" />
+            <div id="user-update-links" class="blog-enlaces">              
+              <div class="clear"></div>
+              <a data-id="facebook" data-text="@Model.ObjUser.FacebookLink"><span class="facebook"></span>
+                <h2 style="@(string.IsNullOrEmpty(Model.ObjUser.FacebookLink) ? "display: none;" : "")">Facebook</h2>
+                <input class="input-enlaces" style="@(string.IsNullOrEmpty(Model.ObjUser.FacebookLink) ? "display: inline-block;" : "")" />
+                <div class="blog-enlaces-plus" style="@(string.IsNullOrEmpty(Model.ObjUser.FacebookLink) ? "display: inline-block;" : "")"></div>
+              </a>
+              <div class="clear"></div>
+              <a data-id="google" data-text="@Model.ObjUser.GoogleLink"><span class="googlep"></span>
+                <h2 style="@(string.IsNullOrEmpty(Model.ObjUser.GoogleLink) ? "display: none;" : "")">Google</h2>
+                <input class="input-enlaces" style="@(string.IsNullOrEmpty(Model.ObjUser.GoogleLink) ? "display: inline-block;" : "")" />
+                <div class="blog-enlaces-plus" style="@(string.IsNullOrEmpty(Model.ObjUser.GoogleLink) ? "display: inline-block;" : "")"></div>
+              </a>
+              <div class="clear"></div>
+              <a data-id="twitter" data-text="@Model.ObjUser.TwitterLink"><span class="twitter"></span>
+                <h2 style="@(string.IsNullOrEmpty(Model.ObjUser.TwitterLink) ? "display: none;" : "")">Twitter</h2>
+                <input class="input-enlaces" style="@(string.IsNullOrEmpty(Model.ObjUser.TwitterLink) ? "display: inline-block;" : "")" />
+                <div class="blog-enlaces-plus" style="@(string.IsNullOrEmpty(Model.ObjUser.TwitterLink) ? "display: inline-block;" : "")"></div>
+              </a>
+              <div class="clear"></div>
+              <a data-id="linkedin" data-text="@Model.ObjUser.LinkedinLink"><span class="linkedin"></span>
+                <h2 style="@(string.IsNullOrEmpty(Model.ObjUser.LinkedinLink) ? "display: none;" : "")">Linkedin</h2>
+                <input class="input-enlaces" style="@(string.IsNullOrEmpty(Model.ObjUser.LinkedinLink) ? "display: inline-block;" : "")" />
+                <div class="blog-enlaces-plus" style="@(string.IsNullOrEmpty(Model.ObjUser.LinkedinLink) ? "display: inline-block;" : "")"></div>
+              </a>
+            </div>
+          }
+          else
+          {
+            <input type="hidden" value="Aún no has participado en las ideas de otros ciudadanos. Empieza a participar en la cocreación de tu ciudad." id="no-conversations-error" />
+            <div class="blog-enlaces">              
+              @if (!string.IsNullOrEmpty(Model.ObjUser.FacebookLink))
+              {
+                <div class="clear"></div>
+                <a href="@Model.ObjUser.FacebookLink" target="_blank"><span class="facebook"></span>
+                  <h2>Facebook</h2>
+                </a>
+              }
+              @if (!string.IsNullOrEmpty(Model.ObjUser.GoogleLink))
+              {
+                <div class="clear"></div>
+                <a href="@Model.ObjUser.GoogleLink" target="_blank"><span class="googlep"></span>
+                  <h2>Google</h2>
+                </a>
+              }
+              @if (!string.IsNullOrEmpty(Model.ObjUser.TwitterLink))
+              {
+                <div class="clear"></div>
+                <a href="@Model.ObjUser.TwitterLink" target="_blank"><span class="twitter"></span>
+                  <h2>Twitter</h2>
+                </a>
+              }
+              @if (!string.IsNullOrEmpty(Model.ObjUser.LinkedinLink))
+              {
+                <div class="clear"></div>
+                <a href="@Model.ObjUser.LinkedinLink" target="_blank"><span class="linkedin"></span>
+                  <h2>Linkedin</h2>
+                </a>
+              }
+            </div>
+          }
+          <div class="clear"></div>
+        </div>
+      }
+
+      @if (Model.CollRelatedUsers.Count > 0)
+      {
+        <div class="mm2-module-profile">
+          <div class="mm2-txt1-module-tittle">
+            Los ciudadanos más cercanos
+          </div>
+          <div class="mm2-container-imguserclose">
+            @foreach (Domain.Entities.User relation in Model.CollRelatedUsers)
+            {
+              <a href="@Url.Action("Index", "Perfil", new { id = relation.UserId })">
+                <div class="mm2-img-userclose-profile">
+                  <div class="img-vertical-middle-overflow">
+                    <img class="min-profile" src="@Business.Utils.fixLocalUserImagePath(relation.Image)" alt="avatar" />
+                  </div>
+                </div>
+              </a>
+            }
+          </div>
+          <div class="clear"></div>
+
+        </div>
+      }
+
+      @if (currentUserId == Model.ObjUser.UserId || Model.CollUserInterest.Count > 0)
+      {
+        <div class="mm2-module-profile">
+          <div class="mm2-txt1-module-tittle">
+            Intereses
+          @if (currentUserId == Model.ObjUser.UserId)
+          {
+            <div class="update-profile mm2-iconedit-profile" data-option="interests"></div>
+          }
+          </div>
+          <div class="mm2-container-tags-profile">
+            @foreach (Domain.Entities.UserInterest interest in Model.CollUserInterest)
+            {
+              <div class="mm2-tags-profile">@(Model.CollInterest.Where(ci => ci.InterestId == interest.InterestId).FirstOrDefault().Name)</div>
+            }
+          </div>
+          <div class="clear"></div>
+        </div>
+      }
+    </div>
+
+    <div class="clear"></div>
+    @if (currentUserId == Model.ObjUser.UserId || isFrontEndAdmin)
+    {
+      @*<div id="perfil-editar" class="perfil-editar">
+        <a>
+          <h2>Editar mi perfil</h2>
+          <span></span>
+        </a>
+      </div>*@
+      <div class="clear" style="margin-top: 10px;"></div>
+      <div id="clean-user" class="perfil-editar" data-id="@Model.ObjUser.UserId" data-admin="@(isFrontEndAdmin ? "true" : "false")">
+        <a>
+          @if(isFrontEndAdmin && currentUserId != Model.ObjUser.UserId)
+          {
+            <h2>Dar de baja</h2>
+          }
+          else if (currentUserId == Model.ObjUser.UserId)
+          {
+            <h2>Darme de baja</h2>
+          }
+        </a>
+      </div>
+      <div class="cerrar-sesion"><a href="@(content)/registro/cerrarsesion">Cerrar sesión</a></div>
+    }
+    @*
+    <div class="nosotros-menu">
+      <a style="border-right: 1px solid #ddd" id="ideasboton">ideas</a>
+      <a id="perfilboton">perfil</a>
+    </div>
+    *@
+    <div class="clear"></div>
+  </div>
+  <div class="colum-nosotros" id="perfilcont">
+
+    <div class="clear"></div>
+    <div class="perfil-filtros">
+      <a id="profile-recent" class="perfil-filtro perfil-boton-selected">Recientes</a>
+      <a id="profile-commented" class="perfil-filtro">Más comentadas</a>
+    </div>
+    <div class="clear"></div>
+    <input id="user-id" type="hidden" value="@Model.ObjUser.UserId" />
+    <div id="my-ideas-perfil">
+      @Html.Partial("_CardIdeasList", Model.CollIdeas)
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

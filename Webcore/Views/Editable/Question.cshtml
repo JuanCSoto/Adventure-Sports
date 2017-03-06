@@ -1,0 +1,49 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string value = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_DESCRIPTION);
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@ViewBag.QUESTIONS</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.SINGULAR<span>:</span></div>
+      <div class="editable-input">        
+        <input type="text" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_SINGULAR)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_SINGULAR)"/>        
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.PLURAL<span>:</span></div>
+      <div class="editable-input">        
+        <input type="text" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_PLURAL)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_PLURAL)"/>        
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.DESCRIPTION<span>:</span></div>
+      <div class="editable-input">        
+        <input type="text" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.QUESTIONS_DESCRIPTION)" data-type="text" value="@value"/>        
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+    <div class="centrado">
+  <div class="alerta-aceptar">
+    <a>
+      <h3>@ViewBag.SAVE</h3>
+      <span></span>
+    </a>
+  </div>
+        </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model Webcore.Areas.Admin.Models.InfoIdea
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.Idea.Text</title>
+    @Styles.Render("~/resources/css/")
+    <style>
+        body { background-color:White; }
+        .tit { font-size:18px; font-family:Segoe UI Light; background-color:#25A0DB; color:White; padding-bottom:15px; min-height:70px; }
+        #det { margin:0px; padding:0px; clear:both; margin-left:10px; }
+        #det li { list-style:none; }
+        #det span { font-size:15px;  }
+        #det label { font-size:12px; color:#25A0DB; margin-left:5px;  }
+        .imgp { margin:5px; border:1px solid white; }
+    </style>
+</head>
+<body>
+    <div style="width:450px; height:255px;">
+        <img onclick="window.parent.closediv()" class="img-close-div" src="~/resources/images/closer.png" />
+        <img class="imgp" align="left" width="70" height="70" src="@Business.Utils.GetImageContent(Model.Idea.Image, Model.Idea.IdeaId.Value, 70, 70)" />
+        <div class="tit">@Resources.Global.Messages.DETAIL</div>
+        <ul id="det">
+            <li>
+                <span>@Resources.Global.Messages.DESCRIPTION</span><br />
+                <label>@Model.Idea.Text </label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.CREATION_DATE</span><br />
+                <label>@Model.Idea.Creationdate.Value.ToString("F") </label>
+            </li>
+            <li>
+                <span>@Resources.Global.Messages.AUTHOR</span><br />
+                <label>@Model.Autor</label>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+

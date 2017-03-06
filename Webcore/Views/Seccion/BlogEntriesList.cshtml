@@ -1,0 +1,127 @@
+﻿@model Webcore.Models.FEListBlogs
+@{
+    Layout = null;
+    string content = Url.Content("~/").TrimEnd('/');
+    string date;
+    string image;
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    string picture = siteUrlRoot + "/1024.png";
+    bool isAdminBlog = false;
+    int userId = -99;
+    if (User.Identity.IsAuthenticated)
+    {
+        userId = ((Business.Services.CustomPrincipal)User).UserId;
+        isAdminBlog = Business.Utils.IsBlogAdmin(userId);
+    }
+}
+
+    @foreach (Domain.Entities.FrontEnd.BlogEntriesPaging blogEntry in Model.BlogsList)
+    {
+        date = Business.Utils.ElapsedTime(blogEntry.Joindate.Value, Culture);
+        image = blogEntry.Image;
+        if (!string.IsNullOrEmpty(image))
+        {
+            picture = siteUrlRoot + "/files/" + blogEntry.ContentId + "/" + image;
+        }
+        else if (!string.IsNullOrEmpty(blogEntry.Video))
+        {
+            picture = "http://img.youtube.com/vi/" + blogEntry.Video + "/default.jpg";
+        }
+        else
+        {
+            picture = siteUrlRoot + "/1024.png";
+        }
+        <div class="nosotros-contenido" data-id="@blogEntry.ContentId">
+            @if (Model.CurrentLanguage.LanguageId == 1)
+            {
+                <h3>@blogEntry.NameIngles</h3>
+            }
+            else
+            {
+                <h3>@blogEntry.Name</h3>
+            }
+            <div class="clear"></div>
+            <h6>@date</h6>
+            <div class="clear"></div>
+            <div class="blog-entry-click-area" data-id="@blogEntry.ContentId" data-friendly="@blogEntry.Friendlyurlid">
+                @if (!string.IsNullOrEmpty(image) || !string.IsNullOrEmpty(blogEntry.Video))
+                {
+                    <div class="nosotros-contenido-img">
+                        @if (!string.IsNullOrEmpty(blogEntry.Video))
+                        {
+                            <iframe id="player" class="blog-entry-video" type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/@blogEntry.Video?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>
+                        }
+                        else if (!string.IsNullOrEmpty(image))
+                        {
+                            if (Model.CurrentLanguage.LanguageId == 1)
+                            {
+                                <img src="~/files/@blogEntry.ContentId/@blogEntry.Image" alt="@blogEntry.NameIngles" />
+                            }
+                            else
+                            {
+                                <img src="~/files/@blogEntry.ContentId/@blogEntry.Image" alt="@blogEntry.Name" />
+                            }
+                        }
+                    </div>
+                    <div class="clear"></div>
+                }
+                @if (Model.CurrentLanguage.LanguageId == 1)
+                {
+                    <div class="nosotros-contenido-p">@blogEntry.ShortdescriptionIngles</div>
+                }
+                else
+                {
+                    <div class="nosotros-contenido-p">@blogEntry.Shortdescription</div>
+                }
+                <div class="clear"></div>
+                <div class="nosotros-contenido-mas">@ViewBag.TXTVERMAS</div>
+            </div>
+            @if (isAdminBlog && blogEntry.UserId == userId)
+            {
+                <div>
+                    <span class="edit-blog" data-id="@blogEntry.ContentId">@Resources.Global.Messages.EDIT</span>
+                    <span class="delete-blog" data-id="@blogEntry.ContentId" data-title-modal="@Resources.Extend.Messages.DELETE_NEWS_TITLE" data-message-modal="@Resources.Extend.Messages.DELETE_NEWS_MESSAGE">@Resources.Global.Messages.ERASE</span>
+                </div>
+            }
+            <div class="clear"></div>
+            <div class="compartir nosotros">
+                @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl()
+       {
+           name = blogEntry.Shortdescription,
+           link = siteUrlRoot + "/" + blogEntry.Friendlyurlid,
+           picture = picture,
+           caption = "",
+           descriptionFB = "¡Así transformamos la ciudad con tus ideas!",
+           descriptionTW = "¡Así transformamos la ciudad con tus ideas!",
+           description = "¡Así transformamos la ciudad con tus ideas!"
+       })
+            </div>
+            <div class="clear"></div>
+            <div class="nosotros-contenido-comentarios">
+                <div id="comments-blog-container-@blogEntry.ContentId">
+                    @Html.Partial("_BlogEntryCommentsList", blogEntry.CollComment)
+                </div>
+                <div class="nosotros-contenido-comentario">
+                    <div class="nosotros-contenido-comentario-image">
+                        <div class="img-vertical-middle-overflow">
+                            @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                            {
+                                <img class="min-40" src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                            }
+                            else
+                            {
+                                <img class="min-40" src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                            }
+                        </div>
+                    </div>
+                    <div class="nosotros-contenido-comentario-txt">
+                        <textarea id="comment-blog-text-@blogEntry.ContentId" data-id="@blogEntry.ContentId" data-view="_BlogEntryCommentsList" data-size="3" data-container="#comments-blog-container-@blogEntry.ContentId" data-length="200" data-event-bind="false" data-selector=".blog-comentario-imagen img" data-scroll=""></textarea>
+                        <div class="comentar-blog">@ViewBag.COMMENT</div>
+                        <div class="clear"></div>
+                        <div class="comentar-counter-blog-list contv2"><span id="comment--counter-@blogEntry.ContentId">200</span>@Resources.Global.Messages.CHARACTERS</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    }

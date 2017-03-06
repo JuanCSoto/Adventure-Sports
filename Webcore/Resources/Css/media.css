@@ -1,0 +1,2425 @@
+/*-------------------------------  ocultar texto leader  --------------------------------------*/
+@media only screen and (max-width: 6000px) {
+  .ciudadana3 span {
+    margin-left: 70px;
+  }
+
+
+
+  .send-search-icon {
+    display: none;
+  }
+}
+/*-------------------------------  ocultar texto leader  --------------------------------------*/
+
+@media only screen and (max-width: 990px) {
+
+  .mm2-container-box-barras2 {
+    width: 95%;
+  }
+
+  #statistics-ranking {
+    width: 95%;
+  }
+
+  .mobil-multi {
+    width: auto;
+  }
+
+  .text-leader1 {
+    display: none;
+  }
+
+  .send-search-icon {
+    display: none;
+  }
+
+  .mm2-card-aliados {
+    width: 30%;
+  }
+
+  .user-search-result {
+    width: 660px!important;
+    margin: auto!important;
+  }
+
+  .mm2-searchfield-home {
+    width: 482px;
+  }
+
+  .contenedor-home {
+    width: 768px;
+    margin-bottom: 60px;
+  }
+
+  .pulse-container {
+    text-align: center;
+  }
+
+  .mm2-pretxt-search {
+    width: 100%;
+    margin: 0 0 11px 0;
+  }
+
+  .search-container-general {
+    padding: 40px 0 25px 0;
+  }
+
+  .send-search {
+    margin: 0 0 0 4px;
+  }
+
+  .idea-search-result {
+    width: 660px;
+    margin: auto;
+  }
+}
+
+/*-------------------------------  IPAD   --------------------------------------*/
+
+@media only screen and (width: 1024px) and (orientation: landscape) {
+  .contenedor-home {
+    margin-left:10px!important;
+    width: 1014px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  .contenedor-home {
+    margin: auto;
+  }
+
+  .contenido-tit {
+    margin: 0 0 29px 0;
+  }
+
+  .search-container-general {
+    padding: 40px 0 25px 0;
+  }
+
+  .mm2-pretxt-search {
+    /*
+    width: 100%;
+    margin: 0 0 11px 0;
+    */
+  }
+}
+
+@media only screen and (max-width: 845px) /*, only screen and (max-width: 1024px) and (orientation: landscape)*/ {
+
+    #idioma {
+        top: 35px;
+    }
+
+.ingresarcon {
+    margin: 10px 0 0 0px;
+    
+}
+  .separai {
+    /*width: 326px;*/
+  }
+
+  .separad {
+    /*width: 326px;*/
+  }
+
+  .comenta-block {
+    width: 754px;
+  }
+
+    .comenta-block h6 {
+      margin: 10px 0;
+    }
+
+  .mm2-searchfield-home2 {
+    margin-left: 29px;
+  }
+
+  .ideas-block-multiple .mm2-searchfield-home2 {
+    width: 401px;
+  }
+
+  .mm2-create-news {
+    display: none;
+  }
+
+  .mm2-card-aliados {
+    width: 44%;
+  }
+
+  .ciudadana3 span {
+    margin-left: 46px;
+  }
+
+  .idea-search-result {
+  }
+
+  .search-container-general2 {
+    margin-left: 25px;
+  }
+
+  .ideas-block-multiple {
+    margin:0;
+  }
+
+  .perfil-editar {
+    padding: 0 0 0 20px;
+  }
+
+  .finalizado-interna {
+    margin: 0 0 0 608px;
+  }
+
+  #show-email-setting {
+    margin: 0 30px 0 0;
+  }
+
+  .footer-terminos {
+    margin: 0 10px 0 0;
+  }
+
+  .mm2-module-profile {
+    padding: 15px 22px 10px 21px;
+    box-sizing: border-box;
+  }
+
+
+  .ideas-container-width {
+    width: 100%;
+  }
+
+  .descripcion-texto {
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .min-profile {
+    min-width: 54px;
+    min-height: 54px;
+    max-width: 81px;
+    max-height: 81px;
+  }
+
+  .mm2-img-userclose-profile {
+    height: 54px;
+    width: 54px;
+  }
+
+  .mm2-searchfield-home {
+    width: 482px;
+  }
+
+  .send-search {
+    margin: 0 0 0 4px;
+  }
+
+  .mm2-notification-container {
+    padding: 11px 0 0 0;
+  }
+
+  .mm2-name-userok {
+    display: none;
+  }
+
+  .mm2-container-redes {
+    display: none;
+  }
+
+  .mm2-container-perfilnew2 {
+    width: 779px;
+    padding: 0 0 30px 0;
+  }
+    
+    .mm2-text-cel {
+        width: 88%;
+        padding: 0 0px 20px 20px
+    }
+
+  .mm2-container-lateralprofile {
+    width: 100%;
+  }
+    
+    .mm2-ico-cel2 {
+          margin: -4px 0 0 -2px;
+        
+    }
+
+  .mm2-people-registrics-chart {
+    width: 100%;
+    margin: 0 0 0 20px;
+  }
+
+  .mm2-tittle-name {
+    /*margin: 13px 0 0 20px;*/
+  }
+
+  .mm2-tittle-name-notifications {
+    margin: 0 20px 0 0!important;
+  }
+
+  .mm2-topuser-stadistics-chat {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .mm2-box-chart-content {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mm2-lateral-stadistics-chart {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mm2-list-ideas-chart {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+  }
+
+  .mm2-container-modulo {
+    width: 755px;
+    padding: 20px 0 20px 15px;
+  }
+
+  .mm2-card-people {
+    margin: 27px 0 35px 0;
+  }
+
+  .mm2-dynamic-content1 {
+    padding: 0;
+  }
+
+  .text-leader1 {
+    display: none;
+  }
+
+  .mm2-pretxt-search {
+    width: 100%;
+    margin: 0 0 11px 0;
+  }
+
+  .banner-infop p {
+    font-size: 20px;
+    line-height: 24px;
+    height: auto;
+  }
+
+  .banner-infop {
+    background-color: white;
+  }
+
+  .botoningresa {
+    display: block;
+    /*margin-top: 4px;*/
+  }
+
+  .menu-ingresar {
+    display: none;
+  }
+
+  .comentar-counter {
+    margin-top: 5px;
+  }
+
+
+  .idea-video-wraper {
+    width: 100%;
+    height: 300px;
+  }
+
+  .cabezote {
+    background-color: #fff;
+    height: auto;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  }
+
+  .cabezote-block {
+    width: 768px;
+    height: auto;
+  }
+
+  .logo-big {
+    width: 310px;
+    height: 53px;
+  }
+
+    .logo-big a img {
+      width: 310px;
+      height: 53px;
+      margin: 0;
+    }
+
+  .menu-big {
+    display: none;
+  }
+
+  .menu-small {
+    display: block;
+    vertical-align: middle;
+  }
+
+  .ingresa-small {
+    display: block;
+    position: absolute;
+    right: 58px;
+    top: 0px;
+    z-index:1000;
+  }
+
+  .submenu-small {
+    /*display: block;*/
+  }
+
+  .ingresa-input {
+    width: 90%;
+  }
+
+  .cabezote-ciudad {
+    display: none;
+  }
+
+  .desplegables {
+    /*margin-top: 54px;*/
+    display: block;
+  }
+
+  .contenedor {
+    width: 100%;
+    margin-bottom: 60px;
+    margin-top: 20px;
+  }
+
+  .contenedor-home {
+    width: 768px;
+    margin-bottom: 60px;
+  }
+
+  .banner {
+    display: block;
+    width: 768px;
+    margin:auto;
+    float:none;
+  }
+
+  .banner_v2 {
+    display: none;
+  }
+
+  .banner-info {
+    display: none !important;
+  }
+
+  .banner-infop-wraper {
+    display: block;
+  }
+
+  .banner-panoramica {
+    float: left;
+    width: 768px;
+    height: 384px;
+    border: none;
+  }
+
+    .banner-panoramica img {
+      width: 768px;
+    }
+
+  .banner-imgs {
+    float: left;
+    width: 768px;
+    display: none;
+  }
+
+  .banner-img {
+    width: 191px;
+    height: 191px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+
+    .banner-img a {
+      width: 191px;
+      height: 191px;
+    }
+
+  .imgd {
+    margin-right: 1px;
+  }
+
+  .imga {
+    margin-right: 1px;
+  }
+
+  .contenido {
+    width: 728px;
+    margin: 20px 0 0 20px;
+  }
+
+  .contenido-historia {
+    width: 363px;
+    height: 394px;
+    margin: 0 0 20px 10px;
+  }
+
+  .search-container-general {
+    padding: 40px 0 25px 20px;
+  }
+
+  .contenido-historia img {
+    width: 363px;
+  }
+
+  .contenido-historia p {
+    font-size: 16px;
+  }
+
+  .contenido-historia:nth-child(n+5) {
+    display: none;
+  }
+
+  .contenido-historia-barra {
+    width: 340px;
+  }
+
+  .participa-block {
+    /*margin-right: 20px;*/
+  }
+
+  .update-block {
+    margin-right: 20px;
+  }
+
+  .finalizado {
+    margin-left: 203px;
+  }
+
+  .comunidad {
+    width: 742px;
+    margin: 0px 0 0 -20px;
+    max-height: 195px;
+  }
+
+  .lomejor-item {
+    width: 768px;
+    margin: 0 0 20px -20px;
+  }
+
+  .lomejor-item-titulo {
+    width: 748px;
+  }
+
+  .lomejor-historia {
+    width: 768px;
+  }
+
+    .lomejor-historia img {
+      margin-left: 20px;
+    }
+
+  .lomejor-historia-text {
+    width: 648px;
+  }
+
+  .footer {
+    height: 65px;
+  }
+
+  .footer-block {
+    width: 768px;
+    height: 40px;
+  }
+
+  .footer-terminos {
+    display: none;
+  }
+
+  .footer-terminosp {
+    display: block;
+  }
+
+  .footer-dasignop {
+    display: block;
+  }
+
+    .footer-dasignop a img {
+      height: 25px;
+    }
+
+  .f-t {
+    display: none;
+  }
+
+  .descripcion-block {
+    display: block;
+    width: 100%;
+    padding: 0 0 0 15px;
+  }
+
+  .vrs-block {
+    display: none;
+  }
+
+  .top-block {
+    display: none;
+  }
+
+  .media-block {
+    width: 768px;
+  }
+
+  .media-titulo {
+    display: none;
+  }
+
+  .media-imagen-grande {
+    width: 768px;
+    height: 368px;
+  }
+
+    .media-imagen-grande img {
+      width: 100%;
+      /*height: 368px;*/
+    }
+
+  .media-items {
+    width: 768px;
+    height: 118px;
+  }
+
+  .media-item {
+    width: 190px;
+    height: 118px;
+  }
+
+  .media-item-v {
+    width: 190px;
+    height: 118px;
+  }
+
+  .media-texto {
+    display: none;
+  }
+
+  .media-barra {
+    width: 738px;
+  }
+
+  .media-barra-color {
+    width: 718px;
+  }
+
+  .media-indicador {
+    width: 115px;
+  }
+
+    .media-indicador h1 {
+      width: 115px;
+    }
+
+  .participacion3 span {
+    margin-left: 45px;
+  }
+
+  .ciudadania3 span {
+    margin-left: 45px;
+  }
+
+  .premio3 span {
+    margin-left: 42px;
+  }
+
+  .unieron3 span {
+    width: 115px;
+  }
+
+  .restantes3 span {
+    width: 115px;
+  }
+
+  .comenta-txt textarea {
+    width: 739px;
+    font-size: 16px;
+  }
+
+  .comenta-media-block input {
+    width: 490px;
+  }
+
+  .ideas-block {
+    border: none;
+    margin: 0;
+    padding: 0;
+    /*width: 768px;*/
+  }
+
+    .ideas-block h4 {
+      display: none;
+    }
+
+  .seccion-ideas {
+    display: block;
+  }
+
+  .filtros {
+    width: 647px;
+    margin: 15px 0 0 55px;
+  }
+
+    .filtros a {
+      font-size: 14px;
+    }
+
+  .idea-contenido img {
+  }
+
+  .idea-comentario input {
+    width: 605px;
+    padding-right: 70px;
+    font-size: 16px;
+  }
+
+  .margen-der {
+    margin: 0 10px 0 0 !important;
+  }
+
+  .mapa {
+    width: 768px;
+    height: 340px;
+  }
+
+  .media-indicador-dos {
+    width: 239px;
+  }
+
+    .media-indicador-dos h1 {
+      width: 239px;
+    }
+
+  .participacion4 span {
+    margin-left: 106px;
+  }
+
+  .ciudadania4 span {
+    margin-left: 106px;
+  }
+
+  .premio4 span {
+    margin-left: 106px;
+  }
+
+  .unidos4 span {
+    width: 239px;
+  }
+
+  .restantes4 span {
+    width: 239px;
+  }
+
+  .idea-contenido-mapa {
+    width: 748px;
+    margin-left: 0;
+  }
+
+    .idea-contenido-mapa p {
+      width: 370px;
+    }
+
+    .idea-contenido-mapa a {
+      margin-left: 85px;
+    }
+
+  .opciones-block {
+    width: 768px;
+  }
+
+  .opcion-txt {
+    width: 498px;
+  }
+
+  .opcion-votar {
+    display: none;
+  }
+
+  .opcion-txt p {
+    width: 480px !important;
+  }
+
+  .opcion-votar2 {
+    display: block;
+    float: left;
+    margin: 50px 0 0 15px;
+  }
+
+  .opcion-porcentaje span {
+    float: left;
+    width: 130px;
+    text-align: center;
+    height: 87px;
+  }
+
+  .internap {
+    display: none;
+  }
+
+  .titulo-reto-txt {
+    width: 100%;
+}
+
+  .reto-info {
+    float: left;
+    width: 768px;
+    margin: 10px 0 0 11px;
+  }
+
+  .info1 {
+    display: none;
+  }
+
+  .info2 {
+    display: block;
+    margin: 0 0 0 12px;
+  }
+
+  .reto-imagen {
+    width: 768px;
+  }
+
+  .reto-comentarios input {
+    width: 685px;
+    font-size: 16px;
+  }
+
+  .reto-comentarios textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .reto-comentarios p {
+    width: 700px;
+  }
+
+  .seccion-filtros-block a {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  .seccion-pregunta {
+    width: 383px;
+    height: 583px;
+  }
+
+  .seccion-pregunta-img {
+    width: 383px;
+    height: 361px;
+  }
+
+  .seccion-pregunta-titulo {
+    width: 94%;
+    font-size: 17px;
+  }
+
+  .pregunta-barra {
+    width: 360px;
+  }
+
+  .pregunta-barra-color {
+    width: 340px;
+  }
+
+  .margen2 {
+    margin-right: 10px;
+  }
+
+  .seccion-reto {
+    width: 363px;
+    height: 475px;
+  }
+
+  .seccion-reto-img {
+    width: 363px;
+    height: 300px;
+  }
+
+  .pregunta-item {
+    width: 70px;
+  }
+
+  .mm2-icon-notification {
+    display: none;
+  }
+
+  .pregunta-item h1 {
+    width: 70px;
+  }
+
+  .reto-barra {
+    width: 345px;
+  }
+
+  .reto-barra-color {
+    width: 325px;
+  }
+
+  .nosotros-menu {
+    display: block;
+  }
+
+  .blog-archivo {
+    display: none;
+  }
+
+  .colum-blog {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .colum-nosotros {
+    width: 100%;
+    padding: 23px 48px;
+    box-sizing: border-box;
+  }
+
+  .colum-nosotros-titulo {
+    display: none;
+  }
+
+  .nosotros-contenido {
+    margin: 0;
+  }
+
+
+
+  .blog-entry-video {
+    height: 450px;
+  }
+
+
+
+  .nosotros {
+    margin: 0;
+  }
+
+  .perfil-botones {
+    display: none;
+  }
+
+  .perfil-filtros {
+    display: none;
+  }
+
+  .perfil-idea {
+    margin: 10px 0 0 0;
+  }
+
+  .perfil-propuesta-usuario img {
+    margin: 0 !important;
+  }
+
+  .perfil-propuesta-contenido {
+    margin-left: 0;
+    width: 768px;
+  }
+
+  .perfil-propuesta-contenido-img {
+    width: 768px;
+  }
+
+  .perfil-comentario-p {
+    width: 700px;
+  }
+
+  .perfil-comentario input {
+    width: 690px;
+    font-size: 16px;
+  }
+
+  .perfil-usuario-nombre {
+    height: auto;
+  }
+
+  .perfil-usuario-puntos2 {
+    display: block;
+  }
+
+  .perfil-usuario-puntos {
+    display: none;
+  }
+
+  .perfil-clasificacion {
+    margin: 1px 0 0 10px;
+  }
+
+  .blog-enlaces input {
+    width: 590px;
+  }
+
+  .insignia {
+    width: 84px;
+    height: 84px;
+  }
+
+  .perfil {
+    margin: 0;
+  }
+
+  .submenu-small2 {
+    /*display: block;*/
+  }
+
+  .registro {
+    margin: 0 auto;
+    width: 740px;
+  }
+
+  .registro-item {
+    width: 700px;
+  }
+
+  .registro-input {
+    width: 70%;
+  }
+
+  .registro-combo {
+    width: 489px;
+    margin: 0 8px 0 0;
+  }
+
+  .aceptar-terminos {margin-right: 145px;}
+
+  .registro-textarea {
+    width: 70%;
+  }
+
+
+  .default {
+    width: 768px;
+    margin: 0 auto;
+  }
+
+  .default-combo {
+    width: 87%;
+  }
+
+  .default-textarea {
+    width: 92%;
+  }
+
+  .reporta-select-container {
+    width: 95%;
+  }
+
+  .pregunta-3 span {
+    margin-left: 44px;
+  }
+
+  .pregunta2-3 span {
+    margin-left: 44px;
+  }
+
+  .pregunta3-3 span {
+    margin-left: 44px;
+  }
+
+  .dasigno-ipad {
+    display: block;
+  }
+
+  .footer-block2 {
+    display: block;
+  }
+
+  .video-c {
+    width: 768px;
+    height: 370px;
+  }
+
+
+
+
+
+
+
+  .usuario-block {
+    margin: 3px 0 0 0;
+    border-left: 1px solid #ddd;
+  }
+
+  .footer-al {
+    float: left;
+  }
+
+  .finalizado2 {
+    margin-left: 203px;
+  }
+
+  .registro-nacimiento {
+    width: 73%;
+  }
+
+    .registro-nacimiento select {
+      width: 120px;
+    }
+
+
+  .opcion img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .opcion-porcentaje {
+    width: 130px;
+    height: 130px;
+  }
+
+  .pregunta-multi-v2 {
+    width: 740px;
+    font-size: 18px;
+  }
+
+  .bv2 {
+    width: 600px !important;
+  }
+
+  .media-barra-color-v2 {
+    width: 579px;
+  }
+
+  .numvotostotal {
+    width: 130px;
+  }
+
+    .numvotostotal h4 {
+      margin: 35px auto 0 auto;
+      width: 110px;
+      font-size: 16px;
+    }
+
+    .numvotostotal h3 {
+      width: 110px;
+      font-size: 25px;
+    }
+
+  .anchovotos {
+    width: 637px;
+  }
+
+  .comenta-txt-v2 textarea {
+    width: 740px;
+  }
+
+  .idea-contenido-v2 {
+    width: 700px;
+  }
+
+  .idea-social-v2 {
+    width: 700px;
+  }
+
+
+
+  .coment-v2 {
+    width: 750px;
+  }
+
+
+
+
+  .comp-v2 {
+    /*width: 640px !important;*/
+  }
+
+  .nosotros-contenedor {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 724px) {
+  .mm2-tittle-seccion-estadistics {
+    padding: 37px 0px 0px 12px;
+  }
+
+  .mm2-item-menu-estadisticas.selected {
+    width: 100%;
+  }
+
+  .mm2-item-menu-estadisticas {
+    width: 100%;
+  }
+
+  .user-search-result {
+    width: 440px!important;
+    margin: auto!important;
+  }
+}
+/*-------------------------------  CELULAR   --------------------------------------*/
+
+@media only screen and (max-width: 500px) {
+	.seccion h2 {
+		font-size: 15px;
+	}
+	.seccion h1{
+		font-size: 33px;
+	}
+  .mm2-card-aliados {
+    width: 90%;
+  }
+
+    #idioma {
+    top: 35px;
+    }
+}
+/*-------------------------------  CELULAR   --------------------------------------*/
+
+@media only screen and (max-width: 480px) and (orientation: landscape) {
+  [data-section="39"] {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+    
+    .ingresarcon h1 {
+        font-size: 10px;
+    }
+    
+  .user-search-result {
+    width: 215px!important;
+    margin: auto!important;
+  }
+
+    #idioma {
+    top: 35px;
+    }
+    .logo img {
+    padding-top: 17px;
+    }
+}
+
+@media only screen and (max-width: 400px) /*, only screen and (max-width: 480px) and (orientation: landscape)*/ {
+    #idioma {
+        top: 35px;
+    }
+    .logo img {
+    padding-top: 35px;
+    }
+
+    .ingreso {
+		width: 320px;
+	}
+    .mm2-title-name {
+        padding: 13px 0 10px 20px;
+    }
+  .admin-wraper {
+    display: none;
+  }
+
+  .search-container-general2 {
+    margin-left: 0;
+  }
+
+  .registro-txt {
+    width: 20%;
+  }
+
+  .margen-der2 {
+    margin: 0 0px 0 0 !important;
+  }
+
+  .send-search {
+    width: 60px;
+    margin: 0;
+  }
+
+  .registro-info {
+    line-height: 30px;
+  }
+
+  .mm2-create-news {
+    display: none;
+  }
+
+  .idea-search-result {
+    width: 310px;
+    margin: 0 5px 0 5px;
+  }
+
+  .user-search-result {
+    /*margin-left: 0;*/
+  }
+
+  .mm2-item-organizer {
+    font-size: 12px;
+    margin: 0 14px 25px 10px;
+  }
+
+  .min-profile {
+    min-width: 42px;
+    min-height: 42px;
+    max-width: 63px;
+    max-height: 63px;
+  }
+
+  .mm2-img-userclose-profile {
+    height: 42px;
+    width: 42px;
+  }
+
+  .mm2-container-modulo {
+    width: 294px;
+  }
+
+  [data-section="39"] {
+    display: none;
+  }
+
+  .text-leader1 {
+    display: none;
+  }
+
+  .mm2-container-redes {
+    display: none;
+  }
+
+  .botoningresa {
+    display: block;
+    /*margin-top: 9px;*/
+  }
+
+  .menu-ingresar {
+    display: none;
+  }
+
+  .idea-video-wraper {
+    width: 310px;
+    height: 240px;
+  }
+
+  .reto-info {
+    width: 325px !important;
+  }
+
+  .si-imagen {
+    width: 325px !important;
+  }
+
+  .ideas-block {
+    width: 320px;
+    padding: 20px 0 0 0px;
+  }
+
+  .mm2-dynamic-content1 {
+    padding: 0;
+  }
+
+  .ingresa-input {
+    width: 250px;
+	width: 83%;
+  }
+
+  .cabezote {
+    background-color: #fff;
+    height: 53px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  }
+
+  .cabezote-block {
+    width: 320px;
+    height: 45px;
+  }
+
+  .logo-big {
+    width: 114px;
+    height: 45px;
+  }
+
+    .logo-big a img {
+      width: 184px;
+      height: 34px;
+      margin: 10px 0 0 0;
+    }
+
+  .desplegables {
+    /*margin-top: 54px;*/
+    width: 320px;
+  }
+
+
+
+  .menu-small div img {
+    height: 30px;
+  }
+
+  .ingresa-small {
+    margin-right: 0px;
+	right: 40px;
+  }
+
+  .reto-usuario-social {
+    width: 100%;
+  }
+
+  .ingresa-small div img {
+    height: 30px;
+  }
+
+  .submenu-small {
+    width: 320px;
+  }
+
+  .submenu-small2 {
+    width: 320px;
+  }
+
+  .ingresarcon a {
+    margin-left: 5px;
+  }
+
+  .ocon {
+    font-size: 10px;
+    margin-top: 15px;
+  }
+
+  .registrarseb a {
+    font-size: 13px;
+    line-height: 2.6;
+  }
+
+  .banner {
+    display: none;
+  }
+
+  .contenedor {
+    width: 320px;
+  }
+
+  .contenedor-home {
+    width: 315px;
+  }
+
+  .contenido {
+    width: 320px;
+    margin: 20px 0 20px 0px;
+  }
+
+  .contenido-historia {
+    width: 320px;
+    height: 460px;
+    margin-bottom: 20px;
+  }
+
+    .contenido-historia img {
+      width: 320px;
+    }
+
+    .contenido-historia p {
+    }
+
+  .contenido-historia-barra {
+    width: 300px;
+  }
+
+  .participa-block {
+    margin-right: 20px;
+  }
+
+  .update-block {
+    margin-right: 20px;
+  }
+
+  .participacion2 {
+    width: 70px;
+  }
+
+
+  .participaciongris {
+    width: 70px;
+  }
+
+    .participaciongris span {
+      margin: 5px 0 0 22px;
+    }
+
+  .ciudadana2 span {
+    margin: 5px 0 0 24px;
+  }
+
+
+  .premio2 {
+    width: 70px;
+  }
+
+
+
+  .premiogris {
+    width: 70px;
+  }
+
+    .premiogris span {
+      margin: 5px 0 0 23px;
+    }
+
+  .unidos2 {
+    width: 77px;
+  }
+
+
+
+  .gris span {
+    color: #888 !important;
+  }
+
+  .restantes2 {
+    width: 80px;
+  }
+
+
+
+  .finalizado {
+    margin-left: 160px;
+  }
+
+  .comunidad {
+    width: 320px;
+    margin: 2px 0 3px;
+  }
+
+  .lomejor-item {
+    width: 320px;
+    margin: 0 0 20px 0px;
+  }
+
+  .lomejor-item-titulo {
+    width: 300px;
+  }
+
+  .lomejor-historia {
+    width: 320px;
+  }
+
+    .lomejor-historia img {
+      margin-left: 10px;
+    }
+
+  .lomejor-historia-text {
+    width: 180px;
+  }
+
+  .footer {
+    height: 29px;
+  }
+
+  .footer-block {
+    width: 320px;
+    height: 40px;
+  }
+
+  .footer-terminos {
+    display: none;
+  }
+
+  .footer-terminosp {
+    display: block;
+  }
+
+  .footer-dasignop {
+    display: none;
+  }
+
+  .footer-movil {
+    display: block;
+  }
+
+  .footer-terminosp {
+    display: none;
+  }
+
+  .f-t {
+    display: block;
+  }
+
+  .media-block {
+    width: 320px;
+  }
+
+  .media-titulo {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .media-imagen-grande {
+    width: 320px;
+    height: 153px;
+  }
+
+    .media-imagen-grande img {
+      width: 320px;
+      height: 153px;
+    }
+
+  .media-items {
+    width: 320px;
+    height: 49px;
+  }
+
+  .media-item {
+    width: 79px;
+    height: 49px;
+  }
+
+  .media-item-v {
+    width: 79px;
+    height: 49px;
+  }
+
+  .media-barra {
+    width: 290px;
+  }
+
+  .media-barra-color {
+    width: 270px;
+  }
+
+  .media-indicador {
+    width: 79px;
+  }
+
+    .media-indicador h1 {
+      width: 79px;
+    }
+
+  .participacion3 span {
+    margin-left: 25px;
+  }
+
+  .ciudadania3 span {
+    margin-left: 25px;
+  }
+
+  .paremio3 span {
+    margin-left: 22px;
+  }
+
+  .unieron3 span {
+    width: 79px;
+  }
+
+  .restantes3 span {
+    width: 79px;
+  }
+
+  .comenta-txt textarea {
+    width: 287px;
+    font-size: 16px;
+  }
+
+  .comenta-media-block input {
+    width: 187px;
+    margin-bottom: 10px;
+  }
+
+  .seccion-ideas {
+    width: 320px;
+  }
+
+    .seccion-ideas span {
+      width: 159px;
+      height: 40px;
+    }
+
+  .filtros {
+    display: none;
+  }
+
+  .interna {
+    float: right;
+    margin-bottom: 10px;
+  }
+
+  .idea-comentario-txt {
+    width: 245px;
+  }
+
+    .idea-comentario-txt p {
+      width: 245px;
+    }
+
+  .idea-comentario input {
+    width: 155px;
+  }
+
+  .top-block2 {
+    width: 300px;
+  }
+
+  .top-item2 {
+    width: 300px;
+  }
+
+  .top-item-txt2 {
+    width: 240px;
+  }
+
+    .top-item-txt2 img {
+      width: 240px;
+      height: 136px;
+    }
+
+  .mapa {
+    width: 320px;
+  }
+
+  .media-indicador-dos {
+    width: 159px;
+  }
+
+    .media-indicador-dos h1 {
+      width: 159px;
+    }
+
+  .participacion4 span {
+    margin-left: 65px;
+  }
+
+  .ciudadania4 span {
+    margin-left: 65px;
+  }
+
+  .premio4 span {
+    margin-left: 65px;
+  }
+
+  .unidos4 span {
+    width: 159px;
+  }
+
+  .restantes4 span {
+    width: 159px;
+  }
+
+  .idea-contenido-mapa {
+    width: 300px;
+  }
+
+    .idea-contenido-mapa p {
+      width: 215px;
+    }
+
+  .opciones-block {
+    width: 320px;
+  }
+
+  .opcion {
+    height: auto;
+  }
+
+  .opcion-txt {
+    width: 245px;
+    height: auto;
+  }
+
+    .opcion-txt p {
+      width: 240px !important;
+      font-size: 14px;
+    }
+
+  .opcion img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .opcion-votar {
+    display: block;
+  }
+
+  .opcion-votar2 {
+    display: none;
+  }
+
+  .opcion-porcentaje {
+    display: none;
+  }
+
+  .opcion-porcentaje2 {
+    display: block;
+  }
+
+  .titulo-reto-volver {
+    width: 0px;
+    height: 40px;
+  }
+
+    .titulo-reto-volver a {
+      width: 0px;
+      height: 28px;
+    }
+
+      .titulo-reto-volver a img {
+        width: 0px;
+        height: 28px;
+      }
+
+  .titulo-reto-txt {
+    font-size: 18px;
+    width: 270px;
+  }
+
+  .reto-imagen {
+    width: 320px;
+  }
+
+  .info2 {
+    width: 320px;
+  }
+
+  .reto-comentarios input {
+    width: 240px;
+  }
+
+  .reto-comentarios textarea {
+    width: 238px;
+  }
+
+  .reto-comentarios p {
+    width: 240px;
+  }
+
+  .seccion-titulo {
+    margin-bottom: 10px;
+  }
+
+    .seccion-titulo h1 {
+      font-size: 30px;
+    }
+
+  .seccion-filtro {
+    margin-top: 1px;
+  }
+
+  .seccion-filtros-block {
+    display: none;
+  }
+
+  .seccion-pregunta {
+    width: 320px;
+    height: 520px;
+  }
+
+  .seccion-pregunta-img {
+    width: 320px;
+    height: 301px;
+  }
+
+  .pregunta-barra {
+    width: 300px;
+  }
+
+  .pregunta-barra-color {
+    width: 280px;
+  }
+
+  .margen2 {
+    margin-right: 10px !important;
+  }
+
+  .seccion-reto {
+    width: 320px;
+    height: 420px;
+  }
+
+  .seccion-reto-img {
+    width: 320px;
+    height: 200px;
+  }
+
+  .reto-barra {
+    width: 300px;
+  }
+
+  .reto-barra-color {
+    width: 280px;
+  }
+
+  .nosotros-menu a {
+    font-size: 20px;
+    width: 159px;
+  }
+
+  .colum-blog {
+    width: 320px;
+    padding: 0;
+  }
+
+  .colum-nosotros {
+    width: 320px;
+    padding: 23px 0;
+  }
+
+  .nosotros-contenido-img {
+    width: 320px;
+  }
+
+  .blog-entry-video {
+    height: 300px;
+  }
+
+  .mm2-container-perfilnew2 {
+    width: 320px;
+  }
+
+
+
+  .perfil-propuesta-contenido {
+    width: 320px;
+  }
+
+  .perfil-propuesta-contenido-img {
+    width: 320px;
+  }
+
+  .perfil-comentario-p {
+    width: 260px;
+  }
+
+  .perfil-comentario input {
+    width: 250px;
+  }
+
+  .perfil-usuario-nombre {
+    font-size: 18px;
+  }
+
+  .blog-enlaces input {
+    width: 165px;
+  }
+
+  .insignia {
+    width: 105px;
+    height: 105px;
+  }
+
+  .perfil {
+    float: right;
+    clear: both;
+    margin: 10px 0 10px 10px;
+  }
+
+  .reportar {
+    display: none;
+  }
+
+  .reportar2 {
+    display: block;
+  }
+
+  .registro {
+    margin: 0 auto;
+    width: 320px;
+  }
+
+  .registro-item {
+    width: 280px;
+  }
+
+  .aceptar-terminos h4 {
+    width: 252px;
+    margin: 0;
+  }
+
+  .error-term {
+    float: left;
+    margin-left: 10px;
+    margin-right: 0px;
+  }
+
+  .error-policy {
+    float: left;
+    margin-left: 10px;
+    margin-right: 0px;
+  }
+
+  .alerta-titulo h1 {
+    font-size: 17px;
+  }
+
+  .alerta-titulo {
+    line-height: 3;
+  }
+
+  .default {
+    width: 320px;
+  }
+
+  .default-combo {
+    width: 82%;
+  }
+
+  .default-textarea {
+    width: 88%;
+  }
+
+  .premio3 span {
+    margin-left: 26px;
+  }
+
+  .reto-comentarios h5 {
+    font-size: 10px;
+  }
+
+  .nosotros-contenido-comentario-txt h6 {
+    font-size: 10px;
+  }
+
+  .perfil-comentario-f {
+    font-size: 10px;
+  }
+
+  .nosotros-contenido {
+    padding: 0 0 0 5px;
+    box-sizing: border-box;
+  }
+
+  .pregunta-3 span {
+    margin-left: 25px;
+  }
+
+  .pregunta2-3 span {
+    margin-left: 25px;
+  }
+
+  .pregunta3-3 span {
+    margin-left: 25px;
+  }
+
+  .footer2 {
+    width: 320px;
+  }
+
+  .footer-block img {
+    height: 22px;
+    width: 39px;
+  }
+
+  .footer-block a {
+    margin-top: 1px;
+  }
+
+  .registro-combo {
+    width: 67%;
+  }
+
+  .ubicacion-block {
+    width: 210px;
+    left: 60px;
+  }
+
+  .video-c {
+    width: 320px;
+    height: 180px;
+  }
+
+  .comenta-block {
+    width: 94%;
+  }
+
+  .usuario-block {
+    width: 40px;
+    margin-top: 0;
+  }
+
+  .usuario-block-txt {
+    margin: 3px 0 0 5px;
+    display: none;
+  }
+
+  .usuario-block-a {
+    display: none;
+  }
+
+  .ingresarcon {
+    margin-left: 0;
+  }
+
+  .separai {
+    width: 109px;
+  }
+
+  .separad {
+    width: 123px;
+  }
+
+  .ciudadana3 span {
+    margin-left: 26px;
+  }
+
+  .seccion-pregunta-titulo {
+    font-size: 14px;
+  }
+
+  .finalizado2 {
+    margin-left: 160px;
+  }
+
+  .registro-input {
+    width: 65%;
+  }
+
+  .registro-combo {
+    width: 65%;
+  }
+
+  .aceptar-terminos {
+    margin-right: 0px;
+  }
+
+  .registro-textarea {
+    width: 65%;
+  }
+
+  #change-password-button {
+    margin-left: 95px;
+  }
+
+  .registro-nacimiento {
+    width: 200px;
+  }
+
+    .registro-nacimiento select {
+      width: 56px;
+    }
+
+  .footer-block2 a {
+    font-size: 10px;
+  }
+
+  .dasigno-ipad {
+    display: none;
+  }
+
+  .cerrar-sesion {
+    display: block;
+  }
+
+  .barra-color2 {
+    width: 280px;
+  }
+
+  .contenido-historia:nth-child(n+5) {
+    display: inline-block;
+  }
+
+  .comenta-block h6 {
+    margin: 7px 0 0;
+    float: right;
+  }
+
+  .alerta-logo {
+    display: none;
+  }
+
+  .footer-al-s {
+    float: left;
+    border-right: 1px solid #999;
+    width: 5px;
+    height: 10px;
+    margin: 10px 0 0 5px !important;
+  }
+
+  .footer-titles {
+    display: none;
+  }
+
+  .media-barra-color-v2 {
+    width: 260px;
+  }
+
+  .bv2 {
+    width: 290px !important;
+  }
+
+  .anchovotos {
+    width: 335px;
+  }
+
+  .numvotostotal {
+    width: 100px;
+    height: 70px;
+    margin: -85px 0 0 200px;
+  }
+
+    .numvotostotal h4 {
+      width: 95px;
+      font-size: 12px;
+      margin-top: 13px;
+    }
+
+    .numvotostotal h3 {
+      width: 95px;
+      font-size: 18px;
+    }
+
+  .comenta-txt-v2 textarea {
+    width: 290px;
+  }
+
+  .pregunta-multi-v2 {
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .multi-desc {
+    word-wrap: break-word;
+  }
+
+  .mobil-multi {
+    width: 100%;
+  }
+
+  .bv-v2 {
+    display: block;
+  }
+
+  .idea-contenido-v2 {
+    width: 300px;
+    margin: 10px 0 20px 0;
+  }
+
+  .idea-social-v2 {
+    width: 300px;
+  }
+
+  .compartir-v2 {
+    display: none;
+  }
+
+  .v2v {
+    display: block;
+    float: left;
+    margin: 10px 0 10px 10px;
+  }
+
+  .com-v2 {
+    width: 300px !important;
+  }
+
+  .coment-v2 {
+    width: 300px;
+  }
+
+  .coment-txt {
+    width: 150px;
+  }
+
+  .ccv2 {
+    margin: -44px 0 0 230px !important;
+  }
+
+  .mm2-searchfield-home {
+    width: 100%;
+    box-sizing: border-box;
+    height: 34px;
+    margin: 10px 0 0px 0;
+  }
+
+  .mm2-container-select-search {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .mm2-select-search {
+    width: 100%;
+    padding: 0 4px 0 5px;
+    margin: 0;
+  }
+
+  .contv2 {
+    margin-top: 0px !important;
+  }
+
+  .comp-v2 {
+    /*width: 230px !important;*/
+  }
+
+
+  .nosotros-contenedor {
+    width: 320px;
+  }
+
+  .pregunta-block-p {
+    font-size: 14px;
+  }
+
+  .descripcion-block {
+    display: block;
+    width: 100%;
+    padding: 0px 7px 0 10px;
+  }
+
+  .pregunta-block-text {
+    width: 90%;
+  }
+
+
+  .mm2-user-loginok {
+    padding-bottom: 4px 0 0 0;
+  }
+
+
+
+  .contenido-historia {
+    width: 320px;
+    height: 395px;
+    margin: 0 0 20px 0px;
+  }
+
+  .mm2-card-people {
+    margin: 27px 0 35px 0;
+  }
+
+  .finalizado-interna {
+    margin: 0 0 0 160px;
+  }
+
+  .mm2-txt-footer {
+    padding: 7px 0 0 6px !important;
+  }
+
+  .send-search-icon {
+    display: block;
+  }
+
+  .mm2-searchfield-home2 {
+    width: 289px;
+    margin-left: 0;
+  }
+
+   .mm2-searchfield-casos2 {
+    width: 289px;
+    margin-left: 0;
+  }
+
+
+
+  .ideas-block-multiple .mm2-searchfield-home2 {
+    width: 289px;
+  }
+
+  .ideas-block-multiple .mm2-searchfield-casos2 {
+    width: 289px;
+  }
+
+  .mm2-card-aliados {
+    margin: 10px 10px 10px 5%;
+  }
+
+  #search-list {
+    padding: 0 0 0 0;
+  }
+
+  .perfil-editar a {
+    margin: 0 0 0 20px;
+  }
+
+  #show-email-setting {
+    margin: 33px 33px 0px;
+  }
+
+  .mm2-container-community {
+    padding: 25px 9px;
+  }
+
+  .terminos {
+    margin: 0 0 0 20px;
+    width: 280px;
+  }
+
+  .search-container-general {
+    padding: 0;
+    width: 100%;
+    margin: 0 auto;
+      display: none;
+  }
+    
+    .footer-block2 {
+    display: none;}
+    
+}
+
+@media only screen and (max-width: 320px) {
+.logo img {
+    padding-top: 35px;
+}
+    #idioma {
+        top: 35px;
+    }
+  .search-container-general {
+    padding: 20px 0 10px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .contenido-tit {
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+  }
+
+
+  .contenido-historia {
+    width: 290px;
+  }
+
+  .contenido-historia-barra {
+    width: 90%;
+  }
+
+  .contenido-historia img {
+    width: 290px;
+  }
+
+  .historia-item {
+    width: 71px !important;
+  }
+
+  .contenido-historia p {
+  }
+
+  .historia-item h1 {
+    width: 72px;
+  }
+
+  .finalizado {
+    margin-left: 130px;
+  }
+
+  .barra-color2 {
+    width: 100%;
+  }
+
+  .search-container-general2 {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+
+  .mm2-searchfield-home2 {
+    width: 89%;
+  }
+
+  .reto-info {
+    width: 320px !important;
+  }
+
+  .info2 {
+    width: 300px;
+  }
+}

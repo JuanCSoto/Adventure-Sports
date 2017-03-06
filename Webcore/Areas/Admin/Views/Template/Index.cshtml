@@ -1,0 +1,26 @@
+﻿@model Webcore.Areas.Admin.Models.Templates
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" href="@Url.Action("Detail", "Template", new { Area = "Admin" })">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px; font-family: Segoe UI Light;">@Resources.Global.Messages.NEW</span></a>
+    <hr />
+    <ul id="listado">
+        @foreach (Domain.Entities.Template item in Model.CollTemplate)
+        {
+            <li><span class="sptitle">@item.TemplateId</span><br />
+                <span class="spdate">@item.Nameclass - @(item.Type == 0 ? "Contenido" : "Sección")</span>
+                <a onclick="return confirm('@Resources.Extend.Messages.FIND_BY_NAME');" href="@Url.Action("Delete", new { Area = "Admin" })?id=@item.TemplateId">
+                    <img title="@Resources.Global.Messages.DELETE" border="0" align="right" width="25" height="25" src="~/resources/images/25del.gif" /></a>
+                <a href="@Url.Action("Detail", new { Area = "Admin" })?key=@item.TemplateId">
+                    <img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+        }
+    </ul>
+</div>

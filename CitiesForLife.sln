@@ -1,0 +1,107 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{17EA75B7-F2C1-4B48-A896-6021FE083779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcore", "Webcore\Webcore.csproj", "{B8993A78-B8C6-41F0-B110-0B06F05DB9A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPageTrigger", "WebPageTrigger\WebPageTrigger.csproj", "{146ECA47-EDF0-4E48-BF4C-8D968DB446C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Frontend", "1.Frontend", "{D28DEF30-9E0E-4459-972A-2219E95725C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Backend", "2.Backend", "{0AFDF8F4-99EF-466C-A33D-925CB2D12FBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transversal", "Transversal", "{EC45774B-A982-4EA3-BC71-333D8425B64A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{968883DA-1EFF-488A-8246-CB5CDBFF31F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3981882E-2E67-404C-AE2F-B0B900D8AEAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ED9248E0-BC9A-45A0-9CEB-F560839B46A7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://teamfoundation.intergrupo.com/tfs/rutan
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Business\\Business.csproj
+		SccProjectName1 = Business
+		SccLocalPath1 = Business
+		SccProjectUniqueName2 = Domain\\Domain.csproj
+		SccProjectTopLevelParentUniqueName2 = CitiesForLife.sln
+		SccProjectName2 = Domain
+		SccLocalPath2 = Domain
+		SccProjectUniqueName3 = Webcore\\Webcore.csproj
+		SccProjectTopLevelParentUniqueName3 = CitiesForLife.sln
+		SccProjectName3 = Webcore
+		SccLocalPath3 = Webcore
+		SccProjectUniqueName4 = WebPageTrigger\\WebPageTrigger.csproj
+		SccProjectTopLevelParentUniqueName4 = CitiesForLife.sln
+		SccProjectName4 = WebPageTrigger
+		SccLocalPath4 = WebPageTrigger
+		SccProjectUniqueName5 = Core\\Core.csproj
+		SccProjectTopLevelParentUniqueName5 = CitiesForLife.sln
+		SccProjectName5 = Core
+		SccLocalPath5 = Core
+		SccProjectUniqueName6 = UnitTest\\UnitTest.csproj
+		SccProjectTopLevelParentUniqueName6 = CitiesForLife.sln
+		SccProjectName6 = UnitTest
+		SccLocalPath6 = UnitTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17EA75B7-F2C1-4B48-A896-6021FE083779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EA75B7-F2C1-4B48-A896-6021FE083779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EA75B7-F2C1-4B48-A896-6021FE083779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EA75B7-F2C1-4B48-A896-6021FE083779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8993A78-B8C6-41F0-B110-0B06F05DB9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8993A78-B8C6-41F0-B110-0B06F05DB9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8993A78-B8C6-41F0-B110-0B06F05DB9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8993A78-B8C6-41F0-B110-0B06F05DB9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{146ECA47-EDF0-4E48-BF4C-8D968DB446C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146ECA47-EDF0-4E48-BF4C-8D968DB446C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146ECA47-EDF0-4E48-BF4C-8D968DB446C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146ECA47-EDF0-4E48-BF4C-8D968DB446C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{968883DA-1EFF-488A-8246-CB5CDBFF31F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968883DA-1EFF-488A-8246-CB5CDBFF31F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968883DA-1EFF-488A-8246-CB5CDBFF31F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968883DA-1EFF-488A-8246-CB5CDBFF31F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E} = {EC45774B-A982-4EA3-BC71-333D8425B64A}
+		{B8993A78-B8C6-41F0-B110-0B06F05DB9A9} = {D28DEF30-9E0E-4459-972A-2219E95725C1}
+		{146ECA47-EDF0-4E48-BF4C-8D968DB446C1} = {D28DEF30-9E0E-4459-972A-2219E95725C1}
+		{D9930707-2F31-4E13-AD2A-7EA6A4E49DF2} = {0AFDF8F4-99EF-466C-A33D-925CB2D12FBB}
+		{968883DA-1EFF-488A-8246-CB5CDBFF31F4} = {3981882E-2E67-404C-AE2F-B0B900D8AEAB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,75 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LOGO);
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@ViewBag.TXTLEADFOOT</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div>
+        <div class="registro-item">
+          <div class="registro-txt">@ViewBag.TXTLOGLEAD<span>:</span></div>
+          <div class="seleccionar-imagen">
+            <a style="position: relative;">&nbsp;
+              <div class="img-vertical-middle">
+                <img id="editable-image" class="fit-image" src="@content@logo" alt="logo" />
+              </div>
+            </a>
+            <h4>@ViewBag.TXTSELIMG</h4>
+            <input id="editableImage" name="editableImage" type="hidden" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LOGO)" data-type="image" value="@logo"/>
+            <iframe id="frame-user-file" src="@(content)/editable/uploadimage" scrolling="no" onload="checkIframeImageLoaded('frame-user-file');"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="error-file" class="error" style="display: none;">@Resources.Extend.Messages.IMAGEMX</div>
+      <div class="clear"></div>
+
+    </div>
+  </div>
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTTEXTLEADS<span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="20" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER)"/>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTLINKLEAD <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LINK)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LINK)"/>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+  <div class="clear"></div>
+  <div class="centrado">
+    <div class="alerta-aceptar">
+      <a>
+        <h3>@ViewBag.SAVE</h3>
+        <span></span>
+      </a>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

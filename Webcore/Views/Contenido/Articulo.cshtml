@@ -1,0 +1,32 @@
+﻿@model Webcore.Models.FEContenido
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.Articulo Entity = (Business.FrontEnd.Articulo)Model.Entity;
+    Domain.Entities.Fileattach video = Entity.CollFiles.FirstOrDefault(t => t.Type == Domain.Entities.Fileattach.TypeFile.Video);
+}
+<h2>
+    @Entity.ObjContent.Name
+</h2>
+<article>
+    <figure>
+        <img width="300" src="~/Files/@Model.Content.ContentId/@Model.Content.Image" />
+    </figure>
+    @if (Entity.ObjNews != null)
+    {
+        <div>
+            <p>@ViewBag.TXTFIRSFIELD <span>:</span> @Entity.ObjNews.Dynamicinformation["nombres"]</p>
+            <p>@ViewBag.TXTSECOFIRS <span>:</span> @Entity.ObjNews.Dynamicinformation["apellidos"])</p>
+            <p>
+               @ViewBag.DESCRIPTION <span>:</span>
+            @Html.Raw(Entity.ObjNews.Dynamicinformation["descripcion"])
+            </p>
+            <p>
+               @ViewBag.TXTANOFIELD  <span>:</span> @Html.Raw(Entity.ObjNews.Dynamicinformation["campo cinco"])
+            </p>
+            <p>
+                <img height="150" src="~/Files/@Entity.ObjContent.ContentId/@Html.Raw(Entity.ObjNews.Dynamicinformation["imagen"])" />
+            </p>
+        </div>
+    }
+</article>

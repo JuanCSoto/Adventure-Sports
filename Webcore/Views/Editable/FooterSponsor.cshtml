@@ -1,0 +1,196 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string logo1 = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1);
+  string logo2 = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2);
+  string logo3 = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3);
+  string logo4 = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4);
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@ViewBag.TXTPIEPART</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+
+      <div>
+        <div class="registro-item">
+          <div class="registro-txt">@ViewBag.TXTLOGOSPON<span> 1 (80 x 45 ) :</span></div>
+          <div class="seleccionar-imagen">
+            <a style="position: relative;">&nbsp;
+              <div class="img-vertical-middle">
+                <img id="editable-image" class="fit-image" alt="logo" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1)" src="@(string.IsNullOrEmpty(logo1) ? string.Empty : string.Concat(content, logo1))" />
+              </div>
+            </a>
+            <h4>@ViewBag.TXTSELIMG</h4>
+            <input id="editableImage" name="editableImage" type="hidden" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1)" data-type="image" value="@logo1"/>
+            <iframe id="frame-user-logo-1" class="frame-user-file" src="@(content)/editable/uploadimage/@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1)" scrolling="no" onload="checkIframeImageLoaded('frame-user-logo-1', @((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1));"></iframe>
+          </div>
+          <div class="clear-editable-image registro-txt" style="cursor:pointer;" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1)">@Resources.Extend.Messages.REMOVEPIC</div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="error-file" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1)" class="error" style="display:none;">@Resources.Extend.Messages.IMAGEMX</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTLINKSPON<span> 1:</span></div>
+      <div class="editable-input">
+        <input type="text" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_1)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_1)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div>
+        <div class="registro-item">
+          <div class="registro-txt">@ViewBag.TXTLOGOSPON<span> 2 (80 x 45 ) :</span></div>
+          <div class="seleccionar-imagen">
+            <a style="position: relative;">&nbsp;
+              <div class="img-vertical-middle">
+                <img id="editable-image" class="fit-image" alt="logo" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2)" src="@(string.IsNullOrEmpty(logo2) ? string.Empty : string.Concat(content, logo2))" />
+              </div>
+            </a>
+            <h4>@ViewBag.TXTSELIMG</h4>
+            <input id="editableImage" name="editableImage" type="hidden" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2)" data-type="image" value="@logo2"/>
+            <iframe id="frame-user-logo-2" class="frame-user-file" src="@(content)/editable/uploadimage/@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2)" scrolling="no" onload="checkIframeImageLoaded('frame-user-logo-2', @((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2));"></iframe>
+          </div>
+          <div class="clear-editable-image registro-txt" style="cursor:pointer;" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2)">Borrar imagen</div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="error-file" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2)" class="error" style="display:none;">@Resources.Extend.Messages.IMAGEMX</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTLINKSPON<span> 2:</span></div>
+      <div class="editable-input">
+        <input type="text" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_2)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_2)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div>
+        <div class="registro-item">
+          <div class="registro-txt">@ViewBag.TXTLOGOSPON <span>3 (80 x 45 ) :</span></div>
+          <div class="seleccionar-imagen">
+            <a style="position: relative;">&nbsp;
+              <div class="img-vertical-middle">
+                <img id="editable-image" class="fit-image" alt="logo" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3)" src="@(string.IsNullOrEmpty(logo3) ? string.Empty : string.Concat(content, logo3))" />
+              </div>
+            </a>
+            <h4>@ViewBag.TXTSELIMG</h4>
+            <input id="editableImage" name="editableImage" type="hidden" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3)" data-type="image" value="@logo3"/>
+            <iframe id="frame-user-logo-3" class="frame-user-file" src="@(content)/editable/uploadimage/@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3)" scrolling="no" onload="checkIframeImageLoaded('frame-user-logo-3', @((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3));"></iframe>
+          </div>
+          <div class="clear-editable-image registro-txt" style="cursor:pointer;" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3)">@Resources.Extend.Messages.REMOVEPIC</div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="error-file" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3)" class="error" style="display:none;">@Resources.Extend.Messages.IMAGEMX</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTLINKSPON<span> 3 :</span></div>
+      <div class="editable-input">
+        <input type="text" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_3)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_3)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div>
+        <div class="registro-item">
+          <div class="registro-txt">@ViewBag.TXTLOGOSPON <span> 4 (80 x 45 ) :</span></div>
+          <div class="seleccionar-imagen">
+            <a style="position: relative;">&nbsp;
+              <div class="img-vertical-middle">
+                <img id="editable-image" class="fit-image" alt="logo" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4)" src="@(string.IsNullOrEmpty(logo4) ? string.Empty : string.Concat(content, logo4))" />
+              </div>
+            </a>
+            <h4>@ViewBag.TXTSELIMG</h4>
+            <input id="editableImage" name="editableImage" type="hidden" class="editable-value" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4)" data-type="image" value="@logo4"/>
+            <iframe id="frame-user-logo-4" class="frame-user-file" src="@(content)/editable/uploadimage/@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4)" scrolling="no" onload="checkIframeImageLoaded('frame-user-logo-4', @((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4));"></iframe>
+          </div>
+          <div class="clear-editable-image registro-txt" style="cursor:pointer;" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4)">Borrar imagen</div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="error-file" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4)" class="error" style="display:none;">@Resources.Extend.Messages.IMAGEMX</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTLINKSPON<span> 4 :</span></div>
+      <div class="editable-input">
+        <input type="text" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_4)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_4)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TEXT <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="20" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="clear"></div>
+  <div class="centrado">
+    <div class="alerta-aceptar">
+      <a>
+        <h3>@ViewBag.SAVE</h3>
+        <span></span>
+      </a>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

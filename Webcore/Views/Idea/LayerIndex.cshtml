@@ -1,0 +1,227 @@
+@model Webcore.Models.FEIdea
+@{
+  Layout = null;
+  Domain.Entities.FrontEnd.IdeasPaging ideaPaging = ViewBag.IdeaPaging;
+  Domain.Entities.Idea Entity = (Domain.Entities.Idea)Model.Entity;
+  Domain.Entities.FrontEnd.Video video = Business.Utils.GetVideoFromUrl(Entity.Video);
+  string content = Url.Content("~").TrimEnd('/');
+  string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+  string picture = siteUrlRoot + "/1024.png";
+  if (!string.IsNullOrEmpty(Entity.Image))
+  {
+    picture = siteUrlRoot + "/files/ideas/" + Entity.Image;
+  }
+  else if (video != null && video.Type == "youtube")
+  {
+    picture = "http://img.youtube.com/vi/" + video.ID + "/default.jpg";
+  }
+  bool userLikeNoLike = ideaPaging.UserNoLike.Value || ideaPaging.UserLike.Value;
+}
+
+@if (string.IsNullOrEmpty(Entity.Image) && video == null && !Entity.XCoordinate.HasValue)
+{
+<div class="layer-block">
+    <div class="layer-cerrar"><a><img src="~/resources/images/mimedellin/cerrar.png" alt="icon" /></a></div>
+    <div class="layer-titulo">
+        @Model.ObjContent.Name
+    </div>
+    <div class="clear"></div>
+    <div class="layer-contenido">
+        <div id="scrollbar2">
+            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		    <div class="viewport">
+                <div class="overview">
+                    <div class="layer-usuario">
+                        <div class="layer-usuario-image">
+                          <div class="img-vertical-middle-overflow">
+                            <img class="min-40" src="@Business.Utils.fixLocalUserImagePath(Model.ObjUser.Image)" alt="avatar" />
+                          </div>
+                        </div>
+                        <div class="izquierda">
+                            <h1>@Model.ObjUser.Names</h1>
+                            <h2>@Business.Utils.ElapsedTime(Entity.Creationdate.Value,Culture)</h2>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="idea-text" data-render-url="true">
+                        @Entity.Text
+                    </div>
+                    <div class="clear" style="height:10px;"></div>
+                    <div class="reportar ico-rep" data-id="@Entity.IdeaId"></div>
+                    <div class="gusta">                        
+                        <a @(userLikeNoLike ? "style=background-color:#A7A7A7;" : "class=megusta-click") data-id="@Entity.IdeaId">
+                            <span class="megusta" @(userLikeNoLike ? "" : "")></span>
+                            <span class="votes" @(userLikeNoLike ? "style=background-color:#777;" : "")>@Entity.Likes</span>
+                        </a>
+                    </div>
+                    <div class="mm2-space-share">
+                    @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl()
+                     {
+                       ideaId = Entity.IdeaId.Value.ToString(),
+                       name = Entity.Text, link = siteUrlRoot + "/" + Entity.Friendlyurlid,
+                       picture = picture,
+                       caption = "",
+                       descriptionFB = "Así podemos crear la ciudad que soñamos",
+                       descriptionTW = "Así podemos crear la ciudad que soñamos",
+                       description = "Así podemos crear la ciudad que soñamos"
+                     })
+                    </div>
+                    
+                    <div class="clear"></div>
+                    <div class="layer-comentarios">
+                        <div class="layer-comentarios-t">@Resources.Global.Messages.COMMENTS</div>
+                        <div class="clear"></div>
+                        <div class="layer-comentario">
+                            <div class="layer-comentario-imagen">
+                              <div class="img-vertical-middle-overflow">
+                                  @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                                  {
+                                  <img class="min-32" src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                                  }
+                                  else
+                                  {
+                                  <img class="min-32" src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar"/>
+                                  }
+                                </div>
+                            </div>
+                            <div class="generic-comment izquierda" style="width:880px;">
+                                <textarea id="layer-comment-text" data-id="@Entity.IdeaId" data-length="200" data-event-bind="false" data-view="_LayerIdeaCommentsList" data-size="6" data-container="#comments-list-container" data-selector=".layer-comentario img" data-scroll="#scrollbar2"></textarea>
+									              <div class="comentar-coment">@Resources.Global.Messages.COMMENT</div>
+                                <div class="clear"></div>
+                                <div class="comentar-counter-no-image contv2"><span id="comment-counter-@Entity.IdeaId">200</span>@Resources.Global.Messages.CHARACTERS</div>            				            
+                            </div>
+                        </div>
+                        <div class="clear"></div>                        
+                        <div id="comments-list-container">
+                            @Html.Partial("_LayerIdeaCommentsList", Model.CollComments)
+                        </div>
+                    </div>                        
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+else
+{
+<div class="layer-block">
+    <div class="layer-cerrar"><a><img src="~/resources/images/mimedellin/cerrar.png" alt="icono" /></a></div>
+    <div class="layer-titulo">
+        @Model.ObjContent.Name
+    </div>
+    <div class="clear"></div>
+    <div class="layer-media">
+    @if (!string.IsNullOrEmpty(Entity.Image))
+    {
+        <img src="~/files/ideas/@Entity.Image" alt="@Model.ObjContent.Name" />
+    }
+    else if (video != null)
+    {
+      if (video.Type == "youtube")
+      {
+        <iframe id="player" type="text/html" width="560" height="475" src="http://www.youtube.com/embed/@video.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>        
+      }
+      else if (video.Type == "vimeo")
+      {
+        <iframe src="http://player.vimeo.com/video/@video.ID" width="560" height="475" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>                        
+      }
+    }
+    else if (Entity.XCoordinate.HasValue)
+    {
+        <script>
+          $(document).ready(function () {
+            setTimeout(function(){
+                @if (Entity != null && Entity.XCoordinate != null && Entity.YCoordinate != null)
+                {
+                @:  initializeMapIdea();
+                                  @:  new google.maps.Marker({
+                  @:    map: ideaMap,
+                  @:    position: new google.maps.LatLng(@(Entity.YCoordinate.ToString().Replace(',', '.')), @(Entity.XCoordinate.ToString().Replace(',', '.')))
+                    @:  });
+                }
+                }, 1000);
+            });
+        </script>
+        <div id="map-canvas-idea" style="width:100%; height:100%;"></div>
+    }
+    </div>
+    <div class="layer-contenido">
+        <div id="scrollbar">
+            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		    <div class="viewport">
+                <div class="overview">
+                    <div class="layer-usuario">
+                        <div class="layer-usuario-image">
+                          <div class="img-vertical-middle-overflow">
+                            <img class="min-40" src="@Business.Utils.fixLocalUserImagePath(Model.ObjUser.Image)" alt="avatar" />
+                          </div>
+                        </div>
+                        <div class="izquierda">
+                            <h1>@Model.ObjUser.Names</h1>
+                            <h2>@Business.Utils.ElapsedTime(Entity.Creationdate.Value,Culture)</h2>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="idea-text" data-render-url="true">
+                        @Entity.Text
+                    </div>
+                    <div class="clear"></div>
+                    <div class="idea-social">
+                    <div class="reportar ico-rep" data-id="@Entity.IdeaId"></div>
+                    
+                    <div class="gusta">                        
+                        <a @(userLikeNoLike ? "style=background-color:#A7A7A7;" : "class=megusta-click") data-id="@Entity.IdeaId">
+                            <span class="megusta" @(userLikeNoLike ? "" : "")></span>
+                            <span class="votes" @(userLikeNoLike ? "style=background-color:#777;" : "")>@Entity.Likes</span>
+                        </a>
+                    </div>
+                    <div class="mm2-space-share">
+                                    @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl()
+                               {
+                                 name = Entity.Text, 
+                                 link = siteUrlRoot + "/" + Entity.Friendlyurlid,
+                                 picture = picture,
+                                 caption = "",
+                                 descriptionFB = "Así podemos crear la ciudad que soñamos",
+                                 descriptionTW = "Así podemos crear la ciudad que soñamos",
+                                 description = "Así podemos crear la ciudad que soñamos"
+                               })
+                    </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="layer-comentarios">
+                        <div class="layer-comentarios-t">@Resources.Global.Messages.COMMENTS</div>
+                        <div class="clear"></div>
+                        <div class="layer-comentario">
+                            <div class="layer-comentario-imagen">
+                              <div class="img-vertical-middle-overflow">
+                                @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                                {
+                                <img class="min-32" src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                                }
+                                else
+                                {
+                                <img class="min-32" src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                                }
+                              </div>
+                            </div>
+                            <div class="generic-comment izquierda" style="width:300px;">
+                                <textarea id="layer-comment-text" data-id="@Entity.IdeaId" data-length="200" data-event-bind="false" data-view="_LayerIdeaCommentsListImage" data-size="10" data-container="#comments-list-container" data-selector=".layer-comentario img" data-scroll="#scrollbar"></textarea>
+                                <div class="clear"></div>
+                                <div class="comentar-counter-image contv2"><span id="comment-counter-@Entity.IdeaId">200</span>@Resources.Global.Messages.CHARACTERS</div>            				            
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="comments-list-container">
+                            @Html.Partial("_LayerIdeaCommentsListImage", Model.CollComments)
+                        </div>                        
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<input id="filter-idea-id" type="hidden" value="@Entity.IdeaId" />

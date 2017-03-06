@@ -1,0 +1,54 @@
+﻿@model List<Domain.Entities.FrontEnd.IdeasPaging>
+@{
+  string date = string.Empty;
+  Domain.Entities.FrontEnd.Video video = null;
+}
+@if (Model.Count > 0)
+{
+  foreach (Domain.Entities.FrontEnd.IdeasPaging idea in Model)
+  {
+    date = Business.Utils.ElapsedTime(idea.Creationdate.Value,Culture);
+    video = Business.Utils.GetVideoFromUrl(idea.Video);
+  <div class="top-item">
+    <div class="top-item-image">
+      <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+        <img border="0" class="top-item-img" src="@Business.Utils.fixLocalUserImagePath(idea.UserImage)" alt="avatar" />
+      </a>
+    </div>
+    <div class="top-item-txt">
+      <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+        <h3>@idea.UserNames</h3>
+      </a>
+      <h6>Hace @date</h6>
+      <div class="clear"></div>
+      <div class="idea-click-area" data-id="@idea.IdeaId" data-friendly="@idea.Friendlyurlid">
+        <p>@idea.Text</p>
+        <div class="admin-top-idea">
+          @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = idea.IdeaId.Value, type = "idea", email = idea.Email, location = "top-ideas" })
+        </div>
+        <a>@Resources.Extend.Messages.SEEMORE</a>
+        @if (!string.IsNullOrEmpty(idea.Image) && video == null)
+        {
+          <img src="~/files/ideas/@idea.Image" alt="idea image" />
+        }
+        @if (video != null)
+        {
+          if (video.Type == "youtube")
+          {
+          <img src="http://img.youtube.com/vi/@video.ID/0.jpg" alt="@video.ID" />
+          }
+          else if (video.Type == "vimeo")
+          {
+          <img data-id="@video.ID" class="vimeo-image" alt="@video.ID" />
+          }
+        }
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  }
+}
+else
+{
+  <div id="no-ideas-top-sorry"></div>
+}

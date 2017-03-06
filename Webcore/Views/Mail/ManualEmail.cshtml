@@ -1,0 +1,134 @@
+﻿@{
+  Layout = "~/Views/Layouts/_Layer.cshtml";
+  string content = Url.Content("~/").TrimEnd('/');
+  string logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LOGO);
+  Domain.Entities.User user = null;
+  List<Domain.Entities.User> users = null;
+  if (ViewBag.User != null)
+  {
+    user = ViewBag.User;
+  }
+  if (ViewBag.Users != null)
+  {
+    users = ViewBag.Users;
+  }
+}
+
+@section headers {
+  @System.Web.Optimization.Scripts.Render("~/bundles/jquerycl")
+  <script type="text/javascript" language="javascript">
+    var editor;
+
+    $(document).ready(function () {
+      if ($('#is-ie').length) {
+        $['browser'] = { msie: true };
+      }
+      else {
+        $['browser'] = { msie: false };
+      }
+
+      $.cleditor.defaultOptions.height = 320;
+      $.cleditor.defaultOptions.width = 397;
+      $.cleditor.defaultOptions.docCSSFile = '@Url.Content("~/Resources/Css/frontend.styles.css")'
+      $.cleditor.buttons.image.uploadUrl = '@(Url.Action("UploadImage", "Content", new { Area = "Admin" }) + "?id=0"))';
+
+      (function ($) {
+        $.cleditor.defaultOptions.docType = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>";
+      })(jQuery);
+      editor = $('#email-html-editor').cleditor({ controls: "bold italic underline | bullets numbering | link unlink | image" });
+      $(".cleditorMain iframe").each(function (index, obj) {
+        $(obj).contents().find('body').bind('paste', function () {
+          setTimeout(function () {
+            editor[index].updateTextArea(editor[index]);
+            var plainText = editor[index].$area.val();
+            $(editor[index].doc.body).html("");
+            $(editor)[0].doc.execCommand("inserthtml", 0, plainText);
+          }, 100);
+        });
+      });
+    });
+  </script>
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@Resources.Extend.Messages.SENDINGMAIL</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/current/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+
+      @if (user != null)
+      {
+        <div class="registro-txt" style="width: 80%; text-align: left;">
+          @if (string.IsNullOrEmpty(user.Email))
+          {
+            @:El usuario no tiene correo electrónico
+          }
+          else
+          {
+            @:El correo se enviara al correo: @user.Email
+          }
+        </div>
+        <div class="clear"></div>
+        <br />
+        <input id="email-user-id" value="@user.UserId" type="hidden" />
+      }
+      else if (users != null)
+      {
+        <div class="registro-txt" style="width: 80%; text-align: left;">
+          <span>@Resources.Extend.Messages.MAILTO</span> @users.Count.ToString("##,##0") <span>@Resources.Global.Messages.USERS</span>
+        </div>
+        <div class="clear"></div>
+        <br />
+        if (ViewBag.ContentId != null)
+        {
+        <input id="email-content-id" value="@ViewBag.ContentId" type="hidden" />
+        }
+      }
+
+      @if ((user != null && !string.IsNullOrEmpty(user.Email)) || (users != null && users.Count > 0))
+      {
+        <div class="registro-txt">@Resources.Global.Messages.NAME</div>
+        <div class="seleccionar-imagen">
+          <input type="text" id="email-name" maxlength="50" class="editable-value registro-input-editable" style="width: 380px;" value="" />
+        </div>
+        <div class="clear"></div>
+        <div class="error"></div>
+        <div class="clear"></div>
+
+        <div class="registro-txt">@Resources.Global.Messages.MATTER</div>
+        <div class="seleccionar-imagen">
+          <input type="text" id="email-subject" maxlength="100" class="editable-value registro-input-editable" style="width: 380px;" value="" />
+        </div>
+        <div class="clear"></div>
+        <div class="error" style="margin-right: 35px;"><span id="error-subject" style="display: none">@Resources.Extend.Messages.SUBJECT</span></div>
+        <div class="clear"></div>
+
+        <div class="registro-txt">@Resources.Global.Messages.BODY</div>
+        <div class="seleccionar-imagen">
+          @Html.TextArea("email-html-editor")
+        </div>
+        <div class="clear"></div>
+        <div class="error" style="margin-right: 35px;"><span id="error-body" style="display: none">@Resources.Extend.Messages.ENTERMESS</span></div>
+        <div class="clear"></div>
+      }
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  @if ((user != null && !string.IsNullOrEmpty(user.Email)) || (users != null && users.Count > 0))
+  {
+    <div class="alerta-aceptar" style="margin-left: 255px;">
+      <a id="send-manual-email">
+        <h3>@Resources.Global.Messages.SEND</h3>
+        <span></span>
+      </a>
+    </div>
+    <div class="clear"></div>
+  }
+</div>

@@ -1,0 +1,56 @@
+﻿@model Domain.Entities.FrontEnd.AdminBlock
+@{
+  Layout = null;
+}
+@if (User.Identity.IsAuthenticated)
+{
+  bool isFrontEndAdmin = ((Business.Services.CustomPrincipal)User).IsFrontEndAdmin;
+  if (isFrontEndAdmin)
+  {
+  <div class="admin-wraper-relative">
+    <div class="admin-wraper">
+      @*<div class="admin-ico"></div>*@
+      <div id="admintblock" class="item-div" data-id="@Model.id" data-type="@Model.type" data-location="@Model.location" data-email="@Model.email" data-user-id="@Model.userId" data-parent-type="@Model.parentType">
+        <div class="item-div-t">
+          <h1>@Resources.Global.Messages.ADMINISTRATION</h1>
+          <div class="item-div-a">
+            <img src="~/resources/images/mimedellin/cerrar.png" alt="icon" />
+          </div>
+        </div>
+        @if (Model.location == "pulse")
+        {
+          <div class="clear"></div>
+          <div class="item-div-i contactar" data-action="contact">@Resources.Global.Messages.CONTACT</div>
+        }
+        else
+        {
+          if (Model.type != "comment" && Model.type != "frontend")
+          {
+          <div class="clear"></div>
+          <div class="item-div-i destacar" data-action="recommend">@Resources.Global.Messages.RECOMMENDED</div>
+          }
+
+          if (Model.type != "frontend")
+          { 
+          <div class="clear"></div>
+          <div class="item-div-i inactivar" data-action="disable">@Resources.Global.Messages.DEACTIVATE</div>
+          <div class="clear"></div>
+          <div class="item-div-i contactar" data-action="contact">@Resources.Global.Messages.CONTACT</div>
+          }
+          
+          if(Model.id == (int)Domain.Entities.Basic.ForntEndEditableType.COMMUNITY_TEXT_1)
+          {
+          <div class="clear"></div>
+          <div class="item-div-i contactar" data-action="contact-all">@Resources.Global.Messages.CONTACT</div>
+          }
+          
+          <div class="clear"></div>
+          <div class="item-div-i" data-action="edit">@Resources.Global.Messages.EDIT</div>
+        }
+        <div class="clear"></div>
+        <div class="item-div-i" data-action="administration">@Resources.Global.Messages.ADMINISTRATION</div>
+      </div>
+    </div>
+  </div>        
+  }
+}

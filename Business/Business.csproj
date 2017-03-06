@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17EA75B7-F2C1-4B48-A896-6021FE083779}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Business</RootNamespace>
+    <AssemblyName>Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Twitterizer2, Version=2.4.2.28778, Culture=neutral, PublicKeyToken=69d1469eac671567, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Referencias\Twitterizer2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrontEnd\Articulo.cs" />
+    <Compile Include="FrontEnd\Challenge.cs" />
+    <Compile Include="FrontEnd\Challenges.cs" />
+    <Compile Include="FrontEnd\AboutUs.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="FrontEnd\BlogEntryContent.cs" />
+    <Compile Include="FrontEnd\Community.cs" />
+    <Compile Include="FrontEnd\Allies.cs" />
+    <Compile Include="FrontEnd\Homeslide.cs" />
+    <Compile Include="FrontEnd\SuccessStory.cs" />
+    <Compile Include="FrontEnd\Notifications.cs" />
+    <Compile Include="FrontEnd\Statistics.cs" />
+    <Compile Include="FrontEnd\FAQ.cs" />
+    <Compile Include="FrontEnd\Question.cs" />
+    <Compile Include="FrontEnd\Questions.cs" />
+    <Compile Include="FrontEnd\Homenews.cs" />
+    <Compile Include="FrontEnd\Homeseccion.cs" />
+    <Compile Include="FrontEnd\IFrontEnd.cs" />
+    <Compile Include="FrontEnd\Listanews.cs" />
+    <Compile Include="FrontEnd\BlogEntry.cs" />
+    <Compile Include="Globalization\CultureRoute.cs" />
+    <Compile Include="Globalization\GlobalizationRouteHandler.cs" />
+    <Compile Include="Globalization\LanguageManagement.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ContentManagement.cs" />
+    <Compile Include="Services\LabelManagement.cs" />
+    <Compile Include="Services\ModulAuthorize.cs" />
+    <Compile Include="Services\CustomMemberShipProvider.cs" />
+    <Compile Include="Services\CustomPrincipal.cs" />
+    <Compile Include="Services\FrontEndManagement.cs" />
+    <Compile Include="Services\SectionManagement.cs" />
+    <Compile Include="Utilities\ConvertListExcel.cs" />
+    <Compile Include="Utilities\UserRelation.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="Utilities\ImageResize.cs" />
+    <Compile Include="Utilities\InfoCache.cs" />
+    <Compile Include="Utilities\Notification.cs" />
+    <Compile Include="Utilities\Paginator.cs" />
+    <Compile Include="Utilities\SendMail.cs" />
+    <Compile Include="Utilities\Utils.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{e1c29ed6-d5ff-4f71-a1c5-d585f9fe471e}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,39 @@
+﻿@model List<Domain.Entities.User>
+@{
+  Layout = null;
+  string small = ViewBag.SmallProfile != null ? "2" : string.Empty;
+  string users = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_PLURAL);
+}
+
+@foreach (Domain.Entities.User user in Model)
+{
+  <div class="user-card mm2-card-people@(small)">
+    <a href="@Url.Action("Index", "Perfil", new { id = user.UserId })">
+    <div class="mm2-image-people@(small)"><div class="img-vertical-middle-overflow"><img class="min-100" src="@Business.Utils.fixLocalUserImagePath(user.Image)" alt="avatar" /></div></div>
+    <div class="mm2-name-people@(small)">@user.Names</div>
+    <div class="mm2-container-points">
+      <div class="tooltip-moneda-parent">
+        <div class="@Resources.Extend.Messages.CLASSTOOLTIPMONEDA"></div>
+        <div class="mm2-medal@(small)"></div>
+        @user.Medallos.ToString("##,##0")
+      </div>
+        
+    </div>
+    </a>
+    <div class="mm2-line-sep"></div>
+    @if (user.CollRelatedUser.Count > 0)
+    {
+    <div class="mm-container-photos-nearby">
+      <div class="mm2-title-nearby">@Resources.Global.Messages.CITIZENS</div>
+      <div class="mm2-container-nearby">
+        @foreach (Domain.Entities.User relation in user.CollRelatedUser)
+        {
+          <a href="@Url.Action("Index", "Perfil", new { id = relation.UserId })">
+            <div class="mm2-img-nearby"><div class="img-vertical-middle-overflow"><img class="min-30" src="@Business.Utils.fixLocalUserImagePath(relation.Image)" alt="avatar" /></div></div>
+          </a>
+        }
+      </div>
+    </div>
+    }
+  </div>
+}    

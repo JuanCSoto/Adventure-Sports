@@ -1,0 +1,69 @@
+﻿@model Webcore.Areas.Admin.Models.Molde
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    var count = @(Model.Xmldocument != null ? Model.Xmldocument.GetElementsByTagName("node").Count : 0);
+    addItem = function () {
+        count++;
+        $('#li-content').append('<div class="row-auto"><span class="sptitle">' + $('#sel-id').val() + '</span><br /><span class="spdate">' + $('#sel-control').val() + '</span> - <span class="spalias">' + $('#sel-date').val() + '</span><input id="_hf_' + count + '" name="_hf_' + count + '" type="hidden" value="' + $('#sel-control').val() + '-' + $('#sel-date').val() + '-' + $('#sel-id').val() + '" /></div>');
+        $('#sel-id').val('');
+    };
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+    <li>@Resources.Global.Messages.LIST</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "Molde", FormMethod.Post, new { id = "Form1" }))
+    {
+        @Html.ValidationSummary()
+        <ul id="fields">
+            <li>@Resources.Global.Messages.NAME<br />
+                @Html.TextBoxFor(t => t.Mold.Name, new { @class = "text", maxlength = "100" })
+            </li>
+            <li>Adicionar control<br />
+                <div class="mold-content">
+                    Control
+                    <select id="sel-control" class="drops width-auto">
+                        <option value="TextBox">TextBox</option>
+                        <option value="Image">Imagen</option>
+                        <option value="Wysiwyg">Editor html</option>
+                    </select><br />
+                    Tipo de dato
+                    <select id="sel-date" class="drops width-auto">
+                        <option value="string">string</option>
+                        <option value="int">int</option>
+                    </select><br />
+                    Nombre
+                    <input id="sel-id" class="text width-auto" type="text" /><br />
+                    <input type="button" onclick="addItem()" class="buttons width-auto" value="@Resources.Global.Messages.SAVE" />
+                </div>
+            </li>
+            <li id="li-content">
+                @if (Model.Xmldocument != null)
+                {
+                    int count = 0;
+                    foreach (System.Xml.XmlNode item in Model.Xmldocument.GetElementsByTagName("node"))
+                    {
+                        count++;
+                        <div class="row-auto">
+                            <span class="sptitle">@item.Attributes["id"].Value</span><br />
+                            <span class="spdate">@item.Attributes["control"].Value</span> - <span class="spalias">@item.Attributes["type"].Value</span>
+                            <input id="_hf_@count" name="_hf_@count" type="hidden" value="@item.Attributes["control"].Value-@item.Attributes["type"].Value-@item.Attributes["id"].Value" />
+                        </div>
+                    }
+                }
+            </li>
+        </ul>
+    }
+    <div align="center" id="contentactions">
+        <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null)
+        {
+            <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>

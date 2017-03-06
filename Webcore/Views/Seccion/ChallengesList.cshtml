@@ -1,0 +1,97 @@
+﻿@model List<Domain.Entities.FrontEnd.ChallengesPaging>
+@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  int percentage = 0;
+  int endDay = 0;
+  int days = 0;
+  string link = string.Empty;
+  bool ended = false;
+
+  string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+}
+
+@foreach (Domain.Entities.FrontEnd.ChallengesPaging challenge in Model)
+{
+  days = (int)Math.Ceiling((challenge.EndDate.Value - challenge.StartDate.Value).TotalDays);
+  endDay = (int)Math.Ceiling((challenge.EndDate.Value - DateTime.Now).TotalDays);
+  if (endDay > 0)
+  {
+    percentage = ((endDay * 100 / days) * -1) + 100;
+    ended = false;
+  }
+  else
+  {
+    percentage = 100;
+    ended = true;
+  }
+  link = string.Concat(content, "/", challenge.Friendlyurlid);
+    <div class="seccion-reto">
+        <div class="seccion-reto-img">
+            <a href="@(link)"><div class="finalizado2" style="display:@(ended ? "block" : "none")"></div></a>
+            <a href="@(link)"><img src="~/files/@challenge.ContentId/511x320-@challenge.Image" alt="@challenge.Name" /></a>
+        </div>
+        <a href="@(link)"><div class="seccion-pregunta-titulo">@challenge.Name</div></a>
+        <div class="clear"></div>
+        <div class="reto-barra">
+            <span></span>                
+            <div class="reto-barra-color@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+        </div>
+        <div class="clear"></div>
+        <div class="izquierda">
+            <div class="content-tooltip">
+                @switch (challenge.Type)
+                {
+                  case Domain.Entities.Challenge.TypeChallenge.Participacion_Ciudadana:
+                      <div class="pregunta-item participacion5@(ended ? " participaciongris5" : "")">
+                				<span></span><div class="clear"></div>
+                				<h1>@ViewBag.TXTPARCIU</h1>
+                                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -23px; margin-top: 14px;">
+                                    <div class="tooltip">@Resources.Extend.Messages.JOININITIATIVE</div>
+                                </div>
+						  </div>
+                    break;
+                  case Domain.Entities.Challenge.TypeChallenge.Reto_Ciudad:
+                        <div class="pregunta-item ciudadana5@(ended ? " ciudadanagris5" : "")">
+                				<span></span><div class="clear"></div>
+                				<h1>@Resources.Extend.Messages.CITYCHA</h1>
+                                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -23px; margin-top: 14px;">
+                                    <div class="tooltip">@Resources.Extend.Messages.YOURCOULD</div>
+                                </div>
+						  </div>
+                    break;
+                }
+            </div>
+            @if (!string.IsNullOrEmpty(challenge.Prize))
+            {
+            <div class="content-tooltip">
+            <div class="pregunta-item premio5@(ended ? " premio5gris" : "")">
+                <span></span><div class="clear"></div>
+                <h1>@Resources.Global.Messages.PRIZE</h1>
+                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -23px; margin-top: 14px;">
+                    <div class="tooltip">@challenge.Prize</div>
+                </div>
+            </div>
+            </div>
+            }
+            @if (challenge.People > 0)
+            {
+            <div class="pregunta-item unieron5@(ended ? " gris" : "")">
+                <span>@challenge.Followers/@challenge.People</span><div class="clear"></div>
+                <h1>@Resources.Extend.Messages.IKNOW <br/>@Resources.Global.Messages.YOINED</h1>
+            </div>
+            }
+            @if (!ended)
+            {
+            <div class="pregunta-item restantes5@(ended ? " gris" : "")">
+                <span>@endDay</span><div class="clear"></div>
+                <h1>Días <br/>@Resources.Global.Messages.OTHER</h1>            
+            </div>
+            }
+        </div>
+        <div class="participa-block margen2 margen3">
+            <a href="@(link)">@buttonText</a>
+            <div class="participa-comentarios"><h1>@challenge.Ideas</h1><span></span></div>
+        </div>
+    </div>
+}

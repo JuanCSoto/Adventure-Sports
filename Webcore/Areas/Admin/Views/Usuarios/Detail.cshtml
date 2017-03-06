@@ -1,0 +1,109 @@
+﻿@model Webcore.Areas.Admin.Models.Usuarios
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    validateform = function () {
+        @if(ViewBag.id == null) {
+            <text>var pass1 = $('#UserCustom_Password');
+            var pass2 = $('#confpassword');
+
+            if (pass1.val() == '') {
+                pass1.addClass('input-validation-error');
+                return;
+            }
+            else {
+                pass1.removeClass('input-validation-error');
+            }
+
+            if (pass2.val() == '') {
+                pass2.addClass('input-validation-error');
+                return;
+            }
+            else {
+                pass2.removeClass('input-validation-error');
+            }
+
+            if (pass1.val() != pass2.val()) {
+                pass1.addClass('input-validation-error');
+                pass2.addClass('input-validation-error');
+                return;
+            }</text>
+        }
+        $('#Form1').submit();
+    };
+
+    @if(ViewBag.id != null) {
+    <text>$(document).ready(function () {
+        $("#UserCustom_Password").rules("remove");
+    });</text>
+    }
+</script>
+<div align="right">
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+    <li>@Resources.Global.Messages.LIST</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "Usuarios", FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+    {
+    @Html.ValidationSummary()
+    <ul id="fields" class="fieldsusers">
+        <li><span class="spntitle">@Resources.Global.Messages.INFORMATION</span> </li>
+        <li>
+            <img src="@(Model.UserCustom != null && Model.UserCustom.Image != null ? Model.UserCustom.Image : "~/files/imagesuser/default.png")" />
+        </li>
+        <li>@Resources.Global.Messages.NAME<br />
+            @Html.TextBoxFor(t => t.UserCustom.Names, new { @class = "text", maxlength = "100" })
+        </li>
+        <li>@Resources.Global.Messages.EMAIL<br />
+            @Html.TextBoxFor(t => t.UserCustom.Email, new { @class = "text", maxlength = "150" })
+        </li>
+        <li>@Resources.Global.Messages.PHONE<br />
+            @Html.TextBoxFor(t => t.UserCustom.Phone, new { @class = "text", maxlength = "100" })
+        </li>
+        <li>Newsletter<br />
+            @Html.CheckBox("UserCustom.News", Model.UserCustom != null && Model.UserCustom.News != null ? Model.UserCustom.News.Value : false)
+        </li>
+        <li>@Resources.Global.Messages.PASSWORD<br />
+            @Html.PasswordFor(t => t.UserCustom.Password, new { @class = "text", maxlength = "15" })
+        </li>
+        <li>@Resources.Extend.Messages.CONFIRM_PASSWORD<br />
+            <input id="confpassword" class="text" maxlength="15" type="password" />
+        </li>
+        <li>@Resources.Global.Messages.IMAGE<br />
+            <input id="userimage" name="userimage" class="txtfiles" type="file" />
+        </li>
+        <li>@Resources.Global.Messages.ACTIVE<br />
+            @Html.CheckBox("UserCustom.Active", Model.UserCustom != null && Model.UserCustom.Active != null ? Model.UserCustom.Active.Value : false)
+        </li>
+    </ul>
+    <ul id="fields" class="fieldsusersr">
+        <li><span class="spntitle">@Resources.Global.Messages.PROFILES</span><br />
+            <table>
+                @foreach (Domain.Entities.Rol item in Model.CollRols)
+                {
+                <tr>
+                    <td>
+                        <input checked="@(Model.CollUserrol != null &&
+                        Model.CollUserrol.FirstOrDefault(t => t.RolId == item.RolId) != null)" name="colrols" value="@item.RolId" id="@item.RolId" type="checkbox" />
+                        <label for="@item.RolId">
+                            @item.Name</label>
+                    </td>
+                </tr>   
+                }
+            </table>
+        </li>
+    </ul>
+    }
+    <div align="center" id="contentactions">
+        <img onclick="validateform()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null)
+        {
+        <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>
+</div>

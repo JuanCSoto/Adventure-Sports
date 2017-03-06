@@ -1,0 +1,43 @@
+﻿@model Webcore.Areas.Admin.Models.Usuarios
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    deleteUser = function () {
+        return confirm("@Resources.Extend.Messages.DELETE_ITEM");
+    };
+
+    searchuser = function () {
+        window.location.href = '@Url.Action("Index", new { Area = "Admin" })?name=' + $('#txfind').val();
+    };
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" href="@Url.Action("Detail", new { Area = "Admin" })">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px; font-family: Segoe UI Light;">@Resources.Global.Messages.NEW</span></a>
+    <a onclick="searchuser()" class="hrefmen" href="javascript:void(0);">
+        <img border="0" width="23" height="23" src="~/resources/images/25search.gif" />
+        <span>@Resources.Global.Messages.FIND</span></a>&nbsp;&nbsp;
+    <input  onkeypress="findsubm(event, function() { searchuser(); })" id="txfind" class="textfind inactive" onblur="blurfind(this, '@Resources.Extend.Messages.FIND_BY_NAME')" onfocus="focusfind(this, '@Resources.Extend.Messages.FIND_BY_NAME')" value='@(Request.QueryString["name"] != null ? Request.QueryString["name"] : Resources.Extend.Messages.FIND_BY_NAME)' type="text" />
+    <hr />
+    <ul id="listado">
+        @foreach (Domain.Entities.User item in Model.CollUsers)
+        {
+            <li>
+                <img width="40" height="40" class="imguserlist" src="@(Business.Utils.fixLocalUserImagePath(item.Image))" />
+                <span class="sptitle">@item.Names</span><br />
+                <span class="spdate">@item.Email</span> <a onclick="return deleteUser()" href="@Url.Action("Delete", new { Area = "Admin", id = item.UserId.Value })">
+                    <img title="@Resources.Global.Messages.DELETE" border="0" align="right" width="25" height="25" src="~/resources/images/25del.gif" /></a>
+                <a href="@Url.Action("Detail", new { Area = "Admin", id = item.UserId.Value })">
+                    <img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+        }
+    </ul>
+    <div align="right">
+        @(new Business.Paginator(HttpContext.Current, Model.Pagininfo).GetPaginator())
+    </div>
+</div>

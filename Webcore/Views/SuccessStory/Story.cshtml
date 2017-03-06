@@ -1,0 +1,124 @@
+﻿@model Webcore.Models.FESuccessStory
+    @{
+        var fileImage = Domain.Entities.Fileattach.TypeFile.Image;
+        var fileVideo = Domain.Entities.Fileattach.TypeFile.Video;
+        Layout = "~/Views/Layouts/_Common.cshtml";
+    }
+    <div class="contenedor-home">
+        <div class="contenido">
+            <div class="contenido-tit">
+                <div class="content-tooltip">
+                    <h1>@Model.Story.Name</h1>
+                    <p>@Resources.Global.Messages.PUBLISHED, @Model.Story.Joindate.ToLongDateString()</p>
+                    <p>@Model.Story.NameEs, @Model.Story.Country</p>
+                </div>
+                <div id="content-cases">
+                    <div id="cases-column-left">
+                        <div id="case-video">
+                            @if (Model.Story.Image != null)
+                            {
+                                <img src="@Html.Raw(@Url.Content("~/") + "files/" + Model.Story.ContentId + "/511x255-" + Model.Story.Image)" style="width:100%;" />
+                            }
+                        </div>
+                        <div id="case-description">
+                            <p>@Html.Raw(Model.Story.Description)</p>
+                        </div>
+                        <div id="case-retos">
+                            <h3>@Resources.Global.Messages.CHALLENGESFACED</h3>
+                            <p>@Html.Raw(Model.Story.ProblemsSolved)</p>
+                        </div>
+                        <div id="case-impactos">
+                            <h3>@Resources.Global.Messages.BEENIMPACT</h3>
+                            <p>@Html.Raw(Model.Story.SocialImpact)</p>
+                            <ul>
+                                @foreach (var video in Model.CollFiles)
+                                {
+                                    if (video.Type.Value == fileImage)
+                                    {
+                                        <li>
+                                            <img src="@Html.Raw(@Url.Content("~/") + "files/" + Model.Story.ContentId + @"/" + video.Filename)" style="height:191px;width:226px" />
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="cases-column-right">
+                        @if (Model.Story.Video != null || Model.CollFiles.Count > 0)
+                        {
+                        <div id="multimedia" class="background">
+                            <h4>@Resources.Global.Messages.VIDEO</h4>
+                                @if (Model.Story.Video != null)
+                                {
+                                    <div id="player-holder"></div>
+                                    <script>
+                                    loadVideo('@Model.Story.Video');
+                                    </script>
+                                }
+                                @foreach (var video in Model.CollFiles)
+                                {
+                                    if (video.Type.Value == fileVideo)
+                                    {
+                                        <div id="player-holder"></div>
+                                        <script>
+                                            loadVideo('@video.Filename');
+                                        </script>
+                                    }
+                                }
+                        </div>
+                        }
+                        @if (@Model.Story.InstitutionSource != null || @Model.Story.InstitutionImplements != null)
+                        { 
+                        <div id="entidades" class="background">
+                            <h4>@Resources.Global.Messages.ENTITIESRESPONSIBLE</h4>
+                            <ul>
+                                @if (@Model.Story.InstitutionSource != null)
+                                {
+                                    <li class="EntidadesCasos">
+                                        @Model.Story.InstitutionSource
+                                    </li>
+                                }
+                                @if (@Model.Story.InstitutionImplements != null)
+                                {
+                                    <li class="EntidadesCasos">
+                                        @Model.Story.InstitutionImplements
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        }
+                        @if (Model.Story.Url != null)
+                        { 
+                        <div id="enlaces" class="background">
+                            <h4>@Resources.Global.Messages.RELATEDLINKS</h4>
+                            <ul>
+                                @foreach (var temp in ViewBag.Urls)
+                                { 
+                                <li><a href="@temp">@temp</a></li>
+                                }
+                            </ul>
+                        </div>
+                        }
+                        <div id="responsables" class="background">
+                            <h4>@Resources.Global.Messages.PROJECTLEADERS</h4>
+                            <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="20%" style="padding-right: 15px;">
+                                            <img src="@Html.Raw(Model.ObjUser.Image.Replace("~/","/"))" alt="Usuario" width="64px" height="64px" />
+                                        </td>
+                                        <td width="80%">
+                                            <p><strong>@Model.ObjUser.Names</strong></p>
+                                            <p>@Model.ObjUser.Profession</p>
+                                            <a href="mailto:@Model.ObjUser.Email" class="contactar">@Resources.Global.Messages.CONTACT.ToUpper()</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>

@@ -1,0 +1,104 @@
+﻿@model Webcore.Models.FEBlogEntry
+@{    
+  Layout = "~/Views/Layouts/_Common.cshtml";
+  Domain.Entities.BlogEntry Entity = (Domain.Entities.BlogEntry)Model.Entity;
+  string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+  string picture = siteUrlRoot + "/1024.png";
+  string image = Model.ObjContent.Image;
+  string video = Model.ObjContent.Video;
+  if (!string.IsNullOrEmpty(image))
+  {
+    picture = siteUrlRoot + "/files/" + Entity.ContentId + "/" + image;
+  }
+  else if (video != null)
+  {
+    picture = "http://img.youtube.com/vi/" + video + "/default.jpg";
+  }
+}
+<input id="content-id" type="hidden" value="@Entity.ContentId" />
+<div class="contenedor">
+  <div class="titulo-reto">
+    <div class="titulo-reto-volver">
+      @*<a href="@(content)"><img src="~/resources/images/mimedellin/volver.jpg" border="0" alt="icon" /></a>*@
+    </div>
+    <div class="titulo-reto-txt">@Model.ObjContent.Name</div>
+  </div>
+  <div class="clear"></div>
+  <div class="reto-info@((string.IsNullOrEmpty(image) && video == null) ? "" : " si-imagen")">
+    <div class="clear"></div>
+    <div class="reto-usuario-comentario info1@((string.IsNullOrEmpty(image) && video == null) ? "" : " si-imagen")">
+      <p class="idea-text" data-render-url="true">@Html.Raw(Entity.Description)</p>
+      <div class="reto-usuario-social@((string.IsNullOrEmpty(image) && video == null) ? "" : " si-imagen")">
+        @Html.Partial("_ShareUrlPulse", new Domain.Entities.FrontEnd.ShrareUrl()
+   {
+     name = Model.ObjContent.Name, 
+     link = siteUrlRoot + "/" + Model.ObjContent.Frienlyname,
+     picture = picture,
+     caption = "",
+     descriptionFB = "¡Así transformamos la ciudad con tus ideas!",
+     descriptionTW = "¡Así transformamos la ciudad con tus ideas!",
+     description = "¡Así transformamos la ciudad con tus ideas!"
+   })
+      </div>
+    </div>
+  </div>
+  @if (!string.IsNullOrEmpty(image) || video != null)
+  {
+    <div class="reto-imagen">
+      @if (video != null)
+      {    
+        <div class="video-c">
+          <iframe id="player" type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/@video?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>
+        </div>             
+      }
+      else if (!string.IsNullOrEmpty(image))
+      {
+        <img src="~/files/@Model.ObjContent.ContentId/@image" alt="@Model.ObjContent.Name" />
+      }
+    </div>
+  }
+  <div class="clear"></div>
+  <div class="reto-usuario-comentario info2">
+    <p class="idea-text" data-render-url="true">@Html.Raw(Entity.Description)</p>
+    <div class="reto-usuario-social">
+      @Html.Partial("_ShareUrlPulse", new Domain.Entities.FrontEnd.ShrareUrl()
+ {
+   name = Model.ObjContent.Name, 
+   link = siteUrlRoot + "/" + Model.ObjContent.Frienlyname,
+   picture = picture,
+   caption = "",
+   descriptionFB = "¡Así transformamos la ciudad con tus ideas!",
+   descriptionTW = "¡Así transformamos la ciudad con tus ideas!",
+   description = "¡Así transformamos la ciudad con tus ideas!"
+ })
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="reto-comentarios-block">
+    <h1>comentarios</h1>
+    <div class="clear"></div>
+    <div class="reto-comentarios">
+      <div class="reto-comentario-imagen">
+        <div class="img-vertical-middle-overflow">
+        @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+        {
+          <img class="min-40" src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+        }
+        else
+        {
+          <img class="min-40" src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+        }
+        </div>
+      </div>
+      <textarea id="blog-comment-text" data-id="@Model.ObjContent.ContentId" data-length="200" data-event-bind="false" data-view="_Nivel3IdeaCommentsList" data-size="6" data-container="#comments-list-container" data-selector=".reto-comentarios img"></textarea>
+      <div class="comentar-coment">Comentar</div>
+      <div class="clear"></div>
+      <div class="comentar-counter contv2"><span id="comment-blog-counter-@Model.ObjContent.ContentId">200</span> caracteres</div>            				            
+    </div>
+    <div class="clear"></div>
+    <div id="comments-list-container">
+      @Html.Partial("_Nivel3IdeaCommentsList", Model.CollComments)
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

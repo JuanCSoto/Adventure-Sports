@@ -1,0 +1,151 @@
+﻿@model Webcore.Areas.Admin.Models.IdeaModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section headers {
+    <script src="@Url.Content("~/Resources/Scripts/jquery.fcbkcomplete.min.js")" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jquerycl")
+    <script type="text/javascript" language="javascript">
+        var tempfiles = new Array();
+        contentType = "Idea";
+        var commentsPageIndex = 0;
+        var commentsPageSize = 50;
+        var totalIdeaComments = @ViewBag.TotalComments;
+        $(document).ready(function () {
+            $.cleditor.defaultOptions.height = 500;
+            $.cleditor.defaultOptions.width = 720;
+            $.cleditor.defaultOptions.docCSSFile = '@Url.Content("~/Resources/Css/frontend.styles.css")'
+            $.cleditor.buttons.image.uploadUrl = '@(Url.Action("UploadImage", "Content", new { Area = "Admin" }) + (Model.IContent != null && Model.IContent.ContentId != null ? "?id=" + Model.IContent.ContentId : ""))';
+            @if(ViewBag.Location == true ){
+                if (Model.Idea != null && Model.Idea.XCoordinate != null && Model.Idea.YCoordinate != null)
+                {
+            @:google.maps.event.addDomListener(window, 'load', function(){initializeMapIdea();
+            @:  marker = new google.maps.Marker({
+            @:    map: map,
+            @:    position: new google.maps.LatLng(@(Model.Idea.YCoordinate.ToString().Replace(',','.')), @(Model.Idea.XCoordinate.ToString().Replace(',','.')))
+            @:  });
+            @:});
+                }
+                else{
+            @:google.maps.event.addDomListener(window, 'load', initializeMapIdea);
+                }
+            }
+            editComments();
+        });
+     </script>
+}
+<div align="right">
+    <ul id="MenuP">
+        <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+    </ul>
+    <div class="cont" align="left">
+        @using (Html.BeginForm("Create", "Idea", new { Area = "Admin" }, FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+        {
+        @Html.ValidationSummary()
+        @Html.Hidden("GetOut", "0")
+        @Html.Hidden("TempFiles")
+        <hr />
+        <div id="deepfolloweradmin">
+            @Model.DeepFollower
+        </div>
+        <div class="separator">
+        </div>
+        <div align="center" id="dvadicional" style="clear: both;">
+            <h3>
+                <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.INFORMATION</span>
+            </h3>
+            @Html.HiddenFor(t => t.Idea.ContentId)
+            @Html.HiddenFor(t => t.Idea.UserId)
+            @Html.HiddenFor(t => t.Idea.Creationdate)
+            @Html.HiddenFor(t => t.Idea.IdeaId)
+            <ul class="template" id="fields">
+                <li>@Resources.Global.Messages.CONTENT *<br />
+                    @Model.IContent.Name
+                </li>
+                @if (Model.IContent != null && Model.IContent.Frienlyname != null)
+                {
+                <li>@Resources.Global.Messages.FRIENDLY_URL<br />
+                    @Model.IContent.Frienlyname
+                </li>
+                }
+                <li>
+                  @Resources.Global.Messages.VIDEO<br />
+                  @Html.TextBoxFor(t => t.Idea.Video, new { @class = "text", maxlength = "50" })
+                </li>
+                <li>
+                  @Resources.Global.Messages.DELETE @Resources.Global.Messages.IMAGE<br />
+                  <input id="deleteIdeaImage" name="deleteIdeaImage" type="checkbox" />
+                </li>
+                <li>
+                  @Resources.Global.Messages.DESCRIPTION<br />
+                  @Html.EditorFor(t => t.Idea.Text, new { @class = "text", maxlength = "50" })
+                </li>
+                @if(ViewBag.Location == true){
+                <li>
+                  @Resources.Global.Messages.LOCATION
+                  <div id="map-canvas" style="height:400px; width:600px;"></div>
+                  @Html.HiddenFor(t => t.Idea.XCoordinate)
+                  @Html.HiddenFor(t => t.Idea.YCoordinate)
+                </li>
+                }
+                <li>
+                  <div class="divcheck">
+                      @Resources.Global.Messages.ACTIVE<br />
+                      @Html.CheckBox("Idea.Active", Model.Idea.Active != null ? Model.Idea.Active.Value : true, new { @class = "check" })
+                  </div>
+                  <div class="divcheck">
+                      @Resources.Global.Messages.FEATURED<br />
+                      @Html.CheckBox("Idea.Distinguished", Model.Idea.Distinguished != null ? Model.Idea.Distinguished.Value : false, new { @class = "check" })
+                  </div>
+                  <div class="divcheck">
+                      @Resources.Global.Messages.RECOMMENDED<br />
+                      @Html.CheckBox("Idea.Recommended", Model.Idea.Recommended != null ? Model.Idea.Recommended.Value : false, new { @class = "check" })
+                  </div>
+                </li>
+            </ul>
+        </div>
+        }
+        <div align="center" id="dvadicional" style="clear: both;">
+          <h3>
+            <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.COMMENTS</span>
+          </h3>
+          @if (Model.ListComments != null && Model.ListComments.Count() > 0)
+          {
+            <ul class="template" id="comments">
+            @foreach (Domain.Entities.FrontEnd.CommentsPaging comment in Model.ListComments)
+            {
+            <li class="comment">
+              <input type="hidden" class="commentId" value="@comment.CommentId"/>
+              <div class="commentValue">
+                <img src="@Business.Utils.fixLocalUserImagePath(comment.UserImage)" height="44"/>
+                <span class="idea_user">@comment.UserNames:</span><br>
+                <span class="text_idea">@comment.Text</span>
+                <img class="edit" src="@Url.Content("~/resources/images/25edit.gif")" alt="" title="Editar"/>
+                <img class="block" src="@Url.Content("~/resources/images/25cancel.gif")" alt="" title="Bloquear" style="display:@(comment.Active.Value ? "inline-block" : "none")"/>
+                <img class="unblock" src="@Url.Content("~/resources/images/accept.gif")" alt="" width="25" height="25" title="Desbloquear" style="display:@(comment.Active.Value ? "none" : "inline-block")"/>
+              </div>
+			  	<div class="clearfix"></div>
+              <div class="commentForm" style="display:none;">
+                <input type="text" class="commentText" value="@comment.Text"/>
+                <img class="save" src="@Url.Content("~/resources/images/35save.gif")" alt="" title="Guardar"/>
+                <img class="cancel" src="@Url.Content("~/resources/images/35cancel.gif")" alt="" title="Cancelar"/>
+              </div>
+			  <div class="clearfix"></div>
+            </li>
+			<div class="clearfix"></div>
+            }
+            </ul>
+            <div style="padding-bottom:15px;"><img style="cursor: pointer;" id="morecomments" width="25" height="25" src="/MiMedellin/resources/images/25down.gif"><span id="commentspage">@Model.ListComments.Count()</span> de @ViewBag.TotalComments @Resources.Global.Messages.COMMENTS</div>
+          }
+        </div>
+        <div align="center" id="contentactions">
+            <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE_EXIT" src="~/resources/images/45savewout.png" />
+            @if (Model.IContent != null && Model.IContent.ContentId != null)
+            {
+                <img onclick="$('#GetOut').val('1');$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+            }
+            <img onclick="window.location.href='@Url.Action("Index", "Idea", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  int percentage = 0;
+  int endDay = 0;
+  int days = 0;
+  string link = string.Empty;
+  bool ended = false;
+
+  string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+
+  List<Domain.Entities.FrontEnd.ExpiringChallenges> challenges = ViewBag.Challenges;
+  List<Domain.Entities.FrontEnd.ExpiringQuestions> questions = ViewBag.Questions;
+  List<Domain.Entities.FrontEnd.FeaturedChallengesQuestions> challengesQuestions = ViewBag.ChallengesQuestions;
+  int amount = challenges.Count + questions.Count > 0 ? 3 - ((challenges.Count + questions.Count) % 3) : 3;
+  amount = amount == 3 ? 0 : amount;
+}
+
+@foreach (Domain.Entities.FrontEnd.FeaturedChallengesQuestions challengeQuestion in challengesQuestions.Take(amount))
+{
+  if (challengeQuestion.ChallengeType.HasValue)
+  {
+    days = (int)Math.Ceiling((challengeQuestion.EndDate.Value - challengeQuestion.StartDate.Value).TotalDays);
+    endDay = (int)Math.Ceiling((challengeQuestion.EndDate.Value - DateTime.Now).TotalDays);
+    if (endDay > 0)
+    {
+      percentage = ((endDay * 100 / days) * -1) + 100;
+      ended = false;
+    }
+    else
+    {
+      percentage = 100;
+      ended = true;
+    }
+    link = string.Concat(content, "/", challengeQuestion.Friendlyurlid);
+  <div class="contenido-historia">
+    <a href="@(link)">
+      <div class="finalizado" style="display:@(ended ? "block" : "none")"></div>
+    </a>
+    <a href="@(link)">
+      <img src="~/files/@challengeQuestion.ContentId/340x250-@challengeQuestion.Image" alt="@challengeQuestion.Name" /></a>
+    <div class="clear"></div>
+    <a href="@(link)">
+      <p>@challengeQuestion.Name</p>
+    </a>
+    <div class="clear"></div>
+    <div class="contenido-historia-barra">
+      <span></span>
+      <div class="barra-color2@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+    </div>
+    <div class="clear"></div>
+    <div class="content-tooltip">
+      @switch (challengeQuestion.ChallengeType)
+      {
+        case Domain.Entities.Challenge.TypeChallenge.Participacion_Ciudadana:
+        <div class="historia-item participacion2@(ended ? " participacion3gris" : "")">
+          <span></span>
+          <h1>@ViewBag.TXTPARCIU</h1>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -21px;">
+            <div class="tooltip">@ViewBag.TXTPARCIUINI</div>
+          </div>
+        </div>
+          break;
+        case Domain.Entities.Challenge.TypeChallenge.Reto_Ciudad:
+        <div class="historia-item ciudadana2@(ended ? " ciudadana2gris" : "")">
+          <span></span>
+          <h1>@ViewBag.RETO<br />
+            @ViewBag.DAYS</h1>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -21px;">
+            <div class="tooltip">@ViewBag.TXTTUIDEA</div>
+          </div>
+        </div>
+          break;
+      }
+    </div>
+    @if (!string.IsNullOrEmpty(challengeQuestion.Prize))
+    {
+      <div class="content-tooltip">
+        <div class="historia-item premio2@(ended ? " premiogris" : "")">
+          <span></span>
+          <h1>@ViewBag.PREMIUM</h1>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -21px;">
+            <div class="tooltip">@challengeQuestion.Prize</div>
+          </div>
+        </div>
+      </div>
+    }
+    @if (challengeQuestion.People > 0)
+    {
+      <div class="historia-item unidos2@(ended ? " gris" : "")">
+        <span>@challengeQuestion.People/@challengeQuestion.People</span>
+        <h1>ViewBag.TXTYASOMO</h1>
+      </div>
+    }
+    @if (!ended)
+    {
+      <div class="historia-item restantes2@(ended ? " gris" : "")">
+        <span>@endDay</span>
+        <h1>ViewBag.TXTDIARES</h1>
+      </div>
+    }
+    <div class="clear"></div>
+    <div class="participa-block">
+      <a href="@(link)">@buttonText</a>
+      <div class="participa-comentarios">
+        <h1>@challengeQuestion.Ideas</h1>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  }
+  else
+  {
+    days = (int)Math.Ceiling((challengeQuestion.EndDate.Value - challengeQuestion.StartDate.Value).TotalDays);
+    endDay = (int)Math.Ceiling((challengeQuestion.EndDate.Value - DateTime.Now).TotalDays);
+    if (endDay > 0)
+    {
+      percentage = ((endDay * 100 / days) * -1) + 100;
+      ended = false;
+    }
+    else
+    {
+      percentage = 100;
+      ended = true;
+    }
+    link = string.Concat(content, "/", challengeQuestion.Friendlyurlid);
+
+  <div class="contenido-historia">
+    <a href="@(link)">
+      <div class="finalizado" style="display:@(ended ? "block" : "none")"></div>
+    </a>
+    <a href="@(link)">
+      <img src="~/files/@challengeQuestion.ContentId/340x250-@challengeQuestion.Image" alt="@challengeQuestion.Name" /></a>
+    <div class="clear"></div>
+    <a href="@(link)">
+      <p>@challengeQuestion.Name</p>
+    </a>
+    <div class="clear"></div>
+    <div class="contenido-historia-barra">
+      <span></span>
+      <div class="barra-color2@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+    </div>
+    <div class="clear"></div>
+    <div class="content-tooltip">
+      @switch (challengeQuestion.QuestionType)
+      {
+        case Domain.Entities.Question.TypeQuestion.Abierta:
+
+        <div class="historia-item pregunta@(ended ? " preguntagris" : "")">
+          <span></span>
+          <h1>@Resources.Global.Messages.OPENQUESTION</h1>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -21px;">
+            <div class="tooltip">@ViewBag.TXTCUEOPI</div>
+          </div>
+        </div>
+          break;
+        case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+
+        <div class="historia-item pregunta2@(ended ? " preguntagris2" : "")">
+          <span></span>
+          <h1>@Resources.Global.Messages.SELECTION<br />@Resources.Global.Messages.MULTIPLE</h1>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -21px;">
+            <div class="tooltip">@ViewBag.TXTESCREP</div>
+          </div>
+        </div>
+          break;
+        case Domain.Entities.Question.TypeQuestion.Ubicacion:
+
+        <div class="historia-item pregunta3@(ended ? " preguntagris3" : "")">
+          <span></span>
+          <h1>@ViewBag.LOCATION</h1>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -21px;">
+            <div class="tooltip">@Resources.Extend.Messages.PLACEMAP</div>
+          </div>
+        </div>
+          break;
+      }
+    </div>
+    @if (false) // TODO: Depende de si tiene premio o no
+    {
+
+      <div class="historia-item premio2@(ended ? " premiogris" : "")">
+        <span></span>
+        <h1>@ViewBag.WISH
+          <br />
+         @ViewBag.PREMIUM</h1>
+      </div>
+    }
+    @if (!ended)
+    {
+
+      <div class="historia-item restantes2@(ended ? " gris" : "")">
+        <span>@endDay</span>
+        <h1>@ViewBag.TXTDIARES</h1>
+      </div>
+    }
+    <div class="clear"></div>
+    <div class="participa-block">
+      <a href="@(link)">@buttonText</a>
+      <div class="participa-comentarios">
+        <h1>@challengeQuestion.Ideas</h1>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  }
+}

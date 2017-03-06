@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1C29ED6-D5FF-4F71-A1C5-D585F9FE471E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\DataRepository.cs" />
+    <Compile Include="Abstract\InfoDatabase.cs" />
+    <Compile Include="Abstract\ISession.cs" />
+    <Compile Include="Abstract\SqlSession.cs" />
+    <Compile Include="Concrete\AllyRepository.cs" />
+    <Compile Include="Concrete\AuditRepository.cs" />
+    <Compile Include="Concrete\BannerRepository.cs" />
+    <Compile Include="Concrete\BannersectionRepository.cs" />
+    <Compile Include="Concrete\BlogEntryRepository.cs" />
+    <Compile Include="Concrete\ChaellengeFollowerRepository.cs" />
+    <Compile Include="Concrete\ChallengeRepository.cs" />
+    <Compile Include="Concrete\CityRepository.cs" />
+    <Compile Include="Concrete\CommentRepository.cs" />
+    <Compile Include="Concrete\SuccessStoryRepository.cs" />
+    <Compile Include="Concrete\IdeaHashTagRepository.cs" />
+    <Compile Include="Concrete\ContentrelationRepository.cs" />
+    <Compile Include="Concrete\ContentRepository.cs" />
+    <Compile Include="Concrete\ContenttagRepository.cs" />
+    <Compile Include="Concrete\AnswerRepository.cs" />
+    <Compile Include="Concrete\EmailNotificationRepository.cs" />
+    <Compile Include="Concrete\EmailNotificationTemplateRepository.cs" />
+    <Compile Include="Concrete\DocumentTypeRepository.cs" />
+    <Compile Include="Concrete\FAQRepository.cs" />
+    <Compile Include="Concrete\FrontEndEditableRepository.cs" />
+    <Compile Include="Concrete\HashTagRepository.cs" />
+    <Compile Include="Concrete\IdeaVoteRepository.cs" />
+    <Compile Include="Concrete\InterestRepository.cs" />
+    <Compile Include="Concrete\LabelRepository.cs" />
+    <Compile Include="Concrete\NeighborhoodRepository.cs" />
+    <Compile Include="Concrete\IdeaReportRepository.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Concrete\NotificationKeyRepository.cs" />
+    <Compile Include="Concrete\RecoveryTokenRepository.cs" />
+    <Compile Include="Concrete\RewardActionRepository.cs" />
+    <Compile Include="Concrete\SystemNotificationRepository.cs" />
+    <Compile Include="Concrete\SystemNotificationTemplateRepository.cs" />
+    <Compile Include="Concrete\UserAnswerRepository.cs" />
+    <Compile Include="Concrete\UserInterestRepository.cs" />
+    <Compile Include="Concrete\UserRelationRepository.cs" />
+    <Compile Include="Concrete\UserSettingRepository.cs" />
+    <Compile Include="Concrete\VersusRepository.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Concrete\IdeaRepository.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Concrete\QuestionRepository.cs" />
+    <Compile Include="Concrete\CountryRepository.cs" />
+    <Compile Include="Concrete\DepartmentRepository.cs" />
+    <Compile Include="Concrete\FileattachRepository.cs" />
+    <Compile Include="Concrete\FriendlyurlRepository.cs" />
+    <Compile Include="Concrete\LanguageRepository.cs" />
+    <Compile Include="Concrete\LogRepository.cs" />
+    <Compile Include="Concrete\ModullanguageRepository.cs" />
+    <Compile Include="Concrete\ModulRepository.cs" />
+    <Compile Include="Concrete\MoldRepository.cs" />
+    <Compile Include="Concrete\NewsRepository.cs" />
+    <Compile Include="Concrete\PositionRepository.cs" />
+    <Compile Include="Concrete\RolmodulRepository.cs" />
+    <Compile Include="Concrete\RolRepository.cs" />
+    <Compile Include="Concrete\RolUserRepository.cs" />
+    <Compile Include="Concrete\SectionRepository.cs" />
+    <Compile Include="Concrete\TagRepository.cs" />
+    <Compile Include="Concrete\TemplateRepository.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="Entities\Enums\LanguageEnum.cs" />
+    <Compile Include="Entities\Enums\SectionEnum.cs" />
+    <Compile Include="Entities\Enums\SuccessStoryPostulateStateEnum.cs" />
+    <Compile Include="Entities\Enums\DataBaseActionEnum.cs" />
+    <Compile Include="Entities\Basic\AuditComp.cs" />
+    <Compile Include="Entities\Basic\ContentRel.cs" />
+    <Compile Include="Entities\Basic\EmailNotificationType.cs" />
+    <Compile Include="Entities\Basic\EXIFOrientations.cs" />
+    <Compile Include="Entities\Basic\SystemNotificationType.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Entities\Basic\Dynamicproperties.cs" />
+    <Compile Include="Entities\Basic\ForntEndEditable.cs" />
+    <Compile Include="Entities\Basic\ForntEndEditableType.cs" />
+    <Compile Include="Entities\Basic\IsChecked.cs" />
+    <Compile Include="Entities\Basic\KeyValue.cs" />
+    <Compile Include="Entities\Basic\PaginInfo.cs" />
+    <Compile Include="Entities\Basic\Search.cs" />
+    <Compile Include="Entities\Basic\UserSetting.cs" />
+    <Compile Include="Entities\FrontEnd\ContactUs.cs" />
+    <Compile Include="Entities\FrontEnd\Contentnew.cs" />
+    <Compile Include="Entities\FrontEnd\Contentsearch.cs" />
+    <Compile Include="Entities\FrontEnd\CommentsPaging.cs" />
+    <Compile Include="Entities\FrontEnd\ChallengesPaging.cs" />
+    <Compile Include="Entities\FrontEnd\ContentBestOfAll.cs" />
+    <Compile Include="Entities\FrontEnd\ContentBlogIdea.cs" />
+    <Compile Include="Entities\FrontEnd\AdminBlock.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Entities\FrontEnd\GeneralFind.cs" />
+    <Compile Include="Entities\FrontEnd\GeneralFindPaging.cs" />
+    <Compile Include="Entities\FrontEnd\SuccessStoryList.cs" />
+    <Compile Include="Entities\FrontEnd\SuccessStoryPaging.cs" />
+    <Compile Include="Entities\FrontEnd\NotificationKey.cs" />
+    <Compile Include="Entities\FrontEnd\Pulse.cs" />
+    <Compile Include="Entities\FrontEnd\FAQList.cs" />
+    <Compile Include="Entities\FrontEnd\MailIdeasPaging.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Entities\FrontEnd\Category.cs" />
+    <Compile Include="Entities\FrontEnd\SuccessStoryPostulatePaging.cs" />
+    <Compile Include="Entities\FrontEnd\UserMail.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Entities\FrontEnd\ShrareUrl.cs" />
+    <Compile Include="Entities\FrontEnd\IdeaReportPaging.cs" />
+    <Compile Include="Entities\FrontEnd\MyIdeasPaging.cs" />
+    <Compile Include="Entities\FrontEnd\ArchiveEntry.cs" />
+    <Compile Include="Entities\FrontEnd\BlogEntriesPaging.cs" />
+    <Compile Include="Entities\FrontEnd\UserProfilePaging.cs" />
+    <Compile Include="Entities\FrontEnd\Video.cs" />
+    <Compile Include="Entities\FrontEnd\FacebookUser.cs" />
+    <Compile Include="Entities\FrontEnd\LinkedInUser.cs" />
+    <Compile Include="Entities\FrontEnd\Google.cs" />
+    <Compile Include="Entities\FrontEnd\GoogleUser.cs" />
+    <Compile Include="Entities\FrontEnd\FeaturedChallengesQuestions.cs" />
+    <Compile Include="Entities\FrontEnd\ExpiringChallenges.cs" />
+    <Compile Include="Entities\FrontEnd\IdeasPaging.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Entities\FrontEnd\QuestionsPaging.cs" />
+    <Compile Include="Entities\FrontEnd\ExpiringQuestions.cs" />
+    <Compile Include="Entities\Generic\Ally.cs" />
+    <Compile Include="Entities\Generic\Audit.cs" />
+    <Compile Include="Entities\Generic\Banner.cs" />
+    <Compile Include="Entities\Generic\Bannersection.cs" />
+    <Compile Include="Entities\Generic\SuccessStoryPostulate.cs" />
+    <Compile Include="Entities\Generic\Category.cs" />
+    <Compile Include="Entities\Generic\CategoryLanguage.cs" />
+    <Compile Include="Entities\Generic\ChaellengeFollower.cs" />
+    <Compile Include="Entities\Generic\Challenge.cs" />
+    <Compile Include="Entities\Generic\City.cs" />
+    <Compile Include="Entities\Generic\Comment.cs" />
+    <Compile Include="Entities\Generic\Content.cs" />
+    <Compile Include="Entities\Generic\SuccessStory.cs" />
+    <Compile Include="Entities\Generic\IdeaHashTag.cs" />
+    <Compile Include="Entities\Generic\Contentrelation.cs" />
+    <Compile Include="Entities\Generic\Contenttag.cs" />
+    <Compile Include="Entities\Generic\Answer.cs" />
+    <Compile Include="Entities\Generic\BlogEntry.cs" />
+    <Compile Include="Entities\Generic\EmailNotification.cs" />
+    <Compile Include="Entities\Generic\EmailNotificationTemplate.cs" />
+    <Compile Include="Entities\Generic\FAQ.cs" />
+    <Compile Include="Entities\Generic\DocumentType.cs" />
+    <Compile Include="Entities\Generic\FrontEndEditable.cs" />
+    <Compile Include="Entities\Generic\HashTag.cs" />
+    <Compile Include="Entities\Generic\IdeaVote.cs" />
+    <Compile Include="Entities\Generic\Interest.cs" />
+    <Compile Include="Entities\Generic\Label.cs" />
+    <Compile Include="Entities\Generic\Neighborhood.cs" />
+    <Compile Include="Entities\Generic\IdeaReport.cs" />
+    <Compile Include="Entities\Generic\RecoveryToken.cs" />
+    <Compile Include="Entities\Generic\SystemNotification.cs" />
+    <Compile Include="Entities\Generic\SystemNotificationTemplate.cs" />
+    <Compile Include="Entities\Generic\UserAnswer.cs" />
+    <Compile Include="Entities\Generic\UserInterest.cs" />
+    <Compile Include="Entities\Generic\UserRelation.cs" />
+    <Compile Include="Entities\Generic\Versus.cs" />
+    <Compile Include="Entities\Generic\Country.cs" />
+    <Compile Include="Entities\Generic\DateGreaterThanAttribute.cs" />
+    <Compile Include="Entities\Generic\Department.cs" />
+    <Compile Include="Entities\Generic\Fileattach.cs" />
+    <Compile Include="Entities\Generic\Friendlyurl.cs" />
+    <Compile Include="Entities\Generic\Idea.cs" />
+    <Compile Include="Entities\Generic\Language.cs" />
+    <Compile Include="Entities\Generic\Log.cs" />
+    <Compile Include="Entities\Generic\Modul.cs" />
+    <Compile Include="Entities\Generic\Modullanguage.cs" />
+    <Compile Include="Entities\Generic\Mold.cs" />
+    <Compile Include="Entities\Generic\News.cs" />
+    <Compile Include="Entities\Generic\Position.cs" />
+    <Compile Include="Entities\Generic\Question.cs" />
+    <Compile Include="Entities\Generic\Rol.cs" />
+    <Compile Include="Entities\Generic\Rolmodul.cs" />
+    <Compile Include="Entities\Generic\RolUser.cs" />
+    <Compile Include="Entities\Generic\Section.cs" />
+    <Compile Include="Entities\Generic\Tag.cs" />
+    <Compile Include="Entities\Generic\Template.cs" />
+    <Compile Include="Entities\Generic\User.cs" />
+    <Compile Include="Entities\Generic\RewardAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Extend.Messages.designer.cs" />
+    <Compile Include="Resources\Extend.Messages.en.designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Extend.Messages.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Extend.Messages.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

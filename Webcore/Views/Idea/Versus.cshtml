@@ -1,0 +1,14 @@
+﻿@model int
+
+<div class="alerta vs">
+    <div class="alerta-titulo">
+        <h1 style="width:92%; text-align:center;">@Resources.Extend.Messages.WHICHDO</h1>
+        <div class="alerta-cerrar"><img src="@Url.Content("~/resources/images/mimedellin/cerrar.png")" border="0" alt="avatar" /></div>
+    </div>
+    <div class="clear"></div>
+    <div id="versus-content">
+        @Html.Action("GetVersus", "Idea", new { contentId = Model })
+    </div>
+
+    <div class="clear" style="height:30px;"></div>
+</div>

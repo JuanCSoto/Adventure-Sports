@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+<div class="alerta default">
+    <div class="alerta-titulo">
+        <h1>@ViewBag.TXTNEWPASS</h1>
+        <div class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></div>
+    </div>
+    <div class="clear"></div>
+    <div class="default-t">@ViewBag.TXTENTPASS<span>:</span></div>
+    <div class="clear"></div>
+    <input id="new-password" type="password" class="ingresa-input" />
+    <div class="clear"></div>
+    <div id="error-new-password" class="error"></div>
+    <div class="clear"></div>
+    <div class="default-t">@ViewBag.TXTWRITNEW<span>:</span></div>
+    <div class="clear"></div>
+    <input id="new-re-password" type="password" class="ingresa-input" />
+    <div class="clear"></div>
+    <div id="error-new-re-password" class="error"></div>
+    <div class="clear"></div>
+    <div class="centrado">
+        <div class="alerta-aceptar">
+            <a>
+                <h3 id="send-reset-password">@ViewBag.CHANGE</h3>
+                <span></span>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

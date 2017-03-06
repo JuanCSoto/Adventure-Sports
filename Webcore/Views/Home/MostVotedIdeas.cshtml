@@ -1,0 +1,22 @@
+﻿@model List<Domain.Entities.FrontEnd.IdeasPaging>
+@{
+    Layout = null;
+}
+<div class="lomejor-item">
+    <div class="lomejor-item-titulo">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BOB_VOTES)</div>
+@foreach (Domain.Entities.FrontEnd.IdeasPaging idea in Model)
+{
+    <div class="clear"></div>
+    <div class="lomejor-historia">
+        <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+        <img border="0" src="@Business.Utils.fixLocalUserImagePath(idea.UserImage)" alt="avatar" />
+        </a>
+        <div class="lomejor-historia-text">
+            <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })"><h1>@idea.UserNames</h1></a>
+            <div class="clear"></div>
+            <p>@idea.Text</p>
+        </div>
+        <div class="lomejor-historia-mas"><a href="@Url.Content("~/" + idea.Friendlyurlid)"></a></div>
+    </div>
+}
+</div>

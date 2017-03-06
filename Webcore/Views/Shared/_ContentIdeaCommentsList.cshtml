@@ -1,0 +1,56 @@
+@model List<Domain.Entities.FrontEnd.CommentsPaging>
+@{
+    string date = string.Empty;
+    string classV2 = string.Empty;
+    if (Model.Count > 0 && Model[0].QuestionType != null && Model[0].QuestionType == Domain.Entities.Question.TypeQuestion.Seleccion_Multiple)
+    {
+        classV2 = "-v2";
+    }
+
+    int? userId = ViewBag.CurrentUserId;
+    bool? ideaOwner = ViewBag.IdeaOwner;
+
+    Domain.Entities.Idea idea = ViewBag.Idea;
+}
+@foreach (Domain.Entities.FrontEnd.CommentsPaging comment in Model)
+{
+    date = Business.Utils.ElapsedTime(comment.Creationdate.Value, Culture);
+    <div class="idea-comentario com@(classV2)" data-id="@comment.CommentId">
+        <div class="counter-comments idea-click-area" data-id="@comment.IdeaId" data-friendly="@(idea != null ? idea.Friendlyurlid : string.Empty)">@Model[0].CommentCount  @(Model[0].CommentCount > 1 ? Resources.Global.Messages.COMMENTS : Resources.Global.Messages.COMMENTSSINGULAR)</div>
+        <div class="edit-container-comment mm2-edit-idea-comment"></div>
+        <div class="idea-comentario-admin">
+            @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = comment.CommentId.Value, type = "comment", email = comment.Email, location = "comments" })
+        </div>
+        <a href="@Url.Content("~")perfil/index/@(comment.UserId)">
+            <div class="idea-comentario-imagen">
+                <div class="img-vertical-middle-overflow">
+                    @if (comment.UserImage != null)
+                    {
+                        <img class="min-30" src="@(Business.Utils.fixLocalUserImagePath(comment.UserImage))" alt="avatar" />
+                    }
+                    else
+                    {
+                        <img class="min-30" src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                    }
+                </div>
+            </div>
+        </a>
+        <div class="idea-comentario-txt cm-t@(classV2)">
+            <a href="@Url.Content("~")perfil/index/@(comment.UserId)"><h5>@comment.UserNames</h5></a>
+            <h6><span></span> @date</h6>
+            <div class="clear"></div>
+            <p class="comp@(classV2)">
+                @comment.Text
+            </p>
+            @if (userId.HasValue && comment.UserId == userId)
+            {
+                <div class="element-action-comment editar-comentario" data-id="@comment.CommentId" data-location="comments">@ViewBag.EDIT</div>
+            }
+            @if (userId.HasValue && comment.UserId == userId /*|| ideaOwner.HasValue && ideaOwner.Value*/)
+{
+    <div class="element-action-comment borrar-comentario" data-id="@comment.CommentId" data-location="comments" data-title-modal="@Resources.Extend.Messages.DELETE_COMMENT_TITLE" data-message-modal="@Resources.Extend.Messages.DELETE_COMMENT_MESSAGE">@ViewBag.DELETE</div>
+}
+        </div>
+    </div>
+    <div class="clear"></div>
+}

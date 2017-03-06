@@ -1,0 +1,23 @@
+﻿@model string
+@{    
+  Layout = "~/Views/Layouts/_ImageFrame.cshtml";
+}
+@if (Model != null)
+{
+<script>  
+  parent.iFrameImageLoaded = true;
+  parent.showRegistryUserImage('@Model');
+</script>
+}
+else
+{
+<script>
+  parent.iFrameImageLoaded = true;
+</script>
+}
+<div id="user-file-wraper">
+@using (Html.BeginForm("uploaduserimage", "registro", FormMethod.Post, new { id = "user-form-file", enctype = "multipart/form-data" }))
+{
+    <input id="userFile" name="userFile" class="user-file" type="file" />
+}
+</div>

@@ -1,0 +1,219 @@
+﻿@model Webcore.Models.SuccessStoryPostulate.FormModel
+
+@{
+    Layout = "~/Views/Layouts/_Common.cshtml";
+}
+<link href="~/Resources/Css/select2.min.css" rel="stylesheet" />
+<script src="~/Resources/Scripts/select2.min.js"></script>
+
+<div class="contenedor-home">
+    <div class="contenido">
+        <div class="contenido-tit">
+            <div class="content-tooltip">
+                <h1>@Resources.Global.Messages.POSTULATES_SUCCESS_STORY</h1>
+            </div>
+            <div id="cases-form">
+                <div id="cases-column-left">
+                    @using (Html.BeginForm("Create", "SuccessStoryPostulate", FormMethod.Post, new { @class = "general-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <section class="row">
+                            <span>@Resources.Global.Messages.CATEGORY</span>
+                            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.CategoryId, Model.Categories, Resources.Global.Messages.SELECT_CATEGORY, new { @class = "big" })
+                        </section>
+                        <div class="separator"></div>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td width="60%" style="  padding-right: 32px;">
+                                        <section class="row">
+                                            <span>@Resources.Global.Messages.PROJECT_RESPONSIBLE<span class="character">Max. 100 characters</span></span>
+                                            @Html.ValidationMessageFor(model => model.ResponsibleNames, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(model => model.ResponsibleNames, new { @class = "big", placeholder = string.Format("{0}: {1}", Resources.Global.Messages.EXAMPLE, "John Smith"), maxlength = "100" })
+                                        </section>
+                                    </td>
+                                    <td width="30%">
+                                        <section class="row">
+                                            <span>@Resources.Global.Messages.EMAIL<span class="character">Max. 150 characters</span></span>
+                                            @Html.ValidationMessageFor(model => model.ResponsibleEmail, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(model => model.ResponsibleEmail, new { placeholder = string.Format("{0}: {1}", Resources.Global.Messages.EXAMPLE, Resources.Global.Messages.EMAIL_EXAMPLE), style = "width: 100%;", maxlength = "150" })
+                                        </section>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table cellpadding="0" cellspacing="0" border="0" align="left" width="100%">
+                                            <tr>
+                                                <td width="50%" style="  padding-right: 32px;">
+                                                    <section class="row">
+                                                        <span>@Resources.Global.Messages.JOB_TITLE<span class="character">Max. 100 characters</span></span>
+                                                        @Html.ValidationMessageFor(model => model.ResponsibleJobTitle, "", new { @class = "text-danger" })
+                                                        @Html.TextBoxFor(model => model.ResponsibleJobTitle, new { @class = "big", placeholder = string.Format("{0}: {1}", Resources.Global.Messages.EXAMPLE, Resources.Global.Messages.JOB_TITLE_EXAMPLE), maxlength = "100" })
+                                                    </section>
+                                                </td>
+                                                <td width="50%">
+                                                    <section class="row">
+                                                        <span>@Resources.Global.Messages.ORGANIZATION<span class="character">Max. 50 characters</span></span>
+                                                        @Html.ValidationMessageFor(model => model.ResponsibleOrganization, "", new { @class = "text-danger" })
+                                                        @Html.TextBoxFor(model => model.ResponsibleOrganization, new { placeholder = string.Format("{0}: {1}", Resources.Global.Messages.EXAMPLE, "Ruta N"), style = "width: 100%;", maxlength = "50" })
+                                                    </section>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table cellpadding="0" cellspacing="0" border="0" align="left" width="100%">
+                                            <tr>
+                                                <td width="50%" style="  padding-right: 32px;">
+                                                    <section class="row">
+                                                        <span>@Resources.Global.Messages.COUNTRY</span>
+                                                        @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+                                                        @Html.DropDownListFor(model => model.CountryId, Model.Countries, Resources.Global.Messages.SELECT_CITY)
+                                                    </section>
+                                                </td>
+                                                <td width="50%">
+                                                    <section class="row">
+                                                        <span>@Resources.Global.Messages.CITY</span>
+                                                        @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                                                        @Html.DropDownListFor(model => model.CityId, new List<SelectListItem>(), Resources.Global.Messages.SELECT_COUNTRY, new { style = "width: 100%;" })
+                                                    </section>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="separator"></div>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.RESPONSIBLE_ENTITIES<span class="character">Max. 200 characters</span></span>
+                            @Html.ValidationMessageFor(model => model.ResponsibleEntities, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.ResponsibleEntities, new { @class = "big", placeholder = Resources.Global.Messages.RESPONSIBLE_ENTITIES_HELP, maxlength = "200" })
+                        </section>
+                        <div class="separator"></div>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.PROJECT_NAME<span class="character">Max. 50 characters</span></span>
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.Name, new { @class = "big", placeholder = string.Format("{0}: {1}", Resources.Global.Messages.EXAMPLE, Resources.Global.Messages.PROJECT_NAME_HELP), maxlength = "50" })
+                        </section>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.PROJECT_DESCRIPTION<span name="charnumber" id="charnumber" class="character">Max. 2000 characters</span></span>
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.Description, new { placeholder = Resources.Global.Messages.PROJECT_DESCRIPTION_HELP, maxlength = "2000" })
+                        </section>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.CONCRETE_PROBLEMS<span class="character">Max. 2000 characters</span></span>
+                            @Html.ValidationMessageFor(model => model.ConcreteProblems, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.ConcreteProblems, new { placeholder = "", maxlength = "2000" })
+                        </section>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.INNOVATIVE_URBAN_SOLUTION<span class="character">Max. 2000 characters</span></span>
+                            @Html.ValidationMessageFor(model => model.InnovativeUrbanSolution, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.InnovativeUrbanSolution, new { placeholder = Resources.Global.Messages.INNOVATIVE_URBAN_SOLUTION_HELP, maxlength = "2000" })
+                        </section>
+                        <div class="separator"></div>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.KEYWORDS</span>
+                            @Html.ValidationMessageFor(model => model.IdsTag, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.IdsTag, Model.Tags, string.Empty, new { @class = "big select2-multiple", @multiple = "multiple" })
+                        </section>
+                        <div class="separator"></div>
+                        <section class="row">
+                            <span>@Resources.Global.Messages.DOCUMENTS<span class="character" name="charDocument">Max. 250 characters</span></span>
+                            @Html.ValidationMessageFor(model => model.Documents, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.Documents, new { placeholder = Resources.Global.Messages.DOCUMENTS_HELP, maxlength = "250" })
+                        </section>
+                        <div class="separator"></div>
+                        <section class="row">
+                            <input type="submit" name="send" value="@Resources.Global.Messages.POSTULATING_SUCCESS_STORY" class="publish-button">
+                        </section>
+                    }
+                </div>
+                <div id="cases-column-right">
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+@*//Comentariado 03Feb2015, ocasiona problemas con autocomplete y mansory
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")*@
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript" language="javascript">
+
+    function setCities(cities) {
+        $('[name=CityId]').find('option').remove();
+        $('[name=CityId]').append($('<option value=""></option>').text('Select a city'));
+
+        $.each(cities, function (key, value) {
+            $('[name=CityId]').append($('<option></option>').val(value.id).text(value.name));
+        });
+    }
+
+    function getCitiesByCountry(countryId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetByCountry", "City")',
+            data: { countryId: countryId },
+            dataType: "json",
+            contentType: 'application/json',
+            cache: false,
+            success: function (cities) {
+                setCities(cities)
+            }
+        });
+    }
+
+    function setSelectedMenu() {
+        $('.menu-ppal-cont').removeAttr('style');
+        $('[data-id=PopUpPostula]').parent().attr('style', 'background-color:#01928D;');
+    }
+
+    function countryChange() {
+        $('[name=CountryId]').on('change', function () {
+            getCitiesByCountry($(this).val());
+        })
+    }
+
+    function setInputSelect2() {
+        $('.select2-multiple').select2({
+            tags: true,
+            placeholder: '@Html.Raw(Resources.Global.Messages.KEYWORDS_HELP)'
+        }).on('change', function (event) {
+            if ($(".select2-selection li").size() > 1) {
+                $('.select2-multiple.input-validation-error').parent().find('.text-danger').removeClass('field-validation-error').addClass('field-validation-valid').find('span').remove();
+                $('.select2-multiple.input-validation-error').removeClass('input-validation-error').addClass('field-validation-valid');
+            } else {
+                $('.select2-multiple.field-validation-valid').parent().find('.text-danger').removeClass('field-validation-valid').addClass('field-validation-error').append('<span for="IdsTag" generated="true" class="">@Resources.Global.Messages.REQUIRED_FIELD</span>');
+                $('.select2-multiple.field-validation-valid').removeClass('field-validation-valid').addClass('input-validation-error');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        countryChange();
+        setSelectedMenu();
+        setInputSelect2();
+    })
+
+
+</script>
+<script type="text/javascript">
+    $("#ResponsibleNames").on("keyup", updateCount);
+    $("#ResponsibleEmail").on("keyup", updateCount);
+    $("#ResponsibleJobTitle").on("keyup", updateCount);
+    $("#ResponsibleOrganization").on("keyup", updateCount);
+    $("#ResponsibleEntities").on("keyup", updateCount);
+    $("#Name").on("keyup", updateCount);
+    $("#Description").on("keyup", updateCount);
+    $("#ConcreteProblems").on("keyup", updateCount);
+    $("#InnovativeUrbanSolution").on("keyup", updateCount);
+    $("#Documents").on("keyup", updateCount);
+</script>

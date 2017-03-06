@@ -1,0 +1,20 @@
+﻿@model System.Exception
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cities for Life</title>
+</head>
+<body>
+    <div align="center" style="background-color:#272727;width:643px;margin:0 auto;">
+        <img src="~/resources/images/current/error-cabezote.png" alt="error" />
+    </div>
+    <div align="center">
+        <img src="~/resources/images/current/pantalla_error.jpg" alt="error" />
+    </div>
+    <div>@Html.Hidden("error", Model.ToString())</div>
+</body>
+</html>

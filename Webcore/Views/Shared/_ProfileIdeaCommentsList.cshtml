@@ -1,0 +1,26 @@
+﻿@model List<Domain.Entities.FrontEnd.CommentsPaging>
+@{
+    string date = string.Empty;
+}
+@foreach(Domain.Entities.FrontEnd.CommentsPaging comment in Model)
+{
+<div class="perfil-comentario">
+    <div class="idea-comentario-admin">
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = comment.CommentId.Value, type = "comment", email = comment.Email, location = "profile-comments" })
+    </div>
+    <a href="@Url.Content("~")perfil/index/@(comment.UserId)">
+        <div class="perfil-comentario-img">
+            <img src="@Business.Utils.fixLocalUserImagePath(comment.UserImage)" alt="avatar" />
+        </div>
+    </a>
+    <div class="izquierda">
+        <a href="@Url.Content("~")perfil/index/@(comment.UserId)"><div class="perfil-comentario-n">@comment.UserNames</div></a>
+        <div class="perfil-comentario-f">@Business.Utils.ElapsedTime(comment.Creationdate.Value,Culture)</div>
+        <div class="clear"></div>
+        <div class="perfil-comentario-p">
+            @comment.Text
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+}

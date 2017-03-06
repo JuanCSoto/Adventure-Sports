@@ -1,0 +1,72 @@
+﻿@model Domain.Entities.Content
+@{
+    Layout = null;
+    string content = Url.Content("~").TrimEnd('/');
+    string classV2 = string.Empty;
+    if(Model.QuestionType != null && Model.QuestionType == Domain.Entities.Question.TypeQuestion.Seleccion_Multiple)
+    {
+        classV2 = "-v2";
+    }
+
+    string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+}
+<div id="create-idea-block" class="comenta-block">
+  @if(string.IsNullOrEmpty(classV2))
+  {
+    <h3>@Resources.Extend.Messages.INSPIRED</h3>
+  }
+  else
+  {
+    <h3>@Resources.Extend.Messages.WRITECOMMENT</h3>
+  }
+	<h6><span id="idea-text-counter">@Model.TextLenght</span><span>&nbsp;</span>@Resources.Global.Messages.CHARACTERS</h6>
+    <div class="clear"></div>
+    <div class="comenta-txt@(classV2)">
+      <textarea id="idea-text" data-length="@Model.TextLenght"></textarea>      
+      <div id="idea-image-file-wraper">
+        <div class="img-vertical-middle">
+          <img id="idea-image-file" class="fit-image" alt="empty" />
+        </div>
+          <img id="idea-image-delete" src="~/Resources/Images/delimage.gif" alt="icon" />
+      </div>
+      <div class="clear"></div>
+      <div class="hashtag-wraper">
+        <div class="hashtag-container">
+          
+        </div>
+      </div>      
+    </div>
+    
+    <div class="clear"></div>
+    <div>
+        <div class="comenta-media-block">
+            <a class="foto">
+              <iframe id="frame-idea-file" src="@(content)/idea/uploadideaimage" scrolling="no" onload="checkIframeImageLoaded('frame-idea-file', 0);"></iframe>
+            </a>          
+            <div class="content-tooltip">                
+                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -86px; margin-top: 32px;">
+                    <div class="tooltip">@Resources.Extend.Messages.SUPPORTPHOTO</div>
+                </div>
+            </div>
+            <input type="hidden" id="idea-image-name" />
+            <div class="content-tooltip">
+                <a class="video"></a>                
+                <div class="comunidad-info" style="display: none; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565; margin-left: -43px; margin-top: 32px;">
+                    <div class="tooltip">@Resources.Extend.Messages.SUPPORT</div>
+                </div>
+            </div>
+            <input id="idea-video-url" style="display: none;" />            
+        </div>        
+        <div class="participa-block margen-der2">
+            
+          @*  <a id="@(Culture == "es" ? "create-idea-espanol" : "create-idea-ingles")">@buttonText</a>*@
+            
+         <a id="create-idea">@Resources.Global.Messages.PARTICIPATES</a>
+            <div class="participa-comentarios">
+                <h1>@Model.Ideas</h1>
+                <span></span></div>
+        </div>
+        <div class="clear"></div>
+        <div id="error-file" class="error" style="float: left; display:none;" data-id="0">@Resources.Extend.Messages.IMAGEMX</div>
+    </div>
+</div>

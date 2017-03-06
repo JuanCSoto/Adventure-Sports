@@ -1,0 +1,40 @@
+﻿@model Webcore.Areas.Admin.Models.Banners
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    deleteBanner = function () {
+        return confirm('@Resources.Extend.Messages.DELETE_ITEM');
+    };
+
+    searchbanner = function () {
+        window.location.href = '@Url.Action("Index", new { Area = "Admin" })?name=' + $('#txfind').val();
+    };
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" href="@Url.Action("Detail", "Banner", new { Area = "Admin" })">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px; font-family: Segoe UI Light;">@Resources.Global.Messages.NEW</span></a>
+    <a onclick="searchbanner()" class="hrefmen" href="javascript:void(0);">
+        <img border="0" width="23" height="23" src="~/resources/images/25search.gif" />
+        <span>@Resources.Global.Messages.FIND</span></a>&nbsp;&nbsp;<input onkeypress="findsubm(event, function() { searchbanner(); })" onblur="blurfind(this, '@Resources.Extend.Messages.FIND_BY_NAME')" onfocus="focusfind(this, '@Resources.Extend.Messages.FIND_BY_NAME')" id="txfind" class="textfind inactive" type="text" value='@(Request.QueryString["name"] != null ? Request.QueryString["name"] : Resources.Extend.Messages.FIND_BY_NAME)' />
+    <hr />
+    <ul id="listado">
+        @foreach (Domain.Entities.Banner item in Model.CollBanners)
+        {
+            <li><span class="sptitle">@item.Name</span><br />
+                <span class="spdate">@(item.Active.Value ? Resources.Global.Messages.ACTIVE : Resources.Global.Messages.INACTIVE)</span> <a onclick="return deleteBanner()" href="@Url.Action("Delete", new { Area = "Admin", id = item.BannerId.Value })">
+                    <img title="@Resources.Global.Messages.DELETE" border="0" align="right" width="25" height="25" src="~/resources/images/25del.gif" /></a>
+                <a href="@Url.Action("Detail", new { Area = "Admin", id = item.BannerId.Value })">
+                    <img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+        }
+    </ul>
+    <div align="right">
+        @(new Business.Paginator(HttpContext.Current, Model.Pagininfo).GetPaginator())
+    </div>
+</div>

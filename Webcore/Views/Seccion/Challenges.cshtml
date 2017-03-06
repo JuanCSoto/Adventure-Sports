@@ -1,0 +1,28 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.Challenges Entity = (Business.FrontEnd.Challenges)Model.Entity;
+    
+}
+<div class="contenedor">
+    <div class="seccion-titulo">
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.CHALLENGES_DESCRIPTION, type = "frontend" })
+        <h1>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.CHALLENGES_PLURAL)</h1>
+        @*<div class="seccion-filtro">
+            <div id="activoSubmenu" class="seccion-filtro-submenu">
+                <div>Activos</div>
+                <div>Finalizados</div>
+            </div>
+            <div class="seccion-filtro-act">Activos</div>
+            <a id="activoBoton"><img src="~/resources/images/mimedellin/flecha.png" border="0" alt="icon" /></a>
+        </div>*@
+        <div class="clear"></div>
+        <h2>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.CHALLENGES_DESCRIPTION)</h2>
+    </div>
+    <div class="clear"></div>
+    <div id="challenges-list-container" class="izquierda">
+        @Html.Partial("ChallengesList", Entity.CollChallenges)
+    </div>
+    <div class="clear"></div>        
+</div>

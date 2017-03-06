@@ -1,0 +1,124 @@
+﻿@model Domain.Entities.User
+@{
+    Layout = "~/Views/Layouts/_Layer.cshtml";
+    string content = Url.Content("~/").TrimEnd('/');
+}
+@if (Model.UserId.HasValue)
+{
+    <div id="registry-successful"></div>
+}
+else
+{
+    <div class="alerta registro">
+        <div class="alerta-titulo">
+            <h1>@ViewBag.CREATEACCOUNT</h1>
+            <a class="alerta-cerrar" href="@(content)/">
+                <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+            </a>
+        </div>
+        <div class="clear" style="height: 20px;"></div>
+        @using (Html.BeginForm("Usuario", "Registro", FormMethod.Post, new { id = "UserForm", enctype = "multipart/form-data" }))
+        {
+            <input type="hidden" name="googleToken" id="googleToken" />
+            <input type="hidden" name="facebookToken" id="facebookToken" />
+            <input type="hidden" name="linkedinToken" id="linkedinToken" />
+            <input type="hidden" name="twitterToken" id="twitterToken" />
+            <div class="registro-item">
+                <div class="registro-txt">@ViewBag.PROFILEPICTURE<span>:</span></div>
+                <div class="seleccionar-imagen">
+                    <a>+</a>
+                    <h4>@ViewBag.TXTSELIMG</h4>
+                    <div class="mm2-profile-image">
+                        <div class="img-vertical-middle">
+                            <img id="user-image-file" class="fit-image" src="~/files/imagesuser/default.png" alt="avatar" />
+                        </div>
+                    </div>
+                    <input id="imageName" name="imageName" type="hidden" value="@("~/files/imagesuser/default.png")" />
+                    <iframe id="frame-user-file" src="@(content)/registro/uploaduserimage" scrolling="no" onload="checkIframeImageLoaded('frame-user-file');"></iframe>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div id="error-file" class="error" style="display:none;">@ViewBag.TXTMAXIMAGE</div>
+            <div class="clear"></div>
+            <div class="registro-item">
+                <div class="registro-txt">@ViewBag.TXTFISRTLAST<span>:</span></div>
+                @Html.TextBoxFor(i => i.Names, new { @class = "registro-input", maxlength = "100", data_no_number = "true" })
+            </div>
+            <div class="clear"></div>
+            <div class="error">@Html.ValidationMessageFor(e => e.Names)</div>
+            <div class="clear"></div>
+
+
+            <div class="registro-item">
+                <div class="registro-txt">@Resources.Global.Messages.LANGUAGE</div>
+                @Html.DropDownListFor(i => i.LanguageId,
+          new[]
+          {
+          new SelectListItem{ Value = "2", Text = "Español" },
+          new SelectListItem{ Value = "1", Text = "Ingles" }
+          }, @Resources.Extend.Messages.TXTSELECTLANGAGE, new { @class = "registro-select ", data_val_required = @Resources.Extend.Messages.VALIDATIONIDIOMA })
+            </div>
+            <div class="clear"></div>
+            <div class="error">@Html.ValidationMessageFor(e => e.LanguageId)</div>
+            <div class="clear"></div>
+
+
+            <div id="register-email-wrapper">
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.EMAIL<span>:</span></div>
+                    @Html.TextBoxFor(i => i.Email, new { @class = "registro-input", maxlength = "150" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Email)</div>
+                <div class="clear"></div>
+            </div>
+            <div id="register-password-wrapper">
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.PASSWORD<span>:</span></div>
+                    @Html.PasswordFor(i => i.Password, new { @class = "registro-input", maxlength = "15" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Password)</div>
+                <div class="clear"></div>
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.TXTCONFPASS<span>:</span></div>
+                    @Html.PasswordFor(i => i.RePassword, new { @class = "registro-input", maxlength = "15" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.RePassword)</div>
+            </div>
+            <div class="clear"></div>
+            <div id="register-phone-wrapper" style="display: none;">
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.MOVIL<span>:</span></div>
+                    @Html.TextBoxFor(i => i.Phone, new { @class = "registro-input", maxlength = "10", data_only_number = "true" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Phone)</div>
+                <div class="clear"></div>
+            </div>
+            <div id="form-captcha" style="display: none;">
+                @Html.Partial("_Captcha", new Webcore.Models.Captcha())
+            </div>
+            <div class="registro-item">
+                <div class="aceptar-terminos">
+                    @Html.CheckBoxFor(c => c.Terms)
+                    <h4>@ViewBag.TXTHAVEACCEPT <a id="registry-terms">@ViewBag.TXTTERMCOND</a> @ViewBag.ANDTHE <a id="registry-privacy">@ViewBag.TXTPRIVPOLI</a> @ViewBag.TXTCOCREATION</h4>
+                </div>
+                <div class="clear"></div>
+                <div class="error error-term">@Html.ValidationMessageFor(e => e.Terms)</div>
+                <div class="clear"></div>
+            </div>
+        }
+        <div class="clear"></div>
+        <div class="centrado">
+            <div id="registro-aceptar" class="alerta-aceptar">
+                <a>
+                    <h3>@ViewBag.ACCEPT</h3>
+                    <span class="no-padding"></span>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+}

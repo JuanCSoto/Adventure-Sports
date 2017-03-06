@@ -1,0 +1,18 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+@{
+  Layout = "~/Views/Layouts/" + Model.Layout;
+  Business.FrontEnd.Notifications Entity = (Business.FrontEnd.Notifications)Model.Entity;  
+}
+
+<div class="mm2-container-page">
+  <div class="mm2-tittle-seccion">
+    <div class="mm2-tittle-name mm2-tittle-name-notifications">@ViewBag.NOTIFICATIONS</div>
+    <div class="mm2-title-name">@ViewBag.TXTUNTTRA</div>
+  </div>
+  <div class="clear"></div>
+  <div class="mm2-line-sep"></div>
+  <div id="main-notification-list" class="mm2-container-notifications">
+    
+  </div>
+</div>

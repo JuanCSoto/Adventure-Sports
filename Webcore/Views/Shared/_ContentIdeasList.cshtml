@@ -1,0 +1,145 @@
+﻿@model List<Domain.Entities.FrontEnd.IdeasPaging>
+@{
+  
+  int? userId = ViewBag.CurrentUserId;
+
+  string date = string.Empty;
+  Domain.Entities.FrontEnd.Video video = null;
+
+  string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+  string picture = siteUrlRoot + "/1024.png";
+  bool userLikeNoLike;
+
+  string classV2 = string.Empty;
+  if (Model.Count > 0 && Model[0].QuestionType != null && Model[0].QuestionType == Domain.Entities.Question.TypeQuestion.Seleccion_Multiple)
+  {
+    classV2 = "-v2";
+  }
+
+  string type = string.Empty;
+  if (Model.Count > 0 && Model[0].QuestionType != null)
+  {
+    type = "question";
+  }
+  else
+  {
+    type = "challenge";
+  }
+
+  ViewBag.IdeaOwner = false;
+}
+
+@foreach (Domain.Entities.FrontEnd.IdeasPaging idea in Model)
+{
+  video = Business.Utils.GetVideoFromUrl(idea.Video);
+  date = Business.Utils.ElapsedTime(idea.Creationdate.Value,Culture);
+  userLikeNoLike = idea.UserNoLike.Value || idea.UserLike.Value;
+<div data-id="@idea.IdeaId" class="ideas-item coment@(classV2)">    
+  <div class="edit-container"></div>
+    @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = idea.IdeaId.Value, type = "idea", email = idea.Email, location = "ideas", parentType = type })
+    <div class="ideas-item-usuario">        
+        <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+        <img border="0" src="@Business.Utils.fixLocalUserImagePath(idea.UserImage)" alt="avatar" />
+        </a>
+    </div>
+    <div class="izquierda usuario">
+        <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })"><div class="idea-usuario">@idea.UserNames</div><div class="clear"></div>
+        <div class="idea-fecha"><span></span> @date</div></a>		
+    </div>
+    <div class="clear"></div>
+    <div class="idea-contenido@(classV2)">
+        
+            @if (!string.IsNullOrEmpty(idea.Image))
+            {
+              picture = siteUrlRoot + "/files/ideas/" + idea.Image;
+            <div class="idea-click-area" data-id="@idea.IdeaId" data-friendly="@idea.Friendlyurlid"><img src="~/files/ideas/@idea.Image" alt="idea image" /></div>
+            }
+            else if (video != null)
+            {                
+                <div class="idea-video-wraper">
+                @if (video.Type == "youtube")
+                {
+                  picture = "http://img.youtube.com/vi/" + video.ID + "/default.jpg";
+            <iframe class="idea-video-player" type="text/html" src="http://www.youtube.com/embed/@video.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>        
+                }
+                else if (video.Type == "vimeo")
+                {
+            <iframe class="idea-video-player" src="http://player.vimeo.com/video/@video.ID" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>                        
+                }   
+                </div>             
+            }
+            <p class="idea-text" data-render-url="true">
+                @idea.Text
+            </p>
+            <div class="clear"></div>
+        <div class="idea-click-area" data-id="@idea.IdeaId" data-friendly="@idea.Friendlyurlid">
+            <a>@Resources.Extend.Messages.SEEMORE</a>
+            <div class="clear"></div>
+        </div>
+        <div class="idea-social@(classV2)">
+            <div class="reportar2" data-id="@idea.IdeaId">@Resources.Global.Messages.REPORT</div>
+            @if (userId.HasValue && idea.UserId == userId)
+            {
+              <div class="element-action2 editar2" data-id="@idea.IdeaId" data-type="@type">@Resources.Global.Messages.EDIT</div>
+    <div class="element-action2 borrar2" data-id="@idea.IdeaId" data-type="@type" data-title-modal="@Resources.Extend.Messages.DELETE_IDEA_TITLE" data-message-modal="@Resources.Extend.Messages.DELETE_IDEA_MESSAGE">@Resources.Global.Messages.ERASE</div>
+            }
+            <div class="clear"></div>
+            @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl()
+       {
+         ideaId = idea.IdeaId.Value.ToString(),
+         name = idea.Text, link = siteUrlRoot + "/" + idea.Friendlyurlid,
+         picture = picture,
+         caption = "",
+         descriptionFB = "Así podemos crear la ciudad que soñamos",
+         descriptionTW = "Así podemos crear la ciudad que soñamos",
+         description = "Así podemos crear la ciudad que soñamos"
+       })
+            <div class="reportar" data-id="@idea.IdeaId">@Resources.Global.Messages.REPORT</div>
+          @if (userId.HasValue && idea.UserId == userId)
+          {
+            ViewBag.IdeaOwner = true;
+            <div class="element-action editar" data-id="@idea.IdeaId" data-type="@type">@Resources.Global.Messages.EDIT</div>
+    <div class="element-action borrar" data-id="@idea.IdeaId" data-type="@type" data-title-modal="@Resources.Extend.Messages.DELETE_IDEA_TITLE" data-message-modal="@Resources.Extend.Messages.DELETE_IDEA_MESSAGE">@Resources.Global.Messages.ERASE</div>
+          }
+          else
+          {
+              ViewBag.IdeaOwner = false;
+          }
+            <div class="gusta">                
+                <a @(userLikeNoLike ? "style=background-color:#A7A7A7;" : "class=megusta-click") data-id="@idea.IdeaId">
+                    <span class="megusta" @(idea.UserLike.Value ? "" : "")></span>
+                    <span class="votes" @(userLikeNoLike ? "style=background-color:#777;" : "")>@idea.Likes</span>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="idea-comentarios com@(classV2)">
+            <div id="comments-idea-container-@idea.IdeaId">
+                @if (idea.CollComment.Count > 0 && classV2.Length > 0)
+                {
+                  idea.CollComment[0].QuestionType = Domain.Entities.Question.TypeQuestion.Seleccion_Multiple;
+                }
+                @Html.Partial("_ContentIdeaCommentsList", idea.CollComment)
+            </div>
+            <div class="idea-comentario com@(classV2)">
+                <div class="idea-comentario-imagen">
+                @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                {
+                    <img src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                }
+                </div>
+                <textarea id="comment-idea-text-@idea.IdeaId" data-id="@idea.IdeaId" data-view="_ContentIdeaCommentsList" data-size="3" data-container="#comments-idea-container-@idea.IdeaId" data-selector=".idea-comentario-imagen img" data-scroll="" data-length="200" data-event-bind="false" class="@(classV2.Length > 0 ? "coment-txt" : "")"></textarea>
+				        <div class="comentar-coment ccv2">@Resources.Global.Messages.COMMENT</div>
+                <div class="comentar-counter contv2"><span id="comment-idea-counter-@idea.IdeaId">200</span>@Resources.Global.Messages.CHARACTERS</div>
+				        <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>                     
+</div>
+<div class="clear"></div>
+}    

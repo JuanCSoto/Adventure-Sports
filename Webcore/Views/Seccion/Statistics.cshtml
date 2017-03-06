@@ -1,0 +1,340 @@
+﻿@model Webcore.Models.FESeccion<object>
+@{
+  Layout = "~/Views/Layouts/" + Model.Layout;
+  Business.FrontEnd.Statistics Entity = (Business.FrontEnd.Statistics)Model.Entity;
+  if (Entity.Ages != null)
+  {
+    Entity.Ages.Remove("Desconocido");
+  }
+  if (Entity.Professions != null)
+  {
+    Entity.Professions.Remove("Desconocido");
+  }
+  if (Entity.Categories != null)
+  {
+    Entity.Categories.Remove("Sin categoría");
+  }
+  int count = 0;
+  int total = 0;
+  string content = Url.Content("~/").TrimEnd('/');
+  string filterDate = Entity.RawDate.Replace(" ", string.Empty);
+
+  int pageIndex = 0;
+  if (ViewBag.PageIndex != null)
+  {
+    pageIndex = ViewBag.PageIndex;
+  }
+
+  DateTime now = DateTime.Now.Date;
+  bool genreShow = false;
+  bool ageShow = false;
+  bool interestsShow = false;
+}
+
+
+<script>  
+
+  @if (string.IsNullOrEmpty(Entity.View))
+  {
+  @:var statisticsView = '';
+  }
+  else
+  {
+  @:var statisticsView = '/@(Entity.View)';
+  }
+
+  $(document).ready(function () {
+    pickmeupInit();
+    $('#statistics-date').pickmeup({
+      flat: false,
+      calendars: 3,
+      mode: 'range',
+      max: '',
+      @if (Entity.Start.HasValue && Entity.End.HasValue)
+      {
+      @:date: ['@Entity.Start.Value.ToString("yyyy-MM-dd")', '@Entity.End.Value.ToString("yyyy-MM-dd")'],
+      }
+      position: 'bottom',
+      first_day: 0,
+      hide_on_select: true,
+      change: function (date) {
+        if (date[0] != date[1]) {
+          if (dateDiff(date[0], date[1]) > (30 * 6)) {
+            $('#statistics-date').val('');
+            systemAlert('Estadisticas', 'Filtro máximo de 6 meses');
+          }
+          else {
+            @if (string.IsNullOrEmpty(Entity.View))
+            {
+              @:redirect(path + '/estadisticas/' + date[0] + '-' + date[1]);
+            }
+            else
+            {
+              @:redirect(path + '/estadisticas/@(Entity.View)/' + date[0] + '-' + date[1]);
+            }
+          }
+        }
+      }
+    });
+    $('.pickmeup').appendTo('.datepick-container');
+
+    switch ('@(Entity.View)') {
+      case 'ranking':
+        rankingPaging(0);
+        break;
+      case 'categorias':
+        categoryPaging(0);
+        break;
+      case 'profesiones':
+        professionPaging(0);
+        break;
+      case 'tendencias':
+        hashtagPaging(0);
+        break;
+    }
+
+  });
+</script>
+
+<div class="mm2-tittle-seccion-estadistics">
+  <div class="mm2-container-all-title-stadisticts">
+    <div class="mm2-tittle-name">@ViewBag.ACTIVITY</div>
+    <div class="mm2-menu-seccion-estadisticas">
+      <a href="@content/estadisticas/@filterDate" class="mm2-item-menu-estadisticas @(string.IsNullOrEmpty(Entity.View) ? "selected" : string.Empty)">@ViewBag.GENERAL</a>
+      <a href="@content/estadisticas/ranking/@filterDate" class="mm2-item-menu-estadisticas @(Entity.View.Equals("ranking") ? "selected" : string.Empty)">@ViewBag.RANKING</a>
+      <a href="@content/estadisticas/categorias/@filterDate" class="mm2-item-menu-estadisticas @(Entity.View.Equals("categorias") ? "selected" : string.Empty)">@ViewBag.CATEGORIES</a>
+      <a href="@content/estadisticas/profesiones/@filterDate" class="mm2-item-menu-estadisticas @(Entity.View.Equals("profesiones") ? "selected" : string.Empty)">@ViewBag.PROFESSIONS</a>
+      <a href="@content/estadisticas/tendencias/@filterDate" class="mm2-item-menu-estadisticas @(Entity.View.Equals("tendencias") ? "selected" : string.Empty)">@ViewBag.TRENDS</a>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>
+<div class="container-date-one">
+  <div class="datepick-container">
+    <span style="line-height: 35px; font-size: 13px;">@ViewBag.VIEW <span>:</span></span>
+    <select id="date-select" class="datepick-select" data-now="@now.ToString("yyyy-MM-dd")">
+      <option @(Entity.Start.HasValue && Entity.Start == now ? "selected" : string.Empty) value="@now.ToString("yyyy-MM-dd")">hoy</option>
+      <option @(Entity.Start.HasValue && Entity.Start == now.AddDays(-7) ? "selected" : string.Empty) value="@now.AddDays(-7).ToString("yyyy-MM-dd")">@ViewBag.TXTULTSEM</option>
+      <option @(Entity.Start.HasValue && Entity.Start == now.AddMonths(-1) ? "selected" : string.Empty) value="@now.AddMonths(-1).ToString("yyyy-MM-dd")">@ViewBag.TXTULTMES</option>
+      <option @(Entity.Start.HasValue && Entity.Start == now.AddYears(-1) ? "selected" : string.Empty) value="@now.AddYears(-1).ToString("yyyy-MM-dd")">@ViewBag.TXTALLYEAR</option>
+      <option @(!Entity.Start.HasValue ? "selected" : string.Empty) value="">@ViewBag.TXTBEGOFTIME</option>
+      <option value="0">@ViewBag.TXTDATRANG</option>
+    </select>
+    <input class="datepick-input" id="statistics-date" type="text" value="@Entity.RawDate" />
+  </div>
+</div>
+@switch (Entity.View)
+{
+  default:
+  <script>
+    google.load('visualization', '1.0', { 'packages': ['corechart'] });
+    google.setOnLoadCallback(drawChart);
+
+    var colors = {
+      0: { color: '#009ada' },
+      1: { color: '#081947' },
+      2: { color: '#bbc629' },
+      3: { color: '#feee1c' },
+      4: { color: '#c4302c' },
+      5: { color: '#dc8100' }
+    };
+
+    function drawChart() {
+      var dataGenre = new google.visualization.DataTable();
+      dataGenre.addColumn('string', '');
+      dataGenre.addColumn('number', '');
+
+      @if (Entity.Female > 0 || Entity.Male > 0)
+      {
+        genreShow = true;
+        <text>
+      dataGenre.addRows([
+        ['Hombres', @Entity.Male],
+        ['Mujeres', @Entity.Female],
+        //['Desconocido', @Entity.Unknown],
+      ]);
+
+      var chartGenre = new google.visualization.PieChart(document.getElementById('chart-genre'));
+      chartGenre.draw(dataGenre, { sliceVisibilityThreshold: 0, backgroundColor: '#F6F6F6', slices: colors, chartArea: { width: '100%', height: '100%' }, legend: { position: 'left', alignment: 'center' }, pieHole: 0.4 });
+        </text>
+      }
+
+      var dataAge = new google.visualization.DataTable();
+      dataAge.addColumn('string', '');
+      dataAge.addColumn('number', '');
+      @if (Entity.Ages.Sum(s => Convert.ToInt32(s.Value)) > 0)
+      {
+        ageShow = true;
+        <text>
+      dataAge.addRows([
+          @foreach (KeyValuePair<string, string> age in Entity.Ages)
+          {
+            @:['@age.Key', @age.Value],
+          }
+      ]);
+
+      var chartAge = new google.visualization.PieChart(document.getElementById('chart-age'));
+      chartAge.draw(dataAge, { sliceVisibilityThreshold: 0, slices: colors, chartArea: { width: '100%', height: '100%' } });
+        </text>
+      }
+
+      var dataInterest = new google.visualization.DataTable();
+      dataInterest.addColumn('string', '');
+      dataInterest.addColumn('number', '');
+      @if (Entity.Interests.Sum(s => Convert.ToInt32(s.Value)) > 0)
+      {
+        interestsShow = true;
+        <text>
+      dataInterest.addRows([
+          @foreach (KeyValuePair<string, string> interest in Entity.Interests)
+          {
+            @:['@Html.Raw(interest.Key)', @interest.Value],
+          }
+      ]);
+
+      var chartInterest = new google.visualization.PieChart(document.getElementById('chart-interest'));
+      chartInterest.draw(dataInterest, { sliceVisibilityThreshold: 0, slices: colors, chartArea: { width: '100%', height: '100%' } });
+        </text>
+      }
+    }
+
+    $(window).resize(function () {
+      drawChart();
+    });
+  </script>
+  <div class="mm2-container-all-stadistics">
+
+
+    <div class="mm2-filters-chart-all"></div>
+    <div class="mm2-people-registrics-chart">
+      <div>
+        <div class="mm2-container-maindat">
+          <div class="mm2-title-total-users">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.USERS_PLURAL,Model.CurrentLanguage.LanguageId): </div>
+          <div class="mm2-total-users-estadistics">@Entity.TotalUsers.ToString("##,##0")</div>
+        </div>
+        <div class="mm2-container-maindat2">
+          <div class="mm2-title-total-users">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.STATISTICS_IDEAS_CREATED): </div>
+          <div class="mm2-total-users-estadistics">@Entity.TotalIdeas.ToString("##,##0")</div>
+        </div>
+        <div id="chart-genre" style="height: 370px">
+          @if (!genreShow)
+          {
+            <div class="img-empty"></div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="mm2-topuser-stadistics-chat">
+      @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.STATISTICS_USER_TOP, type = "frontend" })
+      <div class="mm2-title-box-stadistics">
+        @Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.STATISTICS_USER_TOP)
+      </div>
+      <div class="margin-box-stats1">
+        @Html.Partial("_StatisticsRankingList", Entity.ActiveUsers)
+      </div>
+    </div>
+    <div class="mm2-box-chart-content">
+      <div>
+        <div class="mm2-title-box-stadistics">@ViewBag.AGES</div>
+        <div id="chart-age" class="chart-margin">
+          @if (!ageShow)
+          {
+            <h5>@ViewBag.TXTNOHAYRESBUS</h5>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="mm2-box-chart-content">
+      <div>
+        <div class="mm2-title-box-stadistics">@ViewBag.INTERESTS </div>
+        <div id="chart-interest" class="chart-margin">
+          @if (!interestsShow)
+          {
+            <h5>@ViewBag.TXTNOHAYRESBUS</h5>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="mm2-box-chart-content">
+      <div>
+        <div class="mm2-title-box-stadistics">@ViewBag.PROFESSIONS</div>
+        <div class="margin-box-stats">
+          @Html.Partial("_StatisticsProfessionList", Entity.Professions)
+        </div>
+      </div>
+    </div>
+    <div class="mm2-lateral-stadistics-chart">
+      <div class="mm2-box-chart-content2">
+        <div>
+          <div class="mm2-title-box-stadistics">@ViewBag.TRENDS</div>
+          <div class="margin-box-stats">
+            @Html.Partial("_StatisticsHashTagList", Entity.Hashtags)
+          </div>
+        </div>
+      </div>
+      <div class="mm2-box-chart-content2">
+        <div>
+          <div class="mm2-title-box-stadistics">@ViewBag.TXTCATDEPUL</div>
+          <div class="margin-box-stats">
+            @Html.Partial("_StatisticsCategoryList", Entity.Categories)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mm2-list-ideas-chart">
+      <div>
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.STATISTICS_USER_TOP, type = "frontend" })
+        <div class="mm2-title-box-stadistics">
+          @Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.STATISTICS_IDEA_TOP)
+        </div>
+        @foreach (Domain.Entities.FrontEnd.IdeasPaging idea in Entity.Ideas)
+        {      
+          <div class="mm2-item-ideas-most-est">
+            <div class="mm2-img-box2-estad">
+              <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+                <div class="mm2-img-userclose">
+                  <div class="img-vertical-middle-overflow">
+                    <img class="min-35" border="0" src="@Business.Utils.fixLocalUserImagePath(idea.UserImage)" alt="avatar" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mm2-idea-estad-txt">
+              <a href="@Url.Action("Index", "Perfil", new { id = idea.UserId })">
+                <div class="mm2-user-text-idea">@idea.UserNames</div>
+              </a>
+              <div class="mm2-text-idea-estadistics1" data-crop-height="25">@idea.Text</div>
+            </div>
+            <div class="idea-click-area" data-id="@idea.IdeaId" data-friendly="@idea.Friendlyurlid">
+              <div class="mm2-plus-ideas"><a href="@Url.Content("~/" + idea.Friendlyurlid)"></a></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+        }
+      </div>
+    </div>
+  </div>
+        break;
+  case "ranking":  
+  <div id="statistics-ranking">
+    @*Html.Partial("_StatisticsRankingList", Entity.ActiveUsers)  *@
+  </div>
+        break;
+  case "categorias":  
+  <div id="statistics-category">
+    @*Html.Partial("_StatisticsCategoryList", Entity.Categories) *@
+  </div>
+        break;
+  case "profesiones":
+  <div id="statistics-profession">
+    @*Html.Partial("_StatisticsProfessionList", Entity.Professions) *@
+  </div>
+        break;
+  case "tendencias":
+  <div id="statistics-hashtag">
+    @*Html.Partial("_StatisticsHashTagList", Entity.Hashtags) *@
+  </div>
+        break;
+}

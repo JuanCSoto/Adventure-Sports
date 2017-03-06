@@ -1,0 +1,53 @@
+﻿@model string
+@{    
+  Layout = "~/Views/Layouts/_ImageFrame.cshtml";
+  bool? edit = ViewBag.Edit;
+  int? ideaId = ViewBag.IdeaId;
+}
+
+<div id="wraper-file">
+  @using (Html.BeginForm("uploadblogimage", "blogentry", FormMethod.Post, new { id = "blog-form-file", enctype = "multipart/form-data" }))
+  {
+    <input id="frame-file" name="frameFile" class="frame-file" type="file" />
+  
+    if (edit.HasValue && edit.Value && ideaId.HasValue)
+    {
+    <input name="edit" type="hidden" value="true" />
+    <input name="ideaId" type="hidden" value="@ideaId" />
+    }
+
+  }
+</div>
+
+<script>   
+  @if (Model != null)
+  {
+  <text>  
+  parent.iFrameImageLoaded = true;
+  parent.$('#error-file').hide();
+  parent.showBlogImage('@Model');  
+  </text>    
+  }
+  else
+  {
+    <text>
+  if ($("#wraper-file").length) {
+    $("#wraper-file").mousemove(function (event) {
+      var offTop = $(this).offset().top;
+      width = $(this).find("#frame-file").width();
+      $(this).find("#frame-file").css({
+        left: event.pageX - width + 50,
+        top: event.pageY - offTop - 10
+      })
+    });
+
+    $('#frame-file').change(function () {
+      parent.iFrameImageLoaded = false;
+      $('#blog-form-file').submit();
+    });
+  }
+  </text>  
+  }
+</script>
+
+

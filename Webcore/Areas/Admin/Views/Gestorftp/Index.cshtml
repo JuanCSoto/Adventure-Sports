@@ -1,0 +1,149 @@
+﻿@model Webcore.Areas.Admin.Models.Gestorftp
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    bindfiles = function (node, val) {
+        $('#conttree').find('.cll').remove();
+        $(node).find('nobr').before('<img class="cll" src="@Url.Content("~/resources/images/select.gif")" />');
+        $('#loading').show();
+        $.post('@Url.Action("GetFiles", "Gestorftp", new { Area = "Admin" })', { path: val }, function (data) {
+            $('#dvfiles').html(data);
+            $('#loading').hide();
+            $('#divub').html(val.replace('@Server.MapPath("~").Replace(@"\", "\\\\")', ''));
+            $('#pathroot').val($('#divub').html());
+            $('#filePath').val(val);
+            $('#contentactions').slideUp('fast');
+            $('#fileid').val(null);
+            objli = null;
+        });
+    };
+
+    expandftp = function (node, val) {
+        if ($(node).attr('src') == '@Url.Content("~/resources/images/15min.gif")') {
+            $(node).attr('src', '@Url.Content("~/resources/images/15add.gif")');
+            var obj = node.parentNode.parentNode;
+            $(obj.getElementsByTagName('ul')[0]).slideUp('fast', function () {
+                $(obj.getElementsByTagName('ul')[0]).remove();
+            });
+        }
+        else {
+            $('#loading').show();
+            $.post('@Url.Action("GetDirectory", "Gestorftp")', { path: val }, function (data) {
+                $(node).attr('src', '@Url.Content("~/resources/images/15min.gif")');
+                if (data.Iscontain) {
+                    var obj = node.parentNode.parentNode;
+                    $(node.parentNode.parentNode).append(data.html);
+                    $(obj.getElementsByTagName('ul')[0]).slideDown('fast');
+                    $('#loading').hide();
+                }
+            });
+        }
+    };
+
+    selectli = function (obj, opt, val) {
+        if (opt == 'on') {
+            $('#listado > li').each(function (index) {
+                $(this).removeClass('liact');
+                $(this).attr('data-sel', 'on');
+            });
+
+            $(obj).addClass('liact');
+            $(obj).attr('data-sel', 'off');
+            $('#contentactions').slideDown('fast');
+            $('#fileid').val(val);
+            objli = obj;
+        } else {
+            $(obj).removeClass('liact');
+            $(obj).attr('data-sel', 'on');
+            $('#contentactions').slideUp('fast');
+            $('#fileid').val(null);
+            objli = null;
+        }
+    };
+
+    var objli = null;
+
+    getinfo = function () {
+        $.post('@Url.Action("Getinfofile", "Gestorftp")', { path: $('#fileid').val() }, function (response) {
+            if (response != null && response.result) {
+                var str = '<b>@Resources.Global.Messages.NAME:</b> ' + response.name + '<br /><b>@Resources.Global.Messages.CREATION_DATE:</b> ' + response.datejoin +
+                            '<br /><b>@Resources.Global.Messages.MODIFIED_DATE:</b> ' + response.datelast + '<br /><b>@Resources.Global.Messages.SIZE:</b> ' + response.size + 'Kb';
+                alerts(str);
+            }
+        });
+    };
+
+    delfile = function () {
+        $('#loading').show();
+        $.post('@Url.Action("Deletefile", "Gestorftp")', { path: $('#fileid').val() }, function (response) {
+            if (response != null && response.result) {
+                $(objli).remove();
+                $('#contentactions').slideUp('fast');
+                $('#fileid').val(null);
+                objli = null;
+                $('#loading').hide();
+            }
+        });
+    };
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Model.Module.Name</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    <div id="conttree" class="ftp">
+        <span class="spntitle">@Resources.Global.Messages.FOLDERS</span>
+        <div style="border: none !important;" id="dvDirectory">
+            <ul style="width: auto;">
+                <li style="width: 300px;">
+                    <div onclick="bindfiles(this, '@Server.MapPath("~").Replace(@"\", "\\\\")')">
+                        <img src="~/resources/images/icondir.gif" />
+                        @Resources.Global.Messages.ROOT
+                    </div>
+                    <ul style="width: auto;">
+                        @foreach (KeyValuePair<string, string> item in Model.CollDirectory)
+                        {
+                            <li style="width: 300px;">
+                                <div onclick="bindfiles(this, '@item.Value.Replace(@"\", "\\\\")')">
+                                    <img onclick="expandftp(this, '@item.Value.Replace(@"\", "\\\\")')" height="15" width="15" src="~/resources/images/15add.gif" />
+                                    <img src="~/resources/images/icondir.gif" />
+                                    <nobr>@item.Key</nobr>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="contctn" class="ftp">
+        <span class="spntitle">@Resources.Global.Messages.FILES</span>
+        <div id="dvfiles">
+        </div>
+    </div>
+    <div style="clear: both">
+        <hr />
+        @using (Html.BeginForm("Uploadfile", "Gestorftp", FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+        {
+            <text>
+            <input type="hidden" id="pathroot" name="pathroot" />
+            <span class="spntitle">@Resources.Extend.Messages.LOAD_FILES</span><br />
+            @Resources.Extend.Messages.YOU_ARE_IN:
+            <br />
+            <span class="spdate">@Resources.Global.Messages.ROOT\<span id="divub"></span></span><br />
+            <input id="filePath" name="filePath" type="file" value="@Server.MapPath("~").Replace(@"\", "\\\\")" /><br />
+            <br />
+            <input onclick="$('#Form1').submit()" type="button" value="@Resources.Global.Messages.LOAD" class="buttons" />
+            </text>
+        }
+    </div>
+</div>
+<div style="display: none;" align="center" id="contentactions">
+    <input id="fileid" type="hidden" />
+    <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { delfile(); }"
+        title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+    <img onclick="getinfo();" title="@Resources.Global.Messages.INFORMATION" src="~/resources/images/45iw.png" />
+    <img onclick="$('.liact').removeClass('liact');$('#contentactions').slideUp('fast');$('#fileid').val(null);"
+        title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+</div>

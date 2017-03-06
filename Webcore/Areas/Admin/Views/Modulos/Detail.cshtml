@@ -1,0 +1,42 @@
+﻿@model Webcore.Areas.Admin.Models.Modulos
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div align="right">
+    <ul id="MenuP">
+        <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+    </ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "Modulos", FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+    {
+    @Html.ValidationSummary()
+    <ul id="fields">
+        <li>@Resources.Global.Messages.NAME<br />
+            @Html.TextBoxFor(t => t.Modul.Name, new { @class = "text", maxlength = "50" })
+        </li>
+        <li>@Resources.Global.Messages.CONTROLLER<br />
+            @Html.TextBoxFor(t => t.Modul.Controller, new { @class = "text", maxlength = "30" })
+        </li>
+        <li>Módulo padre<br />
+            @Html.DropDownList("Modul.ParentId", new SelectList(Model.CollModuls, "ModulId", "Name", Model.Modul != null ? Model.Modul.ParentId : null), "-Seleccione-", new { @class = "drops" })
+        </li>
+        <li>@Resources.Global.Messages.CONTENT<br />
+            @Html.CheckBox("Modul.IsContent", Model.Modul != null ? Model.Modul.IsContent.Value : false, new { @class = "check" })
+        </li>
+        <li>@Resources.Global.Messages.ACTIVE<br />
+            @Html.CheckBox("Modul.Active", Model.Modul != null ? Model.Modul.Active.Value : false, new { @class = "check" })
+        </li>
+    </ul>
+        }
+    <div align="center" id="contentactions">
+        <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null && Model.Modul != null && Model.Modul.IsBasic != null && !Model.Modul.IsBasic.Value)
+        {
+        <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>
+</div>

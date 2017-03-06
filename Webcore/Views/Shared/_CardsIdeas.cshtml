@@ -1,0 +1,30 @@
+﻿@model List<Domain.Entities.FrontEnd.IdeasPaging>
+@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');    
+}
+
+@if (ViewBag.ShowHeader)
+{
+  <div class="contenido result-header">
+    @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.IDEAS_DESCRIPTION, type = "frontend" })
+    <div class="contenido-tit">
+      <div class="comunidad-info" style="display: block; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+        <div class="tooltip">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.IDEAS_TOOLTIP)</div>
+      </div>
+      <a>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.IDEAS_PLURAL)</a>
+      <h2>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.IDEAS_DESCRIPTION)</h2>
+    </div>
+    <div class="clear"></div>
+  </div>
+}
+<div id="search-list" class="idea-search-result">
+  @if (Model.Count > 0)
+  {
+    @Html.Partial("_CardIdeasList", Model)
+  }
+  else
+  {
+    <h3>@Resources.Extend.Messages.NORESULTPARAMETRO</h3>
+  }
+</div>

@@ -1,0 +1,31 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string logo = string.Empty;
+}
+<div class="footer">  
+  <div class="footer-block">    
+
+    <div class="footer-al-s">@Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR, type = "frontend" })</div>
+
+    <div class="footer-terminos">
+      @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_CONTACT_US, type = "frontend" })
+      <a id="contact-us">@Resources.Global.Messages.CONTACTUS</a>
+      <span></span>
+      <a class="privacy">@Resources.Extend.Messages.DATAPROTECTION</a>
+      <span></span>
+      <a class="terms">@Resources.Extend.Messages.TXTTERMCOND</a>
+      <div class="mm2-container-logodasigno">
+        <div class="mm2-txt-footer">Powered by</div>
+        <div class="mm2-dasigno"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="footer-block2">
+  <div class="footer2">
+    <a style="float: left" class="privacy">@Resources.Extend.Messages.DATAPROTECTION</a>
+    <a style="float: right" class="terms">@Resources.Extend.Messages.TXTTERMCOND</a>
+  </div>
+</div>

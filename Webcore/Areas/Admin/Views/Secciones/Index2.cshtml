@@ -1,0 +1,159 @@
+﻿@model Webcore.Areas.Admin.Models.Secciones
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    var ctnback = new sectionclass();
+    initialize = function () { ctnback.funcinicializate(); };
+    $(document).ready(function () {
+        ctnback.funcinicializate();
+        ctnback.resizable();
+    });
+</script>
+<ul id="MenuP">
+    <li class="Menubig">Listado</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" onclick="ctnback.newsection(false)" href="javascript:void(0);">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px; font-family: Segoe UI Light;">@Resources.Global.Messages.NEW</span></a>
+    <hr />
+    <div id="contenttreecont">
+        <div id="divslice">
+            <div style="width: 240px;" id="conttree">
+                <span class="spntitle">@Resources.Global.Messages.SECTIONS</span>
+                <ul>
+                    <li>
+                        <div id="0">
+                            <img height="15" width="15" src="~/resources/images/15add.gif" />
+                            <span onclick="$('#conttree').find('.activ').removeClass('activ');$('#0').find('span').addClass('activ');$('#SectionId').val(null);ctnback.newsection(true)">@Resources.Global.Messages.ROOT</span></div>
+                        <ul>
+                            @foreach (Domain.Entities.Section item in Model.CollSections)
+                            {
+                                <li>
+                               <div id="@item.SectionId">
+                                        <nobr>
+                <img onclick="expand(this, @item.SectionId);" height="15" width="15" src="~/resources/images/15add.gif" />
+                <span onclick="ctnback.binddetail(@item.SectionId)">@item.Name</span></nobr>
+                                    </div>
+                                </li>
+                            }</ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="contctns">
+                <span class="spntitle">@Resources.Global.Messages.DETAIL</span>
+                <div id="seccontinfo">
+                    @Resources.Extend.Messages.INFORMATION_SECTION
+                </div>
+                <div id="seccont">
+                    <form id="fseccion">
+                    <input type="hidden" id="SectionId" />
+                    <input type="hidden" id="ParentId" />
+                    <input type="hidden" id="OldOrder" />
+                    <ul style="margin-left: 30px !important;" id="fields">
+                        <li>@Resources.Global.Messages.NAME<br />
+                            <input maxlength="100" data-val-required="El campo Nombre es obligatorio" id="Name"
+                                class="text val" type="text" />
+                        </li>
+                        <li>@Resources.Global.Messages.DESCRIPTION<br />
+                            <textarea data-val-required="El campo Descripción es obligatorio" id="Description"
+                                class="textmulti val"></textarea>
+                        </li>
+                        <li>
+                            <div class="divcheck2">
+                                Layout<br />
+                                <select data-val-required="El campo Layout es obligatorio" id="Layout" class="drops val">
+                                    <option>-@Resources.Global.Messages.SELECT-</option>
+                                    @foreach (string item in Model.CollLayouts)
+                                    {
+                                        <option value="@item">@item</option> 
+                                    }
+                                </select>
+                            </div>
+                            <div class="divcheck2">
+                                Template<br />
+                                <select data-val-required="El campo Template es obligatorio" id="Template" class="drops val">
+                                    <option>-@Resources.Global.Messages.SELECT-</option>
+                                    @foreach (string item in Model.CollTemplates)
+                                    {
+                                        <option value="@item">@item</option> 
+                                    }
+                                </select>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="divcheck2">
+                                Tipo de sección<br />
+                                <select data-val-required="El campo Tipo de sección es obligatorio" id="Sectiontype"
+                                    class="drops val">
+                                    <option>-@Resources.Global.Messages.SELECT-</option>
+                                    <option value="1">Principal</option>
+                                    <option value="2">Footer</option>
+                                    <option value="3">Oher</option>
+                                </select>
+                            </div>
+                            <div class="divcheck2">
+                                Target<br />
+                                <select data-val-required="El campo Target es obligatorio" id="Target" class="drops val">
+                                    <option>-@Resources.Global.Messages.SELECT-</option>
+                                    <option value="_blank">_blank</option>
+                                    <option value="_parent">_parent</option>
+                                    <option value="_search">_search</option>
+                                    <option value="_self">_self</option>
+                                    <option value="_top">_top</option>
+                                </select>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </li>
+                        <li id="liorder">
+                            <div class="divcheck2" style="width:242px !important;">
+                                @Resources.Global.Messages.FRIENDLY_URL<br />
+                                <input id="Friendlyname" type="text" class="text" style="width:210px !important;" />
+                            </div>
+                            <div class="divcheck2" style="width:100px !important;">
+                                @Resources.Global.Messages.ORDER<br />
+                                <div>
+                                    <div style="float: left">
+                                        <input style="width:50px !important;" disabled="disabled" type="text" id="Sectionorder" />
+                                        <input type="hidden" id="MaxValue" />
+                                    </div>
+                                    <div>
+                                        <div style="height: 9px;">
+                                            <img id="imup" onclick="ctnback.changeord(-1)" title="Subir orden" style="cursor: pointer;"
+                                                src="~/resources/images/o_up.gif" /></div>
+                                        <div style="height: 9px;">
+                                            <img id="imdown" onclick="ctnback.changeord(1)" title="Bajar orden" style="cursor: pointer;"
+                                                src="~/resources/images/o_down.gif" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="divcheck">@Resources.Global.Messages.ACTIVE<br />
+                                <input id="Active" class="check" type="checkbox" /></div>
+                            <div class="divcheck">
+                                Destacado<br />
+                                <input id="Private" class="check" type="checkbox" /></div>
+                            <div class="divcheck">
+                                Url exterior<br />
+                                <input id="Url" class="check" type="checkbox" /></div>
+                        </li>
+                        <li style="clear: both;">Url<br />
+                            <input maxlength="150" id="NavigateUrl" class="text" type="text" />
+                        </li>
+                        <li id="licur">
+                            <img onclick="ctnback.savesection()" title="@Resources.Global.Messages.SAVE" width="35" height="35" src="~/resources/images/35save.gif" />
+                            <img onclick="backsec()" title="@Resources.Global.Messages.CANCEL" width="35" height="35" src="~/resources/images/35cancel.gif" />
+                            <img id="imgdel" onclick="if (confirm('@Resources.Extend.Messages.DELETE_ITEM')) { ctnback.deletesection(); }" title="@Resources.Global.Messages.DELETE" width="35" height="35" src="~/resources/images/35del.gif" />
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model Webcore.Areas.Admin.Models.Roles
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    deleteModul = function () {
+        return confirm("@Resources.Extend.Messages.DELETE_ITEM");
+    };
+
+    updateparent = function (val) {
+        var id = $(val).attr('parentid');
+        if(id != '') {
+            if($(val).attr('checked')) {
+                $('#' + id).attr('checked', 'checked');
+            }
+        }
+    };
+</script>
+<div align="right">
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+    <li>@Resources.Global.Messages.LIST</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "Roles", FormMethod.Post, new { id = "Form1" }))
+    {
+    @Html.ValidationSummary()
+    <ul id="fields">
+        <li>@Resources.Global.Messages.NAME<br />
+            @Html.TextBoxFor(t => t.RolCustom.Name, new { @class = "text", maxlength = "50" })
+        </li>
+        <li>@Resources.Global.Messages.PERMISSIONS<br />
+            <table>
+                @foreach (Domain.Entities.Modul item in Model.CollModuls.Where(t => t.ParentId == null))
+                {
+                <tr>
+                    <td>
+                    <input onclick="updateparent(this)" parentid="@item.ParentId" id="@item.ModulId" name="idsModul" checked="@(Model.CollRolmodul != null &&
+                    Model.CollRolmodul.FirstOrDefault(t => t.ModulId == item.ModulId) != null)" value="@item.ModulId" type="checkbox" /> <label for="@item.ModulId">@item.Name</label></td>
+                </tr>
+                    foreach (Domain.Entities.Modul subitem in Model.CollModuls.Where(t => t.ParentId == item.ModulId))
+                    {
+                <tr>
+                    <td style="padding-left:25px;"><input onclick="updateparent(this)" parentid="@subitem.ParentId" id="@subitem.ModulId" name="idsModul" checked="@(Model.CollRolmodul != null &&
+                        Model.CollRolmodul.FirstOrDefault(t => t.ModulId == subitem.ModulId) != null)" value="@subitem.ModulId" type="checkbox" /> <label for="@subitem.ModulId">@subitem.Name</label></td>
+                </tr>
+                    }
+                }
+            </table>
+        </li>
+    </ul>
+    }
+    <div align="center" id="contentactions">
+        <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null)
+        {
+        <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>
+</div>

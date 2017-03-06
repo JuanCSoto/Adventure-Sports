@@ -1,0 +1,94 @@
+﻿@model Webcore.Areas.Admin.Models.Idea
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    var ctnback = new contentclass();
+    ctnback.NotFound = '@Resources.Extend.Messages.NO_RECORDS_FOUND';
+    ctnback.TextFind = '@Resources.Extend.Messages.FIND_BY_TEXT';
+    ctnback.UrlDetailContent = '@Url.Action("Detail", "Idea", new { Area = "Admin", mod = Model.Module.ModulId })';
+    initialize = function () { ctnback.droppable(); }
+
+    $(function () {
+        ctnback.resizable();
+        ctnback.sortable();
+        ctnback.draggable();
+        ctnback.droppable();
+
+        $('#SectionId').val(0);
+    });
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <div>
+        <a onclick="ideacleanall()" class="hrefmen" href="javascript:void(0);">
+            <img title="@Resources.Global.Messages.CLEAN" id="imgmore" border="0" width="23" height="23" src="~/resources/images/25clean.gif" /></a>
+        <a onclick="$('#loading').show();ideafindall(1, @Model.Module.ModulId);" class="hrefmen" href="javascript:void(0);">
+            <img border="0" width="23" height="23" src="~/resources/images/25search.gif" />
+            <span>@Resources.Global.Messages.FIND</span></a>&nbsp;&nbsp;
+        <input onkeypress="findsubm(event, function() { ideafindall(1, @Model.Module.ModulId); })" onblur="blurfind(this, '@Resources.Extend.Messages.FIND_BY_TEXT')" onfocus="focusfind(this, '@Resources.Extend.Messages.FIND_BY_TEXT')"
+            id="txname" class="textfind inactive" value="@Resources.Extend.Messages.FIND_BY_TEXT"
+            type="text" />
+        <input type="hidden" id="SectionId" />
+        <input type="hidden" id="idCount" value="@Model.CollIdea.Count()" />
+        <input type="hidden" id="idPage" value="1" />
+        <input type="hidden" id="ModulId" value="@Model.Module.ModulId" />
+    </div>
+    <div id="more">
+        <div>@Resources.Extend.Messages.APPLY_FILTERS</div>
+        <select onchange="$('#loading').show();ideafindall(1, @Model.Module.ModulId);" id="ddlstatus" class="dropsfil">
+            <option>-@Resources.Global.Messages.STATUS-</option>
+            <option value="true">@Resources.Global.Messages.ACTIVE</option>
+            <option value="false">@Resources.Global.Messages.INACTIVE</option>
+        </select>
+        <select onchange="$('#loading').show();ideafindall(1, @Model.Module.ModulId);" id="ddlfilter" class="dropsfil">
+            <option>-@Resources.Global.Messages.SORT-</option>
+            <option value="0">@Resources.Global.Messages.CREATION_DATE</option>
+            <option value="1">@Resources.Global.Messages.DESCRIPTION</option>
+        </select>
+    </div>
+    <hr />
+    <div id="contenttreecont">
+    <div id="divslice">
+    <div id="contctncontent">
+        <span class="spntitle">@Resources.Global.Messages.CONTENTS</span>
+        <ul id="listado">
+            @foreach (Domain.Entities.Idea idea in Model.CollIdea)
+            {
+                <li id="li@(idea.IdeaId)" ondblclick="ctnback.editcontent(@idea.IdeaId)" onclick="if(ctnback.clicOk) { ctnback.contentselect(this, @idea.IdeaId); } else { ctnback.clicOk = true; }">
+                    @if (string.IsNullOrEmpty(idea.Image))
+                    {
+                    <img id="@idea.IdeaId" class="handle" style="float:left;" src="~/resources/images/Default.jpg" width="44" height="44" />                        
+                    }
+                    else
+                    {
+                    <img id="@idea.IdeaId" class="handle" style="float:left;" src="~/files/ideas/560x515-@idea.Image" width="44" height="44" />
+                    }
+                    <div class="info-content">
+                        <span title="Arrastre hacia una sección para cambiarla." class="sptitle cursor">@Business.Utils.TruncateWord(idea.Text, 85)</span><br />
+                        <span class="spdate">@idea.Creationdate.Value.ToString("F")</span>
+                    </div>
+                    <div class="clear"></div>
+                </li>   
+            }
+        </ul>
+        <div style="@(Model.Total <= 8 ? "display:none;" : "display:block;")" id="dvpaginator" align="left">
+            <img style="cursor: pointer;" onclick="ideapaging(@Model.Module.ModulId)" width="25" height="25"
+                src="~/resources/images/25down.gif" />
+            <span><span id="spnnumregis">@Model.CollIdea.Count()</span> @Resources.Global.Messages.FROM <span id="spnresult">@Model.Total</span>
+                @Model.Module.Name</span>
+        </div>
+
+    </div>
+    </div>
+    </div>
+</div>
+<div style="display:none;" align="center" id="contentactions">
+    <input id="contentid" type="hidden" />
+    <img onclick="ctnback.editcontent($('#contentid').val())" title="@Resources.Global.Messages.EDIT" src="~/resources/images/45editw.png" />
+    <img onclick="opendiv(450,350,'@Url.Action("ViewDetail", "Idea", new { Area = "Admin" })?id=' + $('#contentid').val());" title="@Resources.Global.Messages.INFORMATION" src="~/resources/images/45iw.png" />
+    <img onclick="$('.liact').removeClass('liact');$('#contentactions').slideUp();$('#contentid').val(null);" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+</div>

@@ -1,0 +1,51 @@
+﻿@model List<Domain.Entities.FrontEnd.CommentsPaging>
+@{
+    string date = string.Empty;
+    bool isBlogAdmin = false;
+    int userId = -99;
+    int ownerId = -98;
+    if(User.Identity.IsAuthenticated)
+    {
+      userId = ((Business.Services.CustomPrincipal)User).UserId;
+      isBlogAdmin = Business.Utils.IsBlogAdmin(userId);
+    }
+    
+    if(Model.Count > 0)
+    {
+      ownerId = Model[0].CommentContentOwnerId;
+    }
+}
+@foreach (Domain.Entities.FrontEnd.CommentsPaging comment in Model)
+{
+    date = Business.Utils.ElapsedTime(comment.Creationdate.Value,Culture);
+    <div class="idea-comentario nosotros-contenido-comentario" data-id="@comment.CommentId">
+        <div class="edit-container-comment mm2-edit-blog-comment"></div>
+        <div class="idea-comentario-admin">
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = comment.CommentId.Value, type = "comment", email = comment.Email, location = "about-comments", userId = comment.UserId.Value })
+        </div>
+        <a href="@Url.Content("~")perfil/index/@(comment.UserId)">
+            <div class="blog-comentario-imagen">
+              <div class="img-vertical-middle-overflow">
+                <img class="min-40" src="@Business.Utils.fixLocalUserImagePath(comment.UserImage)" alt="avatar" />
+              </div>
+            </div>
+        </a>
+        <div class="blog-contenido-comentario-txt nosotros-contenido-comentario-txt">
+            <a href="@Url.Content("~")perfil/index/@(comment.UserId)"><h3>@comment.UserNames</h3></a>
+            <h6>@date</h6>
+            <div class="clear"></div>
+            <p>
+                @comment.Text
+            </p>
+            @if (comment.UserId == userId)
+            {
+                <span class="editar-comentario" data-id="@comment.CommentId" data-location="about-comments">@Resources.Global.Messages.EDIT</span>
+            }
+            @if ((isBlogAdmin && userId == ownerId) || comment.UserId == userId)
+{
+    <span class="delete-blog-comment" data-id="@comment.CommentId" data-title-modal="@Resources.Extend.Messages.DELETE_COMMENT_TITLE" data-message-modal="@Resources.Extend.Messages.DELETE_COMMENT_MESSAGE">@Resources.Global.Messages.ERASE</span>
+}            
+        </div>
+    </div>
+    <div class="clear"></div>
+}

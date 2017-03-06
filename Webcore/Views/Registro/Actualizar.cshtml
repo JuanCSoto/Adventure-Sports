@@ -1,0 +1,216 @@
+﻿@model Domain.Entities.User
+@{
+    Layout = "~/Views/Layouts/_Layer.cshtml";
+    string content = Url.Content("~/").TrimEnd('/');
+    string radioID = ViewData.TemplateInfo.GetFullHtmlFieldId("Genre");
+    string option = ViewBag.Option;
+    Domain.Entities.Language lenguaje = (Domain.Entities.Language) HttpContext.Current.Session["lang"];
+}
+@if (Model != null)
+{
+    int selected = 0;
+    if (Model.CountryId.HasValue)
+    {
+        selected = Model.CountryId.Value;
+    }
+    List<SelectListItem> countries = Model.CollCountry.Select
+        (s => new SelectListItem 
+        {
+            Selected = s.CountryID == selected,
+            Text = lenguaje.LanguageId == 1 ? s.NameEn : s.NameEs,
+            Value = s.CountryID == 0 ? null : s.CountryID.ToString()  
+        }).ToList();
+
+    selected = 0;
+    if (Model.CityId.HasValue)
+    {
+        selected = Model.CityId.Value;
+    }
+    List<SelectListItem> cities = Model.CollCity.Select
+        (s => new SelectListItem 
+        {
+            Selected = s.CityID == selected,
+            Text = lenguaje.LanguageId == 1 ? s.NameEn : s.NameEs,
+            Value = s.CityID.ToString() 
+        }).ToList();
+
+    <div class="alerta registro">
+        <div class="alerta-titulo">
+            <h1>@ViewBag.TXTEDITPROF</h1>
+            <div class="alerta-cerrar">
+                <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+            </div>
+        </div>
+        <div class="clear" style="height: 10px;"></div>
+        @using (Html.BeginForm("Actualizar", "Registro", FormMethod.Post, new { id = "UserForm", enctype = "multipart/form-data" }))
+        {
+            @Html.Hidden("cityUpdate", false)
+            <div style="display:@(option == "Informacion" ? "block" : "none")">
+                <div class="registro-item">
+                    <div class="registro-txt">@Resources.Extend.Messages.PROFILEPI</div>
+                    <div class="seleccionar-imagen">
+                        <a>+</a>
+                        <h4>@ViewBag.TXTSELIMG</h4>
+                        <div class="mm2-profile-image">
+                            <div class="img-vertical-middle">
+                                <img id="user-image-file" class="fit-image" src="@(Business.Utils.fixLocalUserImagePath(Model.Image))" alt="avatar" />
+                            </div>
+                        </div>
+                        <input id="imageName" name="imageName" type="hidden" value="@Model.Image" />
+                        <iframe id="frame-user-file" src="@(content)/registro/uploaduserimage" scrolling="no" onload="checkIframeImageLoaded('frame-user-file');"></iframe>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div id="error-file" class="error" style="display:none;">@Resources.Extend.Messages.IMAGEMX</div>
+                <div class="clear"></div>
+                <div class="registro-item">
+                    <div class="registro-txt">@Resources.Extend.Messages.NAMEANDLAST</div>
+                    @Html.TextBoxFor(i => i.Names, new { @class = "registro-input", maxlength = "100", data_no_number = "true" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Names)</div>
+                @*
+                    <div class="clear"></div>
+                    <div class="registro-item">
+                        <div class="registro-txt">Háblanos de ti: <h6><span id="user-text-counter">250</span> caracteres</h6></div>
+                        @Html.TextAreaFor(t => t.Description, new { @class = "registro-textarea" })
+                    </div>
+                *@
+                <div class="clear"></div>
+                <div class="error"></div>
+                <div class="clear"></div>
+            </div>
+
+            //personal
+
+            <div class="div-personal" style="display:@(option == "personal" ? "block" : "none")">
+                <div class="registro-item">
+
+                    <div class="registro-txt">@Resources.Global.Messages.GENDER:</div>
+                    <div class="genre-class">
+                        @Html.RadioButtonFor(r => r.Genre, "M", new { id = radioID + "M" })@Html.LabelFor(l => l.Genre, Resources.Global.Messages.MAN, new { @for = radioID + "M" })
+                        @Html.RadioButtonFor(r => r.Genre, "F", new { id = radioID + "F" })@Html.LabelFor(l => l.Genre, Resources.Global.Messages.WOMAN, new { @for = radioID + "F" })
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Genre)</div>
+                <div class="clear"></div>
+
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.AGES<span>:</span></div>
+                    @Html.TextBoxFor(i => i.Age, new { @class = "registro-input", maxlength = "3" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Age)</div>
+                <div class="clear"></div>
+
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.PROFESSION<span>:</span></div>
+                    @Html.TextBoxFor(i => i.Profession, new { @class = "registro-input", maxlength = "100" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Profession)</div>
+                <div class="clear"></div>
+
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.PHONE <span>/</span>  @ViewBag.MOVIL <span>:</span></div>
+                    @Html.TextBoxFor(i => i.Phone, new { @class = "registro-input", maxlength = "20", data_only_number = "true" })
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.Phone)</div>
+                <div class="clear"></div>
+                <div class="registro-item">
+                    <div class="registro-txt">@ViewBag.COUNTRY <span>:</span></div>
+                    <div class="registro-combo select-style-box">
+                        <div id="select-country" class="select-text">@Resources.Global.Messages.SELECTVERBO</div>
+                        @Html.DropDownListFor(d => d.CountryId, countries, new { @class = "select-style-profile" })
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.CountryId)</div>
+                <div class="clear"></div>
+
+                <div class="registro-item">
+                    <div class="registro-txt"> @ViewBag.CITY <span>:</span></div>
+                    <div class="registro-combo select-style-box">
+                        <div id="select-city" class="select-text">@Resources.Global.Messages.SELECTVERBO</div>
+                        @Html.DropDownListFor(d => d.CityId, cities, new { @class = "select-style-profile" })
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="error">@Html.ValidationMessageFor(e => e.CityId)</div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="div-informacion" style="display:@(option == "Informacion" ? "block" : "none")">
+
+                @if (!string.IsNullOrEmpty(Model.Email))
+                {
+                    <div class="registro-item">
+                        <div class="registro-txt">@ViewBag.EMAIL<span>:</span></div>
+                        <div class="registro-info">@Model.Email</div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="error">@Html.ValidationMessageFor(e => e.Email)</div>
+                    <div class="clear"></div>
+                }
+
+                <div id="change-password-button">@ViewBag.TXTCHAPASS</div>
+                <div id="change-password-wraper">
+                    <div class="registro-item">
+                        <div class="registro-txt">@ViewBag.TXTNEWPASS<span>:</span></div>
+                        @Html.PasswordFor(i => i.Password, new { @class = "registro-input", maxlength = "15" })
+                    </div>
+                    <div class="clear"></div>
+                    <div class="error">@Html.ValidationMessageFor(e => e.Password)</div>
+                    <div class="clear"></div>
+                    <div class="registro-item">
+                        <div class="registro-txt">@ViewBag.TXTCONFPASS <span>:</span> </div>
+                        @Html.PasswordFor(i => i.RePassword, new { @class = "registro-input", maxlength = "15" })
+                    </div>
+                    <div class="clear"></div>
+                    <div class="error">@Html.ValidationMessageFor(e => e.RePassword)</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+                //intereses
+                <div class="div-interests" style="display:@(option == "interests" ? "block" : "none")">
+                    <div class="registro-item">
+                        <div class="registro-txt">@ViewBag.INTERESTS <span>:</span></div>
+                        <div class="registro-intereses">
+                            @foreach (Domain.Entities.Interest interest in Model.CollInterest.Where(t => t.LanguageId == Model.LanguageId))
+                            {
+                                <div class="izquierda">
+                                    <input id="check-interest-@interest.InterestId" name="interest" type="checkbox" @(Model.CollUserInterest.Where(ui => ui.InterestId == interest.InterestId).Count() > 0 ? "checked" : "") value="@interest.InterestId" />
+                                    <h5>@interest.Name</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="centrado">
+                    <div id="registro-aceptar" class="alerta-aceptar">
+                        <a onclick="updateCity()">
+                            <h3>@Resources.Global.Messages.ACCEPT</h3>
+                            <span class="no-padding"></span>
+                        </a>
+                    </div>
+                </div>
+        }
+        <div class="clear"></div>
+    </div>
+}
+else
+{
+    <div id="update-information-successful"></div>
+}
+<script type="text/javascript">
+    function updateCity() {        
+        if (document.getElementsByClassName('div-personal')[0].style.display === 'block') {
+            document.getElementById('cityUpdate').value = 'True';
+        }
+    }
+</script>

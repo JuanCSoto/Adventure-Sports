@@ -1,0 +1,22 @@
+﻿@model List<Domain.Entities.FrontEnd.UserProfilePaging>
+@{
+    Layout = null;
+}
+<div class="lomejor-item">
+    <div class="lomejor-item-titulo">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BOB_ACTIVE)</div>
+@foreach(Domain.Entities.FrontEnd.UserProfilePaging user in Model)
+{
+    <div class="clear"></div>
+    <div class="lomejor-historia">
+        <a href="@Url.Action("index", "perfil", new { id = user.UserId })">
+        <img border="0" src="@Business.Utils.fixLocalUserImagePath(user.Image)" alt="avatar" />
+        </a>
+        <div class="lomejor-historia-text">
+            <a href="@Url.Action("index", "perfil", new { id = user.UserId })"><h1>@user.Names</h1></a>
+            <div class="clear"></div>
+            <span>@user.Medallos</span>
+        </div>
+        <div class="lomejor-historia-mas"><a href="@Url.Content("~/perfil/index/" + user.UserId)"></a></div>
+    </div>
+}
+</div>

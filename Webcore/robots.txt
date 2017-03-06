@@ -1,0 +1,7 @@
+﻿# robots.txt for mimedellin.org
+
+User-agent: *
+Disallow:
+Allow: /
+
+Sitemap: http://mimedellin.org/sitemap.xml

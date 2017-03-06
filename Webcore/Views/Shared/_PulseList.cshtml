@@ -1,0 +1,213 @@
+﻿@model List<Domain.Entities.FrontEnd.Pulse>
+@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  int percentage = 0;
+  int endDay = 0;
+  int days = 0;
+  string link = string.Empty;
+  bool ended = false;
+  string buttonText = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BUTTON_CREATE_IDEA);
+}
+
+@if (Model != null && Model.Count > 0)
+{
+  <div class="pulse-container">
+    @foreach (Domain.Entities.FrontEnd.Pulse pulse in Model)
+    {
+      if (pulse.ChallengeType.HasValue)
+      {
+        days = (int)Math.Ceiling((pulse.EndDate.Value - pulse.StartDate.Value).TotalDays);
+        endDay = (int)Math.Ceiling((pulse.EndDate.Value - DateTime.Now).TotalDays);
+        if (endDay > 0)
+        {
+          percentage = ((endDay * 100 / days) * -1) + 100;
+          ended = false;
+        }
+        else
+        {
+          percentage = 100;
+          ended = true;
+        }
+
+        link = string.Concat(content, "/", pulse.Friendlyurlid);
+      <div class="contenido-historia">
+        @if (ended)
+        {
+          <a href="@(link)">
+            <div class="@Resources.Extend.Messages.CLASSFINALIZADO" style="display:@(ended ? "block" : "none")"></div>
+          </a>
+        }
+        <a href="@(link)">
+          <img src="~/files/@pulse.ContentId/511x255-@pulse.Image" alt="@pulse.Name" /></a>
+        <div class="clear"></div>
+        <a href="@(link)">
+          <p>@pulse.Name</p>
+        </a>
+        <div class="clear"></div>
+        <div class="contenido-historia-barra">
+          <span></span>
+          <div class="barra-color2@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+        </div>
+        <div class="clear"></div>
+        <div class="content-tooltip">
+          @switch (pulse.ChallengeType)
+          {
+            case Domain.Entities.Challenge.TypeChallenge.Participacion_Ciudadana:
+            <div class="historia-item participacion2@(ended ? " participacion3gris" : "")">
+              <span></span>
+              <h1>@ViewBag.TXTPARCIU</h1>
+              <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+                <div class="tooltip">@Resources.Extend.Messages.JOININITIATIVE</div>
+              </div>
+            </div>
+              break;
+            case Domain.Entities.Challenge.TypeChallenge.Reto_Ciudad:
+            <div class="historia-item ciudadana2@(ended ? " ciudadana2gris" : "")">
+              <span></span>
+              <h1>@ViewBag.RETO<br />
+                ciudad</h1>
+              <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+                <div class="tooltip">@ViewBag.TXTTUIDEA</div>
+              </div>
+            </div>
+              break;
+          }
+        </div>
+        @if (!string.IsNullOrEmpty(pulse.Prize))
+        {
+          <div class="content-tooltip">
+            <div class="historia-item premio2@(ended ? " premiogris" : "")">
+              <span></span>
+              <h1>@ViewBag.PREMIUM</h1>
+              <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+                <div class="tooltip">@pulse.Prize</div>
+              </div>
+            </div>
+          </div>
+        }
+        @if (pulse.People > 0)
+        {
+          <div class="historia-item unidos2@(ended ? " gris" : "")">
+            <span>@pulse.Followers/@pulse.People</span>
+            <h1>@ViewBag.THEYJOINED</h1>
+          </div>
+        }
+        @if (!ended)
+        {
+          <div class="historia-item restantes2@(ended ? " gris" : "")">
+            <span>@endDay</span>
+            <h1>@ViewBag.TXTDIARES</h1>
+          </div>
+        }
+        <div class="clear"></div>
+        <div class="participa-block-pulse @(ended ? "participa-block-ended" : string.Empty)">
+          <a href="@(link)">@Resources.Global.Messages.PARTICIPATES</a>
+          <div class="participa-comentarios @(ended ? "participa-comentarios-ended" : string.Empty)">
+            <h1>@pulse.Ideas</h1>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      }
+      else if (pulse.QuestionType.HasValue)
+      {
+        days = (int)Math.Ceiling((pulse.EndDate.Value - pulse.StartDate.Value).TotalDays);
+        endDay = (int)Math.Ceiling((pulse.EndDate.Value - DateTime.Now).TotalDays);
+        if (endDay > 0)
+        {
+          percentage = ((endDay * 100 / days) * -1) + 100;
+          ended = false;
+        }
+        else
+        {
+          percentage = 100;
+          ended = true;
+        }
+        link = string.Concat(content, "/", pulse.Friendlyurlid);
+      <div class="contenido-historia">
+        @if (ended)
+        {
+          <a href="@(link)">
+            <div class="finalizado" style="display:@(ended ? "block" : "none")"></div>
+          </a>
+        }
+        <a href="@(link)">
+          <img src="~/files/@pulse.ContentId/511x255-@pulse.Image" alt="@pulse.Name" /></a>
+        <div class="clear"></div>
+        <a href="@(link)">
+          <p>@pulse.Name</p>
+        </a>
+        <div class="clear"></div>
+        <div class="contenido-historia-barra">
+          <span></span>
+          <div class="barra-color2@(ended ? " barra-color-finalizado" : "")"><span data-percent="@percentage"></span></div>
+        </div>
+        <div class="clear"></div>
+        <div class="content-tooltip">
+          @switch (pulse.QuestionType)
+          {
+            case Domain.Entities.Question.TypeQuestion.Abierta:
+
+            <div class="historia-item pregunta@(ended ? " preguntagris" : "")">
+              <span></span>
+              <h1>@Resources.Global.Messages.OPENQUESTION</h1>
+              <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+                <div class="tooltip">@Resources.Extend.Messages.TELLOPINION</div>
+              </div>
+            </div>
+              break;
+            case Domain.Entities.Question.TypeQuestion.Seleccion_Multiple:
+
+            <div class="historia-item pregunta2@(ended ? " preguntagris2" : "")">
+              <span></span>
+              <h1>@ViewBag.SELECCION<br />
+                @ViewBag.MULTIPLE</h1>
+              <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+                <div class="tooltip">@ViewBag.TXTESCREP</div>
+              </div>
+            </div>
+              break;
+            case Domain.Entities.Question.TypeQuestion.Ubicacion:
+
+            <div class="historia-item pregunta3@(ended ? " preguntagris3" : "")">
+              <span></span>
+              <h1>@ViewBag.LOCATION</h1>
+              <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565;">
+                <div class="tooltip">@Resources.Extend.Messages.PLACEMAP</div>
+              </div>
+            </div>
+              break;
+          }
+        </div>
+        @if (false) // TODO: Depende de si tiene premio o no
+        {
+
+          <div class="historia-item premio2@(ended ? " premiogris" : "")">
+            <span></span>
+            <h1>@ViewBag.WISH
+          <br />
+              @ViewBag.PREMIUM</h1>
+          </div>
+        }
+        @if (!ended)
+        {
+
+          <div class="historia-item restantes2@(ended ? " gris" : "")">
+            <span>@endDay</span>
+            <h1>@ViewBag.TXTDIARES</h1>
+          </div>
+        }
+        <div class="clear"></div>
+        <div class="participa-block-pulse @(ended ? "participa-block-ended" : string.Empty)">
+          <a href="@(link)">@ViewBag.PARTICIPATES</a>
+          <div class="participa-comentarios @(ended ? "participa-comentarios-ended" : string.Empty)">
+            <h1>@pulse.Ideas</h1>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      }
+    }
+  </div>
+}

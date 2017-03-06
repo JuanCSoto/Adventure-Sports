@@ -1,0 +1,68 @@
+@model Domain.Entities.Idea
+@{
+  Layout = null;
+  string content = Url.Content("~").TrimEnd('/');
+  string classV2 = string.Empty;
+  int? maxLength = ViewBag.TextLenght;
+}
+<input type="hidden" id="edit-idea-id" value="@Model.IdeaId" />
+<div class="color-box-content edit-idea-box" style="width:316px">
+  <div class="comenta-block-update">
+    <h3>@Resources.Extend.Messages.EDITIDEA</h3>
+    <h6><span id="idea-text-update-counter">@maxLength</span>@Resources.Global.Messages.CHARACTERS</h6>
+    <div class="clear"></div>
+    <div class="comenta-txt@(classV2)">
+      <textarea id="idea-text-update" data-length="@maxLength" style="width:285px;">@Model.Text</textarea>
+      <div id="idea-image-file-wraper">
+        <div class="img-vertical-middle">
+        @if(string.IsNullOrEmpty(Model.Image))
+        {
+        <img class="fit-image idea-update-image-file" alt="empty" />
+        }
+        else
+        {
+        <img class="fit-image idea-update-image-file" src="@(content)/files/ideas/@Model.Image" alt="idea image" />  
+        }
+        </div>
+        <img id="idea-image-delete" src="~/Resources/Images/delimage.gif" alt="icon" />
+      </div>
+      <div class="clear"></div>
+      <div class="hashtag-wraper">
+        <div class="hashtag-container">
+          
+        </div>
+      </div> 
+    </div>
+    <div class="clear"></div>
+    <div>
+      <div class="comenta-media-block">
+        <a class="foto">
+          <iframe id="frame-idea-file" data-id="@Model.IdeaId" src="@(content)/idea/uploadideaimage?edit=true&ideaId=@Model.IdeaId" scrolling="no" onload="checkIframeImageLoaded('frame-idea-file', @Model.IdeaId);"></iframe>
+        </a>
+        <div class="content-tooltip">          
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -86px; margin-top: 32px;">
+            <div class="tooltip">@Resources.Extend.Messages.SUPPORTPHOTO</div>
+          </div>
+        </div>
+        <input type="hidden" id="idea-image-name" value="@Model.Image" />
+        <div class="content-tooltip">
+          <a class="video"></a>
+          <div class="comunidad-info" style="display: none; opacity: 0; font-family: helvetica, arial, sans-serif; font-size: 11px; text-align: center; color: #656565; margin-left: -43px; margin-top: 32px;">
+            <div class="tooltip">@Resources.Extend.Messages.SUPPORT</div>
+          </div>
+        </div>
+        <input id="idea-video-url" @(string.IsNullOrEmpty(Model.Video) ? "style=display:none;width:85px;" : "style=display:block;width:85px;") value="@Model.Video" />
+      </div>      
+      <div class="edit-block">
+        <a class="erase-idea"  ></a>        
+      </div>
+      <div class="edit-block">
+        <a id="update-idea" class="ok-idea" ></a>        
+      </div>
+      <div class="clear"></div>
+      <div id="error-file" class="error" style="float: left; display:none;" data-id="@Model.IdeaId">@Resources.Extend.Messages.IMAGEMX</div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+</div>

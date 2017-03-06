@@ -1,0 +1,151 @@
+﻿@model Domain.Entities.FrontEnd.UserMail
+@{
+    Layout = null;
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    Domain.Entities.FrontEnd.Video video = null;
+    string link = string.Empty;
+}
+@if(Model != null)
+{
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cities for Life</title>        
+    </head>
+    <body style="margin:0; font-family:helvetica, arial, sans-serif">
+        <div style="width:800px">
+            <div style="float:left;width:100%;">                
+                <div style="clear:both"></div>
+            </div>
+            <div style="clear:both"></div>
+            <div style="margin:0 auto; width:710px;">                
+                <div style="float:left; color:#999; text-transform:uppercase; font-size:18px;margin:10px 0 10px 0;"><b style="color:#8e0565; font-weight:Bold;">Hola,</b> @Model.objUser.Names</div>
+                <div style="clear:both"></div>
+                @if(Model.CollIdeas.Count > 0)
+                {
+                <div style="float:left; color:#00b7f1; font-size:26px; text-transform:uppercase; margin:0px 0 5px 0; font-weight:bolder;">@Resources.Extend.Messages.CITYHEARD			</div>
+					<p style="color:#787878; font-size:16px; clear:both; margin:5px 0 5px 0;">@Resources.Extend.Messages.DISCOVERHOW</p>
+                <div style="clear:both"></div>
+                <div style="float:left; border-bottom:1px solid #ddd; width:100%; height:2px;"></div>
+                <div style="clear:both"></div>                
+                    foreach (Domain.Entities.FrontEnd.MailIdeasPaging idea in Model.CollIdeas)
+                    {
+                        link = string.Concat(siteUrlRoot, "/", idea.Friendlyurlid);
+                        video = Business.Utils.GetVideoFromUrl(idea.Video);
+                <a href="@(link)" target="_blank"><div style="float:left; border-bottom:1px solid #ddd; padding:0 0 10px 0; width:100%; margin:20px 0 0 0;">
+                        @if (!string.IsNullOrEmpty(idea.Image) || (video != null && video.Type == "youtube"))
+                        {
+                        <div style="float:left; width:160px; margin:0 10px 0 0;">
+                            @if(!string.IsNullOrEmpty(idea.Image) && video == null)
+                            {
+                            <img src="@(siteUrlRoot)/files/ideas/@idea.Image" style="width:100%;" alt=""/>
+                            }
+                            @if(video != null)
+                            {
+                                if (video.Type == "youtube") 
+                                {
+                            <img src="http://img.youtube.com/vi/@video.ID/0.jpg" style="width:100%;" alt="" />
+                                } 
+                            }
+                        </div>
+                        }
+                    <div style=" float:left; width:530px;">
+                        <div style="float:left; font-weight:bolder; color:#8e0565;text-transform:uppercase;font-size:15px;width:100%;">@idea.objContent.Name</div>
+                        <div style="clear:both"></div>
+                        <div style="float:left;font-size:13px;color:#787878;width:100%;max-height:45px;overflow:hidden;">
+                            @idea.Text
+                        </div>
+                        <div style="float:left; margin:10px 10px 0 0;font-weight:bold;">
+                            <a href="@(link)" target="_blank"><span style="float:left; width:30px; height:31px; background:url(@(siteUrlRoot)/resources/images/mail/gusta.png) center no-repeat; background-color:#8e0464;border-radius: 3px 0px 0px 3px; -moz-border-radius: 3px 0px 0px 3px; -webkit-border-radius: 3px 0px 0px 3px;"></span><span style="float:left; height:31px; background-color:#730150; color:#fff; padding:0 5px; border-radius: 0px 3px 3px 0px; -moz-border-radius: 0px 3px 3px 0px; -webkit-border-radius: 0px 3px 3px 0px; font-size:13px; line-height:2.4;">@idea.Likes</span></a>
+                        </div>
+                        <div style="float:left; margin:10px 10px 0 0;font-weight:bold;">
+                            <a href="@(link)" target="_blank"><span style="float:left; width:30px; height:31px; background:url(@(siteUrlRoot)/resources/images/mail/nogusta.png) center no-repeat; background-color:#8e0464; border-radius: 3px 0px 0px 3px; -moz-border-radius: 3px 0px 0px 3px; -webkit-border-radius: 3px 0px 0px 3px;"></span><span style="float:left; height:31px; background-color:#730150; color:#fff; padding:0 5px; border-radius: 0px 3px 3px 0px; -moz-border-radius: 0px 3px 3px 0px; -webkit-border-radius: 0px 3px 3px 0px; font-size:13px; line-height:2.4;">@idea.NoLikes</span></a>
+                        </div>
+						<div style="float:left; margin:10px 10px 0 0;font-weight:bold;">
+                            <a href="@(link)" target="_blank"><span style="float:left; width:30px; height:31px; background:url(@(siteUrlRoot)/resources/images/mail/cmt.png) center no-repeat; background-color:#8e0464; border-radius: 3px 0px 0px 3px; -moz-border-radius: 3px 0px 0px 3px; -webkit-border-radius: 3px 0px 0px 3px;"></span><span style="float:left; height:31px; background-color:#730150; color:#fff; padding:0 5px; border-radius: 0px 3px 3px 0px; -moz-border-radius: 0px 3px 3px 0px; -webkit-border-radius: 0px 3px 3px 0px; font-size:13px; line-height:2.4;">@idea.CommentsCount</span></a>
+                        </div>
+                    </div>
+                </div></a>
+                <div style="clear:both"></div>
+                    }
+                }
+                
+                @if(Model.CollChallenges.Count > 0)
+                {
+                <div style="clear:both"></div>
+                <div style="float:left; color:#00b7f1; font-size:26px; text-transform:uppercase; margin: 20px 0 5px 0; font-weight:bolder;">@Resources.Extend.Messages.FUTURE </div>
+                <div style="clear:both"></div>
+                      foreach(Domain.Entities.FrontEnd.ChallengesPaging challenge in Model.CollChallenges)
+                    {
+                        link = string.Concat(siteUrlRoot, "/", challenge.Friendlyurlid);
+                <div style="float:left; background-color:#f2f2f2; margin:10px 1px 0 0;  width:235px; height:321px;">
+                    <div style="float:left; width:235px;">
+					<div><img src="@(siteUrlRoot)/resources/images/mail/reto.jpg" alt="" /></div>
+                        <a href="@(link)"><img style="width:235px;" src="@(siteUrlRoot)/files/@challenge.ContentId/511x320-@challenge.Image" alt="" /></a>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div style="float:left; font-size:15px; width:225px; padding:15px; color:#8e0565; text-transform:uppercase;  font-weight:bolder">
+                        @challenge.Name
+                    </div>
+                    <div style="clear:both"></div>
+                    <div style="float:left">
+                        <a href="@(link)" style="background-color:#8e0565; color:#fff; padding:0 10px;height:30px;line-height:2.1; text-transform:uppercase; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;float:left; margin:0 0 0 15px; text-decoration:none; font-weight:bolder">participa</a>
+                    </div>
+                </div>                
+                    }
+                }
+				
+				@if(Model.CollQuestions.Count > 0)
+                {
+                
+                
+				     
+                    int count = 0;
+                    foreach (Domain.Entities.FrontEnd.QuestionsPaging question in Model.CollQuestions)
+                    {
+                        count++;
+                        if (count == 3)
+                        {
+                            break;
+                        }
+                        link = string.Concat(siteUrlRoot, "/", question.Friendlyurlid);
+                <div style="float:left; background-color:#f2f2f2; margin:10px 1px 0 0;  width:235px; height:321px;">
+                    <div style="float:left; width:235px;">
+							
+							<div><img src="@(siteUrlRoot)/resources/images/mail/pregunta.jpg" alt="" /></div>
+                        <a href="@(link)"><img style="width:235px;" src="@(siteUrlRoot)/files/@question.ContentId/511x320-@question.Image" alt="" /></a>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div style="float:left; font-size:15px; width:215px; height:70px; padding:15px; color:#8e0565; text-transform:uppercase; font-weight:bolder">
+                        @question.Name
+                    </div>
+                    <div style="clear:both"></div>
+                    <div style="float:left">
+                        <a href="@(link)" style="background-color:#8e0565; color:#fff; padding:0 10px;height:30px;line-height:2.1; text-transform:uppercase; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;float:left; margin:0 0 0 15px; text-decoration:none; font-weight:bolder">@Resources.Global.Messages.PARTICIPATES</a>
+                    </div>
+                </div>
+                
+                    }
+                } 
+                <div style="clear:both; height:1px;"></div>
+                <div style="width:100%; clear:both; text-align:center; font-size:16px; color:#00b7f1; text-transform:uppercase; font-weight:bold; margin:20px 0;">@Resources.Extend.Messages.SPEAK <br/><a href="@siteUrlRoot" style="color:#00b7f1">@Resources.Extend.Messages.WHATMIND </a></div>
+                <div style="clear:both"></div>
+                <!--<div style="float:left; width:100%;text-align:center;">
+					<a  style="background-color:#00b7f1; color:#fff; padding:10px 20px; line-height:2.1; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;text-transform:uppercase; text-decoration:none; font-weight:bolder">entra aquí</a>
+                </div>-->
+            </div>
+            <div style="clear:both"></div>
+	            <div style="margin:20px 0 0 0; width:100%; border-top:1px solid #ddd;">
+	                <div style="margin:0 auto; width:710px;">
+	                   <table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="674">
+                          <tr>
+                           <td></td>
+                          </tr>
+                        </table>
+	                </div>
+	            </div>
+            <div style="font-size:13px;color:#787878;width:100%;max-height:45px;text-align:center">@Resources.Extend.Messages.DISABLEMAIL</div>
+        </div>
+    </body>
+</html>
+}

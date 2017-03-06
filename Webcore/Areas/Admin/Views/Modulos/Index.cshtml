@@ -1,0 +1,47 @@
+﻿@model Webcore.Areas.Admin.Models.Modulos
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    deleteModul = function () {
+        return confirm("@Resources.Extend.Messages.DELETE_ITEM");
+    };
+</script>
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.LIST</li>
+    <li>@Resources.Global.Messages.DETAIL</li>
+</ul>
+<div class="cont" align="left">
+    <a class="hrefmen" href="@Url.Action("Detail", new { Area = "Admin" })">
+        <img border="0" width="23" height="23" src="~/resources/images/25add.gif" />
+        <span style="font-size: 25px;">@Resources.Global.Messages.NEW</span></a>
+    <hr />
+    <ul id="listado">
+        @foreach (Domain.Entities.Modul item in Model.CollModuls.Where(t => t.ParentId == null))
+        {
+            <li style="border-left:#00a8e3 solid 5px;">
+                <img align="left" src="~/Resources/Icons/@(item.ModulId).png" />
+                <span class="sptitle">@item.Name</span><br />
+                <span class="spdate">@(item.Active.Value ? "Activo" : "Inactivo")</span>
+                @if (!item.IsBasic.Value)
+                {
+                <a onclick="return deleteModul()" href="@Url.Action("Delete", new { Area = "Admin", id = item.ModulId.Value })"><img title="@Resources.Global.Messages.DELETE" border="0" align="right" width="25" height="25" src="~/resources/images/25del.gif" /></a>                    
+                }
+                <a href="@Url.Action("Detail", new { Area = "Admin", id = item.ModulId.Value })"><img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+                foreach (Domain.Entities.Modul subitem in Model.CollModuls.Where(t => t.ParentId == item.ModulId))
+                {
+            <li style="padding-left:55px;">
+                <img align="left" src="~/Resources/Icons/@(subitem.ModulId).png" />
+                <span class="sptitle">@subitem.Name</span><br />
+                <span class="spdate">@(subitem.Active.Value ? "Activo" : "Inactivo")</span>
+                @if (!item.IsBasic.Value)
+                {
+                <a onclick="return deleteModul()" href="@Url.Action("Delete", new { Area = "Admin", id = subitem.ModulId.Value })"><img title="@Resources.Global.Messages.DELETE" border="0" align="right" width="25" height="25" src="~/resources/images/25del.gif" /></a>
+                }
+                <a href="@Url.Action("Detail", new { Area = "Admin", id = subitem.ModulId.Value })"><img title="@Resources.Global.Messages.EDIT" border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>
+            </li>
+            }
+        }
+    </ul>
+</div>

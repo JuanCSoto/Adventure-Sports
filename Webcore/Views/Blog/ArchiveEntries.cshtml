@@ -1,0 +1,33 @@
+﻿@model List<Domain.Entities.FrontEnd.ArchiveEntry>
+@{
+  Layout = null;
+  int year = 0;
+  int month = 0;
+  Domain.Entities.FrontEnd.ArchiveEntry archiveEntry;
+  List<Domain.Entities.FrontEnd.ArchiveEntry> orderList = Model.OrderByDescending(s => s.Joindate.Year).ThenBy(s => s.Joindate).ToList();
+}
+@if (orderList != null)
+{
+  for (int i = 0; i < orderList.Count; i++)
+  {
+    archiveEntry = orderList[i];
+    if (archiveEntry.Joindate.Year != year)
+    {
+      year = archiveEntry.Joindate.Year;
+  <div class="blog-archivo-n1 year" data-year="@year">@year</div>
+  <div class="clear"></div>
+    }
+    if (archiveEntry.Joindate.Month != month)
+    {
+      month = archiveEntry.Joindate.Month;
+  @:<div class="blog-archivo-n2 month" data-year="@year" data-month="@month" style="display:none;">
+<h2>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month)</h2>
+    <div class="clear"></div>
+    }
+    <a class="entry" style="display:none;" data-year="@year" data-month="@month" data-day="@archiveEntry.Joindate.Day" data-id="@archiveEntry.ContentId" data-friendly="@archiveEntry.Friendlyurlid">@archiveEntry.Name</a>
+    if (i == orderList.Count - 1 || orderList[i + 1].Joindate.Month != month)
+    {
+@:</div>
+    }
+  }
+}

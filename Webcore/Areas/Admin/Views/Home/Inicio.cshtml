@@ -1,0 +1,33 @@
+﻿@model Webcore.Areas.Admin.Models.Principal
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@System.Configuration.ConfigurationManager.AppSettings["ApplicationName"]</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    <div>
+        @Resources.Extend.Messages.CURRENT_ROLE
+    </div>
+    <span class="spntitle">@Resources.Extend.Messages.CURRENT_ROLE</span>
+    <ul id="listadohome">
+        @foreach (Domain.Entities.Rol item in Model.CollRols)
+        {
+            <li>
+                <img align="left" src="~/Resources/Images/25next.gif" />&nbsp;@item.Name
+            </li>
+        }
+    </ul>
+    <span class="spntitle">@Resources.Extend.Messages.LAST_ACTIVITY</span>
+    <ul id="listadohome">
+        @foreach (Domain.Entities.Audit item in Model.CollAudit)
+        {
+            <li>
+                <img align="left" src="~/Resources/Images/25next.gif" />&nbsp;<span class="spnaction">@item.Auditaction</span> @Business.Utils.TruncateWord(item.Description, 80)
+                <br />
+                <span class="spdate">@item.Joindate.Value.ToString("F")</span>
+            </li>
+        }
+    </ul>
+</div>

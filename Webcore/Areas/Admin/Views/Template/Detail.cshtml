@@ -1,0 +1,43 @@
+﻿@model Webcore.Areas.Admin.Models.Templates
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+    <li>@Resources.Global.Messages.LIST</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "Template", FormMethod.Post, new { id = "Form1" }))
+    {
+        @Html.ValidationSummary()
+        @Html.Hidden("id", Model.TemplateCustom != null && Model.TemplateCustom.TemplateId != null ? Model.TemplateCustom.TemplateId : null)
+        <ul id="fields">
+            <li>@Resources.Global.Messages.NAME<br />
+                @Html.TextBoxFor(t => t.TemplateCustom.TemplateId, new { @class = "text", maxlength = "100" })
+                @if (Model.TemplateCustom != null && Model.TemplateCustom.TemplateId != null)
+                {
+                    <script>                        $('#objTemplate_TemplateId').attr('disabled', 'disabled')</script>
+                }
+            </li>
+            <li>@Resources.Global.Messages.MODEL<br />
+                @Html.TextBoxFor(t => t.TemplateCustom.Nameclass, new { @class = "text", maxlength = "100" })
+            </li>
+            <li>Tipo de template<br />
+                @Html.DropDownListFor(t => t.TemplateCustom.Type, new SelectList(
+                new[] { 
+                    new Domain.Entities.KeyValue("Contenido", "0"), 
+                    new Domain.Entities.KeyValue("Sección", "1") 
+                }, "Value", "Key", Model.TemplateCustom != null && Model.TemplateCustom.Type != null ? Model.TemplateCustom.Type.ToString() : null), new { @class = "text", maxlength = "100" })
+            </li>
+        </ul>
+    }
+    <div align="center" id="contentactions">
+        <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null)
+        {
+            <img onclick="if(confirm('@Resources.Extend.Messages.FIND_BY_NAME')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>

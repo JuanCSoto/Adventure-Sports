@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "_ContentBlogEntriesList";
+}
+@model List<Domain.Entities.FrontEnd.BlogEntriesPaging>
+@{
+    Layout = null;
+    string content = Url.Content("~/").TrimEnd('/');
+    string date;
+    string image;
+    Domain.Entities.FrontEnd.Video video = null;
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    string picture = siteUrlRoot + "/1024.png";
+}
+
+@foreach(Domain.Entities.FrontEnd.BlogEntriesPaging blogEntry in Model)
+{
+    date = Business.Utils.ElapsedTime(blogEntry.Joindate.Value,Culture);
+    image = blogEntry.Image;
+    video = Business.Utils.GetVideoFromUrl(blogEntry.Video);
+    <div class="nosotros-contenido">
+        <div class="izquierda usuario">
+            <div class="idea-usuario">@blogEntry.Name</div><div class="clear"></div>
+            <div class="idea-fecha">@date</div>
+        </div>
+        <div class="clear"></div>
+        <div class="idea-blog-contenido">
+            <div class="blog-entry-click-area" data-id="@blogEntry.Friendlyurlid">
+                @if (video != null)
+                {
+                    if (video.Type == "youtube") {
+                <iframe id="player" type="text/html" width="683" height="320" src="http://www.youtube.com/embed/@video.ID?wmode=transparent&rel=0" wmode="Opaque" frameborder="0" allowfullscreen></iframe>
+                    }
+                    else if (video.Type == "vimeo") {
+                <iframe src="http://player.vimeo.com/video/@video.ID" width="683" height="320" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    }
+                }
+                @if (!string.IsNullOrEmpty(image) && video == null)
+                {
+                    picture = siteUrlRoot + "/files/ideas/" + blogEntry.Image;
+                <img src="~/files/@blogEntry.ContentId/683x320-@blogEntry.Image" alt="@blogEntry.Name" />
+                }
+                <div class="nosotros-contenido-p">@blogEntry.Shortdescription</div>
+                <div class="clear"></div>
+                <a class="nosotros-contenido-mas">@Resources.Extend.Messages.SEEMORE</a>
+            </div>
+            <div class="clear"></div>
+            <div class="idea-social">
+                <div class="clear"></div>
+                @Html.Partial("_ShareUrl", new Domain.Entities.FrontEnd.ShrareUrl() { 
+                    name = blogEntry.Name, link = siteUrlRoot + "/" + blogEntry.Friendlyurlid, 
+                    picture = picture, 
+                    caption = "", 
+                    descriptionFB = "¡Así transformamos la ciudad con tus ideas!",
+                    descriptionTW = "¡Así transformamos la ciudad con tus ideas!",
+                    description = "¡Así transformamos la ciudad con tus ideas!"
+                })
+            </div>
+            <div class="clear"></div>
+            <div class="nosotros-contenido-comentarios" id="comments-blog-container-@blogEntry.ContentId">
+                @Html.Partial("_BlogEntryCommentsList", blogEntry.CollComment)
+            </div>
+            <div class="nosotros-contenido-comentario">
+                <div class="nosotros-contenido-comentario-image">
+                @if (User.Identity.IsAuthenticated && ((Business.Services.CustomPrincipal)User).Image != null)
+                {
+                    <img src="@(Business.Utils.fixLocalUserImagePath(((Business.Services.CustomPrincipal)User).Image))" alt="avatar" />
+                }
+                else{
+                    <img src="@Url.Content("~/files/imagesuser/default.png")" alt="avatar" />
+                }
+                </div>
+                <div class="nosotros-contenido-comentario-txt">
+                    <input id="comment-blog-text-@blogEntry.ContentId" data-id="@blogEntry.ContentId" data-view="_BlogEntryCommentsList" data-size="3" data-container="#comments-blog-container-@blogEntry.ContentId" data-selector=".blog-comentario-imagen img" data-scroll=""/>
+					<div class="comentar-coment">@Resources.Global.Messages.COMMENT</div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+}
+
+

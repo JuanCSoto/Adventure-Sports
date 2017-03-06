@@ -1,0 +1,42 @@
+﻿@model List<Domain.Entities.FrontEnd.SuccessStoryList>
+@using Business;
+@{
+    //Layout = "~/Views/Layouts/" + Model.Layout;
+    //Business.FrontEnd.SuccessStory Entity = (Business.FrontEnd.SuccessStory)Model.Entity;  
+    string content = Url.Content("~/").TrimEnd('/') + "SuccessStory/Story/";  
+}
+
+        @foreach (Domain.Entities.FrontEnd.SuccessStoryList successstory in Model)
+        {
+
+            <div id="contenCases" class="contenido-historia">
+
+                <div class="cases">
+
+                    <img src="@Html.Raw(@Url.Content("~/") + "files/"+successstory.ContentId+"/511x255-"+ successstory.Image)" />
+                    <h3>@Html.Raw(successstory.Name)</h3>
+                    <p>@Html.Raw(successstory.Shortdescription)</p>
+                    <hr />
+                    <span>@successstory.InstitutionImplements</span>
+                    <a href="@content@successstory.ContentId">@Resources.Extend.Messages.MOREINFO</a>
+                    <span>@successstory.InstitutionSource</span>
+                </div>
+            </div>
+            @*<div class="contenido-historia">
+                <div class="cases">
+
+                    <img src="@Html.Raw(@Url.Content("~/") + "files/"+successstory.ContentId+"/511x255-"+ successstory.Image)" alt="@successstory.Name" />
+                    <h3>@Html.Raw(successstory.Name)</h3>
+                    <div class="contenido-historia-barra">
+                        <p class="description">
+                            @Html.Raw(successstory.Shortdescription)
+                        </p>
+
+                        <hr />
+                        <span>@successstory.InstitutionImplements</span>
+                        <a href="@content@successstory.ContentId">@Resources.Extend.Messages.MOREINFO</a>
+                        <span>@successstory.InstitutionSource</span>
+                    </div>
+                </div>
+            </div>*@
+        }

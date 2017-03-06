@@ -1,0 +1,52 @@
+@model Dictionary<string, int>
+@{
+  Layout = null;
+}
+
+
+<div class="mm2-container-modulo-est2">
+  <div class="mm2-title-modulo">@Resources.Global.Messages.ACTIVITY</div>
+  <div class="mm2-item-modulo-activitie2">
+    <div class="mm2-item-name-act">@Resources.Extend.Messages.PARTICIPATING</div>
+    <div class="mm2-container-data-lateral">
+     
+      <div class="mm2-number-data-lateral">@(Model.ContainsKey("UserCount") ? Model["UserCount"].ToString("#,##0") : "0")</div>
+         <div class="mm2-ico-data-lateral mm2-icoest1"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="mm2-item-modulo-activitie2">
+    <div class="mm2-item-name-act">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.IDEAS_PLURAL)</div>
+    <div class="mm2-container-data-lateral">
+      
+      <div class="mm2-number-data-lateral">@(Model.ContainsKey("IdeasCount") ? Model["IdeasCount"].ToString("#,##0") : "0")</div>
+        <div class="mm2-ico-data-lateral mm2-icoest2"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="mm2-item-modulo-activitie2">
+    <div class="mm2-item-name-act">@Resources.Global.Messages.COMMENTS</div>
+    <div class="mm2-container-data-lateral">
+      
+      <div class="mm2-number-data-lateral">@(Model.ContainsKey("CommentCount") ? Model["CommentCount"].ToString("#,##0") : "0")</div>
+        <div class="mm2-ico-data-lateral mm2-icoest3"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="mm2-item-modulo-activitie2">
+    <div class="mm2-item-name-act">@Resources.Global.Messages.HEARTBEAT</div>
+    <div class="mm2-container-data-lateral">
+      
+      <div class="mm2-number-data-lateral">@(Model.ContainsKey("LikeCount") ? Model["LikeCount"].ToString("#,##0") : "0")</div>
+        <div class="mm2-ico-data-lateral mm2-icoest4"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,23 @@
+﻿@model List<Domain.Entities.Banner>
+@if (Model != null && Model.Count > 0)
+{
+    if (Model[0].Bannertype == 0)
+    {
+    <script type="text/javascript">
+        writeswf('@Url.Content("~/resources/banners/" + Model[0].Bannerfile)', @Model[0].Width, @Model[0].Height, '@Model[0].BannerId');
+    </script>
+    }
+    else if (Model[0].Bannertype == 1)
+    {
+    <img alt="@Model[0].Name" title="@Model[0].Name" 
+    src='@Url.Content("~/resources/banners/" + Model[0].Bannerfile)' @(Model[0].Width != null ? "width='" + Model[0].Width + "'" : "") @(Model[0].Width != null ? "height='" + Model[0].Height + "'" : "") />
+    }
+    else
+    {
+        @Html.Raw(Model[0].Bannerfile)       
+    }
+}
+else
+{
+    <div class="bannernotfound">@Resources.Extend.Messages.BANNERNO</div>
+}

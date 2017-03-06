@@ -1,0 +1,196 @@
+﻿@model Webcore.Areas.Admin.Models.BlogEntryModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section headers {
+    <script src="@Url.Content("~/Resources/Scripts/jquery.fcbkcomplete.min.js")" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jquerycl")
+    <script type="text/javascript" language="javascript">
+        var tempfiles = new Array();
+        var editor;
+        var editor2;
+
+        $(document).ready(function () {
+            $.cleditor.defaultOptions.height = 500;
+            $.cleditor.defaultOptions.width = 720;
+            $.cleditor.defaultOptions.docCSSFile = '@Url.Content("~/Resources/Css/frontend.styles.css")'
+            $.cleditor.buttons.image.uploadUrl = '@(Url.Action("UploadImage", "Content", new { Area = "Admin" }) + (Model.IContent != null && Model.IContent.ContentId != null ? "?id=" + Model.IContent.ContentId : ""))';
+            hideTemplates('blog');
+            $('#Form1').submit(function (event) {
+                var valid = true;
+
+                $('#contentNeeded').remove();
+                if ($('#BlogEntry_Description').val() == "") {
+                    valid = false;
+                }
+
+                if (!valid) {
+                    if ($('.validation-summary-valid li').length <= 1 && $('.validation-summary-valid li').html() == '') {
+                        $('.validation-summary-valid').removeClass('validation-summary-valid').addClass('validation-summary-errors');
+                    }
+                    $('.validation-summary-errors ul').append('<li id="contentNeeded">Debes ingresar un contenido</li>');
+                    event.preventDefault();
+                }
+            });
+            (function ($) {
+                $.cleditor.defaultOptions.docType = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>";
+                $.cleditor.defaultOptions.updateTextArea = function (html) { //if (document.forms[0].debugArea) document.forms[0].debugArea.value = html;
+                    // Normalize to xhtml/html5 common standards and only keep allowed tags.
+                    var ary = html.split("<");
+                    var end = -1;
+                    for (var i = 0; i < ary.length; i++) {
+                        if (ary[i].lastIndexOf("!--[if ", 7) === 0) { // handle Microsoft <!--[if ... <![endif]-->
+                            ary[i] = "";
+                            var found = false;
+                            for (i++; i < ary.length; i++) {
+                                if (ary[i].lastIndexOf("![endif]-->", 11) === 0) { found = true; }
+                                ary[i] = "";
+                                if (found) break;
+                            }
+                            if (i >= ary.length) break;
+                        }
+                        end = ary[i].indexOf(">");
+                        if (end == -1) continue;
+                        ary[i] = ary[i].substring(0, end).toLowerCase() + ary[i].substring(end);
+                        var search = ["strong>", "em>", "strike>", "u>", "br>"];
+                        var replace = ["b>", "i>", "del>", "ins>", "br/>"];
+                        for (var j = 0; j < search.length; j++) {
+                            var pos = ary[i].lastIndexOf(search[j], search[j].length + 1);
+                            if (pos == 0 || (pos == 1 && ary[i].charAt(0) == '/')) {
+                                ary[i] = (pos == 1 ? "/" : "") + replace[j] + ary[i].substring(search[j].length + pos);
+                            }
+                        }
+                        var spellcheckerRE = /^\/?span[^\/>]*\/?>/m;
+                        var cleanupRE = /^(\/?)(br|b|del|ins|i|li|ol|a|p|ul)[^a-zA-Z\/>]*[^\/>]*(\/?)>/m;
+                        if (ary[i].indexOf("href") == -1) {
+                            if (spellcheckerRE.test(ary[i])) {
+                                ary[i] = ary[i].replace(spellcheckerRE, "");
+                            } else if (cleanupRE.test(ary[i])) {
+                                ary[i] = ary[i].replace(cleanupRE, "<$1$2$3>");
+                                ary[i] = ary[i].replace(/^<p>/, "");
+                                ary[i] = ary[i].replace(/^<\/?p\/?>/, "<br/>");
+                            } else {
+                                ary[i] = end + 1 < ary[i].length ? ary[i].substring(end + 1) : "";
+                            }
+                        }
+                        else {
+                            ary[i] = '<' + ary[i];
+                        }
+                        ary[i] = ary[i].replace(/&nbsp;/gm, "");
+                        ary[i] = ary[i].replace(/\n\n/gm, "\n");
+                    }
+                    html = ary.join("");
+                    // Trim leading whitespace.
+                    var trimRE = /^(\s+|&nbsp;|<br\/?>|<p>(&nbsp;)*<\/p>)+/m;
+                    if (trimRE.test(html)) {
+                        html = html.replace(trimRE, "");
+                    }
+                    // Test if there is any actual non-whitespace text content.
+                    var body = document.getElementsByTagName("body")[0];
+                    var div = document.createElement("div");
+                    div.style.display = "none";
+                    body.appendChild(div);
+                    div.innerHTML = html;
+                    var text = div.innerText || div.textContent;
+                    body.removeChild(div);
+                    var trimRE = /\S/m;
+                    if (!trimRE.test(text)) html = "";
+                    return html;
+                };
+            })(jQuery);
+            editor = $('#BlogEntry_Description').cleditor({ controls: "bold italic underline | bullets numbering | link unlink" });
+            editor2 = $('#BlogEntry_DescriptionIngles').cleditor({ controls: "bold italic underline | bullets numbering | link unlink" });
+            createEditor(editor);
+            createEditor(editor2);
+
+            function createEditor(objeto) {
+                $(".cleditorMain iframe").each(function (index, obj) {
+                    $(obj).contents().find('body').bind('paste', function () {
+                        setTimeout(function () {
+                            objeto[index].updateTextArea(objeto[index]);
+                            var plainText = objeto[index].$area.val();
+                            $(objeto[index].doc.body).html("");
+                            $(objeto)[0].doc.execCommand("inserthtml", 0, plainText);
+                        }, 100);
+                    });
+                });
+            }
+        });
+     </script>
+}
+<div align="right">
+    <ul id="MenuP">
+        <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+    </ul>
+    <div class="cont" align="left">
+        @using (Html.BeginForm("Create", "BlogEntry", new { Area = "Admin" }, FormMethod.Post, new { id = "Form1", enctype = "multipart/form-data" }))
+        {
+        @Html.ValidationSummary()
+        @Html.Hidden("GetOut", "0")
+        @Html.Hidden("TempFiles")
+        <hr />
+        <div id="deepfolloweradmin">
+            @Model.DeepFollower
+        </div>
+        @Html.Partial("_ContentPartial", Model);
+        <div class="separator">
+        </div>
+        <div align="center" id="dvadicional" style="clear: both;">
+            <h3>
+                <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.ADDITIONAL_INFORMATION</span>
+            </h3>
+            @Html.HiddenFor(t => t.BlogEntry.ContentId)
+            <ul class="template" id="fields">
+                <li>
+                  @Resources.Global.Messages.CONTENT *<br />
+                  @Html.EditorFor(t => t.BlogEntry.Description)
+                </li>
+                <li>
+                    @Resources.Global.Messages.CONTENT2 *<br />
+                    @Html.EditorFor(t => t.BlogEntry.DescriptionIngles)
+                </li>
+            </ul>
+        </div>
+        }
+        @if(Model.BlogEntry != null && Model.BlogEntry.ContentId != null){
+        <div align="center" id="dvadicional" style="clear: both;">
+          <h3>
+            <img width="20" height="20" src="~/resources/images/nextwhite.png" /><span>@Resources.Global.Messages.COMMENTS</span>
+          </h3>
+            @if (Model.ListComments != null && Model.ListComments.Count() > 0)
+            {
+            <ul class="template" id="comments">
+              @foreach (Domain.Entities.FrontEnd.CommentsPaging comment in Model.ListComments)
+              {
+              <li class="comment">
+                <input type="hidden" class="commentId" value="@comment.CommentId"/>
+                <div class="commentValue">
+                  <img src="@Business.Utils.fixLocalUserImagePath(comment.UserImage)" height="44"/>
+                  <span>@comment.UserNames:</span>
+                  <span>@comment.Text</span>
+                  <img class="edit" src="@Url.Content("~/resources/images/25edit.gif")" alt="" title="Editar"/>
+                  <img class="block" src="@Url.Content("~/resources/images/25cancel.gif")" alt="" title="Bloquear" style="display:@(comment.Active.Value ? "inline-block" : "none")"/>
+                  <img class="unblock" src="@Url.Content("~/resources/images/accept.gif")" alt="" width="25" height="25" title="Desbloquear" style="display:@(comment.Active.Value ? "none" : "inline-block")"/>
+                </div>
+                <div class="commentForm" style="display:none;">
+                  <input type="text" class="commentText" value="@comment.Text"/>
+                  <img class="save" src="@Url.Content("~/resources/images/35save.gif")" alt="" title="Guardar"/>
+                  <img class="cancel" src="@Url.Content("~/resources/images/35cancel.gif")" alt="" title="Cancelar"/>
+                </div>
+              </li>
+              }
+            </ul>
+            }
+        </div>
+        }
+        <div align="center" id="contentactions">
+            <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE_EXIT" src="~/resources/images/45savewout.png" />
+            @if (Model.IContent != null && Model.IContent.ContentId != null)
+            {
+                <img onclick="$('#GetOut').val('1');$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+            }
+            <img onclick="window.location.href='@Url.Action("Index", "Content", new { Area = "Admin", mod = Model.Module.ModulId })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+        </div>
+    </div>
+</div>

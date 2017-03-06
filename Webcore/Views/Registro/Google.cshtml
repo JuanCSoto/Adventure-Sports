@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Google";
+    Layout = "~/Views/Layouts/_Layer.cshtml";
+}
+
+<script>
+    var params = {}, queryString = location.hash.substring(1),
+        regex = /([^&=]+)=([^&]*)/g, m;
+    while (m = regex.exec(queryString)) {
+        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: path + '/registro/google',
+        data: {
+            query: queryString
+        }
+    }).done(function (json) {
+        if (json.result) {
+            if (json.authenticated == 1) {
+                if (window.opener.globalCallback == null) {
+                    window.opener.redirect(window.opener.location.href);
+                }
+            }
+            else if (json.authenticated == 2) {
+                window.opener.systemAlert('Ups!', 'Estás bloqueado');
+            }
+            else {
+                window.opener.createCookie('google-token', json.token, 0);
+                window.opener.showRegistry();
+                window.opener.createCookie('user-image', json.picture, 0);
+                window.opener.createCookie('user-name', json.name, 0);
+                window.opener.createCookie('user-mail', json.mail, 0);
+            }
+        }
+        else {
+            window.opener.systemAlert('mmm', 'no pudimos conectarnos con google', window.opener.showEntry);
+        }
+
+        window.opener.googleClose();
+    });
+</script>

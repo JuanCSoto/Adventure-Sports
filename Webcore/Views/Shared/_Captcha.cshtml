@@ -1,0 +1,10 @@
+@model Webcore.Models.Captcha
+
+<div class="registro-item">
+  <div class="registro-txt">@Resources.Extend.Messages.PLEASEIT</div>
+  <img style="float:left; margin-left:10px;" src='@Url.Content("~/Captcha/Show/")?rn=@(new Random().Next(1000, 9999))' alt="captcha" class="captcha_img" />
+  @Html.TextBoxFor(m => m.CaptchaValue, new { @class = "registro-input", style = "float: left; width:115px !important; padding:8px !important; font-size: 13px; margin-left: 11px", maxlength = "4" })
+</div>
+<div class="clear"></div>
+<div id="captcha-error-message" class="error">@Html.ValidationMessageFor(m => m.CaptchaValue, string.Empty, new { style = "font-size: 13px; margin-left: 11px; color: a3b800; " })</div>
+<div class="clear"></div>  

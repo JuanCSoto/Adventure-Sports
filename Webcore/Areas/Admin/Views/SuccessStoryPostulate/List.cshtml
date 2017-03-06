@@ -1,0 +1,92 @@
+﻿@model  Webcore.Areas.Admin.Models.SuccessStoryPostulateModel
+@using Domain.Entities.Enums;
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Resources/Css/postulates/styles.css" rel="stylesheet" />
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+    <tbody>
+        <tr>
+            <td align="left" valign="top" class="aprobadoSmall">&nbsp;</td>
+            <td width="70" class="txtTablaCaso">@Resources.Global.Messages.PUBLISHED</td>
+            <td class="rechazadoSmall">&nbsp;</td>
+            <td width="70" class="txtTablaCaso">@Resources.Global.Messages.REJECTED</td>
+            <td class="pendienteSmall"></td>
+            <td width="70" class="txtTablaCaso">@Resources.Global.Messages.PENDING</td>
+            <td>&nbsp;</td>
+            <td></td>
+            <td>&nbsp;</td>
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="5" class="buzon">
+    <tbody>
+        <tr>
+            <td width="15%" bgcolor="#D7D7D7" class="fontTitulo">@Resources.Global.Messages.DELIVERYDATE</td>
+            <td width="15%" bgcolor="#D7D7D7" class="fontTitulo">@Resources.Global.Messages.COUNTRY</td>
+            <td width="15%" bgcolor="#D7D7D7" class="fontTitulo">@Resources.Global.Messages.CITY</td>
+            <td width="40%" bgcolor="#D7D7D7" class="fontTitulo">@Resources.Global.Messages.STORYNAME</td>
+            <td width="15%" bgcolor="#D7D7D7" class="fontTitulo">@Resources.Global.Messages.STORYSTATUS</td>
+        </tr>
+        @foreach (var successstorypostulate in Model.ListaSuccessStoryPostulate)
+        {
+            <tr @(successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.New || successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.Pending? "id=selected" : "") class="@(successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.New ? "resaltar" : "")" href="@Url.Action("Detail", new { id = successstorypostulate.Id, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId })">
+                <td class="txtTabla">@successstorypostulate.CreationDate</td>
+                <td class="txtTabla">@successstorypostulate.CountryName</td>
+                <td class="txtTabla">@successstorypostulate.CityName</td>
+                <td class="txtTablaCaso">@successstorypostulate.Name</td>
+            @if (successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.Pending || successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.New)
+                {
+                    <td id="modificate" class="pendiente" align="center"><img src="~/Resources/Images/postulates/pendiente.png" alt="@Resources.Global.Messages.PENDING" /></td>
+                }
+            else if (successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.Rejected)
+                {
+                    <td class="rechazado" align="center"><img src="~/Resources/Images/postulates/rechazado.png" alt="@Resources.Global.Messages.REJECTED" /></td>
+                }
+            else if (successstorypostulate.State == (int)SuccessStoryPostulateStateEnum.Published)
+                {
+                    <td class="aprobado" align="center"><img src="~/Resources/Images/postulates/publicado.png" alt="@Resources.Global.Messages.PUBLISHED" /></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>
+                @{
+                    ////Paginación
+                    if (ViewBag.CurrentPage > 1)
+                    {
+                        <a class="paginacion" href="@Url.Action("List", new { page = 1, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId })">@Resources.Global.Messages.FIRST</a>
+                        <a class="paginacion" href="@Url.Action("List", new { page = ViewBag.CurrentPage - 1, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId })">@Resources.Global.Messages.PREVIOUS</a>
+                    }
+                    for (int index = 1; index <= ViewBag.NroPages; index++)
+                    {
+                        if (index == ViewBag.CurrentPage)
+                        {
+                            <span class="paginacion">@index.ToString()</span>
+                        }
+                        else
+                        {
+                            <a class="paginacion" href="@Url.Action("List", new { page = index, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId })">@index.ToString()</a>
+                        }
+                    }
+                    if (ViewBag.CurrentPage < ViewBag.NroPages)
+                    {
+                        <a class="paginacion" href="@Url.Action("List", new { page = ViewBag.CurrentPage + 1, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId })">@Resources.Global.Messages.NEXT</a>
+                        <a class="paginacion" href="@Url.Action("List", new { page = ViewBag.NroPages, mod = Model.Module.ModulId, sectionId = ViewBag.SectionId })">@Resources.Global.Messages.LAST</a>
+                    }
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    $("tr").click(function () {
+        if ($(this).attr("id") == "selected") {
+            window.location.href = $(this).attr("href");
+        }
+    });
+</script>

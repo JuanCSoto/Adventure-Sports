@@ -1,0 +1,31 @@
+﻿@model Webcore.Areas.Admin.Models.Labels
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Global.Messages.DETAIL</li>
+        <li>@Resources.Global.Messages.LIST</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    @using (Html.BeginForm("Detail", "label", FormMethod.Post, new { id = "Form1" }))
+    {
+    @Html.ValidationSummary()
+    <ul id="fields">
+        <li>@Resources.Global.Messages.NAME<br />
+            @Html.TextBoxFor(t => t.LabelCustom.Name, new { @class = "text", maxlength = "50" })
+        </li>
+        <li>@Resources.Global.Messages.NAME<br />
+            @Html.TextBoxFor(t => t.LabelCustom.Translation, new { @class = "text", maxlength = "100" })
+        </li>
+    </ul>
+    }
+    <div align="center" id="contentactions">
+        <img onclick="$('#Form1').submit()" title="@Resources.Global.Messages.SAVE" src="~/resources/images/45savew.png" />
+        @if (ViewBag.id != null)
+        {
+        <img onclick="if(confirm('@Resources.Extend.Messages.DELETE_ITEM')) { window.location.href='@Url.Action("Delete", new { Area = "Admin", id = ViewBag.id })'; }" title="@Resources.Global.Messages.DELETE" src="~/resources/images/45deletew.png" />
+        }
+        <img onclick="window.location.href='@Url.Action("Index", new { Area = "Admin" })'" title="@Resources.Global.Messages.CANCEL" src="~/resources/images/45cancelw.png" />
+    </div>
+</div>

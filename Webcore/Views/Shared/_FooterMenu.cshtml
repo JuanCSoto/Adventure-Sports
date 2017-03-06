@@ -1,0 +1,17 @@
+﻿@model Webcore.Models.FEMenu
+@using Business
+<nav>
+    @foreach (Domain.Entities.Section item in Model.Sections.Where(t => t.Sectiontype == 1))
+{
+        <dl>
+            <dt><a target="@item.Target" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))">@item.Name</a>
+            </dt>
+            @foreach (Domain.Entities.Section subitem in Model.Sections.Where(t => t.ParentId == item.SectionId))
+        {
+                <dd>
+                    <a target="@subitem.Target" href="@(subitem.Url.Value ? subitem.Navigateurl : (string.IsNullOrEmpty(subitem.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, subitem.Friendlyname)))">@subitem.Name</a>
+                </dd>
+        }
+        </dl>
+}
+</nav>

@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+<div class="alerta-contenedor">
+    <div id="system-alert" class="alerta default">
+        <div class="alerta-titulo">
+            <h1 id="alert-title"></h1>
+            <div class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></div>
+        </div>
+        <div class="clear"></div>
+        <p id="alert-message" data-messagespassworderror="@Resources.Extend.Messages.ERRORPASSWORDINVALIDO"
+                              data-messagestitleerror ="@Resources.Extend.Messages.ERRORTITULO"
+                              data-messagesmovilinvalido ="@Resources.Extend.Messages.ERRORMOVILINVALIDO"
+                              data-messagesblock ="@Resources.Extend.Messages.ERRORBLOCKED"
+                              data-messagesmin20 ="@Resources.Extend.Messages.ERRORMIN20"
+                              data-messagesmaxidea ="@Resources.Extend.Messages.ERRORMAXIDEA" 
+                              data-messagescaracteres ="@Resources.Global.Messages.CHARACTERS" 
+                              data-messagesselectmap="@Resources.Extend.Messages.ERRORSELECTMAP" 
+                              data-messagesvideoinvalido= "@Resources.Extend.Messages.ERRORVIDEOINVALIDO"
+                              data-messagesvoto =    "@Resources.Extend.Messages.ERRORVOTO"                          
+                              data-messagesvotosave =    "@Resources.Extend.Messages.ERRORVOTOSAVE"
+                             data-messagesredessociales = "@Resources.Extend.Messages.ERRORREDESSOCIALES"  
+                              data-messagesconfirmarpassword ="@Resources.Extend.Messages.CONFIRMPASSWORD"    
+                             data-messagesverygood ="@Resources.Extend.Messages.VERYGOOD"
+                              data-messagespasswordsave ="@Resources.Extend.Messages.ERRORPASSWORDNOSAVE"
+            
+                              
+             >
+
+        </p>
+        <div class="clear"></div>
+        <div class="centrado">
+            <div class="alerta-aceptar">
+                <a>
+                    <h3>@Resources.Global.Messages.ACCEPT</h3>
+                    <span class="no-accept"></span>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

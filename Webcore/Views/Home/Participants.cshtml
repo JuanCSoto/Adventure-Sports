@@ -1,0 +1,32 @@
+﻿@model List<Domain.Entities.FrontEnd.UserProfilePaging>
+@{
+    Layout = null;
+    string[] deleteMe = new string[8];
+}
+@if(deleteMe.Length > 0)
+{
+<div class="contenido">
+    <div class="contenido-tit">
+        <h1>@ViewBag.TXTESTPART</h1>
+        <h3>@ViewBag.TotalParticipants @ViewBag.PEOPLE</h3>
+    </div>
+    <div class="clear"></div>
+    <div class="comunidad" id="comunidad">
+    @foreach (Domain.Entities.FrontEnd.UserProfilePaging user in Model)
+    {
+        <div class="comunidad-i">
+            <div class="comunidad-info">
+                <div class="tooltip">
+                    <h1>@user.Names</h1>
+                    <div class="clear"></div>
+                    <span>@user.Medallos</span>
+                    <div class="clear"></div>
+                    <h1 style="margin-top:2px">@user.UserRank</h1>
+                </div>
+            </div>
+            <a href="@Url.Content("~/perfil/index/" + user.UserId)"><img src="@Business.Utils.fixLocalUserImagePath(user.Image)" width="40" height="40" alt="avatar" /></a>
+        </div>
+    }
+    </div>
+</div>
+}

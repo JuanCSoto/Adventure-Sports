@@ -1,0 +1,36 @@
+﻿@model Webcore.Areas.Admin.Models.Modelsearch
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ul id="MenuP">
+    <li class="Menubig">@Resources.Extend.Messages.GENERAL_SEARCH</li>
+</ul>
+<div class="cont" align="left">
+    <hr />
+    <div>
+        @Model.Criteria
+    </div>
+    <span class="spntitle">@Resources.Extend.Messages.SEARCH_RESULT</span>
+    <ul id="listado">
+        @foreach (Domain.Entities.Search item in Model.CollResult)
+        {
+            <li>
+                <span class="sptitle">@item.Name</span><br />
+                <span class="spdate">@item.Type</span>
+                @if (Model.ColModul.FirstOrDefault(i => i.ModulId == item.ModulId) != null)
+                {
+                    if (item.IsContent)
+                    {
+                    <a href="@Url.Action("Detail", item.Controller, new { Area = "Admin", mod = item.ModulId, id = item.Id })">
+                        <img border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>    
+                    }
+                    else
+                    {
+                    <a href="@Url.Action("Detail", item.Controller, new { Area = "Admin", id = item.Id })">
+                        <img border="0" align="right" width="25" height="25" src="~/resources/images/25edit.gif" /></a>    
+                    }
+                }
+            </li>
+        }
+    </ul>
+</div>

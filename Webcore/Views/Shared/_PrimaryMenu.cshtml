@@ -1,0 +1,325 @@
+﻿@model Webcore.Models.FEMenu
+@using Business
+
+@{
+    string content = Url.Content("~/").TrimEnd('/');
+    string selectedStyle = "style=background-color:#01928D; color: white";
+
+    string siteUrlRoot = (("http://" + Request.Url.Host + Request.ApplicationPath).TrimEnd('/'));
+    string picture = siteUrlRoot + "/1024.png";
+}
+
+
+<link href="~/Resources/Css/PopUp.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="~/Resources/Scripts/jquery.admin.utils.js"></script>
+<link href="~/Resources/Css/jquery-ui-1.10.3.css" rel="stylesheet" />
+<script src="~/Resources/Scripts/jquery-ui-1.10.3.min.js"></script>
+<link href="~/Resources/Css/Search.css" rel="stylesheet" />
+<script>
+
+    function Showmodalcasos() {
+        $('#Postula').modal('show');
+    }
+
+    function CasoExito() {
+        var session = '@(User.Identity.IsAuthenticated)' === '@true';
+
+        if (session) {
+            //ShowMessage('', '<iframe src="https://docs.google.com/forms/d/1qVgv5ShRfXWcyji4l_w6sYXN3dv1QvKPMtohFdAaelg/viewform" width="100%" height="600px" aria-hidden="true"></iframe>');
+            window.location.href = '@Url.Action("Create", "SuccessStoryPostulate")';
+        }
+        else {
+            var login = showEntry();
+        }
+    }
+
+    function Retos() {
+        {
+            var session = '@(User.Identity.IsAuthenticated)' === '@true';
+            if (session) {
+                var language = '@(Model.CurrentLanguage.LanguageId)' == '2';
+                if (language) {
+                    ShowMessage('', '<iframe src="https://docs.google.com/forms/d/1n9JATJ-sPwTNl3jYCe7OTReb0yodNUISnsRSYWXnAhQ/viewform?edit_requested=true" width="100%" height="600px"></iframe>');
+                }
+                else {
+                    ShowMessage('', '<iframe src="https://docs.google.com/forms/d/1EM4rl9iRlIz5JT5fVH3l1H6fFoYMYZWeYVwT7MxE9mM/viewform?edit_requested=true" width="100%" height="600px"></iframe>');
+                }
+            }
+            else {
+                var login = showEntry();
+            }
+        }
+    }
+
+    function Autenticar() {
+
+        var login = showEntry();
+    }
+</script>
+<script type="text/javascript">        var pathg = '@Url.Content("~/")';</script>
+<div class="header-menu" style="background-color:@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.HEADER_COLOR,Model.CurrentLanguage.LanguageId))">
+    <div class="header">
+        @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.HEADER_BIG, type = "frontend" })
+        <header>
+            <div id="beta">
+                <img src="~/Resources/Images/img-beta.png" alt="Fase Beta" />
+            </div>
+            <div id="content-header">
+                <div id="logo" class="col-sm-6 col-md-4 logo">
+                    @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.LOGO, type = "frontend" })
+                    <a href="@(content)/">
+                        <img class="site-logo" src="@content@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.LOGO,Model.CurrentLanguage.LanguageId))" alt="logo" />
+                    </a>
+                </div>
+                <div id="search" class="col-sm-12 col-md-6">
+                    <form method="get" action="~/Find/" id="FormFind" name="FormFind">
+                        <input type="text" id="buscar" name="buscar" autocomplete="on" value="@this.ViewBag.Busqueda" placeholder="@Resources.Global.Messages.PLACEHOLDERFIND">
+                        <div id="menu-container" style="position:absolute; width: 500px;"></div>
+                        <input type="submit" name="find" />
+                    </form>
+                </div>
+                <div id="social">
+                    <div id="idioma">
+                        @if (Model.CurrentLanguage.LanguageId.Value == (int)Domain.Entities.Enums.LanguageEnum.Spanish)
+                        {
+                            <a onclick="setLanguage2(1)"><span>ENGLISH</span></a>
+                        }
+                        else
+                        {
+                            <a onclick="setLanguage2(2);"><span>ESPAÑOL</span></a>
+                        }
+                    </div>
+                    <div id="redes" class="col-sm-12 siguenos hide-tablet" style="margin-top:0px;">
+                        <ul>
+                            <li>
+                                <a class="mm2-logotw mm2redespos" href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceTwitter"])" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="mm2-logofb mm2redespos" href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceFacebook"])" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="mm2-logoyt mm2redespos" href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceYoutube"])" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="mm2-logoinst mm2redespos" href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceInstagram"])" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="mm2-logoli mm2redespos" href="@(System.Configuration.ConfigurationManager.AppSettings["EnlaceLinkedIn"])" target="_blank"></a>
+                            </li>
+                            <li>
+                                @Html.Partial("_ShareUrlHome", new Domain.Entities.FrontEnd.ShrareUrl()
+                          {
+                              name = "Cities for Life",
+                              link = siteUrlRoot,
+                              picture = picture,
+                              caption = "",
+                              descriptionFB = "¡Asume el reto y empodérate de tu ciudad!",
+                              descriptionTW = "¡Asume el reto y empodérate de tu ciudad!",
+                              description = "¡Asume el reto y empodérate de tu ciudad!"
+                          })
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="ingresa-small">
+            <div id="user-block-wraper2">
+                @Html.Action("UserBlock", "Home")
+            </div>
+        </div>
+        <div class="menu-small">
+            <div id="botonmenu">
+                <img src="~/resources/images/current/menu-s.png" border="0" alt="icon" onclick="$('.submenu-small').toggle();" />
+            </div>
+        </div>
+        <div class="cabezote-big">
+            <div class="menu-big">
+                @*  <div class="menu-big-a" @(Model.SectionId == 0 ? selectedStyle : "")>
+                      @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.MENU_HOME, type = "frontend" })
+
+                    </div>*@
+                @foreach (Domain.Entities.Section item in Model.Sections.Where(t => t.ParentId == null && t.SectionId != 39 && t.SectionId != 32 && t.SectionId != 41 && t.SectionId != 42))
+                {
+                    if (Model.SectionId == 0)
+                    {
+                        Model.SectionId = 51;
+                    }
+                    <div class="menu-big-a menu-ppal-cont" @(Model.SectionId == item.SectionId ? selectedStyle : "")>
+
+
+                        @switch (item.SectionId)
+                        {
+                            case 31:
+                                <a class="menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                    @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_HOME, Model.CurrentLanguage.LanguageId))
+                                </a>
+                                break;
+                            case 34:
+                            <a class="menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_ARTICLES, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 35:
+                            <a class="menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_FAQ, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 39:
+                            <a class="menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_STATISTICS, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 40:
+                            <a class="menu-ciudadanos menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_COMMUNITY, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 42:
+                            <a class="menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_ALLIES, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 46:
+                            <a class="menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_SUCCESSSTORY, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 51:
+                            <a class="menu-retos menu-big-a" href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_HOMEHTML, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                            case 50:
+                            <a class="menu-big-a" href="javascript: Showmodalcasos();" data-id="PopUpPostula">
+
+                                @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_POSTULA, Model.CurrentLanguage.LanguageId))
+                            </a>
+                                break;
+                        }
+
+                    </div>
+                }
+                <div id="user-block-wraper2">
+                    @Html.Action("UserBlock", "Home")
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div> @* Fin cabezote*@
+    <div class="clear"></div>
+    @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.BACKGROUND_COLOR, type = "frontend" })
+    <div class="desplegables">
+        <div class="submenu-small" id="smallMenu">
+            @*    @{selectedStyle = "style=background-color:#005B59; color: white";}
+                <a @(Model.SectionId == 0 ? selectedStyle : string.Empty) href="@(content)/">@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_HOME))</a>  *@
+        @foreach (Domain.Entities.Section item in Model.Sections.Where(t => t.ParentId == null && t.SectionId != 39 && t.SectionId != 32 && t.SectionId != 41 && t.SectionId != 42))
+        {
+            switch (item.SectionId)
+            {
+                case 31:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_HOME, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 34:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_ARTICLES, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 35:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_FAQ, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 39:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_STATISTICS, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 40:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_COMMUNITY, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 42:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_ALLIES, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 46:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_SUCCESSSTORY, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 51:
+        <a href="@(item.Url.Value ? item.Navigateurl : (string.IsNullOrEmpty(item.Template) ? "javascript:void(0);" : Html.GetUrl(Model.CurrentLanguage, item.Friendlyname)))" target="@item.Target">
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_HOMEHTML, Model.CurrentLanguage.LanguageId))
+        </a>
+                    break;
+                case 50:
+        <a href="javascript: Showmodalcasos();" data-id="PopUpPostula">
+
+            @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.MENU_POSTULA, Model.CurrentLanguage.LanguageId))
+        </a>break;
+            }
+        }
+        </div>
+        <div class="submenu-small2" id="smallRegistro">
+            @Html.Partial("~/Views/Registro/Ingreso.cshtml", false)
+        </div>
+    </div>
+    <!--PopUP-->
+    <div id="Postula" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <h4>@Resources.Extend.Messages.TELLCITY</h4>
+                    <p>@Resources.Extend.Messages.ESATHAT</p>
+                    <a href="javascript: Retos();" data-id="Challenge" class="postula-btn">@Html.Raw(Resources.Extend.Messages.POSTULATES)</a>
+                    <a href="javascript: CasoExito();" data-id="Success" class="postula-btn">@Html.Raw(Resources.Extend.Messages.POSTULATESTUDY)</a>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--PopUP-->
+    <div id="mymodal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Resources/Scripts/PopUp.js"></script>
+<script>
+    $(document).ready(function () {
+        var availableTags = @Html.Raw(this.ViewBag.JsonSearch)
+        $("#buscar").autocomplete({
+            source: availableTags,
+            appendTo: '#menu-container',
+            select: function (e, ui) {
+                $("#buscar").val(ui.item.label);
+                $("#FormFind").submit();
+            }
+        });
+    });
+</script>
+
+

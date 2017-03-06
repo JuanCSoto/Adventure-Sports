@@ -1,0 +1,56 @@
+﻿@{
+  Layout = null;
+  string content = Url.Content("~/").TrimEnd('/');
+  string logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LOGO);
+}
+
+<div id="editable-box" class="alerta">
+  <div class="alerta-titulo">
+    <h1>@ViewBag.TXTPIETEXT</h1>
+    <div class="alerta-cerrar">
+      <img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" />
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTCONTACT<span></span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="20" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_CONTACT_US)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_CONTACT_US)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTTEXTTER <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="30" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_TERMS)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_TERMS)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="editable-content">
+    <div class="registro-item">
+      <div class="registro-txt">@ViewBag.TXTTEXTPOLI <span>:</span></div>
+      <div class="editable-input">
+        <input type="text" maxlength="35" class="editable-value registro-input-editable" data-id="@((int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_POLICY)" data-type="text" value="@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_POLICY)"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <div class="centrado">
+    <div class="alerta-aceptar">
+      <a>
+        <h3>@ViewBag.SAVE</h3>
+        <span></span>
+      </a>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

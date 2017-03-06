@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+<div class="alerta default">
+    <div class="alerta-titulo">
+        <h1>@Resources.Extend.Messages.TXTREMPASS</h1>
+        <div class="alerta-cerrar"><img src="~/resources/images/mimedellin/cerrar.png" border="0" alt="icon" /></div>
+    </div>
+    <div class="clear"></div>
+    <p>
+        @Resources.Extend.Messages.ENTEREMAIL
+    </p>
+    <div class="clear"></div>
+    <input id="recovery-correo" class="ingresa-input correo" />
+    <div class="clear"></div>
+    <div id="recovery-error" class="error"
+         data-messageserror="@Resources.Extend.Messages.ERRORMESSAGESEMAIL" 
+         data-messageserror2="@Resources.Extend.Messages.ERRORMESSAGESEMAIL2"
+         data-sendemail1 ="@Resources.Extend.Messages.MESSAGESSSENDEMAIL1"
+        data-sendemail2 ="@Resources.Extend.Messages.MESSAGESSSENDEMAIL2"      ></div>
+    <div class="clear"></div>
+    <div class="centrado">
+        <div class="alerta-aceptar">
+            <a id="recovery-aceptar">
+                <h3>@Resources.Global.Messages.ACCEPT</h3>
+                <span class="no-accept"></span>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

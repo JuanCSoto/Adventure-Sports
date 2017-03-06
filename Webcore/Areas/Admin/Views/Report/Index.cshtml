@@ -1,0 +1,33 @@
+﻿@model Webcore.Areas.Admin.Models.ReportModel
+@{
+  Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+  string content = Url.Content("~/").TrimEnd('/');
+
+  List<SelectListItem> pulses = ViewBag.Pulses;
+}
+
+<script>
+  $(document).ready(function () {
+    $('#pulse-detail').click(function () {
+      if ($('#pulse-filter').val().length) {
+        document.location.href = '@content/Admin/Report/PulseReportDetail/' + $('#pulse-filter').val();
+      }
+    });
+  });
+</script>
+
+<div id="more" style="text-align: left;">
+  <div style="height:41px; line-height:41px;">
+    Listado de pulsos: 
+    <a href="@content/Admin/Report/PulsesReport"><img style="cursor: pointer; vertical-align: middle; margin: 0 0 5px 0;" width="25" height="25" src="@Url.Content("~/resources/images/25down.gif")" /></a>
+  </div>  
+  <div style="height:41px; line-height:41px;">
+    Listado de ciudadanos:
+    <a href="@content/Admin/Report/UsersReport"><img style="cursor: pointer; vertical-align: middle; margin: 0 0 5px 0;" width="25" height="25" src="@Url.Content("~/resources/images/25down.gif")" /></a>
+  </div>
+  <div style="height:41px; line-height:41px;">
+    Detalle de un pulso: 
+    @Html.DropDownList("pulse-filter", pulses, "selecciona un pulso", new { @class = "dropsfil" })
+    <img id="pulse-detail" style="cursor: pointer; vertical-align: middle; margin: 0 0 5px 0;" width="25" height="25" src="@Url.Content("~/resources/images/25down.gif")" />
+  </div>
+</div>

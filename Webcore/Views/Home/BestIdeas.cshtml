@@ -1,0 +1,30 @@
+﻿@model Domain.Entities.FrontEnd.ContentBestOfAll
+@{
+    Layout = null;
+}
+@if (Model.InnovativeUsers.Count > 0 || Model.TopIdeas.Count > 1 || Model.TopVotedIdeas.Count > 0)
+{
+<div class="contenido" style="margin-bottom:50px">
+  @Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.BOB_TEXT, type = "frontend" })
+    <div class="contenido-tit">
+        <div class="comunidad-info" style="display: block; opacity: 0; font-family:helvetica, arial, sans-serif; font-size:11px; text-align:center; color:#656565;">
+            <div class="tooltip">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BOB_TOOLTIP)</div>
+        </div>
+        <div class="comunidad-info-tt">@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BOB_TEXT)</div>        
+        <h2>@Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.BOB_DESCRIPTION)</h2>
+    </div>
+    <div class="clear"></div>
+    @if (Model.InnovativeUsers.Count> 0)
+    {
+        @Html.Partial("MostInnovativeIdeas", Model.InnovativeUsers)
+    }
+    @if (Model.TopIdeas.Count> 0)
+    {
+        @Html.Partial("MostPopularIdeas", Model.TopIdeas)
+    }
+    @if (Model.TopVotedIdeas.Count > 0)
+    {
+        @Html.Partial("MostVotedIdeas", Model.TopVotedIdeas)
+    }
+</div>
+}

@@ -1,0 +1,36 @@
+﻿@model Webcore.Models.FESeccion<object>
+@using Business;
+
+@{
+    Layout = "~/Views/Layouts/" + Model.Layout;
+    Business.FrontEnd.Homenews Entity = (Business.FrontEnd.Homenews)Model.Entity;
+}
+<div>
+    @Model.DeepFollower - a
+</div>
+<h2>@Model.Section.Name</h2>
+<article>
+    @if (Entity.Contentlast != null)
+    {
+        <figure>
+            <a href="@Html.GetUrl(Model.CurrentLanguage, Entity.Contentlast.Frienlyname)">
+                <img src="@Business.Utils.GetImageContent(Entity.Contentlast.Image, Entity.Contentlast.ContentId.Value, 150, 100)" width="150" height="100" alt="@Entity.Contentlast.Name"></a>
+        </figure>
+        <p>
+            @Entity.Contentlast.Shortdescription
+        </p>
+        <a href="@Html.GetUrl(Model.CurrentLanguage, Entity.Contentlast.Frienlyname)">@Resources.Extend.Messages.SEEMORE</a>
+    }
+    <aside>
+        @if (Entity.Contents != null)
+        {
+            <ul>
+                @foreach (var item in Entity.Contents)
+                {
+                    <li><a href="@Html.GetUrl(Model.CurrentLanguage, item.Frienlyname)">@item.Name</a>
+                    </li>
+                }
+            </ul>                
+        }
+    </aside>
+</article>
