@@ -6,6 +6,53 @@
 <div class="footer">  
   <div class="footer-block">    
 
+      <div class="mm2-txt-footer">
+          @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER))
+      </div>
+      <a href="@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LINK))" target="_blank" 
+         style="margin-left: 10px; margin-top: 4px;">
+          <img class="footer-logo-owner" src="@content@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_OWNER_LOGO))" 
+               border="0" alt="logo" />
+      </a>
+      <a href="@("http://www.medellin.gov.co")" target="_blank" style="margin-left: 10px; margin-top: 4px;">
+          <img class="footer-logo-owner" src="@content@("/resources/images/miciudad/logo-alcaldia-pequeno.png")" border="0" alt="logo" />
+      </a>
+
+      <div class="mm2-txt-footer" style="margin-right:10px;">
+          @(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR))
+      </div>
+      @{ logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_1); }
+      @if (!string.IsNullOrEmpty(logo))
+      {
+          <a href="@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_1))" target="_blank">
+              <img class="footer-logo" src="@content@logo" border="0" alt="logo" />
+          </a>
+      }
+
+      @{ logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_2); }
+      @if (!string.IsNullOrEmpty(logo))
+      {
+          <a href="@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_2))" target="_blank">
+              <img class="footer-logo" src="@content@logo" border="0" alt="logo" />
+          </a>
+      }
+
+      @{ logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_3); }
+      @if (!string.IsNullOrEmpty(logo))
+      {
+          <a href="@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_3))" target="_blank">
+              <img class="footer-logo" src="@content@logo" border="0" alt="logo" />
+          </a>
+      }
+
+      @{ logo = Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LOGO_4); }
+      @if (!string.IsNullOrEmpty(logo))
+      {
+          <a href="@(Business.Utils.GetFronEndValue(Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR_LINK_4))" target="_blank">
+              <img class="footer-logo" src="@content@logo" border="0" alt="logo" />
+          </a>
+      }
+
     <div class="footer-al-s">@Html.Partial("_AdminBlock", new Domain.Entities.FrontEnd.AdminBlock() { id = (int)Domain.Entities.Basic.ForntEndEditableType.FOOTER_SPONSOR, type = "frontend" })</div>
 
     <div class="footer-terminos">
