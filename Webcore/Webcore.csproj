@@ -27,6 +27,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>3cadbdbf</NuGetPackageImportStamp>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -460,6 +461,8 @@
     <Content Include="Resources\Videos\slider-7n.jpg" />
     <Content Include="Resources\Videos\slider-7n.mp4" />
     <Content Include="robots.txt" />
+    <None Include="Properties\PublishProfiles\AventuraDllo.pubxml" />
+    <None Include="Properties\PublishProfiles\AventuraWebDllo - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\web local.pubxml" />
     <Content Include="Views\Find\Index.cshtml" />
   </ItemGroup>
